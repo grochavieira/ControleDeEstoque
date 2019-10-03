@@ -1,5 +1,5 @@
-#ifndef CLIENTE_H
-#define CLIENTE_H
+#ifndef HASH_H
+#define HASH_H
 
 #include <iostream>
 #include <string>
@@ -300,20 +300,20 @@ public:
     void Imprime(){ // Apenas para conferir. Imprime toda a Hash
         for(int i=0; i<max+maxC; i++){
             if(!v[i].valor.empty()) {
-                QDebug() << "Idx " << i << ": " << v[i].valor;
+                qDebug() << "Idx " << i << ": " << v[i].valor;
                 /*if (v[i].colisao == 2) {
                     cout << " /Col: " << v[v[i].end + max].valor << " / End: " << max+v[i].end << " / Coli: " << v[v[i].end + max].colisao;
                 }*/
-                QDebug() << "";
+                qDebug() << "";
             }
         }
-        QDebug() << "";
+        qDebug() << "";
     }
     ~Hash(){
     };
 };
 
-#endif // CLIENTE_H
+#endif // HASH_H
 
 /*int main() {
     Hash h(10);
