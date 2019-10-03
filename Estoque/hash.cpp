@@ -1,14 +1,19 @@
+#ifndef CLIENTE_H
+#define CLIENTE_H
+
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <QString>
+#include <QDebug>
 
 using namespace std;
 
 class IHash{
 public:
-    virtual bool Insere(string) = 0;
-    virtual bool Busca(string) = 0;
-    virtual bool Remove(string) = 0;
+    virtual bool Insere(QString) = 0;
+    virtual bool Busca(QString) = 0;
+    virtual bool Remove(QString) = 0;
     virtual void Imprime() = 0;
     virtual ~IHash(){
     };
@@ -20,7 +25,7 @@ class Colisao{
 private:
     int colisao = 0; // 0 = livre, 1 = ocupado sem colisao, 2 = ocupado com colisao, 3 = livre com colisao
     int end=0;
-    string valor;
+    QString valor;
 
     friend class Hash;
 };
@@ -31,7 +36,7 @@ private:
     int n, nC; // n e tamanho atual do vetor e nC e tamanho atual de colisoes
     int max, maxC; // max e tamanho maximo da Hash e maxC e tamanho maximo de colisoes
 
-    int funcHash(string x){
+    int funcHash(QString x){
         int somaPalavras = 0;
         for(int i = 0; i<x.size(); i++){
             somaPalavras += int(x[i]);
@@ -50,7 +55,7 @@ private:
 
         int tamanhoVetorDobra = (numeroDeCasas%2 == 0 ? numeroDeCasas/2 : numeroDeCasas/2 + 1);
         int iteracoes = 0;
-        string guardaSomaDasCasas;
+        QString guardaSomaDasCasas;
         int valorDaDobra = tamanhoHash + 1;
         numeroDeCasas--;
 
@@ -91,7 +96,7 @@ private:
 
         return valorDaDobra;
     }
-    void colidiu(string x){ // Funsao para caso colidir
+    void colidiu(QString x){ // Funsao para caso colidir
         int idx = max; // idx = tamanho maximo da Hash + quantidade de colisoes atual
         if(v[idx].colisao == 0){
             v[idx].end = max+1; // Salva o numero da colisao
@@ -126,7 +131,7 @@ private:
         v[idx].valor = x; // String salva na parte de colisoes
     }
     void dobrarV(){ // Funsao de dobrar o vetor Hash
-        string *aux = new string[max+maxC+1]; // Vetor temporario para segurar as senhas
+        QString *aux = new QString[max+maxC+1]; // Vetor temporario para segurar as senhas
         int j = 0;
         for(int i=0; i<max+maxC; i++){ // For para preencher o vetor temporario
             if(!v[i].valor.empty()){
@@ -159,7 +164,7 @@ public:
         v = new Colisao[max+maxC]; // vetor Hash vai ter tamanho max + maxC
         zeraTudo(); // Zera o vetor inteiro, para garantia
     }
-    bool Insere(string x){
+    bool Insere(QString x){
         if(x.empty())
             return false;
         if(n >= (max*0.8) || nC >= (maxC*0.8)) // Quando n chegar a 80% do max de espaços livres. Dobra os espaços
@@ -181,7 +186,7 @@ public:
 
         return true;
     }
-    bool Busca(string x){
+    bool Busca(QString x){
         if(v[funcHash(x)].colisao == 2 || v[funcHash(x)].colisao == 3){ // Se colisao for 2 ou 3
             if(v[funcHash(x)].valor == x) // Compara com seus valores do Hash principal
                 return true;
@@ -207,7 +212,7 @@ public:
 
         return true; // Se chegar aqui, valor existe
     }
-    bool Remove(string x){ // Remover valor x da Hash
+    bool Remove(QString x){ // Remover valor x da Hash
         if(v[funcHash(x)].colisao == 1){
             v[funcHash(x)].colisao = 0; // Se existe sem colisao, colisao vai para 0
         }
@@ -295,18 +300,20 @@ public:
     void Imprime(){ // Apenas para conferir. Imprime toda a Hash
         for(int i=0; i<max+maxC; i++){
             if(!v[i].valor.empty()) {
-                cout << "Idx " << i << ": " << v[i].valor;
+                QDebug() << "Idx " << i << ": " << v[i].valor;
                 /*if (v[i].colisao == 2) {
                     cout << " /Col: " << v[v[i].end + max].valor << " / End: " << max+v[i].end << " / Coli: " << v[v[i].end + max].colisao;
                 }*/
-                cout << endl;
+                QDebug() << "";
             }
         }
-        cout << endl;
+        QDebug() << "";
     }
     ~Hash(){
     };
 };
+
+#endif // CLIENTE_H
 
 /*int main() {
     Hash h(10);

@@ -1,5 +1,9 @@
-﻿#include <iostream>
-#include <string>
+﻿#ifndef CLIENTE_H
+#define CLIENTE_H
+
+#include <iostream>
+#include <QString>
+#include <QDebug>
 
 using namespace std;
 
@@ -100,10 +104,12 @@ public:
         No<F>* aux = primeiro;//Imprime na ordem que a pilha foi feita
         //No<T>* aux = ultimo;//Imprime na ordem que a pilha vai ser desfeita
         for(int i=0; i<n; i++){
-            cout << aux->str << " ";
+            QDebug() << aux->str << " ";
             aux = aux->prox;
             //aux = aux->ant;
         }
-        cout << endl;
+        QDebug() << "";
     }
 };
+
+#endif // CLIENTE_H
