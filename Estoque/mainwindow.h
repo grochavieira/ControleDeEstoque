@@ -1,12 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
 #include "ldde.h"
-#include <QMessageBox>
-#include <QString>
+#include "telacadastroprodutos.h"
+#include <QMainWindow>
 #include <QtSql>
 #include <QFileInfo>
+#include <QMessageBox>
+#include <QString>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -32,6 +33,8 @@ private slots:
     void on_spnQuantidadeProduto_editingFinished();
 
     void on_btnEncontrarId_clicked();
+
+    void on_btnCadastrarProdutosJanela_clicked();
 
 private:
     Ui::MainWindow *ui;
