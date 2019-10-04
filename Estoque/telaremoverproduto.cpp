@@ -1,6 +1,6 @@
 #include "telaremoverproduto.h"
 #include "ui_telaremoverproduto.h"
-
+#include <QLocale>
 
 static LDDE<Produto> lddeProdutos;
 static Produto produto;
@@ -33,7 +33,7 @@ telaRemoverProduto::telaRemoverProduto(QWidget *parent) :
             ui->twProdutos->insertRow(cont);
             ui->twProdutos->setItem(cont, 0, new QTableWidgetItem(QString::number(idProduto)));
             ui->twProdutos->setItem(cont, 1, new QTableWidgetItem(nomeProduto));
-            ui->twProdutos->setItem(cont, 2, new QTableWidgetItem(QLocale::toString(precoProduto)));
+            ui->twProdutos->setItem(cont, 2, new QTableWidgetItem(precoProduto));
             ui->twProdutos->setItem(cont, 3, new QTableWidgetItem(QString::number(quantidadeProduto)));
             ui->twProdutos->setItem(cont, 4, new QTableWidgetItem(QString::number(quantidadeMinProduto)));
             ui->twProdutos->setItem(cont, 5, new QTableWidgetItem(QString::number(quantidadeMaxProduto)));
