@@ -1,7 +1,6 @@
 #ifndef LDDE_H
 #define LDDE_H
 
-
 #include "cliente.h"
 #include "produto.h"
 #include <chrono>
@@ -26,6 +25,7 @@ class LDDE{
 private:
     No<F>* primeiro;
     No<F>* ultimo;
+    F sentinela;
     int n;
 
     void limpa(){
@@ -87,38 +87,38 @@ public:
 
         n++;
         return true;
-    };
+    }
 
-    int Busca (int id){
+    F Busca (int id){
         int i = 0;
         No<F>* atual = primeiro;
         while(atual){
             if(atual->id == id)
             {
-                return i;
+                return atual->objeto;
             }
             atual = atual->prox;
             i++;
         }
-        return -1;
-    };
+        return sentinela;
+    }
 
     bool Remove (int id){
-        int index = Busca(id);
-        if(!(index >= 0 && index < n)){
+        F index = Busca(id);
+        if(!(index.getId() >= 0 && index.getId() < n)){
             return false;
         }
 
         int i = 0;
         No<F>* atual = primeiro;
         No<F>* ant = NULL;
-        while(atual != NULL && index > i){
+        while(atual != NULL && index.getId() > i){
             ant = atual;
             atual = atual->prox;
             i++;
         }
 
-        if(index == 0 && n-1 == 0){
+        if(index.getId() == 0 && n-1 == 0){
             primeiro = NULL;
             ultimo = NULL;
         }
@@ -144,7 +144,6 @@ public:
         return true;
     };
 
-    //Imprime ids existentes
     void Imprime (){
         No<F>* atual = primeiro;
         while(atual){

@@ -53,7 +53,7 @@ void telaCadastroProdutos::on_btnCadastrarProduto_clicked()
     quantidadeMinProduto = ui->spnQuantidadeMinProduto->value();
     quantidadeMaxProduto = ui->spnQuantidadeMaxProduto->value();
 
-    if(lddeProdutos.Busca(idProduto) != -1){
+    if((lddeProdutos.Busca(idProduto)).getId() != -1){
         verificador++;
         ui->lblErroId->setText("Esse ID já foi cadastrado.");
     }
@@ -96,7 +96,7 @@ void telaCadastroProdutos::on_btnCadastrarProduto_clicked()
 void telaCadastroProdutos::on_btnEncontrarId_clicked()
 {
     int i = 1;
-    while(lddeProdutos.Busca(i) != -1){
+    while((lddeProdutos.Busca(i)).getId() != -1){
         i++;
     }
     ui->spnIdProduto->setValue(i);

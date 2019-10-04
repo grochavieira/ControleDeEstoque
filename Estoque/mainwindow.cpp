@@ -62,3 +62,11 @@ void MainWindow::on_btnCadastrarProdutosJanela_clicked()
     telaCadastroProdutos.exec();
     this->setVisible(true);
 }
+
+void MainWindow::on_btnRemoverProdutosTela_clicked()
+{
+    this->setVisible(false);
+    telaRemoverProduto telaRemoverProduto;
+    telaRemoverProduto.exec();
+    this->setVisible(true);
+}

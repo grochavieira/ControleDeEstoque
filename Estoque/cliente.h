@@ -32,7 +32,7 @@ public:
         this->endereco = cliente->endereco;
     }
     Cliente(){
-        id = 0;
+        id = -1;
         nome = "";
         email = "";
         senha = "";

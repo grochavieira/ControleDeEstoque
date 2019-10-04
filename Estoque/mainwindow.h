@@ -3,6 +3,7 @@
 
 #include "ldde.h"
 #include "telacadastroprodutos.h"
+#include "telaremoverproduto.h"
 #include <QMainWindow>
 #include <QtSql>
 #include <QFileInfo>
@@ -35,6 +36,8 @@ private slots:
     void on_btnEncontrarId_clicked();
 
     void on_btnCadastrarProdutosJanela_clicked();
+
+    void on_btnRemoverProdutosTela_clicked();
 
 private:
     Ui::MainWindow *ui;

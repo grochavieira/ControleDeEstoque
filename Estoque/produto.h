@@ -34,7 +34,7 @@ public:
     }
 
     Produto(){
-        id = 0;
+        id = -1;
         nome = "";
         preco = 0;
         quantidade = 0;
