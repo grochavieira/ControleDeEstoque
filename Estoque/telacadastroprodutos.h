@@ -16,7 +16,7 @@ class telaCadastroProdutos : public QDialog
     Q_OBJECT
 
 public:
-    explicit telaCadastroProdutos(QWidget *parent = nullptr);
+    explicit telaCadastroProdutos(QWidget *parent = nullptr, LDDE<Produto>* lddeProdutos = nullptr);
     ~telaCadastroProdutos();
 
 private slots:

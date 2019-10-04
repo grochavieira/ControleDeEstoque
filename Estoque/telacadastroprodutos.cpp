@@ -2,7 +2,7 @@
 #include "ui_telacadastroprodutos.h"
 
 
-static LDDE<Produto> lddeProdutos;
+static LDDE<Produto>* lddeProdutos;
 static Produto produto;
 static int idProduto;
 static QString nomeProduto;
@@ -11,31 +11,13 @@ static int quantidadeProduto;
 static int quantidadeMinProduto;
 static int quantidadeMaxProduto;
 
-telaCadastroProdutos::telaCadastroProdutos(QWidget *parent) :
+telaCadastroProdutos::telaCadastroProdutos(QWidget *parent, LDDE<Produto>* lddeProdutosCopia) :
     QDialog(parent),
     ui(new Ui::telaCadastroProdutos)
 {
     ui->setupUi(this);
-
-    QSqlQuery query;
-    query.prepare("select * from tb_produtos");
-    if(query.exec()){
-        int cont = 0;
-        while(query.next()){
-            idProduto = query.value(0).toInt();
-            nomeProduto = query.value(1).toString();
-            precoProduto = query.value(2).toDouble();
-            quantidadeProduto = query.value(3).toInt();
-            quantidadeMinProduto = query.value(4).toInt();
-            quantidadeMaxProduto = query.value(5).toInt();
-            produto = new Produto(idProduto, nomeProduto, precoProduto, quantidadeProduto, quantidadeMinProduto, quantidadeMaxProduto);
-            lddeProdutos.Insere(produto);
-            cont++;
-        }
-    }
-    else{
-        qDebug("banco de dados falhou");
-    }
+    lddeProdutos = lddeProdutosCopia;
+    lddeProdutos->Imprime();
 }
 
 telaCadastroProdutos::~telaCadastroProdutos()
@@ -53,7 +35,7 @@ void telaCadastroProdutos::on_btnCadastrarProduto_clicked()
     quantidadeMinProduto = ui->spnQuantidadeMinProduto->value();
     quantidadeMaxProduto = ui->spnQuantidadeMaxProduto->value();
 
-    if((lddeProdutos.Busca(idProduto)).getId() != -1){
+    if((lddeProdutos->Busca(idProduto)).getId() != -1){
         verificador++;
         ui->lblErroId->setText("Esse ID já foi cadastrado.");
     }
@@ -70,7 +52,7 @@ void telaCadastroProdutos::on_btnCadastrarProduto_clicked()
 
     if(verificador == 0){
         produto = new Produto(idProduto, nomeProduto, precoProduto, quantidadeProduto, quantidadeMinProduto, quantidadeMaxProduto);
-        lddeProdutos.Insere(produto);
+        lddeProdutos->Insere(produto);
 
         QSqlQuery query;
         query.prepare("insert into tb_produtos (id, nome, preco, quantidade, quantidade_minima, quantidade_maxima) values""('" + ui->spnIdProduto->text() + "','" + ui->txtNomeProduto->text() + "','" + ui->spnPrecoProduto->text() + "','" + ui->spnQuantidadeProduto->text() + "','" + ui->spnQuantidadeMinProduto->text() + "','" + ui->spnQuantidadeMaxProduto->text() + "')");
@@ -96,7 +78,7 @@ void telaCadastroProdutos::on_btnCadastrarProduto_clicked()
 void telaCadastroProdutos::on_btnEncontrarId_clicked()
 {
     int i = 1;
-    while((lddeProdutos.Busca(i)).getId() != -1){
+    while((lddeProdutos->Busca(i)).getId() != -1){
         i++;
     }
     ui->spnIdProduto->setValue(i);

@@ -44,6 +44,10 @@ public:
         return id;
     }
 
+    QString getNome(){
+        return nome;
+    }
+
     void Imprime(){
         qDebug() << "ID: " << id;
         qDebug() << "Nome: " << nome;

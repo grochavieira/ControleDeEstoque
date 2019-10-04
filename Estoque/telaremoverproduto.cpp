@@ -2,71 +2,88 @@
 #include "ui_telaremoverproduto.h"
 #include <QLocale>
 
-static LDDE<Produto> lddeProdutos;
+static LDDE<Produto>* lddeProdutos;
 static Produto produto;
-static int idProduto;
-static QString nomeProduto;
-static double precoProduto;
-static int quantidadeProduto;
-static int quantidadeMinProduto;
-static int quantidadeMaxProduto;
 
-telaRemoverProduto::telaRemoverProduto(QWidget *parent) :
+telaRemoverProduto::telaRemoverProduto(QWidget *parent, LDDE<Produto>* lddeProdutosCopia) :
     QDialog(parent),
     ui(new Ui::telaRemoverProduto)
 {
     ui->setupUi(this);
-    QSqlQuery query;
-    query.prepare("select * from tb_produtos");
-    if(query.exec()){
-        int cont = 0;
-        ui->twProdutos->setColumnCount(6);
-        while(query.next()){
-            idProduto = query.value(0).toInt();
-            nomeProduto = query.value(1).toString();
-            precoProduto = query.value(2).toDouble();
-            quantidadeProduto = query.value(3).toInt();
-            quantidadeMinProduto = query.value(4).toInt();
-            quantidadeMaxProduto = query.value(5).toInt();
-            produto = new Produto(idProduto, nomeProduto, precoProduto, quantidadeProduto, quantidadeMinProduto, quantidadeMaxProduto);
-            lddeProdutos.Insere(produto);
-            ui->twProdutos->insertRow(cont);
-            ui->twProdutos->setItem(cont, 0, new QTableWidgetItem(QString::number(idProduto)));
-            ui->twProdutos->setItem(cont, 1, new QTableWidgetItem(nomeProduto));
-            ui->twProdutos->setItem(cont, 2, new QTableWidgetItem(precoProduto));
-            ui->twProdutos->setItem(cont, 3, new QTableWidgetItem(QString::number(quantidadeProduto)));
-            ui->twProdutos->setItem(cont, 4, new QTableWidgetItem(QString::number(quantidadeMinProduto)));
-            ui->twProdutos->setItem(cont, 5, new QTableWidgetItem(QString::number(quantidadeMaxProduto)));
-            ui->twProdutos->setRowHeight(cont, 25);
-            cont++;
-        }
-    }
-    else{
-        qDebug("banco de dados falhou");
-    }
+    lddeProdutos = lddeProdutosCopia;
 
-    ui->twProdutos->setColumnWidth(0, 40);
-    ui->twProdutos->setColumnWidth(1, 200);
-    ui->twProdutos->setColumnWidth(2, 50);
-
-    QStringList cabecalhos = {"ID", "Nome", "Preço", "Quantidade", "Quantidade Mínima", "Quantidade Máxima"};
-    ui->twProdutos->setHorizontalHeaderLabels(cabecalhos);
-    
-
-    /*
-    No<Produto> *NoProduto = nullptr;
-    produto = lddeProdutos.Busca(NoProduto);
+    ui->twProdutos->setColumnCount(6);
+    ui->twProdutos->setRowCount(0);
     int i = 0;
+    produto = (*lddeProdutos)[i];
     while(produto.getId() != -1){
+        qDebug() << produto.getNome() << endl;
         ui->twProdutos->insertRow(i);
-        ui->twProdutos->setItem(i, 0, new QTableWidgetItem(produto.getId()));
+        ui->twProdutos->setItem(i, 0, new QTableWidgetItem(QString::number(produto.getId())));
+        ui->twProdutos->setItem(i, 1, new QTableWidgetItem(produto.getNome()));
+        ui->twProdutos->setItem(i, 2, new QTableWidgetItem("R$ " + QString::number(produto.getPreco())));
+        ui->twProdutos->setItem(i, 3, new QTableWidgetItem(QString::number(produto.getQuantidade())));
+        ui->twProdutos->setItem(i, 4, new QTableWidgetItem(QString::number(produto.getQuantidadeMin())));
+        ui->twProdutos->setItem(i, 5, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
         i++;
-        produto = lddeProdutos.Busca(NoProduto);
-    }*/
-    
+        produto = (*lddeProdutos)[i];
+    }
+
+
+    ui->twProdutos->verticalHeader()->setVisible(false);
+    ui->twProdutos->setColumnWidth(0, 40);
+    ui->twProdutos->setColumnWidth(1, 150);
+    ui->twProdutos->setColumnWidth(2, 80);
+    ui->twProdutos->setColumnWidth(3, 100);
+    ui->twProdutos->setColumnWidth(4, 100);
+    ui->twProdutos->setColumnWidth(5, 100);
+
+    QStringList cabecalhos = {"ID", "Nome", "Preço", "Quantidade", "Qtd. Mínima", "Qtd. Máxima"};
+    ui->twProdutos->setHorizontalHeaderLabels(cabecalhos);
+
 }
 
 telaRemoverProduto::~telaRemoverProduto()
 {
     delete ui;
+}
+
+void telaRemoverProduto::on_btnPesquisar_clicked()
+{
+    QString nome = ui->txtPesquisarProduto->text();
+    produto = lddeProdutos->Busca(nome);
+    if(produto.getId() == -1){
+        QMessageBox::information(this,"ERRO","O ID pesquisado não existe!");
+    }
+    else{
+        ui->twProdutos->clearContents();
+        ui->twProdutos->setRowCount(0);
+        ui->twProdutos->insertRow(0);
+        ui->twProdutos->setItem(0, 0, new QTableWidgetItem(QString::number(produto.getId())));
+        ui->twProdutos->setItem(0, 1, new QTableWidgetItem(produto.getNome()));
+        ui->twProdutos->setItem(0, 2, new QTableWidgetItem("R$ " + QString::number(produto.getPreco())));
+        ui->twProdutos->setItem(0, 3, new QTableWidgetItem(QString::number(produto.getQuantidade())));
+        ui->twProdutos->setItem(0, 4, new QTableWidgetItem(QString::number(produto.getQuantidadeMin())));
+        ui->twProdutos->setItem(0, 5, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
+    }
+
+}
+
+void telaRemoverProduto::on_btnPesquisarTudo_clicked()
+{
+    int i = 0;
+    produto = (*lddeProdutos)[i];
+    ui->twProdutos->setRowCount(0);
+    while(produto.getId() != -1){
+        qDebug() << produto.getNome() << endl;
+        ui->twProdutos->insertRow(i);
+        ui->twProdutos->setItem(i, 0, new QTableWidgetItem(QString::number(produto.getId())));
+        ui->twProdutos->setItem(i, 1, new QTableWidgetItem(produto.getNome()));
+        ui->twProdutos->setItem(i, 2, new QTableWidgetItem("R$ " + QString::number(produto.getPreco())));
+        ui->twProdutos->setItem(i, 3, new QTableWidgetItem(QString::number(produto.getQuantidade())));
+        ui->twProdutos->setItem(i, 4, new QTableWidgetItem(QString::number(produto.getQuantidadeMin())));
+        ui->twProdutos->setItem(i, 5, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
+        i++;
+        produto = (*lddeProdutos)[i];
+    }
 }

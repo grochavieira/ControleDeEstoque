@@ -45,6 +45,26 @@ public:
         return id;
     }
 
+    QString getNome(){
+        return nome;
+    }
+
+    double getPreco(){
+        return preco;
+    }
+
+    int getQuantidade(){
+        return quantidade;
+    }
+
+    int getQuantidadeMin(){
+        return quantidadeMin;
+    }
+
+    int getQuantidadeMax(){
+        return quantidadeMax;
+    }
+
     void Imprime(){
         qDebug() << "ID: " << id;
         qDebug() << "Produto: " << nome;

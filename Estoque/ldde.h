@@ -90,7 +90,6 @@ public:
     }
 
     F Busca (int id){
-        int i = 0;
         No<F>* atual = primeiro;
         while(atual){
             if(atual->id == id)
@@ -98,9 +97,32 @@ public:
                 return atual->objeto;
             }
             atual = atual->prox;
-            i++;
         }
         return sentinela;
+    }
+
+    F Busca (QString nome){
+        No<F>* atual = primeiro;
+        while(atual){
+            if(atual->objeto.getNome() == nome)
+            {
+                return atual->objeto;
+            }
+            atual = atual->prox;
+        }
+        return sentinela;
+    }
+
+    void getListaDeCadastros(F* copia){
+        F listaDeCadastros[n];
+        int i = 0;
+        No<F>* atual = primeiro;
+        while(atual){
+            listaDeCadastros[i] = atual->objeto;
+            i++;
+            atual = atual->prox;
+        }
+        return listaDeCadastros;
     }
 
     bool Remove (int id){
@@ -152,6 +174,28 @@ public:
         }
         cout << endl;
     };
+
+    int QtdCadastrados(){
+        return n;
+    }
+
+    const F& operator[](int index)
+        {
+            if(index < 0 || index >= n)
+                return sentinela;
+
+            int i = 0;
+            No<F>* atual = primeiro;
+            while(atual){
+                if(i == index)
+                {
+                    return atual->objeto;
+                }
+                atual = atual->prox;
+                i++;
+            }
+
+        };
 
     ~LDDE (){
         limpa();
