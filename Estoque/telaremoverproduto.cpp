@@ -1,6 +1,5 @@
 #include "telaremoverproduto.h"
 #include "ui_telaremoverproduto.h"
-#include <QLocale>
 
 static LDDE<Produto>* lddeProdutos;
 static Produto produto;
@@ -40,6 +39,7 @@ telaRemoverProduto::telaRemoverProduto(QWidget *parent, LDDE<Produto>* lddeProdu
 
     QStringList cabecalhos = {"ID", "Nome", "Preço", "Quantidade", "Qtd. Mínima", "Qtd. Máxima"};
     ui->twProdutos->setHorizontalHeaderLabels(cabecalhos);
+    ui->twProdutos->setSelectionBehavior(QAbstractItemView::SelectRows);
 
 }
 
@@ -53,7 +53,7 @@ void telaRemoverProduto::on_btnPesquisar_clicked()
     QString nome = ui->txtPesquisarProduto->text();
     produto = lddeProdutos->Busca(nome);
     if(produto.getId() == -1){
-        QMessageBox::information(this,"ERRO","O ID pesquisado não existe!");
+        QMessageBox::information(this,"ERRO","O Nome pesquisado não existe!");
     }
     else{
         ui->twProdutos->clearContents();
@@ -75,7 +75,6 @@ void telaRemoverProduto::on_btnPesquisarTudo_clicked()
     produto = (*lddeProdutos)[i];
     ui->twProdutos->setRowCount(0);
     while(produto.getId() != -1){
-        qDebug() << produto.getNome() << endl;
         ui->twProdutos->insertRow(i);
         ui->twProdutos->setItem(i, 0, new QTableWidgetItem(QString::number(produto.getId())));
         ui->twProdutos->setItem(i, 1, new QTableWidgetItem(produto.getNome()));
@@ -86,4 +85,21 @@ void telaRemoverProduto::on_btnPesquisarTudo_clicked()
         i++;
         produto = (*lddeProdutos)[i];
     }
+}
+
+void telaRemoverProduto::on_btnExcluir_clicked()
+{
+    int linha = ui->twProdutos->currentRow();
+    int id = ui->twProdutos->item(linha,0)->text().toInt();
+    QSqlQuery query;
+    query.prepare("delete from tb_produtos where id=" + QString::number(id));
+    if(query.exec()){
+        ui->twProdutos->removeRow(linha);
+        QMessageBox::information(this,"","Registro excluido!");
+        lddeProdutos->Remove(id);
+    }
+    else{
+        QMessageBox::warning(this,"ERRO","Erro ao excluir registro!");
+    }
+
 }

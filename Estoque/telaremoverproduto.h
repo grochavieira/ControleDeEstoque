@@ -25,6 +25,8 @@ private slots:
 
     void on_btnPesquisarTudo_clicked();
 
+    void on_btnExcluir_clicked();
+
 private:
     Ui::telaRemoverProduto *ui;
 };
