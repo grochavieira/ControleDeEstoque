@@ -21,8 +21,10 @@ SOURCES += \
 
 HEADERS += \
     cliente.h \
+    hash.h \
     ldde.h \
     mainwindow.h \
+    pilha.h \
     produto.h
 
 FORMS += \
