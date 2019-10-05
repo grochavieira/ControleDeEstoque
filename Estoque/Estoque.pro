@@ -31,7 +31,8 @@ HEADERS += \
     produto.h \
     telacadastroprodutos.h \
     telalistadecompras.h \
-    telaremoverproduto.h
+    telaremoverproduto.h \
+    les.h
 
 FORMS += \
     mainwindow.ui \

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "ldde.h"
+#include "les.h"
 
 namespace Ui {
 class telaListaDeCompras;

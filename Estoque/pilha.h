@@ -8,108 +8,88 @@
 using namespace std;
 
 template<class F>
-class IPilha{
-public:
-    virtual bool Empilha(F valor) = 0;
-    virtual F Desempilha(bool *ok) = 0;
-    virtual void Imprime() = 0;
-    virtual ~IPilha(){}
-};
-
-template<class F>
 class Pilha;
 
 template<class F>
-class No{
+class No{ // Pilha dinamica
 private:
-    No<F>* ant;
-    No<F>* prox;
+    No<F>* ant; // Objeto anterior
+    No<F>* prox; // Proximo objeto
+    F objeto; // Objeto
 public:
     template<class>
     friend class Pilha;
 };
 
 template <class F>
-class Pilha : public IPilha<F>{
+class Pilha{
 private:
-    No<F>* primeiro;
-    No<F>* ultimo;
-    int n;
+    No<F>* primeiro; // Primeiro objeto
+    No<F>* ultimo; // Ultimo objeto
+    int n; // Quantidade de objetos
 public:
-    Pilha(){
+    Pilha(){ // Construtor
         primeiro = NULL;
         ultimo = NULL;
         n = 0;
     }
-    Pilha(const Pilha& outra){
-        primeiro = NULL;
-        ultimo = NULL;
-        n = 0;
-        No<F>* aux = outra.primeiro;
-        for(int i=0; i<outra.n; i++){
-            Empilha(aux->str);
-            aux = aux->prox;
-        }
-    }
-    ~Pilha(){
+    ~Pilha(){ // Destrutor
         bool ok;
         do {
             Desempilha(&ok);
         }while(ok);
     }
 
-    bool Empilha(F valor){
-        No<F>* novo = new No<F>;
+    bool Empilha(F objeto){ // Empilha objeto
+        No<F>* novo = new No<F>; // Objeto a ser empilhado
         novo->ant = NULL;
         novo->prox = NULL;
-        novo->str = valor;
+        novo->objeto = objeto;
 
-        if(n == 0){
+        if(n == 0){ // Se for o primeiro objeto empilhado
             primeiro = novo;
         }
-        else{
+        else{ // Se nao for o primeiro
             ultimo->prox = novo;
             novo->ant = ultimo;
         }
-        ultimo = novo;
-        n++;
+        ultimo = novo; // Atualiza ultimo
+        n++; // Adiciona 1 na quantidade de objetos empilhados
 
         return true;
     }
-    F Desempilha(bool *ok=NULL){
-        if(n == 0) {
+    F Desempilha(bool *ok=nullptr){ // Desempilha
+        if(n == 0) { // Se nao existir nada na pilha
             if(ok)
                 *ok = false;
 
-            return "";
+            return nullptr;
         }
 
-        F x = ultimo->str;
-        if(n == 1){
+        F x = ultimo->objeto; // Guarda objeto que sera removido
+        if(n == 1){ // Se so existir um objeto na pilha
             primeiro = NULL;
             ultimo = NULL;
         }
-        else{
+        else{ // Se existir mais de um
             No<F>* aux = ultimo->ant;
-            aux->prox = NULL;
-            ultimo = aux;
+            aux->prox = NULL; // Ultimo da pilha aponta para NULL
+            ultimo = aux; // Atualiza ultimo da pilha (prox a ser desempilhado)
         }
-        n--;
+        n--; // Subtrai um na quantidade de objetos na pilha
         if(ok)
             *ok = true;
 
         return x;
     }
-    void Imprime(){
+    void Imprime(){ // Imprime pilha completa
         No<F>* aux = primeiro;//Imprime na ordem que a pilha foi feita
-        //No<T>* aux = ultimo;//Imprime na ordem que a pilha vai ser desfeita
         for(int i=0; i<n; i++){
-            qDebug() << aux->str << " ";
+            qDebug() << "Nome: " << aux->objeto.getNome() << " -ID: " << aux->objeto.getId();
             aux = aux->prox;
-            //aux = aux->ant;
         }
         qDebug() << "";
     }
 };
 
-#endif // CLIENTE_H
+#endif // PILHA_H
