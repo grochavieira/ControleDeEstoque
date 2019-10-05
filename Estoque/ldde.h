@@ -5,6 +5,7 @@
 #include "produto.h"
 #include <chrono>
 #include <iostream>
+#include <QtSql>
 using namespace std;
 
 template<class F>
@@ -45,7 +46,8 @@ private:
     }
 
 public:
-    LDDE (): primeiro(NULL), ultimo(NULL), n(0) {}
+    LDDE (): primeiro(NULL), ultimo(NULL), n(0) {
+    }
 
     LDDE (const LDDE& outra) {
         copia(*this,outra);
@@ -113,53 +115,41 @@ public:
         return sentinela;
     }
 
-    void getListaDeCadastros(F* copia){
-        F listaDeCadastros[n];
+    int BuscaId (int id){
         int i = 0;
         No<F>* atual = primeiro;
         while(atual){
-            listaDeCadastros[i] = atual->objeto;
-            i++;
+            if(atual->objeto.getId() == id)
+            {
+                return i;
+            }
             atual = atual->prox;
+            i++;
         }
-        return listaDeCadastros;
+        return -1;
     }
 
     bool Remove (int id){
-        F index = Busca(id);
-        if(!(index.getId() >= 0 && index.getId() < n)){
+        int index = BuscaId(id);
+        if(!(index >= 0 && index < n)){
             return false;
         }
 
-        int i = 0;
         No<F>* atual = primeiro;
-        No<F>* ant = NULL;
-        while(atual != NULL && index.getId() > i){
-            ant = atual;
+        while(atual != NULL && index--){
             atual = atual->prox;
-            i++;
         }
 
-        if(index.getId() == 0 && n-1 == 0){
-            primeiro = NULL;
-            ultimo = NULL;
-        }
-        else if(ant == NULL){
-            primeiro = atual->prox;
-            primeiro->anterior = NULL;
-        }
-        else if(atual->prox == NULL)
-        {
-            ant->prox = NULL;
-            ultimo = ant;
-        }
-        else{
-            ant->prox = atual->prox;
-            atual->prox->anterior = ant;
-        }
+        if (atual->anterior)
+              atual->anterior->prox = atual->prox;
+        else
+          primeiro = atual->prox;
 
-        if(ant)
-            delete ant;
+        if (atual->prox)
+          atual->prox->anterior = atual->anterior;
+        else
+          ultimo = atual->anterior;
+
         delete atual;
 
         n--;

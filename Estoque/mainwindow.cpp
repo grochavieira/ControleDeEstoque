@@ -1,7 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-LDDE<Produto> lddeProdutos;
-Produto produto;
+
+static LDDE<Produto> lddeProdutos;
+static Produto produto;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -72,10 +73,7 @@ void MainWindow::on_btnEncontrarId_clicked()
 
 void MainWindow::on_btnCadastrarProdutosJanela_clicked()
 {
-    this->setVisible(false);
-    telaCadastroProdutos telaCadastroProdutos(this,&lddeProdutos);
-    telaCadastroProdutos.exec();
-    this->setVisible(true);
+
 }
 
 void MainWindow::on_btnRemoverProdutosTela_clicked()
@@ -83,5 +81,25 @@ void MainWindow::on_btnRemoverProdutosTela_clicked()
     this->setVisible(false);
     telaRemoverProduto telaRemoverProduto(this, &lddeProdutos);
     telaRemoverProduto.exec();
+    this->setVisible(true);
+}
+
+void MainWindow::on_btnRemoverProdutosJanela_clicked()
+{
+}
+
+void MainWindow::on_btnCadastrarProdutosTela_clicked()
+{
+    this->setVisible(false);
+    telaCadastroProdutos telaCadastroProdutos(this,&lddeProdutos);
+    telaCadastroProdutos.exec();
+    this->setVisible(true);
+}
+
+void MainWindow::on_btnListaDeComprasTela_clicked()
+{
+    this->setVisible(false);
+    telaListaDeCompras telaListaDeCompras(this,&lddeProdutos);
+    telaListaDeCompras.exec();
     this->setVisible(true);
 }

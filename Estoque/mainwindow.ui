@@ -26,7 +26,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="btnCadastrarProdutosJanela">
+   <widget class="QPushButton" name="btnCadastrarProdutosTela">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -37,11 +37,11 @@
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Fira Code</family>
      </font>
     </property>
     <property name="text">
-     <string>CADASTRAR PRODUTOS</string>
+     <string>CADASTRAR PRODUTOS =&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnRemoverProdutosTela">
@@ -55,11 +55,29 @@
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Fira Code</family>
      </font>
     </property>
     <property name="text">
-     <string>REMOVER PRODUTOS</string>
+     <string>REMOVER PRODUTOS ===</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnListaDeComprasTela">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>140</y>
+      <width>161</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Fira Code</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>LISTA DE COMPRAS &lt;=&gt;</string>
     </property>
    </widget>
   </widget>

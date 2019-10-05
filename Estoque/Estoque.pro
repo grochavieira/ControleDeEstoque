@@ -19,6 +19,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     telacadastroprodutos.cpp \
+    telalistadecompras.cpp \
     telaremoverproduto.cpp
 
 HEADERS += \
@@ -29,11 +30,13 @@ HEADERS += \
     pilha.h \
     produto.h \
     telacadastroprodutos.h \
+    telalistadecompras.h \
     telaremoverproduto.h
 
 FORMS += \
     mainwindow.ui \
     telacadastroprodutos.ui \
+    telalistadecompras.ui \
     telaremoverproduto.ui
 
 # Default rules for deployment.

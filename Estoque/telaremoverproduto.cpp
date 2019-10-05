@@ -9,8 +9,10 @@ telaRemoverProduto::telaRemoverProduto(QWidget *parent, LDDE<Produto>* lddeProdu
     ui(new Ui::telaRemoverProduto)
 {
     ui->setupUi(this);
+    qDebug() << "ENTROU AQUI NO CONSTRUTOR REMOVE" << endl;
     lddeProdutos = lddeProdutosCopia;
-
+    lddeProdutos->Imprime();
+    qDebug() << "ENTROU AQUI NO CONSTRUTOR REMOVE" << endl;
     ui->twProdutos->setColumnCount(6);
     ui->twProdutos->setRowCount(0);
     int i = 0;
@@ -45,6 +47,8 @@ telaRemoverProduto::telaRemoverProduto(QWidget *parent, LDDE<Produto>* lddeProdu
 
 telaRemoverProduto::~telaRemoverProduto()
 {
+    lddeProdutos = nullptr;
+    delete lddeProdutos;
     delete ui;
 }
 

@@ -68,9 +68,9 @@ public:
     void Imprime(){
         qDebug() << "ID: " << id;
         qDebug() << "Produto: " << nome;
-        qDebug() << "Preco: " << preco;
+        /*qDebug() << "Preco: " << preco;
         qDebug() << "Quantidade: " << quantidade;
-        qDebug() << "Quantidade Maxima: " << quantidadeMax;
+        qDebug() << "Quantidade Maxima: " << quantidadeMax;*/
     }
 
     template <class F>

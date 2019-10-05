@@ -4,12 +4,6 @@
 
 static LDDE<Produto>* lddeProdutos;
 static Produto produto;
-static int idProduto;
-static QString nomeProduto;
-static double precoProduto;
-static int quantidadeProduto;
-static int quantidadeMinProduto;
-static int quantidadeMaxProduto;
 
 telaCadastroProdutos::telaCadastroProdutos(QWidget *parent, LDDE<Produto>* lddeProdutosCopia) :
     QDialog(parent),
@@ -17,7 +11,6 @@ telaCadastroProdutos::telaCadastroProdutos(QWidget *parent, LDDE<Produto>* lddeP
 {
     ui->setupUi(this);
     lddeProdutos = lddeProdutosCopia;
-    lddeProdutos->Imprime();
 }
 
 telaCadastroProdutos::~telaCadastroProdutos()
@@ -28,12 +21,12 @@ telaCadastroProdutos::~telaCadastroProdutos()
 void telaCadastroProdutos::on_btnCadastrarProduto_clicked()
 {
     int verificador = 0;
-    idProduto = ui->spnIdProduto->value();
-    nomeProduto = ui->txtNomeProduto->text();
-    precoProduto = ui->spnPrecoProduto->value();
-    quantidadeProduto = ui->spnQuantidadeProduto->value();
-    quantidadeMinProduto = ui->spnQuantidadeMinProduto->value();
-    quantidadeMaxProduto = ui->spnQuantidadeMaxProduto->value();
+    int idProduto = ui->spnIdProduto->value();
+    QString nomeProduto = ui->txtNomeProduto->text();
+    double precoProduto = ui->spnPrecoProduto->value();
+    int quantidadeProduto = ui->spnQuantidadeProduto->value();
+    int quantidadeMinProduto = ui->spnQuantidadeMinProduto->value();
+    int quantidadeMaxProduto = ui->spnQuantidadeMaxProduto->value();
 
     if((lddeProdutos->Busca(idProduto)).getId() != -1){
         verificador++;
