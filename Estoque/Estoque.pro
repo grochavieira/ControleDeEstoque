@@ -18,9 +18,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    telacadastroprodutos.cpp \
-    telalistadecompras.cpp \
-    telaremoverproduto.cpp
+    telacadastrocliente.cpp \
+    telagerenciaestoque.cpp \
+    telalogincliente.cpp \
+    telaloginestoque.cpp \
+    telapedidoscliente.cpp
 
 HEADERS += \
     cliente.h \
@@ -29,16 +31,20 @@ HEADERS += \
     mainwindow.h \
     pilha.h \
     produto.h \
-    telacadastroprodutos.h \
-    telalistadecompras.h \
-    telaremoverproduto.h \
-    les.h
+    telacadastrocliente.h \
+    telagerenciaestoque.h \
+    les.h \
+    telalogincliente.h \
+    telaloginestoque.h \
+    telapedidoscliente.h
 
 FORMS += \
     mainwindow.ui \
-    telacadastroprodutos.ui \
-    telalistadecompras.ui \
-    telaremoverproduto.ui
+    telacadastrocliente.ui \
+    telagerenciaestoque.ui \
+    telalogincliente.ui \
+    telaloginestoque.ui \
+    telapedidoscliente.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -2,14 +2,11 @@
 #define MAINWINDOW_H
 
 #include "ldde.h"
-#include "telacadastroprodutos.h"
-#include "telaremoverproduto.h"
-#include "telalistadecompras.h"
+#include "telagerenciaestoque.h"
+#include "telaloginestoque.h"
+#include "telalogincliente.h"
 #include <QMainWindow>
-#include <QtSql>
 #include <QFileInfo>
-#include <QMessageBox>
-#include <QString>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -45,6 +42,10 @@ private slots:
     void on_btnCadastrarProdutosTela_clicked();
 
     void on_btnListaDeComprasTela_clicked();
+
+    void on_btnAreaDeEstoque_clicked();
+
+    void on_btnAreaDoCliente_clicked();
 
 private:
     Ui::MainWindow *ui;
