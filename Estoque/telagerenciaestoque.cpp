@@ -244,3 +244,8 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
         */
     }
 }
+
+void TelaGerenciaEstoque::on_twListaDeCompras_cellActivated(int row, int column)
+{
+
+}

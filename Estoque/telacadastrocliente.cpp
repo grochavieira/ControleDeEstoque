@@ -3,18 +3,14 @@
 
 static LDDE<Cliente>* lddeClientes;
 static Cliente cliente;
-static int verificaQtdErros = 0;
-static bool erroVerificado[8];
+//static int verificaQtdErros = 0;
+//static bool erroVerificado[8];
 TelaCadastroCliente::TelaCadastroCliente(QWidget *parent, LDDE<Cliente>* lddeClientesCopia) :
     QDialog(parent),
     ui(new Ui::TelaCadastroCliente)
 {
     ui->setupUi(this);
     lddeClientes = lddeClientesCopia;
-
-    for(int i = 0; i < 8; i++){
-        erroVerificado[i] = false;
-    }
 }
 
 TelaCadastroCliente::~TelaCadastroCliente()
