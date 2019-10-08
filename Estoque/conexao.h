@@ -16,11 +16,7 @@ public:
     }
 
     bool abrir(){
-        QString local = qApp->applicationDirPath();
-        QString banco = local + "/db/ControleDeEstoque.db";
-        bancoDeDados.setDatabaseName(banco);
-        qDebug() << local << banco << endl;
-        //"C:/Users/guiro/OneDrive/Documentos/Estoque/ControleDeEstoque.db"
+        bancoDeDados.setDatabaseName("C:/Users/guiro/OneDrive/Documentos/Estoque(V4.0)/ControleDeEstoque/Estoque/ControleDeEstoque.db");
         if(!bancoDeDados.open()){
             qDebug() << "Não foi possível abrir o banco de dados!";
             return false;

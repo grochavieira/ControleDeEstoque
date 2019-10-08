@@ -3,7 +3,13 @@
 
 #include "telapedidoscliente.h"
 #include "telacadastrocliente.h"
-#include <QDialog>
+#include "conexao.h"
+#include "ldde.h"
+#include <QMainWindow>
+#include <QtSql>
+#include <QFileInfo>
+#include <QMessageBox>
+#include <QString>
 
 namespace Ui {
 class TelaLoginCliente;

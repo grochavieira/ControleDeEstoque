@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-
+#include "telalogincliente.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
