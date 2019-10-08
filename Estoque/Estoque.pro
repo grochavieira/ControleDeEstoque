@@ -25,6 +25,7 @@ SOURCES += \
 
 HEADERS += \
     cliente.h \
+    conexao.h \
     hash.h \
     ldde.h \
     mainwindow.h \
