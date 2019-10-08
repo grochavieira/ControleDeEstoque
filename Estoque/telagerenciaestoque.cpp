@@ -87,14 +87,15 @@ void TelaGerenciaEstoque::on_btnCadastrarProduto_clicked()
             lddeProdutos.Insere(produto);
 
             QSqlQuery query;
-            query.prepare("insert into tb_produtos (id, nome, preco, quantidade, quantidade_minima, quantidade_maxima) values""('" + ui->spnIdProduto->text() + "','" + ui->txtNomeProduto->text() + "','" + ui->spnPrecoProduto->text() + "','" + ui->spnQuantidadeProduto->text() + "','" + ui->spnQuantidadeMinProduto->text() + "','" + ui->spnQuantidadeMaxProduto->text() + "')");
+            query.prepare("insert into tb_produtos (id, nome, preco, quantidade, quantidade_minima, quantidade_maxima, prioridade) values""('" + ui->spnIdProduto->text() + "','" + ui->txtNomeProduto->text() + "','" + ui->spnPrecoProduto->text() + "','" + ui->spnQuantidadeProduto->text() + "','" + ui->spnQuantidadeMinProduto->text() + "','" + ui->spnQuantidadeMaxProduto->text() + "','" + QString::number(produto.getPrioridade()) + "')");
             if(query.exec()){
                 qDebug() << "Produto cadastrado";
+                QMessageBox::information(this, "OK", "Produto cadastrado com sucesso!");
             }
             else{
                 qDebug() << "Erro ao cadastrar produto";
+                QMessageBox::warning(this,"ERRO","ERRO ao cadastrar produto!");
             }
-            QMessageBox::information(this, "OK", "Produto cadastrado com sucesso!");
             ui->txtNomeProduto->clear();
             ui->spnPrecoProduto->setValue(0.00);
             ui->spnQuantidadeProduto->setValue(1);
@@ -160,6 +161,7 @@ void TelaGerenciaEstoque::on_btnPesquisar_clicked()
 
 void TelaGerenciaEstoque::on_tabCadastrarProdutos_tabBarClicked(int index)
 {
+
 }
 
 void TelaGerenciaEstoque::on_btnExcluir_clicked()
@@ -201,5 +203,36 @@ void TelaGerenciaEstoque::on_btnListarTodosProdutos_clicked()
         ui->twProdutos->setItem(i, 5, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
         i++;
         produto = lddeProdutos[i];
+    }
+}
+
+void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
+{
+    if(index == 1){
+        ui->twProdutos->setRowCount(0);
+        int i = 0;
+        produto = lddeProdutos[i];
+        while(produto.getId() != -1){
+            ui->twProdutos->insertRow(i);
+            ui->twProdutos->setItem(i, 0, new QTableWidgetItem(QString::number(produto.getId())));
+            ui->twProdutos->setItem(i, 1, new QTableWidgetItem(produto.getNome()));
+            ui->twProdutos->setItem(i, 2, new QTableWidgetItem("R$ " + QString::number(produto.getPreco())));
+            ui->twProdutos->setItem(i, 3, new QTableWidgetItem(QString::number(produto.getQuantidade())));
+            ui->twProdutos->setItem(i, 4, new QTableWidgetItem(QString::number(produto.getQuantidadeMin())));
+            ui->twProdutos->setItem(i, 5, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
+            i++;
+            produto = lddeProdutos[i];
+        }
+    }
+
+    if(index == 2){
+        /*int qtdCadastrados = lddeProdutos.getQtdCadastrados();
+        LES<Produto> lesProdutos(qtdCadastrados);
+        for(int i = 0; i < qtdCadastrados; i++){
+            lesProdutos.Insere(lddeProdutos[i]);
+            produto = lddeProdutos[i];
+        }
+        lesProdutos.Imprime();
+        */
     }
 }

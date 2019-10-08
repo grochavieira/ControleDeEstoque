@@ -13,6 +13,7 @@ private:
     int quantidade;
     int quantidadeMin;
     int quantidadeMax;
+    double prioridade;
 
 public:
     Produto(int id, QString nome, double preco, int quantidade, int quantidadeMin, int quantidadeMax){
@@ -22,6 +23,7 @@ public:
         this->quantidade = quantidade;
         this->quantidadeMin = quantidadeMin;
         this->quantidadeMax = quantidadeMax;
+        this->prioridade = 100 - ((quantidade*100.0)/quantidadeMax);
     }
 
     Produto(Produto* produto){
@@ -31,6 +33,7 @@ public:
         this->quantidade = produto->quantidade;
         this->quantidadeMin = produto->quantidadeMin;
         this->quantidadeMax = produto->quantidadeMax;
+        this->prioridade = 100 - ((quantidade*100.0)/quantidadeMax);
     }
 
     Produto(){
@@ -38,7 +41,9 @@ public:
         nome = "";
         preco = 0;
         quantidade = 0;
+        quantidadeMin = 0;
         quantidadeMax = 0;
+        prioridade = 0;
     }
 
     int getId(){
@@ -65,12 +70,14 @@ public:
         return quantidadeMax;
     }
 
+    double getPrioridade(){
+        return prioridade;
+    }
+
     void Imprime(){
         qDebug() << "ID: " << id;
         qDebug() << "Produto: " << nome;
-        /*qDebug() << "Preco: " << preco;
-        qDebug() << "Quantidade: " << quantidade;
-        qDebug() << "Quantidade Maxima: " << quantidadeMax;*/
+        qDebug() << "Prioridade" << prioridade;
     }
 
     template <class F>

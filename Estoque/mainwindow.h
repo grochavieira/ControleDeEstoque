@@ -3,7 +3,6 @@
 
 #include "ldde.h"
 #include "telagerenciaestoque.h"
-#include "telaloginestoque.h"
 #include "telalogincliente.h"
 #include <QMainWindow>
 #include <QFileInfo>

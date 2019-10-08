@@ -27,7 +27,7 @@ public:
     }
 
     void Imprime(){ // Imprime toda a les em ordem de prioridade
-        qDebug() << "Lista prioriasada:";
+        qDebug() << "Lista prioridades:";
         for (int i = 0; i < n; ++i)
             qDebug() << "Nome: " << objeto[i].getNome() << " -Id: " << objeto[i].getId();
         qDebug() << endl;
@@ -38,7 +38,7 @@ public:
             return false;
 
         int i=0;
-        while(i < n && x.getPrioridade() > objeto[i].getPrioridade()) // i pega o idx onde sera inserido
+        while(i < n && x.getPrioridade() < objeto[i].getPrioridade()) // i pega o idx onde sera inserido
             i++;
         for (int j = n; j > i; j--) // Realoca todos objetos ja dentro da lista
             objeto[j] = objeto[j-1];

@@ -165,7 +165,7 @@ public:
         cout << endl;
     };
 
-    int QtdCadastrados(){
+    int getQtdCadastrados(){
         return n;
     }
 

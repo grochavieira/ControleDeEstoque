@@ -21,7 +21,6 @@ SOURCES += \
     telacadastrocliente.cpp \
     telagerenciaestoque.cpp \
     telalogincliente.cpp \
-    telaloginestoque.cpp \
     telapedidoscliente.cpp
 
 HEADERS += \
@@ -35,7 +34,6 @@ HEADERS += \
     telagerenciaestoque.h \
     les.h \
     telalogincliente.h \
-    telaloginestoque.h \
     telapedidoscliente.h
 
 FORMS += \
@@ -43,7 +41,6 @@ FORMS += \
     telacadastrocliente.ui \
     telagerenciaestoque.ui \
     telalogincliente.ui \
-    telaloginestoque.ui \
     telapedidoscliente.ui
 
 # Default rules for deployment.

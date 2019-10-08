@@ -2,6 +2,7 @@
 #define TELAGERENCIAESTOQUE_H
 
 #include "ldde.h"
+#include "les.h"
 #include <QMainWindow>
 #include <QtSql>
 #include <QFileInfo>
@@ -40,6 +41,8 @@ private slots:
     void on_btnExcluir_clicked();
 
     void on_btnListarTodosProdutos_clicked();
+
+    void on_tabGerenciadorDeEstoque_tabBarClicked(int index);
 
 private:
     Ui::TelaGerenciaEstoque *ui;

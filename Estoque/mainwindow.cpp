@@ -70,9 +70,9 @@ void MainWindow::on_btnListaDeComprasTela_clicked()
 
 void MainWindow::on_btnAreaDeEstoque_clicked()
 {
-    TelaLoginEstoque telaLoginEstoque;
+    TelaGerenciaEstoque telaGerenciaEstoque;
     close();
-    telaLoginEstoque.exec();
+    telaGerenciaEstoque.exec();
 }
 
 void MainWindow::on_btnAreaDoCliente_clicked()
