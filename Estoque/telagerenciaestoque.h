@@ -45,6 +45,8 @@ private slots:
 
     void on_tabGerenciadorDeEstoque_tabBarClicked(int index);
 
+    void on_twListaDeCompras_cellActivated(int row, int column);
+
 private:
     Ui::TelaGerenciaEstoque *ui;
 };
