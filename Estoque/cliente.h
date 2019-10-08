@@ -9,35 +9,43 @@ private:
     int id;
     QString nome;
     QString email;
+    QString usuario;
     QString senha;
     QString telefone;
-    QString endereco;
+    QString cep;
+    int numeroEndereco;
 
 public:
-    Cliente(int id, QString nome, QString email, QString senha, QString telefone, QString endereco){
+    Cliente(int id, QString nome, QString email, QString usuario, QString senha, QString telefone, QString cep, int numeroEndereco){
         this->id = id;
         this->nome = nome;
         this->email = email;
+        this->usuario = usuario;
         this->senha = senha;
         this->telefone = telefone;
-        this->endereco = endereco;
+        this->cep = cep;
+        this->numeroEndereco = numeroEndereco;
     }
 
     Cliente(Cliente *cliente){
         this->id = cliente->id;
         this->nome = cliente->nome;
         this->email = cliente->email;
+        this->usuario = cliente->usuario;
         this->senha = cliente->senha;
         this->telefone = cliente->telefone;
-        this->endereco = cliente->endereco;
+        this->cep = cliente->cep;
+        this->numeroEndereco = cliente->numeroEndereco;
     }
     Cliente(){
         id = -1;
         nome = "";
         email = "";
+        usuario = "";
         senha = "";
         telefone = "";
-        endereco = "";
+        cep = "";
+        numeroEndereco = 0;
     }
 
     int getId(){
@@ -48,13 +56,22 @@ public:
         return nome;
     }
 
+    QString getUsuario(){
+        return usuario;
+    }
+
+    QString getSenha(){
+        return senha;
+    }
+
     void Imprime(){
         qDebug() << "ID: " << id;
         qDebug() << "Nome: " << nome;
         qDebug() << "Email: " << email;
+        qDebug() << "Usuario: " << usuario;
         qDebug() << "Senha: " << senha;
         qDebug() << "Telefone: " << telefone;
-        qDebug() << "Endereco: " << endereco;
+        qDebug() << "CEP: " << cep;
     }
 
     template <class F>

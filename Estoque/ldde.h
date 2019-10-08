@@ -129,6 +129,30 @@ public:
         return -1;
     }
 
+    bool BuscaCadastro(QString usuario, QString senha){
+        No<F>* atual = primeiro;
+        while(atual){
+            if(atual->objeto.getUsuario() == usuario && atual->objeto.getSenha() == senha)
+            {
+                return true;
+            }
+            atual = atual->prox;
+        }
+        return false;
+    }
+
+    bool BuscaUsuario(QString usuario){
+        No<F>* atual = primeiro;
+        while(atual){
+            if(atual->objeto.getUsuario() == usuario)
+            {
+                return true;
+            }
+            atual = atual->prox;
+        }
+        return false;
+    }
+
     bool Remove (int id){
         int index = BuscaId(id);
         if(!(index >= 0 && index < n)){
