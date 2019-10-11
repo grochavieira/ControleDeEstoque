@@ -1,0 +1,15 @@
+debug/main.o
+debug/mainwindow.o
+debug/telacadastrocliente.o
+debug/telacadastrofuncionario.o
+debug/telagerenciaestoque.o
+debug/telalogincliente.o
+debug/telaloginfuncionario.o
+debug/telapedidoscliente.o
+debug/moc_mainwindow.o
+debug/moc_telacadastrocliente.o
+debug/moc_telacadastrofuncionario.o
+debug/moc_telagerenciaestoque.o
+debug/moc_telalogincliente.o
+debug/moc_telaloginfuncionario.o
+debug/moc_telapedidoscliente.o
