@@ -29,7 +29,6 @@ HEADERS += \
     cliente.h \
     conexao.h \
     funcionario.h \
-    hash.h \
     ldde.h \
     mainwindow.h \
     pilha.h \
