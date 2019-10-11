@@ -80,31 +80,31 @@ void telaCadastroFuncionario::on_btnCadastrarFuncionario_clicked()
 
 void telaCadastroFuncionario::on_txtNomeFuncionario_editingFinished()
 {
-    ui->txtNomeFuncionario->setText("");
+    ui->lblNomeFuncionarioErro->setText("");
 }
 
 void telaCadastroFuncionario::on_txtEmailFuncionario_editingFinished()
 {
-    ui->txtEmailFuncionario->setText("");
+    ui->lblEmailFuncionarioErro->setText("");
 }
 
 void telaCadastroFuncionario::on_txtTelefoneFuncionario_editingFinished()
 {
-    ui->txtTelefoneFuncionario->setText("");
+    ui->lblTelefoneFuncionarioErro->setText("");
 }
 
 void telaCadastroFuncionario::on_txtUsuarioFuncionario_editingFinished()
 {
-    ui->txtUsuarioFuncionario->setText("");
+    ui->lblUsuarioFuncionarioErro->setText("");
 }
 
 void telaCadastroFuncionario::on_txtSenhaFuncionario_editingFinished()
 {
-    ui->txtSenhaFuncionario->setText("");
-    ui->txtConfirmarSenhaFuncionario->setText("");
+    ui->lblSenhaFuncionarioErro->setText("");
+    ui->lblConfirmarSenhaFuncionarioErro->setText("");
 }
 
 void telaCadastroFuncionario::on_txtConfirmarSenhaFuncionario_editingFinished()
 {
-    ui->txtConfirmarSenhaFuncionario->setText("");
+    ui->lblConfirmarSenhaFuncionarioErro->setText("");
 }
