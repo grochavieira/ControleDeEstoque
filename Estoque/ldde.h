@@ -3,6 +3,7 @@
 
 #include "cliente.h"
 #include "produto.h"
+#include "funcionario.h"
 #include <chrono>
 #include <iostream>
 #include <QtSql>

@@ -11,24 +11,20 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     ui(new Ui::TelaGerenciaEstoque)
 {
     ui->setupUi(this);
-    logado = conexao.abrir();
-    if(logado){
-        QSqlQuery query;
-        query.prepare("select * from tb_produtos");
-        if(query.exec()){
-            while(query.next()){
-                produto = new Produto(query.value(0).toInt(), query.value(1).toString(), ((query.value(2).toString()).replace(",",".")).toDouble(), query.value(3).toInt(), query.value(4).toInt(), query.value(5).toInt());
-                lddeProdutos.Insere(produto);
-            }
-        }
-        else{
-            qDebug() << "Banco de dados falhou!";
+
+    QSqlQuery query;
+    query.prepare("select * from tb_produtos");
+    if(query.exec()){
+        while(query.next()){
+            produto = new Produto(query.value(0).toInt(), query.value(1).toString(), ((query.value(2).toString()).replace(",",".")).toDouble(), query.value(3).toInt(), query.value(4).toInt(), query.value(5).toInt());
+            lddeProdutos.Insere(produto);
         }
     }
     else{
-        qDebug() << "Banco de Dados não foi aberto!";
+        qDebug() << "Banco de dados falhou!";
     }
-    conexao.fechar();
+
+
 
 
     ui->twProdutos->setColumnCount(6);
@@ -57,57 +53,49 @@ TelaGerenciaEstoque::~TelaGerenciaEstoque()
 void TelaGerenciaEstoque::on_btnCadastrarProduto_clicked()
 {
     int verificador = 0;
-        int idProduto = ui->spnIdProduto->value();
-        QString nomeProduto = ui->txtNomeProduto->text();
-        double precoProduto = ui->spnPrecoProduto->value();
-        int quantidadeProduto = ui->spnQuantidadeProduto->value();
-        int quantidadeMinProduto = ui->spnQuantidadeMinProduto->value();
-        int quantidadeMaxProduto = ui->spnQuantidadeMaxProduto->value();
+    int idProduto = ui->spnIdProduto->value();
+    QString nomeProduto = ui->txtNomeProduto->text();
+    double precoProduto = ui->spnPrecoProduto->value();
+    int quantidadeProduto = ui->spnQuantidadeProduto->value();
+    int quantidadeMinProduto = ui->spnQuantidadeMinProduto->value();
+    int quantidadeMaxProduto = ui->spnQuantidadeMaxProduto->value();
 
-        if((lddeProdutos.Busca(idProduto)).getId() != -1){
-            verificador++;
-            ui->lblErroId->setText("Esse ID já foi cadastrado.");
-        }
+    if((lddeProdutos.Busca(idProduto)).getId() != -1){
+        verificador++;
+        ui->lblErroId->setText("Esse ID já foi cadastrado.");
+    }
 
-        if(nomeProduto == ""){
-            verificador++;
-            ui->lblErroNome->setText("Favor preencher o campo.");
-        }
+    if(nomeProduto == ""){
+        verificador++;
+        ui->lblErroNome->setText("Favor preencher o campo.");
+    }
 
-        if(precoProduto == 0.0){
-            verificador++;
-            ui->lblErroPreco->setText("Vai vender de graça é?");
-        }
+    if(precoProduto == 0.0){
+        verificador++;
+        ui->lblErroPreco->setText("Vai vender de graça é?");
+    }
 
-        if(verificador == 0){
-            produto = new Produto(idProduto, nomeProduto, precoProduto, quantidadeProduto, quantidadeMinProduto, quantidadeMaxProduto);
-            lddeProdutos.Insere(produto);
+    if(verificador == 0){
+        produto = new Produto(idProduto, nomeProduto, precoProduto, quantidadeProduto, quantidadeMinProduto, quantidadeMaxProduto);
+        lddeProdutos.Insere(produto);
 
-            logado = conexao.abrir();
-            if(logado){
-                QSqlQuery query;
-                query.prepare("insert into tb_produtos (id, nome, preco, quantidade, quantidade_minima, quantidade_maxima, prioridade) values""('" + ui->spnIdProduto->text() + "','" + ui->txtNomeProduto->text() + "','" + ui->spnPrecoProduto->text() + "','" + ui->spnQuantidadeProduto->text() + "','" + ui->spnQuantidadeMinProduto->text() + "','" + ui->spnQuantidadeMaxProduto->text() + "','" + QString::number(produto.getPrioridade()) + "')");
-                if(query.exec()){
-                    qDebug() << "Produto cadastrado";
-                    QMessageBox::information(this, "OK", "Produto cadastrado com sucesso!");
-                }
-                else{
-                    qDebug() << "Erro ao cadastrar produto";
-                    QMessageBox::warning(this,"ERRO","ERRO ao cadastrar produto!");
-                }
-                ui->txtNomeProduto->clear();
-                ui->spnPrecoProduto->setValue(0.00);
-                ui->spnQuantidadeProduto->setValue(1);
-                ui->spnQuantidadeMinProduto->setMaximum(0);
-                ui->spnQuantidadeMaxProduto->setMinimum(1);
-                ui->spnQuantidadeMaxProduto->setValue(1);
-            }else{
-                qDebug() << "Banco de Dados não foi aberto!";
-            }
+        QSqlQuery query;
+        query.prepare("insert into tb_produtos (id, nome, preco, quantidade, quantidade_minima, quantidade_maxima, prioridade) values""('" + ui->spnIdProduto->text() + "','" + ui->txtNomeProduto->text() + "','" + ui->spnPrecoProduto->text() + "','" + ui->spnQuantidadeProduto->text() + "','" + ui->spnQuantidadeMinProduto->text() + "','" + ui->spnQuantidadeMaxProduto->text() + "','" + QString::number(produto.getPrioridade()) + "')");
+        if(query.exec()){
+            qDebug() << "Produto cadastrado";
+            QMessageBox::information(this, "OK", "Produto cadastrado com sucesso!");
         }
         else{
-            QMessageBox::warning(this, "ERRO", "Não foi possível cadastrar o produto!");
+            qDebug() << "Erro ao cadastrar produto";
+            QMessageBox::warning(this,"ERRO","ERRO ao cadastrar produto!");
         }
+        ui->txtNomeProduto->clear();
+        ui->spnPrecoProduto->setValue(0.00);
+        ui->spnQuantidadeProduto->setValue(1);
+        ui->spnQuantidadeMinProduto->setMaximum(0);
+        ui->spnQuantidadeMaxProduto->setMinimum(1);
+        ui->spnQuantidadeMaxProduto->setValue(1);
+    }
 }
 
 void TelaGerenciaEstoque::on_btnEncontrarId_clicked()
@@ -171,22 +159,16 @@ void TelaGerenciaEstoque::on_btnExcluir_clicked()
     int linha = ui->twProdutos->currentRow();
     if(linha != -1)
     {
-        logado = conexao.abrir();
-        if(logado){
-            int id = ui->twProdutos->item(linha,0)->text().toInt();
-            QSqlQuery query;
-            query.prepare("delete from tb_produtos where id=" + QString::number(id));
-            if(query.exec()){
-                ui->twProdutos->removeRow(linha);
-                QMessageBox::information(this,"","Registro excluido!");
-                lddeProdutos.Remove(id);
-            }
-            else{
-                QMessageBox::warning(this,"ERRO","Erro ao excluir registro!");
-            }
+        int id = ui->twProdutos->item(linha,0)->text().toInt();
+        QSqlQuery query;
+        query.prepare("delete from tb_produtos where id=" + QString::number(id));
+        if(query.exec()){
+            ui->twProdutos->removeRow(linha);
+            QMessageBox::information(this,"","Registro excluido!");
+            lddeProdutos.Remove(id);
         }
         else{
-            qDebug() << "Banco de Dados não foi aberto";
+            QMessageBox::warning(this,"ERRO","Erro ao excluir registro!");
         }
     }
     else{

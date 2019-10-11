@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include "ldde.h"
-#include "telagerenciaestoque.h"
+#include "telaloginfuncionario.h"
 #include "telalogincliente.h"
 #include <QMainWindow>
 #include <QFileInfo>
