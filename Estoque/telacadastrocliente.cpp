@@ -3,7 +3,6 @@
 
 static LDDE<Cliente>* lddeClientes;
 static Cliente cliente;
-
 TelaCadastroCliente::TelaCadastroCliente(QWidget *parent, LDDE<Cliente>* lddeClientesCopia) :
     QDialog(parent),
     ui(new Ui::TelaCadastroCliente)
@@ -72,16 +71,12 @@ void TelaCadastroCliente::on_btnCadastrarCliente_clicked()
         QSqlQuery query;
         query.prepare("insert into tb_clientes(nome_cliente, email_cliente, usuario_cliente, senha_cliente, telefone_cliente, cep_cliente, num_endereco_cliente) values""('" + nomeCliente + "','" + emailCliente + "','" + usuarioCliente + "','" + senhaCliente + "','" + telefoneCliente + "','" + cepCliente + "','" + QString::number(numEnderecoCliente) + "')");
         if(query.exec()){
-            qDebug() << "Cadastro realizado com sucesso!";
             QMessageBox::information(this, "OK", "Cliente cadastrado com sucesso!");
+            close();
         }
         else{
-            qDebug() << "Erro ao cadastrar cliente";
             QMessageBox::warning(this,"ERRO","ERRO ao se cadastrar!");
         }
-        close();
-        TelaLoginCliente telaLoginCliente;
-        telaLoginCliente.exec();
     }
     else{
         QMessageBox::warning(this, "ERRO", "Não foi possível se cadastrar!");

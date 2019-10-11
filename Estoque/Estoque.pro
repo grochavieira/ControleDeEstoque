@@ -19,29 +19,36 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     telacadastrocliente.cpp \
+    telacadastrofuncionario.cpp \
     telagerenciaestoque.cpp \
     telalogincliente.cpp \
+    telaloginfuncionario.cpp \
     telapedidoscliente.cpp
 
 HEADERS += \
     cliente.h \
     conexao.h \
+    funcionario.h \
     hash.h \
     ldde.h \
     mainwindow.h \
     pilha.h \
     produto.h \
     telacadastrocliente.h \
+    telacadastrofuncionario.h \
     telagerenciaestoque.h \
     les.h \
     telalogincliente.h \
+    telaloginfuncionario.h \
     telapedidoscliente.h
 
 FORMS += \
     mainwindow.ui \
     telacadastrocliente.ui \
+    telacadastrofuncionario.ui \
     telagerenciaestoque.ui \
     telalogincliente.ui \
+    telaloginfuncionario.ui \
     telapedidoscliente.ui
 
 # Default rules for deployment.
