@@ -64,7 +64,7 @@ void telaCadastroFuncionario::on_btnCadastrarFuncionario_clicked()
         funcionario = new Funcionario(lddeFuncionarios->getQtdCadastrados()+1, nomeFuncionario, emailFuncionario, usuarioFuncionario, senhaFuncionario, telefoneFuncionario);
         lddeFuncionarios->Insere(funcionario);
         QSqlQuery query;
-        query.prepare("insert into tb_clientes(nome_cliente, email_cliente, usuario_cliente, senha_cliente, telefone_cliente, cep_cliente, num_endereco_cliente) values""('" + nomeFuncionario + "','" + emailFuncionario + "','" + usuarioFuncionario + "','" + senhaFuncionario + "','" + telefoneFuncionario + "')");
+        query.prepare("insert into tb_funcionarios(nome_funcionario, email_funcionario, usuario_funcionario, senha_funcionario, telefone_funcionario) values""('" + nomeFuncionario + "','" + emailFuncionario + "','" + usuarioFuncionario + "','" + senhaFuncionario + "','" + telefoneFuncionario + "')");
         if(query.exec()){
             QMessageBox::information(this, "OK", "Funcionario cadastrado com sucesso!");
             close();

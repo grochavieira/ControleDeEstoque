@@ -97,6 +97,9 @@ public:
         btnAreaCadastroCliente = new QPushButton(TelaLoginCliente);
         btnAreaCadastroCliente->setObjectName(QString::fromUtf8("btnAreaCadastroCliente"));
         btnAreaCadastroCliente->setGeometry(QRect(40, 150, 249, 21));
+        QWidget::setTabOrder(txtUsuarioCliente, txtSenhaCliente);
+        QWidget::setTabOrder(txtSenhaCliente, btnEntrarCliente);
+        QWidget::setTabOrder(btnEntrarCliente, btnAreaCadastroCliente);
 
         retranslateUi(TelaLoginCliente);
 

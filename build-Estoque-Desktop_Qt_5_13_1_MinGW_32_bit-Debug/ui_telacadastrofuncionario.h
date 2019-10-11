@@ -155,6 +155,12 @@ public:
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setGeometry(QRect(83, 50, 31, 20));
         label_4->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        QWidget::setTabOrder(txtNomeFuncionario, txtEmailFuncionario);
+        QWidget::setTabOrder(txtEmailFuncionario, txtTelefoneFuncionario);
+        QWidget::setTabOrder(txtTelefoneFuncionario, txtUsuarioFuncionario);
+        QWidget::setTabOrder(txtUsuarioFuncionario, txtSenhaFuncionario);
+        QWidget::setTabOrder(txtSenhaFuncionario, txtConfirmarSenhaFuncionario);
+        QWidget::setTabOrder(txtConfirmarSenhaFuncionario, btnCadastrarFuncionario);
 
         retranslateUi(telaCadastroFuncionario);
 

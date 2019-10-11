@@ -99,6 +99,9 @@ public:
 
         verticalLayout_2->addWidget(btnCadastrarNovoFuncionario);
 
+        QWidget::setTabOrder(txtUsuarioFuncionario, txtSenhaFuncionario);
+        QWidget::setTabOrder(txtSenhaFuncionario, btnEntrarFuncionario);
+        QWidget::setTabOrder(btnEntrarFuncionario, btnCadastrarNovoFuncionario);
 
         retranslateUi(telaLoginFuncionario);
 

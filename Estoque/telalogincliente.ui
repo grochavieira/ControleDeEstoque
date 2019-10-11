@@ -98,6 +98,12 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>txtUsuarioCliente</tabstop>
+  <tabstop>txtSenhaCliente</tabstop>
+  <tabstop>btnEntrarCliente</tabstop>
+  <tabstop>btnAreaCadastroCliente</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

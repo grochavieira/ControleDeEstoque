@@ -35,7 +35,7 @@
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -740,6 +740,23 @@ background: &quot;white&quot;;
    <layout class="QVBoxLayout" name="verticalLayout_19"/>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>spnIdProduto</tabstop>
+  <tabstop>txtNomeProduto</tabstop>
+  <tabstop>spnPrecoProduto</tabstop>
+  <tabstop>spnQuantidadeProduto</tabstop>
+  <tabstop>spnQuantidadeMaxProduto</tabstop>
+  <tabstop>spnQuantidadeMinProduto</tabstop>
+  <tabstop>btnCadastrarProduto</tabstop>
+  <tabstop>btnEncontrarId</tabstop>
+  <tabstop>txtPesquisarProduto</tabstop>
+  <tabstop>btnPesquisar</tabstop>
+  <tabstop>btnListarTodosProdutos</tabstop>
+  <tabstop>btnExcluir</tabstop>
+  <tabstop>twProdutos</tabstop>
+  <tabstop>tabGerenciadorDeEstoque</tabstop>
+  <tabstop>twListaDeCompras</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
