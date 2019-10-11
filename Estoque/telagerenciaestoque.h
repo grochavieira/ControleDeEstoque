@@ -4,6 +4,7 @@
 #include "ldde.h"
 #include "les.h"
 #include "conexao.h"
+#include "pilha.h"
 #include <QMainWindow>
 #include <QtSql>
 #include <QFileInfo>

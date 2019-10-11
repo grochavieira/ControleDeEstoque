@@ -4,7 +4,7 @@
 static LDDE<Produto> lddeProdutos;
 static Produto produto;
 static Conexao conexao;
-static bool logado;
+static PILHA<Produto> pilha;
 
 TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     QDialog(parent),
@@ -37,12 +37,28 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     ui->twProdutos->setColumnWidth(4, 100);
     ui->twProdutos->setColumnWidth(5, 100);
 
+    ui->twListaDeCompras->setColumnCount(5);
+
+    ui->twListaDeCompras->verticalHeader()->setVisible(false);
+    ui->twListaDeCompras->setColumnWidth(0, 40);
+    ui->twListaDeCompras->setColumnWidth(1, 150);
+    ui->twListaDeCompras->setColumnWidth(2, 80);
+    ui->twListaDeCompras->setColumnWidth(3, 100);
+    ui->twListaDeCompras->setColumnWidth(4, 100);
+
     QStringList cabecalhos = {"ID", "Nome", "Preço", "Quantidade", "Qtd. Mínima", "Qtd. Máxima"};
     ui->twProdutos->setHorizontalHeaderLabels(cabecalhos);
     ui->twProdutos->setSelectionBehavior(QAbstractItemView::SelectRows);
 
     ui->twProdutos->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->twProdutos->setStyleSheet("QTableView{selection-background-color:blue}");
+
+    QStringList cabecalhosLista = {"ID", "Nome", "Quantidade", "Qtd. Máxima", "Prioridade"};
+    ui->twListaDeCompras->setHorizontalHeaderLabels(cabecalhosLista);
+    ui->twListaDeCompras->setSelectionBehavior(QAbstractItemView::SelectRows);
+
+    ui->twListaDeCompras->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->twListaDeCompras->setStyleSheet("QTableView{selection-background-color:blue}");
 }
 
 TelaGerenciaEstoque::~TelaGerenciaEstoque()
@@ -216,14 +232,32 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
     }
 
     if(index == 2){
-        /*int qtdCadastrados = lddeProdutos.getQtdCadastrados();
-        LES<Produto> lesProdutos(qtdCadastrados);
-        for(int i = 0; i < qtdCadastrados; i++){
-            lesProdutos.Insere(lddeProdutos[i]);
-            produto = lddeProdutos[i];
+        ui->twListaDeCompras->setRowCount(0);
+        LES<Produto> lista(lddeProdutos.getQtdCadastrados()); // Cria lista de prioridade para guardar os produtos
+        int i=0;
+        while(i < lddeProdutos.getQtdCadastrados()){ // Salva todos produtos na lista
+            produto = lddeProdutos[i]; // variavel produto pega cada produto da ldde um de cada vez
+            lista.Insere(produto); // Funcao para inserir
+            i++;
         }
-        lesProdutos.Imprime();
-        */
+
+        int j = 0;
+        while(j < i){ // Cria a tabela com todos produtos em ordem de prioridade
+            produto = lista[j]; // Variavel produto pega cada produto da lista
+            qDebug() << "Produto: " << produto.getNome();
+            ui->twListaDeCompras->insertRow(j);
+            ui->twListaDeCompras->setItem(j, 0, new QTableWidgetItem(QString::number(produto.getId())));
+            ui->twListaDeCompras->setItem(j, 1, new QTableWidgetItem(produto.getNome()));
+            ui->twListaDeCompras->setItem(j, 2, new QTableWidgetItem(QString::number(produto.getQuantidade())));
+            ui->twListaDeCompras->setItem(j, 3, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
+            ui->twListaDeCompras->setItem(j, 4, new QTableWidgetItem(QString::number(produto.getPrioridade())));
+            j++;
+        }
+
+        for(int k=0; k<lddeProdutos.getQtdCadastrados(); k++){
+            produto = lista[k];
+            pilha.Empilha(produto);
+        }
     }
 }
 
