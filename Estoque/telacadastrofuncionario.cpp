@@ -77,3 +77,34 @@ void telaCadastroFuncionario::on_btnCadastrarFuncionario_clicked()
         QMessageBox::warning(this, "ERRO", "Não foi possível cadastrar funcionario!");
     }
 }
+
+void telaCadastroFuncionario::on_txtNomeFuncionario_editingFinished()
+{
+    ui->txtNomeFuncionario->setText("");
+}
+
+void telaCadastroFuncionario::on_txtEmailFuncionario_editingFinished()
+{
+    ui->txtEmailFuncionario->setText("");
+}
+
+void telaCadastroFuncionario::on_txtTelefoneFuncionario_editingFinished()
+{
+    ui->txtTelefoneFuncionario->setText("");
+}
+
+void telaCadastroFuncionario::on_txtUsuarioFuncionario_editingFinished()
+{
+    ui->txtUsuarioFuncionario->setText("");
+}
+
+void telaCadastroFuncionario::on_txtSenhaFuncionario_editingFinished()
+{
+    ui->txtSenhaFuncionario->setText("");
+    ui->txtConfirmarSenhaFuncionario->setText("");
+}
+
+void telaCadastroFuncionario::on_txtConfirmarSenhaFuncionario_editingFinished()
+{
+    ui->txtConfirmarSenhaFuncionario->setText("");
+}
