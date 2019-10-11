@@ -530,6 +530,17 @@ background: &quot;white&quot;;
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>txtNomeCliente</tabstop>
+  <tabstop>txtEmailCliente</tabstop>
+  <tabstop>txtTelefoneCliente</tabstop>
+  <tabstop>txtCepCliente</tabstop>
+  <tabstop>spnNumEnderecoCliente</tabstop>
+  <tabstop>txtUsuarioCliente</tabstop>
+  <tabstop>txtSenhaCliente</tabstop>
+  <tabstop>txtConfirmarSenhaCliente</tabstop>
+  <tabstop>btnCadastrarCliente</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

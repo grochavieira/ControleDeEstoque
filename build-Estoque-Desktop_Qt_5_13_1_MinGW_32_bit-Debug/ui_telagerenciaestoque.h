@@ -278,10 +278,24 @@ public:
         verticalLayout_19 = new QVBoxLayout(layoutWidget);
         verticalLayout_19->setObjectName(QString::fromUtf8("verticalLayout_19"));
         verticalLayout_19->setContentsMargins(0, 0, 0, 0);
+        QWidget::setTabOrder(spnIdProduto, txtNomeProduto);
+        QWidget::setTabOrder(txtNomeProduto, spnPrecoProduto);
+        QWidget::setTabOrder(spnPrecoProduto, spnQuantidadeProduto);
+        QWidget::setTabOrder(spnQuantidadeProduto, spnQuantidadeMaxProduto);
+        QWidget::setTabOrder(spnQuantidadeMaxProduto, spnQuantidadeMinProduto);
+        QWidget::setTabOrder(spnQuantidadeMinProduto, btnCadastrarProduto);
+        QWidget::setTabOrder(btnCadastrarProduto, btnEncontrarId);
+        QWidget::setTabOrder(btnEncontrarId, txtPesquisarProduto);
+        QWidget::setTabOrder(txtPesquisarProduto, btnPesquisar);
+        QWidget::setTabOrder(btnPesquisar, btnListarTodosProdutos);
+        QWidget::setTabOrder(btnListarTodosProdutos, btnExcluir);
+        QWidget::setTabOrder(btnExcluir, twProdutos);
+        QWidget::setTabOrder(twProdutos, tabGerenciadorDeEstoque);
+        QWidget::setTabOrder(tabGerenciadorDeEstoque, twListaDeCompras);
 
         retranslateUi(TelaGerenciaEstoque);
 
-        tabGerenciadorDeEstoque->setCurrentIndex(1);
+        tabGerenciadorDeEstoque->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(TelaGerenciaEstoque);

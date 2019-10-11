@@ -402,6 +402,15 @@ background: &quot;white&quot;;
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>txtNomeFuncionario</tabstop>
+  <tabstop>txtEmailFuncionario</tabstop>
+  <tabstop>txtTelefoneFuncionario</tabstop>
+  <tabstop>txtUsuarioFuncionario</tabstop>
+  <tabstop>txtSenhaFuncionario</tabstop>
+  <tabstop>txtConfirmarSenhaFuncionario</tabstop>
+  <tabstop>btnCadastrarFuncionario</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

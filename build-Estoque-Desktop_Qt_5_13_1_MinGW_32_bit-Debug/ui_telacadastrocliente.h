@@ -197,6 +197,14 @@ public:
         lblConfirmarSenhaClienteErro->setStyleSheet(QString::fromUtf8("color: \"red\";\n"
 "background: \"white\";\n"
 ""));
+        QWidget::setTabOrder(txtNomeCliente, txtEmailCliente);
+        QWidget::setTabOrder(txtEmailCliente, txtTelefoneCliente);
+        QWidget::setTabOrder(txtTelefoneCliente, txtCepCliente);
+        QWidget::setTabOrder(txtCepCliente, spnNumEnderecoCliente);
+        QWidget::setTabOrder(spnNumEnderecoCliente, txtUsuarioCliente);
+        QWidget::setTabOrder(txtUsuarioCliente, txtSenhaCliente);
+        QWidget::setTabOrder(txtSenhaCliente, txtConfirmarSenhaCliente);
+        QWidget::setTabOrder(txtConfirmarSenhaCliente, btnCadastrarCliente);
 
         retranslateUi(TelaCadastroCliente);
 

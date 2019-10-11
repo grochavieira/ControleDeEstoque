@@ -92,6 +92,12 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>txtUsuarioFuncionario</tabstop>
+  <tabstop>txtSenhaFuncionario</tabstop>
+  <tabstop>btnEntrarFuncionario</tabstop>
+  <tabstop>btnCadastrarNovoFuncionario</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
