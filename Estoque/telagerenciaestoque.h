@@ -3,6 +3,7 @@
 
 #include "ldde.h"
 #include "les.h"
+#include "pilha.h"
 #include "conexao.h"
 #include <QMainWindow>
 #include <QtSql>

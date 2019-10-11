@@ -2,94 +2,57 @@
 #define PILHA_H
 
 #include <iostream>
-#include <QString>
 #include <QDebug>
+
 
 using namespace std;
 
-template<class F>
-class Pilha;
-
-template<class F>
-class No{ // Pilha dinamica
-private:
-    No<F>* ant; // Objeto anterior
-    No<F>* prox; // Proximo objeto
-    F objeto; // Objeto
-public:
-    template<class>
-    friend class Pilha;
-};
-
 template <class F>
-class Pilha{
+class PILHA{
 private:
-    No<F>* primeiro; // Primeiro objeto
-    No<F>* ultimo; // Ultimo objeto
-    int n; // Quantidade de objetos
+    int n; // Quantidade de produtos
+    int tam; // Tamanho max da Pilha
+    F *v; // Vetor que guarda os produtos
 public:
-    Pilha(){ // Construtor
-        primeiro = NULL;
-        ultimo = NULL;
-        n = 0;
+    PILHA(){ // Inicializa tudo
+        n=0;
+        tam=20;
+        v = new F[tam];
     }
-    ~Pilha(){ // Destrutor
-        bool ok;
-        do {
-            Desempilha(&ok);
-        }while(ok);
+    bool Empilha(F x){ // Guarda na pilha
+        if(n == tam) // Se n estiver no maximo, nao empilhara
+            return false;
+
+        v[n] = x; // Salva na pilha idx n
+        n++; // Incrementa 1 em n
+
+        return true; // Deu certo
     }
-
-    bool Empilha(F objeto){ // Empilha objeto
-        No<F>* novo = new No<F>; // Objeto a ser empilhado
-        novo->ant = NULL;
-        novo->prox = NULL;
-        novo->objeto = objeto;
-
-        if(n == 0){ // Se for o primeiro objeto empilhado
-            primeiro = novo;
-        }
-        else{ // Se nao for o primeiro
-            ultimo->prox = novo;
-            novo->ant = ultimo;
-        }
-        ultimo = novo; // Atualiza ultimo
-        n++; // Adiciona 1 na quantidade de objetos empilhados
-
-        return true;
-    }
-    F Desempilha(bool *ok=nullptr){ // Desempilha
-        if(n == 0) { // Se nao existir nada na pilha
+    F Desempilha(bool *ok = nullptr){ // Remove da pilha
+        if(n == 0) { // Se n for 0, nao existe produto
             if(ok)
-                *ok = false;
-
-            return nullptr;
+                *ok = false; // avisa que esta vazia e o valor que retornara nao e confiavel
+            return v[n]; // Retorna um valor nao confiavel
         }
 
-        F x = ultimo->objeto; // Guarda objeto que sera removido
-        if(n == 1){ // Se so existir um objeto na pilha
-            primeiro = NULL;
-            ultimo = NULL;
-        }
-        else{ // Se existir mais de um
-            No<F>* aux = ultimo->ant;
-            aux->prox = NULL; // Ultimo da pilha aponta para NULL
-            ultimo = aux; // Atualiza ultimo da pilha (prox a ser desempilhado)
-        }
-        n--; // Subtrai um na quantidade de objetos na pilha
-        if(ok)
-            *ok = true;
+        F temp = v[n-1]; // Salva ultimo inserido
+        n--; // Remove ultimo inserido
 
-        return x;
+        return temp; // Retorna valor salvo que foi removido
     }
-    void Imprime(){ // Imprime pilha completa
-        No<F>* aux = primeiro;//Imprime na ordem que a pilha foi feita
-        for(int i=0; i<n; i++){
-            qDebug() << "Nome: " << aux->objeto.getNome() << " -ID: " << aux->objeto.getId();
-            aux = aux->prox;
+    void Imprime(){ // Funcao para Debug, Apenas para conferir o codigo
+        for (int j=n-1; j>=0; j--){ // For que imprime toda a pilha
+            qDebug() << "ID: " << v[j].getId() << " -Produto: " << v[j].getNome();
         }
         qDebug() << "";
     }
+    int Size(){
+        return n;
+    }
+    ~PILHA(){ // Deleta vetor
+        delete[] v;
+    }
 };
+
 
 #endif // PILHA_H
