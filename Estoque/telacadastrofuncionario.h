@@ -20,6 +20,18 @@ public:
 private slots:
     void on_btnCadastrarFuncionario_clicked();
 
+    void on_txtNomeFuncionario_editingFinished();
+
+    void on_txtEmailFuncionario_editingFinished();
+
+    void on_txtTelefoneFuncionario_editingFinished();
+
+    void on_txtUsuarioFuncionario_editingFinished();
+
+    void on_txtSenhaFuncionario_editingFinished();
+
+    void on_txtConfirmarSenhaFuncionario_editingFinished();
+
 private:
     Ui::telaCadastroFuncionario *ui;
 };
