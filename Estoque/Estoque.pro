@@ -27,10 +27,12 @@ SOURCES += \
 
 HEADERS += \
     cliente.h \
+    compras.h \
     conexao.h \
     funcionario.h \
     ldde.h \
     mainwindow.h \
+    pedidos.h \
     pilha.h \
     produto.h \
     telacadastrocliente.h \

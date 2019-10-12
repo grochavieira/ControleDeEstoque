@@ -295,7 +295,7 @@ public:
 
         retranslateUi(TelaGerenciaEstoque);
 
-        tabGerenciadorDeEstoque->setCurrentIndex(2);
+        tabGerenciadorDeEstoque->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(TelaGerenciaEstoque);

@@ -34,8 +34,9 @@ void TelaLoginCliente::on_btnEntrarCliente_clicked()
     QString senhaCliente = ui->txtSenhaCliente->text();
 
     if(lddeClientes.BuscaCadastro(usuarioCliente, senhaCliente)){
+        cliente = lddeClientes.BuscaDadosUsuario(usuarioCliente, senhaCliente);
         this->close();
-        TelaPedidosCliente telaPedidosCliente;
+        TelaPedidosCliente telaPedidosCliente(this, cliente.getId(), cliente.getNome(), cliente.getTelefone(), cliente.getCep(), cliente.getNumeroEndereco());
         telaPedidosCliente.exec();
     }
     else{

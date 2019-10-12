@@ -3,10 +3,12 @@
 
 #include "cliente.h"
 #include "produto.h"
+#include "pedidos.h"
 #include "funcionario.h"
 #include <chrono>
 #include <iostream>
 #include <QtSql>
+
 using namespace std;
 
 template<class F>
@@ -154,6 +156,18 @@ public:
         return false;
     }
 
+    F BuscaDadosUsuario(QString usuario, QString senha){
+        No<F>* atual = primeiro;
+        while(atual){
+            if(atual->objeto.getUsuario() == usuario && atual->objeto.getSenha() == senha)
+            {
+                return atual->objeto;
+            }
+            atual = atual->prox;
+        }
+        return nullptr;
+    }
+
     bool Remove (int id){
         int index = BuscaId(id);
         if(!(index >= 0 && index < n)){
@@ -179,7 +193,7 @@ public:
 
         n--;
         return true;
-    };
+    }
 
     void Imprime (){
         No<F>* atual = primeiro;
@@ -188,7 +202,7 @@ public:
             atual = atual->prox;
         }
         cout << endl;
-    };
+    }
 
     int getQtdCadastrados(){
         return n;
@@ -210,11 +224,11 @@ public:
                 i++;
             }
 
-        };
+        }
 
     ~LDDE (){
         limpa();
-    };
+    }
 
 };
 

@@ -64,6 +64,18 @@ public:
         return senha;
     }
 
+    QString getCep(){
+        return cep;
+    }
+
+    QString getTelefone(){
+        return telefone;
+    }
+
+    int getNumeroEndereco(){
+        return numeroEndereco;
+    }
+
     void Imprime(){
         qDebug() << "ID: " << id;
         qDebug() << "Nome: " << nome;
