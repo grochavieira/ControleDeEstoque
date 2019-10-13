@@ -672,6 +672,25 @@ QPushButton:hover#quit_button
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>699</width>
+      <height>499</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+	background-color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>label</zorder>
    <zorder>label_BGcAD</zorder>
    <zorder>lblUsuarioClienteErro</zorder>
    <zorder>txtSenhaCliente</zorder>

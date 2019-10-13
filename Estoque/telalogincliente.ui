@@ -153,14 +153,48 @@
    <widget class="QPushButton" name="btnEntrarCliente">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>380</y>
-      <width>201</width>
-      <height>31</height>
+      <x>90</x>
+      <y>370</y>
+      <width>150</width>
+      <height>58</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">/*normal*/
+QPushButton
+{
+
+	background-color:transparent;
+   	border-image:  url(:/src/login74/new-11.png) ;
+	background:none;
+	border: none;
+	background-repeat: none;
+}
+
+/*clicked*/
+QPushButton:focus:pressed
+{
+   	border-image: url(:/src/login74/new-12.png)  ;
+}
+
+/*normal*/
+QPushButton#quit_button
+{
+   	border-image: url(:/src/login74/new-11.png)  ;
+}
+/*hover*/
+QPushButton:hover
+{
+     	border-image:  url(:/src/login74/new-13.png) ;
+}
+/*normal*/
+QPushButton:hover#quit_button
+{
+     	border-image:   url(:/src/login74/new-11.png);
+}</string>
+    </property>
     <property name="text">
-     <string>ENTRAR</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="btnAreaCadastroCliente">
