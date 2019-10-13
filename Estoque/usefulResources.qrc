@@ -1,13 +1,13 @@
 <RCC>
     <qresource prefix="/">
-        <file>src/alive/btn_clickCust.png</file>
         <file>src/alive/btn_clickGer.png</file>
-        <file>src/alive/btn_hoverCust.png</file>
         <file>src/alive/btn_hoverGer.png</file>
-        <file>src/alive/btn_normalCust.png</file>
         <file>src/alive/btn_normalGer.png</file>
         <file>src/alive/btn-08.png</file>
         <file>src/login/log_loginC.png</file>
         <file>src/login/log_loginF.png</file>
+        <file>src/alive/new_clickCust.png</file>
+        <file>src/alive/new_hoverCust.png</file>
+        <file>src/alive/new_normalCust.png</file>
     </qresource>
 </RCC>

@@ -71,14 +71,18 @@ void MainWindow::on_btnListaDeComprasTela_clicked()
 
 void MainWindow::on_btnAreaDeEstoque_clicked()
 {
-    hide();
+    this->setVisible(false);
     telaLoginFuncionario telaLoginFuncionario;
     telaLoginFuncionario.exec();
+    this->setVisible(true);
 }
 
 void MainWindow::on_btnAreaDoCliente_clicked()
 {
+    this->setVisible(false);
     TelaLoginCliente telaLoginCliente;
-    close();
     telaLoginCliente.exec();
+    this->setVisible(true);
+
+
 }

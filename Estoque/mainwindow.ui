@@ -156,7 +156,7 @@ QPushButton:hover#quit_button
 {
 
 	background-color:transparent;
-   	border-image:url(:/src/alive/btn_normalCust.png);
+   	border-image:url(:/src/alive/new_normalCust.png);
 	background:none;
 	border: none;
 	background-repeat: none;
@@ -168,23 +168,23 @@ QPushButton:hover#quit_button
 
 QPushButton:focus:pressed
 {
-   	border-image: url(:/src/alive/btn_clickCust.png) ;
+   	border-image: url(:/src/alive/new_clickCust.png) ;
 }
 
 
 QPushButton#quit_button
 {
-   	border-image:url(:/src/alive/btn_normalCust.png);
+   	border-image:url(:/src/alive/new_normalCust.png);
 }
 
 QPushButton:hover
 {
-   	border-image: url(:/src/alive/btn_hoverCust.png) ;
+   	border-image: url(:/src/alive/new_hoverCust.png) ;
 }
 
 QPushButton:hover#quit_button
 {
-   	border-image:url(:/src/alive/btn_normalCust.png);
+   	border-image:url(:/src/alive/new_normalCust.png);
 }</string>
      </property>
      <property name="text">

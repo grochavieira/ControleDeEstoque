@@ -54,7 +54,7 @@ void telaLoginFuncionario::on_btnCadastrarNovoFuncionario_clicked()
 
 void telaLoginFuncionario::on_pushButton_clicked()
 {
-    close();
+    this->setVisible(false);
     MainWindow mainW;
-    mainW.show();
+    mainW.setVisible(true);
 }
