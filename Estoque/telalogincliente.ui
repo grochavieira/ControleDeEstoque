@@ -74,21 +74,35 @@
    <widget class="QLineEdit" name="txtUsuarioCliente">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>190</y>
-      <width>191</width>
+      <x>64</x>
+      <y>189</y>
+      <width>192</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtSenhaCliente_2">
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>270</y>
+      <y>277</y>
       <width>201</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>
@@ -98,10 +112,21 @@
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>320</y>
+      <y>330</y>
       <width>201</width>
-      <height>22</height>
+      <height>24</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border-style: solid;
+	border-width:1px;
+	border-color: beige;
+	border-radius: 6px;
+
+}</string>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>
@@ -131,6 +156,33 @@
     </property>
     <property name="text">
      <string>SEM CADASTRO?</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>310</y>
+      <width>131</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+color:white;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Confirmar Senha</string>
     </property>
    </widget>
   </widget>
