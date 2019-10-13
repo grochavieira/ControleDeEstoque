@@ -55,7 +55,7 @@
    <widget class="QLabel" name="lblUsuarioClienteErro">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>320</x>
       <y>344</y>
       <width>120</width>
       <height>16</height>
@@ -69,15 +69,22 @@
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -116,9 +123,9 @@ background: &quot;white&quot;;
    <widget class="QLabel" name="lblNumEnderecoClienteErro">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>320</x>
       <y>300</y>
-      <width>120</width>
+      <width>150</width>
       <height>16</height>
      </rect>
     </property>
@@ -130,15 +137,22 @@ background: &quot;white&quot;;
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -157,6 +171,7 @@ background: &quot;white&quot;;
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
+      <pointsize>13</pointsize>
      </font>
     </property>
     <property name="minimum">
@@ -195,9 +210,9 @@ background: &quot;white&quot;;
    <widget class="QLabel" name="lblConfirmarSenhaClienteErro">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>320</x>
       <y>430</y>
-      <width>120</width>
+      <width>150</width>
       <height>16</height>
      </rect>
     </property>
@@ -209,15 +224,22 @@ background: &quot;white&quot;;
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -227,9 +249,9 @@ background: &quot;white&quot;;
    <widget class="QLabel" name="lblSenhaClienteErro">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>320</x>
       <y>388</y>
-      <width>120</width>
+      <width>150</width>
       <height>16</height>
      </rect>
     </property>
@@ -241,15 +263,22 @@ background: &quot;white&quot;;
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -259,9 +288,9 @@ background: &quot;white&quot;;
    <widget class="QLabel" name="lblCepClienteErro">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>320</x>
       <y>260</y>
-      <width>121</width>
+      <width>150</width>
       <height>16</height>
      </rect>
     </property>
@@ -273,15 +302,22 @@ background: &quot;white&quot;;
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -291,15 +327,15 @@ background: &quot;white&quot;;
    <widget class="QLabel" name="lblNomeClienteErro">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>320</x>
       <y>130</y>
-      <width>100</width>
+      <width>150</width>
       <height>16</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>100</width>
+      <width>150</width>
       <height>16</height>
      </size>
     </property>
@@ -311,15 +347,22 @@ background: &quot;white&quot;;
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -355,9 +398,9 @@ background: &quot;white&quot;;
    <widget class="QLabel" name="lblTelefoneClienteErro">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>320</x>
       <y>214</y>
-      <width>120</width>
+      <width>180</width>
       <height>16</height>
      </rect>
     </property>
@@ -369,15 +412,22 @@ background: &quot;white&quot;;
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -471,15 +521,15 @@ background: &quot;white&quot;;
    <widget class="QLabel" name="lblEmailClienteErro">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>320</x>
       <y>172</y>
-      <width>100</width>
+      <width>150</width>
       <height>16</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>100</width>
+      <width>150</width>
       <height>16</height>
      </size>
     </property>
@@ -491,15 +541,22 @@ background: &quot;white&quot;;
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -538,14 +595,50 @@ background: &quot;white&quot;;
    <widget class="QPushButton" name="btnCadastrarCliente">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>380</y>
+      <x>510</x>
+      <y>250</y>
       <width>121</width>
       <height>41</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+
+	background-color:transparent;
+   	border-image:url(:/src/cad/now_btnCadNormal.png);
+	background:none;
+	border: none;
+	background-repeat: none;
+
+
+
+}
+
+
+QPushButton:focus:pressed
+{
+   	border-image: url(:/src/cad/now_btnCadClick.png);
+}
+
+
+QPushButton#quit_button
+{
+   	border-image:url(:/src/cad/now_btnCadNormal.png);
+}
+
+QPushButton:hover
+{
+   	border-image:url(:/src/cad/now_btnCadHOver.png);
+}
+
+QPushButton:hover#quit_button
+{
+   	border-image:url(:/src/cad/now_btnCadNormal.png);
+}</string>
+    </property>
     <property name="text">
-     <string>CADASTRAR</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="label_BGcAD">

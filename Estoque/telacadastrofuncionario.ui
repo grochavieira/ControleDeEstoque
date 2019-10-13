@@ -92,8 +92,44 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+
+	background-color:transparent;
+   	border-image:url(:/src/cad/now_btnCadNormal.png);
+	background:none;
+	border: none;
+	background-repeat: none;
+
+
+
+}
+
+
+QPushButton:focus:pressed
+{
+   	border-image: url(:/src/cad/now_btnCadClick.png);
+}
+
+
+QPushButton#quit_button
+{
+   	border-image:url(:/src/cad/now_btnCadNormal.png);
+}
+
+QPushButton:hover
+{
+   	border-image:url(:/src/cad/now_btnCadHOver.png);
+}
+
+QPushButton:hover#quit_button
+{
+   	border-image:url(:/src/cad/now_btnCadNormal.png);
+}</string>
+    </property>
     <property name="text">
-     <string>CADASTRAR</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtConfirmarSenhaFuncionario">
