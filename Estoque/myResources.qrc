@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>.gitignore</file>
+        <file>src/pngbBTN/ClieBtnActive.png</file>
+        <file>src/pngbBTN/ClieBtnClicked.png</file>
+        <file>src/pngbBTN/ClieBtnDisabled.png</file>
+        <file>src/pngbBTN/ClieBtnHover.png</file>
+        <file>src/pngbBTN/FuncBtnActive.png</file>
+        <file>src/pngbBTN/FuncBtnClicked.png</file>
+        <file>src/pngbBTN/FuncBtnDisabled.png</file>
+        <file>src/pngbBTN/FuncBtnHover.png</file>
+    </qresource>
+</RCC>

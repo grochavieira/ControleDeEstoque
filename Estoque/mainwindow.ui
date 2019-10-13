@@ -6,34 +6,58 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>400</width>
-    <height>200</height>
+    <width>800</width>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>400</width>
-    <height>300</height>
+    <width>800</width>
+    <height>639</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>800</width>
+     <height>600</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>800</width>
+     <height>600</height>
+    </size>
+   </property>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>411</width>
-      <height>291</height>
+      <width>800</width>
+      <height>600</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>800</width>
+      <height>600</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>800</width>
+      <height>600</height>
+     </size>
     </property>
     <property name="autoFillBackground">
      <bool>true</bool>
@@ -47,10 +71,10 @@
     <widget class="QPushButton" name="btnAreaDeEstoque">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>40</y>
-       <width>151</width>
-       <height>171</height>
+       <x>430</x>
+       <y>120</y>
+       <width>251</width>
+       <height>331</height>
       </rect>
      </property>
      <property name="font">
@@ -58,26 +82,65 @@
        <family>Fira Code</family>
       </font>
      </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+
+	background-color:transparent;
+   	border-image:url(:/src/alive/btn_normalGer.png) ;
+	background:none;
+	border: none;
+	background-repeat: none;
+
+
+
+}
+
+
+QPushButton:focus:pressed
+{
+   	border-image:url(:/src/alive/btn_clickGer.png) ;
+}
+
+
+QPushButton#quit_button
+{
+   	border-image:url(:/src/alive/btn_normalGer.png) ;
+}
+
+QPushButton:hover
+{
+   	border-image:url(:/src/alive/btn_hoverGer.png) ;
+}
+
+QPushButton:hover#quit_button
+{
+   	border-image:url(:/src/alive/btn_normalGer.png) ;
+}</string>
+     </property>
      <property name="text">
-      <string>ESTOQUE</string>
+      <string/>
      </property>
      <property name="iconSize">
       <size>
-       <width>150</width>
-       <height>150</height>
+       <width>271</width>
+       <height>335</height>
       </size>
      </property>
      <property name="flat">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="btnAreaDoCliente">
      <property name="geometry">
       <rect>
-       <x>200</x>
-       <y>40</y>
-       <width>161</width>
-       <height>171</height>
+       <x>150</x>
+       <y>120</y>
+       <width>251</width>
+       <height>331</height>
       </rect>
      </property>
      <property name="font">
@@ -86,12 +149,121 @@
       </font>
      </property>
      <property name="autoFillBackground">
-      <bool>true</bool>
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+
+	background-color:transparent;
+   	border-image:url(:/src/alive/btn_normalCust.png);
+	background:none;
+	border: none;
+	background-repeat: none;
+
+
+
+}
+
+
+QPushButton:focus:pressed
+{
+   	border-image: url(:/src/alive/btn_clickCust.png) ;
+}
+
+
+QPushButton#quit_button
+{
+   	border-image:url(:/src/alive/btn_normalCust.png);
+}
+
+QPushButton:hover
+{
+   	border-image: url(:/src/alive/btn_hoverCust.png) ;
+}
+
+QPushButton:hover#quit_button
+{
+   	border-image:url(:/src/alive/btn_normalCust.png);
+}</string>
      </property>
      <property name="text">
-      <string>CLIENTE</string>
+      <string/>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>271</width>
+       <height>335</height>
+      </size>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>-20</y>
+       <width>800</width>
+       <height>600</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>800</width>
+       <height>600</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>800</width>
+       <height>600</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="usefulResources.qrc">:/src/alive/btn-08.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>50</y>
+       <width>591</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Caviar Dreams</family>
+       <pointsize>30</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	color:white;
+}</string>
+     </property>
+     <property name="text">
+      <string>Bem Vindo(a) ao MainFrame</string>
+     </property>
+    </widget>
+    <zorder>label</zorder>
+    <zorder>btnAreaDeEstoque</zorder>
+    <zorder>btnAreaDoCliente</zorder>
+    <zorder>label_2</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -99,13 +271,15 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
-     <height>20</height>
+     <width>800</width>
+     <height>17</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="usefulResources.qrc"/>
+ </resources>
  <connections/>
 </ui>

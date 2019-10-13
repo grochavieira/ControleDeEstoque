@@ -71,7 +71,7 @@ void MainWindow::on_btnListaDeComprasTela_clicked()
 
 void MainWindow::on_btnAreaDeEstoque_clicked()
 {
-    close();
+    hide();
     telaLoginFuncionario telaLoginFuncionario;
     telaLoginFuncionario.exec();
 }

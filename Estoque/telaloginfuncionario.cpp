@@ -1,5 +1,7 @@
 #include "telaloginfuncionario.h"
 #include "ui_telaloginfuncionario.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 
 static LDDE<Funcionario> lddeFuncionarios;
 static Funcionario funcionario;
@@ -48,4 +50,11 @@ void telaLoginFuncionario::on_btnCadastrarNovoFuncionario_clicked()
     telaCadastroFuncionario telaCadastroFuncionario(this, &lddeFuncionarios);
     telaCadastroFuncionario.setModal(true);
     telaCadastroFuncionario.exec();
+}
+
+void telaLoginFuncionario::on_pushButton_clicked()
+{
+    close();
+    MainWindow mainW;
+    mainW.show();
 }
