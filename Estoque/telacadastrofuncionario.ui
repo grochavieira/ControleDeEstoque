@@ -6,103 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>534</width>
-    <height>279</height>
+    <width>700</width>
+    <height>500</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>700</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>700</width>
+    <height>500</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="lblConfirmarSenhaFuncionarioErro">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>180</y>
-     <width>200</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>200</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
-</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblTelefoneFuncionarioErro">
-   <property name="geometry">
-    <rect>
-     <x>230</x>
-     <y>80</y>
-     <width>200</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>200</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
-</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btnCadastrarFuncionario">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>220</y>
-     <width>121</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>CADASTRAR</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtNomeFuncionario">
-   <property name="geometry">
-    <rect>
-     <x>131</x>
-     <y>23</y>
-     <width>191</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="maxLength">
-    <number>30</number>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
@@ -133,35 +55,6 @@ background: &quot;white&quot;;
    </property>
    <property name="alignment">
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtSenhaFuncionario">
-   <property name="geometry">
-    <rect>
-     <x>131</x>
-     <y>142</y>
-     <width>121</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="maxLength">
-    <number>16</number>
-   </property>
-   <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtTelefoneFuncionario">
-   <property name="geometry">
-    <rect>
-     <x>131</x>
-     <y>79</y>
-     <width>91</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="inputMask">
-    <string>(00)00000-0000</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -212,179 +105,6 @@ background: &quot;white&quot;;
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="lblEmailFuncionarioErro">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>50</y>
-     <width>200</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>200</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
-</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblSenhaFuncionarioErro">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>150</y>
-     <width>200</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>200</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
-</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtConfirmarSenhaFuncionario">
-   <property name="geometry">
-    <rect>
-     <x>131</x>
-     <y>170</y>
-     <width>121</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="maxLength">
-    <number>16</number>
-   </property>
-   <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtUsuarioFuncionario">
-   <property name="geometry">
-    <rect>
-     <x>131</x>
-     <y>114</y>
-     <width>131</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="maxLength">
-    <number>20</number>
-   </property>
-   <property name="echoMode">
-    <enum>QLineEdit::Normal</enum>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblNomeFuncionarioErro">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>20</y>
-     <width>201</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>200</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
-</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblUsuarioFuncionarioErro">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>120</y>
-     <width>200</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>200</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
-</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtEmailFuncionario">
-   <property name="geometry">
-    <rect>
-     <x>131</x>
-     <y>51</y>
-     <width>191</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="maxLength">
-    <number>30</number>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
@@ -401,6 +121,370 @@ background: &quot;white&quot;;
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>700</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>700</width>
+     <height>500</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>700</width>
+     <height>500</height>
+    </size>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="label_BGcad">
+    <property name="geometry">
+     <rect>
+      <x>-30</x>
+      <y>0</y>
+      <width>700</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>700</width>
+      <height>500</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>700</width>
+      <height>500</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="usefulResources.qrc">:/src/cad/now_cadFunc.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnCadastrarFuncionario">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>410</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CADASTRAR</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtConfirmarSenhaFuncionario">
+    <property name="geometry">
+     <rect>
+      <x>198</x>
+      <y>376</y>
+      <width>109</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maxLength">
+     <number>16</number>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblConfirmarSenhaFuncionarioErro">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>380</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
+background: &quot;white&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtSenhaFuncionario">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>327</y>
+      <width>109</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maxLength">
+     <number>16</number>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtUsuarioFuncionario">
+    <property name="geometry">
+     <rect>
+      <x>156</x>
+      <y>277</y>
+      <width>149</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maxLength">
+     <number>20</number>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Normal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblSenhaFuncionarioErro">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>330</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
+background: &quot;white&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblUsuarioFuncionarioErro">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>280</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
+background: &quot;white&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtTelefoneFuncionario">
+    <property name="geometry">
+     <rect>
+      <x>165</x>
+      <y>228</y>
+      <width>141</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="inputMask">
+     <string>(00)00000-0000</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblTelefoneFuncionarioErro">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>230</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
+background: &quot;white&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtEmailFuncionario">
+    <property name="geometry">
+     <rect>
+      <x>128</x>
+      <y>178</y>
+      <width>178</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maxLength">
+     <number>30</number>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtNomeFuncionario">
+    <property name="geometry">
+     <rect>
+      <x>128</x>
+      <y>128</y>
+      <width>177</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maxLength">
+     <number>30</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblNomeFuncionarioErro">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>131</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
+background: &quot;white&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblEmailFuncionarioErro">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>180</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
+background: &quot;white&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <zorder>frame</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_5</zorder>
+  <zorder>label</zorder>
+  <zorder>label_7</zorder>
+  <zorder>label_6</zorder>
+  <zorder>label_4</zorder>
  </widget>
  <tabstops>
   <tabstop>txtNomeFuncionario</tabstop>
@@ -411,6 +495,8 @@ background: &quot;white&quot;;
   <tabstop>txtConfirmarSenhaFuncionario</tabstop>
   <tabstop>btnCadastrarFuncionario</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="usefulResources.qrc"/>
+ </resources>
  <connections/>
 </ui>
