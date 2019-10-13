@@ -6,541 +6,641 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>546</width>
-    <height>335</height>
+    <width>700</width>
+    <height>500</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>700</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>700</width>
+    <height>500</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="btnCadastrarCliente">
+  <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>270</y>
-     <width>121</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>CADASTRAR</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>20</y>
-     <width>31</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Nome:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>93</x>
-     <y>50</y>
-     <width>31</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Email:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>80</y>
-     <width>46</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Telefone:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>110</y>
-     <width>23</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>CEP:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>200</y>
-     <width>34</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Senha:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_8">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>140</y>
-     <width>110</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Numero da Residência:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>170</y>
-     <width>40</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Usuário:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>220</y>
-     <width>84</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Confirmar Senha:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtTelefoneCliente">
-   <property name="geometry">
-    <rect>
-     <x>141</x>
-     <y>79</y>
-     <width>91</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="inputMask">
-    <string>(00)00000-0000</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtCepCliente">
-   <property name="geometry">
-    <rect>
-     <x>141</x>
-     <y>107</y>
-     <width>71</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="inputMask">
-    <string>00000-000</string>
-   </property>
-   <property name="maxLength">
-    <number>9</number>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtEmailCliente">
-   <property name="geometry">
-    <rect>
-     <x>141</x>
-     <y>51</y>
-     <width>191</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="maxLength">
-    <number>30</number>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtNomeCliente">
-   <property name="geometry">
-    <rect>
-     <x>141</x>
-     <y>23</y>
-     <width>191</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="maxLength">
-    <number>30</number>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtUsuarioCliente">
-   <property name="geometry">
-    <rect>
-     <x>141</x>
-     <y>164</y>
-     <width>131</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="maxLength">
-    <number>20</number>
-   </property>
-   <property name="echoMode">
-    <enum>QLineEdit::Normal</enum>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtSenhaCliente">
-   <property name="geometry">
-    <rect>
-     <x>141</x>
-     <y>192</y>
-     <width>121</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="maxLength">
-    <number>16</number>
-   </property>
-   <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="txtConfirmarSenhaCliente">
-   <property name="geometry">
-    <rect>
-     <x>141</x>
-     <y>220</y>
-     <width>121</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="maxLength">
-    <number>16</number>
-   </property>
-   <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
-   </property>
-  </widget>
-  <widget class="QSpinBox" name="spnNumEnderecoCliente">
-   <property name="geometry">
-    <rect>
-     <x>141</x>
-     <y>135</y>
-     <width>49</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="minimum">
-    <number>1</number>
-   </property>
-   <property name="maximum">
-    <number>9999</number>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblNomeClienteErro">
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>20</y>
-     <width>201</width>
-     <height>16</height>
+     <x>0</x>
+     <y>0</y>
+     <width>700</width>
+     <height>500</height>
     </rect>
    </property>
    <property name="minimumSize">
     <size>
-     <width>200</width>
-     <height>0</height>
+     <width>700</width>
+     <height>500</height>
     </size>
    </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
-</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblTelefoneClienteErro">
-   <property name="geometry">
-    <rect>
-     <x>240</x>
-     <y>80</y>
-     <width>200</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
+   <property name="maximumSize">
     <size>
-     <width>200</width>
-     <height>0</height>
+     <width>700</width>
+     <height>500</height>
     </size>
    </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
    </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
    </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
+   <widget class="QLabel" name="lblUsuarioClienteErro">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>344</y>
+      <width>120</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
 background: &quot;white&quot;;
 </string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCepClienteErro">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>110</y>
-     <width>200</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>200</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtSenhaCliente">
+    <property name="geometry">
+     <rect>
+      <x>202</x>
+      <y>384</y>
+      <width>107</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maxLength">
+     <number>16</number>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>300</y>
+      <width>110</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Numero da Residência:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblNumEnderecoClienteErro">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>300</y>
+      <width>120</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
 background: &quot;white&quot;;
 </string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblEmailClienteErro">
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>50</y>
-     <width>200</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>200</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spnNumEnderecoCliente">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>297</y>
+      <width>80</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>9999</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>300</y>
+      <width>84</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Confirmar Senha:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtEmailCliente">
+    <property name="geometry">
+     <rect>
+      <x>132</x>
+      <y>170</y>
+      <width>175</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maxLength">
+     <number>30</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>300</y>
+      <width>40</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Usuário:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblConfirmarSenhaClienteErro">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>430</y>
+      <width>120</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
 background: &quot;white&quot;;
 </string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblNumEnderecoClienteErro">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>140</y>
-     <width>200</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>200</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblSenhaClienteErro">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>388</y>
+      <width>120</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
 background: &quot;white&quot;;
 </string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblUsuarioClienteErro">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>170</y>
-     <width>200</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>200</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblCepClienteErro">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>260</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
 background: &quot;white&quot;;
 </string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblSenhaClienteErro">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>200</y>
-     <width>200</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>200</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>300</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Email:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblNomeClienteErro">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>130</y>
+      <width>100</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>100</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
 background: &quot;white&quot;;
 </string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblConfirmarSenhaClienteErro">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>230</y>
-     <width>200</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>200</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-    </font>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: &quot;red&quot;;
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>390</y>
+      <width>46</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Telefone:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtTelefoneCliente">
+    <property name="geometry">
+     <rect>
+      <x>169</x>
+      <y>213</y>
+      <width>137</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="inputMask">
+     <string>(00)00000-0000</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblTelefoneClienteErro">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>214</y>
+      <width>120</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
 background: &quot;white&quot;;
 </string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>300</y>
+      <width>23</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CEP:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtNomeCliente">
+    <property name="geometry">
+     <rect>
+      <x>132</x>
+      <y>127</y>
+      <width>176</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maxLength">
+     <number>30</number>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtUsuarioCliente">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>340</y>
+      <width>146</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="maxLength">
+     <number>20</number>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Normal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>300</y>
+      <width>34</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Senha:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>300</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Nome:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtConfirmarSenhaCliente">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>425</y>
+      <width>109</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maxLength">
+     <number>16</number>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblEmailClienteErro">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>172</y>
+      <width>100</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>100</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>100</width>
+      <height>16</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;red&quot;;
+background: &quot;white&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtCepCliente">
+    <property name="geometry">
+     <rect>
+      <x>235</x>
+      <y>255</y>
+      <width>73</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="inputMask">
+     <string>00000-000</string>
+    </property>
+    <property name="maxLength">
+     <number>9</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnCadastrarCliente">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>380</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CADASTRAR</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_BGcAD">
+    <property name="geometry">
+     <rect>
+      <x>-30</x>
+      <y>0</y>
+      <width>700</width>
+      <height>500</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>700</width>
+      <height>500</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>700</width>
+      <height>500</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="usefulResources.qrc">:/src/cad/now_CadClie.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>label_BGcAD</zorder>
+   <zorder>label_8</zorder>
+   <zorder>label_7</zorder>
+   <zorder>label_6</zorder>
+   <zorder>label_5</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_3</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label</zorder>
+   <zorder>lblUsuarioClienteErro</zorder>
+   <zorder>txtSenhaCliente</zorder>
+   <zorder>lblNumEnderecoClienteErro</zorder>
+   <zorder>spnNumEnderecoCliente</zorder>
+   <zorder>txtEmailCliente</zorder>
+   <zorder>lblConfirmarSenhaClienteErro</zorder>
+   <zorder>lblSenhaClienteErro</zorder>
+   <zorder>lblNomeClienteErro</zorder>
+   <zorder>txtTelefoneCliente</zorder>
+   <zorder>lblTelefoneClienteErro</zorder>
+   <zorder>txtNomeCliente</zorder>
+   <zorder>txtUsuarioCliente</zorder>
+   <zorder>txtConfirmarSenhaCliente</zorder>
+   <zorder>lblEmailClienteErro</zorder>
+   <zorder>txtCepCliente</zorder>
+   <zorder>btnCadastrarCliente</zorder>
+   <zorder>lblCepClienteErro</zorder>
   </widget>
  </widget>
- <tabstops>
-  <tabstop>txtNomeCliente</tabstop>
-  <tabstop>txtEmailCliente</tabstop>
-  <tabstop>txtTelefoneCliente</tabstop>
-  <tabstop>txtCepCliente</tabstop>
-  <tabstop>spnNumEnderecoCliente</tabstop>
-  <tabstop>txtUsuarioCliente</tabstop>
-  <tabstop>txtSenhaCliente</tabstop>
-  <tabstop>txtConfirmarSenhaCliente</tabstop>
-  <tabstop>btnCadastrarCliente</tabstop>
- </tabstops>
- <resources/>
+ <resources>
+  <include location="usefulResources.qrc"/>
+ </resources>
  <connections/>
 </ui>

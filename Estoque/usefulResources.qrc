@@ -9,5 +9,10 @@
         <file>src/alive/new_clickCust.png</file>
         <file>src/alive/new_hoverCust.png</file>
         <file>src/alive/new_normalCust.png</file>
+        <file>src/cad/now_btnCadClick.png</file>
+        <file>src/cad/now_btnCadHOver.png</file>
+        <file>src/cad/now_btnCadNormal.png</file>
+        <file>src/cad/now_CadClie.png</file>
+        <file>src/cad/now_cadFunc.png</file>
     </qresource>
 </RCC>
