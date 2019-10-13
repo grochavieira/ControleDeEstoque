@@ -25,102 +25,6 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>80</y>
-     <width>46</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Telefone:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_5">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>150</y>
-     <width>34</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Senha:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>20</y>
-     <width>31</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Nome:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>120</y>
-     <width>40</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Usuário:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>170</y>
-     <width>84</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Confirmar Senha:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>83</x>
-     <y>50</y>
-     <width>31</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Email:</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-   </property>
-  </widget>
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
@@ -182,8 +86,8 @@
    <widget class="QPushButton" name="btnCadastrarFuncionario">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>410</y>
+      <x>500</x>
+      <y>260</y>
       <width>121</width>
       <height>41</height>
      </rect>
@@ -201,6 +105,19 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
+    </property>
     <property name="maxLength">
      <number>16</number>
     </property>
@@ -213,27 +130,40 @@
      <rect>
       <x>320</x>
       <y>380</y>
-      <width>131</width>
+      <width>150</width>
       <height>16</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>100</width>
+      <width>150</width>
       <height>16</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>150</width>
+      <height>16777215</height>
      </size>
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -248,6 +178,19 @@ background: &quot;white&quot;;
       <width>109</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
     </property>
     <property name="maxLength">
      <number>16</number>
@@ -271,6 +214,19 @@ background: &quot;white&quot;;
       <height>0</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
+    </property>
     <property name="maxLength">
      <number>20</number>
     </property>
@@ -283,27 +239,40 @@ background: &quot;white&quot;;
      <rect>
       <x>320</x>
       <y>330</y>
-      <width>80</width>
+      <width>150</width>
       <height>16</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>80</width>
+      <width>150</width>
       <height>16</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>150</width>
+      <height>16777215</height>
      </size>
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -315,27 +284,40 @@ background: &quot;white&quot;;
      <rect>
       <x>320</x>
       <y>280</y>
-      <width>80</width>
+      <width>150</width>
       <height>16</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>80</width>
+      <width>150</width>
       <height>16</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>150</width>
+      <height>16777215</height>
      </size>
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -351,6 +333,19 @@ background: &quot;white&quot;;
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
+    </property>
     <property name="inputMask">
      <string>(00)00000-0000</string>
     </property>
@@ -360,33 +355,40 @@ background: &quot;white&quot;;
      <rect>
       <x>320</x>
       <y>230</y>
-      <width>80</width>
+      <width>180</width>
       <height>16</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>80</width>
+      <width>180</width>
       <height>16</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>80</width>
+      <width>150</width>
       <height>16</height>
      </size>
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -402,6 +404,19 @@ background: &quot;white&quot;;
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
+    </property>
     <property name="maxLength">
      <number>30</number>
     </property>
@@ -415,6 +430,19 @@ background: &quot;white&quot;;
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
+    </property>
     <property name="maxLength">
      <number>30</number>
     </property>
@@ -424,7 +452,7 @@ background: &quot;white&quot;;
      <rect>
       <x>320</x>
       <y>131</y>
-      <width>80</width>
+      <width>150</width>
       <height>16</height>
      </rect>
     </property>
@@ -436,15 +464,22 @@ background: &quot;white&quot;;
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -456,7 +491,7 @@ background: &quot;white&quot;;
      <rect>
       <x>320</x>
       <y>180</y>
-      <width>80</width>
+      <width>150</width>
       <height>16</height>
      </rect>
     </property>
@@ -468,15 +503,22 @@ background: &quot;white&quot;;
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI</family>
+      <family>Caviar Dreams</family>
+      <pointsize>10</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
      </font>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+     <string notr="true">QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 10pt &quot;Caviar Dreams&quot;;
+}
 </string>
     </property>
     <property name="text">
@@ -484,13 +526,6 @@ background: &quot;white&quot;;
     </property>
    </widget>
   </widget>
-  <zorder>frame</zorder>
-  <zorder>label_3</zorder>
-  <zorder>label_5</zorder>
-  <zorder>label</zorder>
-  <zorder>label_7</zorder>
-  <zorder>label_6</zorder>
-  <zorder>label_4</zorder>
  </widget>
  <tabstops>
   <tabstop>txtNomeFuncionario</tabstop>

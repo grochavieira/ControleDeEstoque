@@ -80,6 +80,12 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit{
 	background-color:transparent;
@@ -96,6 +102,12 @@
       <width>201</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>14</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit{
@@ -116,6 +128,12 @@
       <width>201</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>14</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit{

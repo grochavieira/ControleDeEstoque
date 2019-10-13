@@ -110,6 +110,7 @@
     </property>
     <property name="font">
      <font>
+      <family>Caviar Dreams</family>
       <pointsize>13</pointsize>
      </font>
     </property>
@@ -163,6 +164,11 @@
       <width>321</width>
       <height>501</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+     </font>
     </property>
     <property name="text">
      <string/>

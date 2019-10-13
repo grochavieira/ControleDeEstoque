@@ -93,27 +93,24 @@ background: &quot;white&quot;;
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
+    </property>
     <property name="maxLength">
      <number>16</number>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Password</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>300</y>
-      <width>110</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Numero da Residência:</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="lblNumEnderecoClienteErro">
@@ -157,27 +154,16 @@ background: &quot;white&quot;;
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+     </font>
+    </property>
     <property name="minimum">
      <number>1</number>
     </property>
     <property name="maximum">
      <number>9999</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>300</y>
-      <width>84</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Confirmar Senha:</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLineEdit" name="txtEmailCliente">
@@ -189,24 +175,21 @@ background: &quot;white&quot;;
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
+    </property>
     <property name="maxLength">
      <number>30</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_7">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>300</y>
-      <width>40</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Usuário:</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="lblConfirmarSenhaClienteErro">
@@ -305,22 +288,6 @@ background: &quot;white&quot;;
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>300</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Email:</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="lblNomeClienteErro">
     <property name="geometry">
      <rect>
@@ -359,22 +326,6 @@ background: &quot;white&quot;;
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>390</y>
-      <width>46</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Telefone:</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="txtTelefoneCliente">
     <property name="geometry">
      <rect>
@@ -383,6 +334,19 @@ background: &quot;white&quot;;
       <width>137</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
     </property>
     <property name="inputMask">
      <string>(00)00000-0000</string>
@@ -420,22 +384,6 @@ background: &quot;white&quot;;
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>300</y>
-      <width>23</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>CEP:</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="txtNomeCliente">
     <property name="geometry">
      <rect>
@@ -444,6 +392,19 @@ background: &quot;white&quot;;
       <width>176</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
     </property>
     <property name="maxLength">
      <number>30</number>
@@ -458,6 +419,19 @@ background: &quot;white&quot;;
       <height>23</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
+    </property>
     <property name="maxLength">
      <number>20</number>
     </property>
@@ -465,46 +439,27 @@ background: &quot;white&quot;;
      <enum>QLineEdit::Normal</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>300</y>
-      <width>34</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Senha:</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>300</y>
-      <width>31</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Nome:</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="txtConfirmarSenhaCliente">
     <property name="geometry">
      <rect>
       <x>200</x>
-      <y>425</y>
+      <y>426</y>
       <width>109</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
     </property>
     <property name="maxLength">
      <number>16</number>
@@ -560,6 +515,19 @@ background: &quot;white&quot;;
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit{
+	background-color:transparent;
+	color:white;
+	border:none;
+}</string>
+    </property>
     <property name="inputMask">
      <string>00000-000</string>
     </property>
@@ -612,14 +580,6 @@ background: &quot;white&quot;;
     </property>
    </widget>
    <zorder>label_BGcAD</zorder>
-   <zorder>label_8</zorder>
-   <zorder>label_7</zorder>
-   <zorder>label_6</zorder>
-   <zorder>label_5</zorder>
-   <zorder>label_4</zorder>
-   <zorder>label_3</zorder>
-   <zorder>label_2</zorder>
-   <zorder>label</zorder>
    <zorder>lblUsuarioClienteErro</zorder>
    <zorder>txtSenhaCliente</zorder>
    <zorder>lblNumEnderecoClienteErro</zorder>
