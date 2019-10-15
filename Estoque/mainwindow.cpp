@@ -86,3 +86,19 @@ void MainWindow::on_btnAreaDoCliente_clicked()
 
 
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+    this->setVisible(false);
+    TelaGerenciaEstoque TelaGerenciaEstoque;
+    TelaGerenciaEstoque.exec();
+    this->setVisible(true);
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    this->setVisible(false);
+    TelaPedidosCliente TelaPedidos;
+    TelaPedidos.exec();
+    this->setVisible(true);
+}
