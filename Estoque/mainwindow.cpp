@@ -6,9 +6,14 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
+
     ui->setupUi(this);
     Conexao conexao;
     conexao.abrir();
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -101,4 +106,8 @@ void MainWindow::on_pushButton_2_clicked()
     TelaPedidosCliente TelaPedidos;
     TelaPedidos.exec();
     this->setVisible(true);
+}
+
+void MainWindow::on_iconDisplay_clicked()
+{
 }

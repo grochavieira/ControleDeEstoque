@@ -6,6 +6,9 @@
 #include "telalogincliente.h"
 #include <QMainWindow>
 #include <QFileInfo>
+#include <QSystemTrayIcon> //.h
+
+class QComboBox; //.h
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -49,6 +52,8 @@ private slots:
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
+
+    void on_iconDisplay_clicked();
 
 private:
     Ui::MainWindow *ui;

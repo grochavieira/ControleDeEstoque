@@ -37,7 +37,7 @@
    <property name="font">
     <font>
      <family>Caviar Dreams</family>
-     <pointsize>16</pointsize>
+     <pointsize>13</pointsize>
     </font>
    </property>
    <property name="focusPolicy">
@@ -78,8 +78,8 @@
     <widget class="QPushButton" name="btnCadastrarProduto">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>370</y>
+       <x>150</x>
+       <y>340</y>
        <width>201</width>
        <height>81</height>
       </rect>
@@ -139,9 +139,9 @@
     <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
-       <x>127</x>
-       <y>220</y>
-       <width>141</width>
+       <x>117</x>
+       <y>217</y>
+       <width>151</width>
        <height>33</height>
       </rect>
      </property>
@@ -168,7 +168,7 @@
      <property name="geometry">
       <rect>
        <x>280</x>
-       <y>190</y>
+       <y>193</y>
        <width>60</width>
        <height>23</height>
       </rect>
@@ -201,7 +201,7 @@
      <property name="geometry">
       <rect>
        <x>120</x>
-       <y>190</y>
+       <y>187</y>
        <width>141</width>
        <height>31</height>
       </rect>
@@ -228,9 +228,9 @@
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
-       <x>117</x>
-       <y>250</y>
-       <width>151</width>
+       <x>107</x>
+       <y>251</y>
+       <width>161</width>
        <height>27</height>
       </rect>
      </property>
@@ -256,7 +256,7 @@
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
-       <x>127</x>
+       <x>130</x>
        <y>160</y>
        <width>131</width>
        <height>21</height>
@@ -285,7 +285,7 @@
      <property name="geometry">
       <rect>
        <x>280</x>
-       <y>220</y>
+       <y>223</y>
        <width>60</width>
        <height>23</height>
       </rect>
@@ -345,8 +345,8 @@
     <widget class="QPushButton" name="btnEncontrarId">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>310</y>
+       <x>150</x>
+       <y>300</y>
        <width>181</width>
        <height>21</height>
       </rect>
@@ -382,7 +382,7 @@
      <property name="geometry">
       <rect>
        <x>280</x>
-       <y>250</y>
+       <y>254</y>
        <width>60</width>
        <height>23</height>
       </rect>
@@ -609,7 +609,7 @@ background: &quot;white&quot;;
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>209</x>
+       <x>210</x>
        <y>100</y>
        <width>51</width>
        <height>21</height>
@@ -659,7 +659,26 @@ background: &quot;white&quot;;
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QLabel" name="label_10">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>0</y>
+       <width>661</width>
+       <height>471</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel{
+	background-color: rgba(0,0,0,60);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <zorder>label_cadBg</zorder>
+    <zorder>label_10</zorder>
     <zorder>btnCadastrarProduto</zorder>
     <zorder>spnIdProduto</zorder>
     <zorder>label_6</zorder>
@@ -693,7 +712,7 @@ background: &quot;white&quot;;
      </property>
      <property name="font">
       <font>
-       <family>Segoe UI</family>
+       <family>Caviar Dreams</family>
        <pointsize>12</pointsize>
       </font>
      </property>
@@ -712,7 +731,7 @@ background: &quot;white&quot;;
      </property>
      <property name="font">
       <font>
-       <family>Segoe UI</family>
+       <family>Caviar Dreams</family>
        <pointsize>12</pointsize>
       </font>
      </property>
@@ -731,7 +750,7 @@ background: &quot;white&quot;;
      </property>
      <property name="font">
       <font>
-       <family>Segoe UI</family>
+       <family>Caviar Dreams</family>
        <pointsize>12</pointsize>
       </font>
      </property>
@@ -750,7 +769,7 @@ background: &quot;white&quot;;
      </property>
      <property name="font">
       <font>
-       <family>Segoe UI</family>
+       <family>Caviar Dreams</family>
        <pointsize>12</pointsize>
       </font>
      </property>
@@ -784,7 +803,7 @@ background: &quot;white&quot;;
      </property>
      <property name="font">
       <font>
-       <family>Segoe UI</family>
+       <family>Caviar Dreams</family>
        <pointsize>15</pointsize>
       </font>
      </property>
