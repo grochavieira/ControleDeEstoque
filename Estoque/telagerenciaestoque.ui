@@ -102,10 +102,10 @@
      <property name="styleSheet">
       <string notr="true">QPushButton{
 	background-color:rgba(0,0,0,60);
-	color:grey;
+	color:white;
 	border-style: solid;
 	border-width:3px;
-	border-color: grey;
+	border-color: white;
 	border-radius: 6px;
 
 }
@@ -141,6 +141,7 @@ QPushButton::hover{
      <property name="font">
       <font>
        <family>Segoe UI</family>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="readOnly">
@@ -172,6 +173,8 @@ QPushButton::hover{
       <font>
        <family>Caviar Dreams</family>
        <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
       </font>
      </property>
      <property name="text">
@@ -205,6 +208,7 @@ QPushButton::hover{
      <property name="font">
       <font>
        <family>Segoe UI</family>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="minimum">
@@ -233,6 +237,8 @@ QPushButton::hover{
       <font>
        <family>Caviar Dreams</family>
        <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
       </font>
      </property>
      <property name="text">
@@ -245,9 +251,9 @@ QPushButton::hover{
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
-       <x>107</x>
+       <x>77</x>
        <y>251</y>
-       <width>161</width>
+       <width>191</width>
        <height>27</height>
       </rect>
      </property>
@@ -261,6 +267,8 @@ QPushButton::hover{
       <font>
        <family>Caviar Dreams</family>
        <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
       </font>
      </property>
      <property name="text">
@@ -289,6 +297,8 @@ QPushButton::hover{
       <font>
        <family>Caviar Dreams</family>
        <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
       </font>
      </property>
      <property name="text">
@@ -322,6 +332,7 @@ QPushButton::hover{
      <property name="font">
       <font>
        <family>Segoe UI</family>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="minimum">
@@ -350,6 +361,8 @@ QPushButton::hover{
       <font>
        <family>Caviar Dreams</family>
        <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
       </font>
      </property>
      <property name="text">
@@ -394,10 +407,10 @@ QPushButton::hover{
      <property name="styleSheet">
       <string notr="true">QPushButton{
 	background-color:rgba(0,0,0,60);
-	color:grey;
+	color:white;
 	border-style: solid;
 	border-width:3px;
-	border-color: grey;
+	border-color: white;
 	border-radius: 6px;
 
 }
@@ -439,6 +452,7 @@ QPushButton::hover{
      <property name="font">
       <font>
        <family>Segoe UI</family>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="minimum">
@@ -475,6 +489,7 @@ QPushButton::hover{
      <property name="font">
       <font>
        <family>Segoe UI</family>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="maximum">
@@ -511,6 +526,7 @@ QPushButton::hover{
      <property name="font">
       <font>
        <family>Segoe UI</family>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="inputMask">
@@ -552,7 +568,7 @@ QPushButton::hover{
      </property>
      <property name="styleSheet">
       <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+background: &quot;transparent&quot;;
 
 
 </string>
@@ -585,7 +601,7 @@ background: &quot;white&quot;;
      <property name="font">
       <font>
        <family>Segoe UI</family>
-       <pointsize>16</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="autoFillBackground">
@@ -593,7 +609,10 @@ background: &quot;white&quot;;
      </property>
      <property name="styleSheet">
       <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+background: &quot;transparent&quot;;
+
+
+
 
 
 </string>
@@ -626,7 +645,7 @@ background: &quot;white&quot;;
      <property name="font">
       <font>
        <family>Segoe UI</family>
-       <pointsize>16</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="autoFillBackground">
@@ -634,7 +653,7 @@ background: &quot;white&quot;;
      </property>
      <property name="styleSheet">
       <string notr="true">color: &quot;red&quot;;
-background: &quot;white&quot;;
+background: &quot;transparent&quot;;
 
 
 </string>
@@ -662,6 +681,8 @@ background: &quot;white&quot;;
       <font>
        <family>Caviar Dreams</family>
        <pointsize>15</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
       </font>
      </property>
      <property name="text">
@@ -707,7 +728,7 @@ background: &quot;white&quot;;
      </property>
      <property name="styleSheet">
       <string notr="true">QLabel{
-	background-color: rgba(0,0,0,60);
+	background-color: rgba(0,0,0,70);
 }</string>
      </property>
      <property name="text">
@@ -756,15 +777,15 @@ background: &quot;white&quot;;
      <property name="styleSheet">
       <string notr="true">QPushButton{
 	background-color:rgba(0,0,0,60);
-	color:grey;
+	color:white;
 	border-style: solid;
 	border-width:3px;
-	border-color: grey;
+	border-color: white;
 	border-radius: 6px;
 
 }
 QPushButton::hover{
-	background-color:rgba(255,0,0,60);
+	background-color:rgba(255,255,255,60);
 	color:black;
 	border-style: solid;
 	border-width:4px;
@@ -789,16 +810,16 @@ QPushButton::hover{
      <property name="font">
       <font>
        <family>Caviar Dreams</family>
-       <pointsize>12</pointsize>
+       <pointsize>9</pointsize>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
 	background-color:rgba(0,0,0,60);
-	color:grey;
+	color:white;
 	border-style: solid;
 	border-width:3px;
-	border-color: grey;
+	border-color: white;
 	border-radius: 6px;
 
 }
@@ -828,16 +849,16 @@ QPushButton::hover{
      <property name="font">
       <font>
        <family>Caviar Dreams</family>
-       <pointsize>12</pointsize>
+       <pointsize>9</pointsize>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
 	background-color:rgba(0,0,0,60);
-	color:grey;
+	color:white;
 	border-style: solid;
 	border-width:3px;
-	border-color: grey;
+	border-color: white;
 	border-radius: 6px;
 
 }
@@ -867,7 +888,7 @@ QPushButton::hover{
      <property name="font">
       <font>
        <family>Caviar Dreams</family>
-       <pointsize>12</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="placeholderText">
@@ -901,7 +922,7 @@ QPushButton::hover{
      <property name="font">
       <font>
        <family>Caviar Dreams</family>
-       <pointsize>15</pointsize>
+       <pointsize>12</pointsize>
       </font>
      </property>
      <property name="text">

@@ -30,13 +30,14 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>711</width>
-     <height>471</height>
+     <width>771</width>
+     <height>541</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <family>Caviar Dreams</family>
+     <pointsize>13</pointsize>
     </font>
    </property>
    <property name="currentIndex">
@@ -51,7 +52,7 @@
       <rect>
        <x>10</x>
        <y>40</y>
-       <width>691</width>
+       <width>751</width>
        <height>301</height>
       </rect>
      </property>
@@ -59,23 +60,10 @@
     <widget class="QPushButton" name="buttonAdiciona">
      <property name="geometry">
       <rect>
-       <x>110</x>
+       <x>90</x>
        <y>370</y>
-       <width>161</width>
+       <width>181</width>
        <height>41</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Adicionar Produto a Compras</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="buttonListar">
-     <property name="geometry">
-      <rect>
-       <x>570</x>
-       <y>10</y>
-       <width>121</width>
-       <height>21</height>
       </rect>
      </property>
      <property name="font">
@@ -86,16 +74,55 @@
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-	background-color:transparent;
-	color:grey;
+	background-color:rgba(0,0,0,60);
+	color:white;
 	border-style: solid;
 	border-width:3px;
-	border-color: grey;
+	border-color: white;
 	border-radius: 6px;
 
 }
 QPushButton::hover{
-	background-color:transparent;
+	background-color:rgba(255,255,255,60);
+	color:black;
+	border-style: solid;
+	border-width:4px;
+	border-color: black;
+	border-radius: 6px;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Adicionar Produto a Compras</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="buttonListar">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>10</y>
+       <width>151</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Caviar Dreams</family>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color:rgba(0,0,0,60);
+	color:white;
+	border-style: solid;
+	border-width:3px;
+	border-color: white;
+	border-radius: 6px;
+
+}
+QPushButton::hover{
+	background-color:rgba(255,255,255,60);
 	color:black;
 	border-style: solid;
 	border-width:4px;
@@ -111,30 +138,30 @@ QPushButton::hover{
     <widget class="QPushButton" name="buttonPesquisar">
      <property name="geometry">
       <rect>
-       <x>420</x>
+       <x>440</x>
        <y>10</y>
-       <width>141</width>
+       <width>121</width>
        <height>21</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <family>Caviar Dreams</family>
-       <pointsize>12</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-	background-color:transparent;
-	color:grey;
+	background-color:rgba(0,0,0,60);
+	color:white;
 	border-style: solid;
 	border-width:3px;
-	border-color: grey;
+	border-color: white;
 	border-radius: 6px;
 
 }
 QPushButton::hover{
-	background-color:transparent;
+	background-color:rgba(255,255,255,60);
 	color:black;
 	border-style: solid;
 	border-width:4px;
@@ -150,16 +177,16 @@ QPushButton::hover{
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>10</x>
        <y>10</y>
-       <width>101</width>
+       <width>111</width>
        <height>21</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <family>Caviar Dreams</family>
-       <pointsize>11</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="text">
@@ -169,7 +196,7 @@ QPushButton::hover{
     <widget class="QLineEdit" name="txtPesquisar">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>140</x>
        <y>10</y>
        <width>291</width>
        <height>20</height>
@@ -196,6 +223,7 @@ QPushButton::hover{
      </property>
      <property name="font">
       <font>
+       <family>Caviar Dreams</family>
        <pointsize>14</pointsize>
       </font>
      </property>
@@ -205,8 +233,8 @@ QPushButton::hover{
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>711</width>
-       <height>451</height>
+       <width>781</width>
+       <height>521</height>
       </rect>
      </property>
      <property name="text">
@@ -248,18 +276,24 @@ QPushButton::hover{
        <height>51</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Caviar Dreams</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-	background-color:transparent;
-	color:grey;
+	background-color:rgba(0,0,0,60);
+	color:white;
 	border-style: solid;
 	border-width:3px;
-	border-color: grey;
+	border-color: white;
 	border-radius: 6px;
 
 }
 QPushButton::hover{
-	background-color:transparent;
+	background-color:rgba(255,255,255,60);
 	color:black;
 	border-style: solid;
 	border-width:4px;
@@ -284,21 +318,21 @@ QPushButton::hover{
      <property name="font">
       <font>
        <family>Caviar Dreams</family>
-       <pointsize>12</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-	background-color:transparent;
-	color:grey;
+	background-color:rgba(0,0,0,60);
+	color:white;
 	border-style: solid;
 	border-width:3px;
-	border-color: grey;
+	border-color: white;
 	border-radius: 6px;
 
 }
 QPushButton::hover{
-	background-color:transparent;
+	background-color:rgba(255,255,255,60);
 	color:black;
 	border-style: solid;
 	border-width:4px;
@@ -316,8 +350,8 @@ QPushButton::hover{
       <rect>
        <x>-1</x>
        <y>-1</y>
-       <width>711</width>
-       <height>451</height>
+       <width>781</width>
+       <height>521</height>
       </rect>
      </property>
      <property name="text">
