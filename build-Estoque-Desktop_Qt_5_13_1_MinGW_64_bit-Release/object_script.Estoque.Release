@@ -1,0 +1,17 @@
+release/main.o
+release/mainwindow.o
+release/telacadastrocliente.o
+release/telacadastrofuncionario.o
+release/telagerenciaestoque.o
+release/telalogincliente.o
+release/telaloginfuncionario.o
+release/telapedidoscliente.o
+release/qrc_myResources.o
+release/qrc_usefulResources.o
+release/moc_mainwindow.o
+release/moc_telacadastrocliente.o
+release/moc_telacadastrofuncionario.o
+release/moc_telagerenciaestoque.o
+release/moc_telalogincliente.o
+release/moc_telaloginfuncionario.o
+release/moc_telapedidoscliente.o
