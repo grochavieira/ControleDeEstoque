@@ -94,39 +94,13 @@
 }</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="txtSenhaCliente_2">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>277</y>
-      <width>201</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Caviar Dreams</family>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLineEdit{
-	background-color:transparent;
-	color:white;
-	border:none;
-}</string>
-    </property>
-    <property name="echoMode">
-     <enum>QLineEdit::Password</enum>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="txtSenhaCliente">
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>330</y>
+      <y>278</y>
       <width>201</width>
-      <height>24</height>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
@@ -139,10 +113,6 @@
      <string notr="true">QLineEdit{
 	background-color:transparent;
 	color:white;
-	border-style: solid;
-	border-width:1px;
-	border-color: beige;
-	border-radius: 6px;
 
 }</string>
     </property>
@@ -206,35 +176,26 @@ QPushButton:hover#quit_button
       <height>21</height>
      </rect>
     </property>
-    <property name="text">
-     <string>SEM CADASTRO?</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>310</y>
-      <width>131</width>
-      <height>21</height>
-     </rect>
-    </property>
     <property name="font">
      <font>
-      <family>Arial</family>
-      <pointsize>16</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <pointsize>10</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel{
-color:white;
+     <string notr="true">QPushButton{
+	background-color:transparent;
+	color:white;
+	border:none;
 }
-</string>
+
+QPushButton::hover{
+	background-color:transparent;
+	color:rgb(70,130,180);
+	border:none;
+}</string>
     </property>
     <property name="text">
-     <string>Confirmar Senha</string>
+     <string>SEM CADASTRO? CLIQUE AQUI!</string>
     </property>
    </widget>
   </widget>
