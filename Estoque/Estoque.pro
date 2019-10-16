@@ -29,6 +29,7 @@ HEADERS += \
     cliente.h \
     compras.h \
     conexao.h \
+    fila.h \
     funcionario.h \
     ldde.h \
     mainwindow.h \

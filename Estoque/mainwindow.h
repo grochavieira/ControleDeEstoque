@@ -7,8 +7,16 @@
 #include <QMainWindow>
 #include <QFileInfo>
 #include <QSystemTrayIcon> //.h
+#include <QMenu> //added
 
 class QComboBox; //.h
+
+
+
+
+
+
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,6 +31,8 @@ public:
     ~MainWindow();
 
 private slots:
+    void iconActivated(QSystemTrayIcon::ActivationReason);//added
+
     void on_btnCadastrarProduto_clicked();
 
     void on_spnIdProduto_editingFinished();
@@ -57,5 +67,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QSystemTrayIcon* trayIcon;
+    QMenu* trayIconMenu;
+    QMenu* createMenu();
+
 };
 #endif // MAINWINDOW_H

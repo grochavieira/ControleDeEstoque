@@ -237,7 +237,7 @@ QPushButton:hover#quit_button
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>130</x>
        <y>50</y>
        <width>591</width>
        <height>31</height>
@@ -257,7 +257,7 @@ QPushButton:hover#quit_button
 }</string>
      </property>
      <property name="text">
-      <string>Bem Vindo(a) ao MainFrame</string>
+      <string>Bem Vindo(a) ao Fox Stock</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton">
@@ -286,12 +286,49 @@ QPushButton:hover#quit_button
       <string>Pedidos</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>48</x>
+       <y>35</y>
+       <width>60</width>
+       <height>60</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="usefulResources.qrc">:/src/fox2.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>40</y>
+       <width>431</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(0, 0, 0,80);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
     <zorder>label</zorder>
     <zorder>btnAreaDeEstoque</zorder>
     <zorder>btnAreaDoCliente</zorder>
-    <zorder>label_2</zorder>
     <zorder>pushButton</zorder>
     <zorder>pushButton_2</zorder>
+    <zorder>label_4</zorder>
+    <zorder>label_2</zorder>
+    <zorder>label_3</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

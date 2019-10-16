@@ -24,5 +24,6 @@
         <file>src/bgAfter/a-03.png</file>
         <file>src/bgAfter/a-04.png</file>
         <file>src/bgAfter/a-05.png</file>
+        <file>src/fox2.png</file>
     </qresource>
 </RCC>
