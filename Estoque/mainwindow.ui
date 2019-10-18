@@ -228,7 +228,7 @@ QPushButton:hover#quit_button
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="usefulResources.qrc">:/src/alive/btn-08.png</pixmap>
+      <pixmap>:/src/alive/btn-08.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -299,7 +299,7 @@ QPushButton:hover#quit_button
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="usefulResources.qrc">:/src/fox2.png</pixmap>
+      <pixmap>:/src/fox2.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -337,14 +337,12 @@ QPushButton:hover#quit_button
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>17</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources>
-  <include location="usefulResources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

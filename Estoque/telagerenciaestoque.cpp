@@ -12,6 +12,9 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    /* Busca todos os dados dos produtos existentes no banco de dados (tabela de produtos)
+     * e armazena eles dentro de um objeto do tipo LDDE<Produto>
+     */
     QSqlQuery query;
     query.prepare("select * from tb_produtos");
     if(query.exec()){
@@ -26,39 +29,36 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
 
 
 
-
+    // Configurações iniciais da tabela de produtos (cabeçalho, tamanho, num. de colunas, etc.)
     ui->twProdutos->setColumnCount(6);
-
     ui->twProdutos->verticalHeader()->setVisible(false);
-    ui->twProdutos->setColumnWidth(0, 40);
-    ui->twProdutos->setColumnWidth(1, 150);
-    ui->twProdutos->setColumnWidth(2, 80);
-    ui->twProdutos->setColumnWidth(3, 100);
-    ui->twProdutos->setColumnWidth(4, 100);
-    ui->twProdutos->setColumnWidth(5, 100);
-
-    ui->twListaDeCompras->setColumnCount(5);
-
-    ui->twListaDeCompras->verticalHeader()->setVisible(false);
-    ui->twListaDeCompras->setColumnWidth(0, 40);
-    ui->twListaDeCompras->setColumnWidth(1, 150);
-    ui->twListaDeCompras->setColumnWidth(2, 80);
-    ui->twListaDeCompras->setColumnWidth(3, 100);
-    ui->twListaDeCompras->setColumnWidth(4, 100);
-
+    ui->twProdutos->horizontalHeader()->setFixedHeight(30);
+    ui->twProdutos->setColumnWidth(0, 80);
+    ui->twProdutos->setColumnWidth(1, 200);
+    ui->twProdutos->setColumnWidth(2, 100);
+    ui->twProdutos->setColumnWidth(3, 117);
+    ui->twProdutos->setColumnWidth(4, 120);
+    ui->twProdutos->setColumnWidth(5, 120);
     QStringList cabecalhos = {"ID", "Nome", "Preço", "Quantidade", "Qtd. Mínima", "Qtd. Máxima"};
     ui->twProdutos->setHorizontalHeaderLabels(cabecalhos);
     ui->twProdutos->setSelectionBehavior(QAbstractItemView::SelectRows);
-
     ui->twProdutos->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->twProdutos->setStyleSheet("QTableView{selection-background-color:blue}");
+    ui->twProdutos->setStyleSheet("QTableView{selection-background-color: #FF6633}");
 
+    // Configurações iniciais da lista de compras (cabeçalho, tamanho, num. de colunas, etc..)
+    ui->twListaDeCompras->setColumnCount(5);
+    ui->twListaDeCompras->verticalHeader()->setVisible(false);
+    ui->twListaDeCompras->horizontalHeader()->setFixedHeight(30);
+    ui->twListaDeCompras->setColumnWidth(0, 80);
+    ui->twListaDeCompras->setColumnWidth(1, 200);
+    ui->twListaDeCompras->setColumnWidth(2, 119);
+    ui->twListaDeCompras->setColumnWidth(3, 119);
+    ui->twListaDeCompras->setColumnWidth(4, 100);
     QStringList cabecalhosLista = {"ID", "Nome", "Quantidade", "Qtd. Máxima", "Prioridade"};
     ui->twListaDeCompras->setHorizontalHeaderLabels(cabecalhosLista);
     ui->twListaDeCompras->setSelectionBehavior(QAbstractItemView::SelectRows);
-
     ui->twListaDeCompras->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->twListaDeCompras->setStyleSheet("QTableView{selection-background-color:blue}");
+    ui->twListaDeCompras->setStyleSheet("QTableView{selection-background-color:#FF6633}");
 }
 
 TelaGerenciaEstoque::~TelaGerenciaEstoque()
@@ -68,7 +68,9 @@ TelaGerenciaEstoque::~TelaGerenciaEstoque()
 
 void TelaGerenciaEstoque::on_btnCadastrarProduto_clicked()
 {
+    // Contador da quantidade de erros no cadastro de produtos
     int verificador = 0;
+    // Pega os dados digitados pelo funcionário
     int idProduto = ui->spnIdProduto->value();
     QString nomeProduto = ui->txtNomeProduto->text();
     double precoProduto = ui->spnPrecoProduto->value();
@@ -76,6 +78,9 @@ void TelaGerenciaEstoque::on_btnCadastrarProduto_clicked()
     int quantidadeMinProduto = ui->spnQuantidadeMinProduto->value();
     int quantidadeMaxProduto = ui->spnQuantidadeMaxProduto->value();
 
+    /* Verifica se o que foi digitado pelo funcionário está correto
+     * para poder efetivamente cadastrar os produtos
+     */
     if((lddeProdutos.Busca(idProduto)).getId() != -1){
         verificador++;
         ui->lblErroId->setText("Esse ID já foi cadastrado.");
@@ -88,13 +93,16 @@ void TelaGerenciaEstoque::on_btnCadastrarProduto_clicked()
 
     if(precoProduto == 0.0){
         verificador++;
-        ui->lblErroPreco->setText("Vai vender de graça é?");
+        ui->lblErroPreco->setText("Favor não venda de graça.");
     }
 
+    // Se não existirem erros, o produto será cadastrado
     if(verificador == 0){
         produto = new Produto(idProduto, nomeProduto, precoProduto, quantidadeProduto, quantidadeMinProduto, quantidadeMaxProduto);
+        // Manda os dados do produto para a lddeProdutos
         lddeProdutos.Insere(produto);
 
+        // Manda os dados para o banco de dados (tabela de produtos)
         QSqlQuery query;
         query.prepare("insert into tb_produtos (id, nome, preco, quantidade, quantidade_minima, quantidade_maxima, prioridade) values""('" + ui->spnIdProduto->text() + "','" + ui->txtNomeProduto->text() + "','" + ui->spnPrecoProduto->text() + "','" + ui->spnQuantidadeProduto->text() + "','" + ui->spnQuantidadeMinProduto->text() + "','" + ui->spnQuantidadeMaxProduto->text() + "','" + QString::number(produto.getPrioridade()) + "')");
         if(query.exec()){
@@ -105,6 +113,7 @@ void TelaGerenciaEstoque::on_btnCadastrarProduto_clicked()
             qDebug() << "Erro ao cadastrar produto";
             QMessageBox::warning(this,"ERRO","ERRO ao cadastrar produto!");
         }
+        // Reseta os dados digitados para poder inserir um novo produto
         ui->txtNomeProduto->clear();
         ui->spnPrecoProduto->setValue(0.00);
         ui->spnQuantidadeProduto->setValue(1);
@@ -116,6 +125,7 @@ void TelaGerenciaEstoque::on_btnCadastrarProduto_clicked()
 
 void TelaGerenciaEstoque::on_btnEncontrarId_clicked()
 {
+    // Busca o primeiro id disponível para cadastrar um novo produto
     int i = 1;
     while((lddeProdutos.Busca(i)).getId() != -1){
         i++;
@@ -124,6 +134,11 @@ void TelaGerenciaEstoque::on_btnEncontrarId_clicked()
     ui->lblErroId->setText("");
 }
 
+/* Abaixo são apenas funções que apagam as mensagens de erro ao
+ * editar as caixas de texto, e também que impedem certos erros do
+ * usuário, como ter uma quantidade inicial de produtos maior que
+ * a quantidade máxima.
+ */
 void TelaGerenciaEstoque::on_spnQuantidadeProduto_editingFinished()
 {
     ui->spnQuantidadeMinProduto->setMaximum(ui->spnQuantidadeProduto->value() - 1);
@@ -147,12 +162,15 @@ void TelaGerenciaEstoque::on_spnPrecoProduto_editingFinished()
 
 void TelaGerenciaEstoque::on_btnPesquisar_clicked()
 {
+    // Pega o nome do produto que foi digitado na caixa de texto
     QString nome = ui->txtPesquisarProduto->text();
+
+    // Busca um produto equivalente ao que foi pesquisado
     produto = lddeProdutos.Busca(nome);
-    if(produto.getId() == -1){
+    if(produto.getId() == -1){// Se não existir, seu ID será -1
         QMessageBox::information(this,"ERRO","O Nome pesquisado não existe!");
     }
-    else{
+    else{// Caso exista, ele é mostrado na tabela
         ui->twProdutos->clearContents();
         ui->twProdutos->setRowCount(0);
         ui->twProdutos->insertRow(0);
@@ -172,9 +190,13 @@ void TelaGerenciaEstoque::on_tabCadastrarProdutos_tabBarClicked(int index)
 
 void TelaGerenciaEstoque::on_btnExcluir_clicked()
 {
+    // Pega o index da linha que foi selecionada
     int linha = ui->twProdutos->currentRow();
-    if(linha != -1)
+    if(linha != -1)// Se essa linha existe
     {
+        /* Seus dados são pegados para serem excluidos na lddeProdutos, no banco de dados
+         * e na tabela de produtos
+         */
         int id = ui->twProdutos->item(linha,0)->text().toInt();
         QSqlQuery query;
         query.prepare("delete from tb_produtos where id=" + QString::number(id));
@@ -196,9 +218,12 @@ void TelaGerenciaEstoque::on_btnExcluir_clicked()
 
 void TelaGerenciaEstoque::on_btnListarTodosProdutos_clicked()
 {
-    ui->twProdutos->setRowCount(0);
+    ui->twProdutos->setRowCount(0); // Reseta a tabela de produtos
     int i = 0;
     produto = lddeProdutos[i];
+    /* Realiza a busca de produtos enquanto eles existirem, e manda seus dados para a tabela
+     * para poder listar todos os produtos que já foram cadastrados
+     */
     while(produto.getId() != -1){
         ui->twProdutos->insertRow(i);
         ui->twProdutos->setItem(i, 0, new QTableWidgetItem(QString::number(produto.getId())));
@@ -214,7 +239,8 @@ void TelaGerenciaEstoque::on_btnListarTodosProdutos_clicked()
 
 void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
 {
-    if(index == 1){
+    // index igual a 1, equivale a tab Excluir Produtos
+    if(index == 1){// Logo, se essa tab for clicada, ela lista todos os produtos
         ui->twProdutos->setRowCount(0);
         int i = 0;
         produto = lddeProdutos[i];
@@ -231,31 +257,35 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
         }
     }
 
-    if(index == 2){
+    // index igual a 2, equivale a tab Lista de Compras
+    if(index == 2){// Se essa tab for clicada, ela lista, em ordem de prioridade, os produtos que precisam ser estocados novamente
         ui->twListaDeCompras->setRowCount(0);
-        LES<Produto> lista(lddeProdutos.getQtdCadastrados()); // Cria lista de prioridade para guardar os produtos
+        LES<Produto> listaDeCompras(lddeProdutos.getQtdCadastrados()); // Cria lista de prioridade para guardar os produtos
         int i=0;
         while(i < lddeProdutos.getQtdCadastrados()){ // Salva todos produtos na lista
             produto = lddeProdutos[i]; // variavel produto pega cada produto da ldde um de cada vez
-            lista.Insere(produto); // Funcao para inserir
+            listaDeCompras.Insere(produto); // Funcao para inserir
             i++;
         }
 
         int j = 0;
         while(j < i){ // Cria a tabela com todos produtos em ordem de prioridade
-            produto = lista[j]; // Variavel produto pega cada produto da lista
+            produto = listaDeCompras[j]; // Variavel produto pega cada produto da lista
             qDebug() << "Produto: " << produto.getNome();
             ui->twListaDeCompras->insertRow(j);
             ui->twListaDeCompras->setItem(j, 0, new QTableWidgetItem(QString::number(produto.getId())));
             ui->twListaDeCompras->setItem(j, 1, new QTableWidgetItem(produto.getNome()));
             ui->twListaDeCompras->setItem(j, 2, new QTableWidgetItem(QString::number(produto.getQuantidade())));
             ui->twListaDeCompras->setItem(j, 3, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
-            ui->twListaDeCompras->setItem(j, 4, new QTableWidgetItem(QString::number(produto.getPrioridade())));
+            ui->twListaDeCompras->setItem(j, 4, new QTableWidgetItem(QString::number(produto.getPrioridade()) + "%"));
             j++;
         }
 
+        /* Manda os produtos em ordem de prioridade para um objeto do tipo PILHA<Produto>
+         * para que ele seja usado para repor os itens de maior prioridade
+         */
         for(int k=0; k<lddeProdutos.getQtdCadastrados(); k++){
-            produto = lista[k];
+            produto = listaDeCompras[k];
             pilha.Empilha(produto);
         }
     }

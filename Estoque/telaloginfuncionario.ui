@@ -75,8 +75,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>13</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="focusPolicy">
@@ -110,8 +110,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>13</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -133,7 +133,7 @@
       <x>60</x>
       <y>400</y>
       <width>191</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -225,20 +225,25 @@ QPushButton:hover#quit_button
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="usefulResources.qrc">:/src/login/log_loginC.png</pixmap>
+     <pixmap>:/src/login/log_loginC.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btnHome">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>100</x>
       <y>440</y>
-      <width>80</width>
-      <height>16</height>
+      <width>101</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
@@ -269,11 +274,9 @@ QPushButton::hover{
    <zorder>txtSenhaFuncionario</zorder>
    <zorder>btnCadastrarNovoFuncionario</zorder>
    <zorder>btnEntrarFuncionario</zorder>
-   <zorder>pushButton</zorder>
+   <zorder>btnHome</zorder>
   </widget>
  </widget>
- <resources>
-  <include location="usefulResources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

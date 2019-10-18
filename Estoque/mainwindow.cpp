@@ -25,11 +25,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     ui->setupUi(this);
+    //Cria um objeto Conexao para abrir o banco de dados e utilizar nas seguintes telas
     Conexao conexao;
     conexao.abrir();
-
-
-
 }
 //------added
 QMenu* MainWindow::createMenu()
@@ -129,8 +127,6 @@ void MainWindow::on_btnAreaDoCliente_clicked()
     TelaLoginCliente telaLoginCliente;
     telaLoginCliente.exec();
     this->setVisible(true);
-
-
 }
 
 void MainWindow::on_pushButton_clicked()

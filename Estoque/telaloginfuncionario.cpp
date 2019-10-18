@@ -12,6 +12,10 @@ telaLoginFuncionario::telaLoginFuncionario(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    /* Executa uma query do sql para percorrer a tabela dos funcionarios
+     * e mandar seus dados para um objeto LDDE<Funcionario> e guardar
+     * seus dados dentro dele.
+     */
     QSqlQuery query;
     query.prepare("select * from tb_funcionarios");
     if(query.exec()){
@@ -32,9 +36,11 @@ telaLoginFuncionario::~telaLoginFuncionario()
 
 void telaLoginFuncionario::on_btnEntrarFuncionario_clicked()
 {
+    //Pega os dados digitados pelo funcionario
     QString usuarioFuncionario = ui->txtUsuarioFuncionario->text();
     QString senhaFuncionario = ui->txtSenhaFuncionario->text();
 
+    //Verifica se esses dados existem
     if(lddeFuncionarios.BuscaCadastro(usuarioFuncionario, senhaFuncionario)){
         this->close();
         TelaGerenciaEstoque telaGerenciaEstoque;
@@ -47,6 +53,10 @@ void telaLoginFuncionario::on_btnEntrarFuncionario_clicked()
 
 void telaLoginFuncionario::on_btnCadastrarNovoFuncionario_clicked()
 {
+    /* Chama a tela de cadastro de funcionarios passando o
+     * endereço da lddeFuncionarios que tem todo o registro
+     * dos mesmo, para que isso não seja feito novamente
+     */
     telaCadastroFuncionario telaCadastroFuncionario(this, &lddeFuncionarios);
     telaCadastroFuncionario.setModal(true);
     telaCadastroFuncionario.exec();
@@ -54,7 +64,11 @@ void telaLoginFuncionario::on_btnCadastrarNovoFuncionario_clicked()
 
 void telaLoginFuncionario::on_pushButton_clicked()
 {
-    this->setVisible(false);
+}
+
+void telaLoginFuncionario::on_btnHome_clicked()
+{
+    close();
     MainWindow mainW;
     mainW.setVisible(true);
 }

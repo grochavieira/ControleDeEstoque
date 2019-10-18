@@ -50,19 +50,27 @@
     <widget class="QTableWidget" name="twCompraCliente">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>150</x>
        <y>40</y>
-       <width>751</width>
-       <height>301</height>
+       <width>401</width>
+       <height>341</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QHeaderView { font-size: 12pt; }</string>
      </property>
     </widget>
     <widget class="QPushButton" name="buttonAdiciona">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>370</y>
-       <width>181</width>
+       <x>190</x>
+       <y>390</y>
+       <width>321</width>
        <height>41</height>
       </rect>
      </property>
@@ -93,7 +101,7 @@ QPushButton::hover{
 }</string>
      </property>
      <property name="text">
-      <string>Adicionar Produto a Compras</string>
+      <string>ADICIONAR PRODUTO A CESTA DE COMPRAS</string>
      </property>
     </widget>
     <widget class="QPushButton" name="buttonListar">
@@ -204,8 +212,8 @@ QPushButton::hover{
      </property>
      <property name="font">
       <font>
-       <family>Caviar Dreams</family>
-       <pointsize>12</pointsize>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="placeholderText">
@@ -215,10 +223,10 @@ QPushButton::hover{
     <widget class="QSpinBox" name="spnQuantidade">
      <property name="geometry">
       <rect>
-       <x>290</x>
-       <y>370</y>
-       <width>111</width>
-       <height>41</height>
+       <x>350</x>
+       <y>440</y>
+       <width>91</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
@@ -226,6 +234,9 @@ QPushButton::hover{
        <family>Caviar Dreams</family>
        <pointsize>14</pointsize>
       </font>
+     </property>
+     <property name="maximum">
+      <number>99999</number>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
@@ -241,7 +252,26 @@ QPushButton::hover{
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Gerencia 1.png</pixmap>
+      <pixmap>:/src/bgAfter/a_Gerencia 1.png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>440</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Quantidade:</string>
      </property>
     </widget>
     <zorder>label_4</zorder>
@@ -252,28 +282,39 @@ QPushButton::hover{
     <zorder>label</zorder>
     <zorder>txtPesquisar</zorder>
     <zorder>spnQuantidade</zorder>
+    <zorder>label_5</zorder>
+    <zorder>spnQuantidade</zorder>
+    <zorder>label_5</zorder>
    </widget>
    <widget class="QWidget" name="tabComp">
     <attribute name="title">
-     <string>Compras</string>
+     <string>Cesta de Compras</string>
     </attribute>
     <widget class="QTableWidget" name="twPedidosCliente">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>110</x>
        <y>20</y>
        <width>551</width>
-       <height>191</height>
+       <height>391</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QHeaderView { font-size: 12pt; }</string>
      </property>
     </widget>
     <widget class="QPushButton" name="buttonConfirma">
      <property name="geometry">
       <rect>
-       <x>380</x>
-       <y>230</y>
-       <width>181</width>
-       <height>51</height>
+       <x>389</x>
+       <y>420</y>
+       <width>271</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="font">
@@ -303,16 +344,16 @@ QPushButton::hover{
 }</string>
      </property>
      <property name="text">
-      <string>Confirmar pedido de compras</string>
+      <string>CONFIRMAR PEDIDO DE COMPRAS</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>230</y>
-       <width>211</width>
-       <height>51</height>
+       <x>111</x>
+       <y>420</y>
+       <width>271</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="font">
@@ -342,7 +383,7 @@ QPushButton::hover{
 }</string>
      </property>
      <property name="text">
-      <string>Excluir pedido de minhas compras</string>
+      <string>DELETAR PEDIDO</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_3">
@@ -358,7 +399,7 @@ QPushButton::hover{
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Pedidos.png</pixmap>
+      <pixmap>:/src/bgAfter/a_Pedidos.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -383,14 +424,12 @@ QPushButton::hover{
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Gerencia 1.png</pixmap>
+    <pixmap>:/src/bgAfter/a_Gerencia 1.png</pixmap>
    </property>
   </widget>
   <zorder>label_2</zorder>
   <zorder>tabWidget</zorder>
  </widget>
- <resources>
-  <include location="usefulResources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

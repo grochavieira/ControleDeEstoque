@@ -77,7 +77,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="usefulResources.qrc">:/src/cad/now_cadFunc.png</pixmap>
+     <pixmap>:/src/cad/now_cadFunc.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -143,8 +143,8 @@ QPushButton:hover#quit_button
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>16</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -185,7 +185,7 @@ QPushButton:hover#quit_button
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>9</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -198,7 +198,7 @@ QPushButton:hover#quit_button
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 9pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -217,8 +217,8 @@ QPushButton:hover#quit_button
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>16</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -252,8 +252,8 @@ QPushButton:hover#quit_button
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>16</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -275,7 +275,7 @@ QPushButton:hover#quit_button
      <rect>
       <x>320</x>
       <y>330</y>
-      <width>150</width>
+      <width>200</width>
       <height>16</height>
      </rect>
     </property>
@@ -287,14 +287,14 @@ QPushButton:hover#quit_button
     </property>
     <property name="maximumSize">
      <size>
-      <width>150</width>
+      <width>200</width>
       <height>16777215</height>
      </size>
     </property>
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>9</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -307,7 +307,7 @@ QPushButton:hover#quit_button
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 9pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -339,7 +339,7 @@ QPushButton:hover#quit_button
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>9</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -352,7 +352,7 @@ QPushButton:hover#quit_button
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 9pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -371,8 +371,8 @@ QPushButton:hover#quit_button
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>16</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -391,26 +391,26 @@ QPushButton:hover#quit_button
      <rect>
       <x>320</x>
       <y>230</y>
-      <width>180</width>
+      <width>200</width>
       <height>16</height>
      </rect>
     </property>
     <property name="minimumSize">
      <size>
-      <width>180</width>
+      <width>200</width>
       <height>16</height>
      </size>
     </property>
     <property name="maximumSize">
      <size>
-      <width>150</width>
+      <width>200</width>
       <height>16</height>
      </size>
     </property>
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>9</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -423,7 +423,7 @@ QPushButton:hover#quit_button
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 9pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -442,8 +442,8 @@ QPushButton:hover#quit_button
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>16</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -468,8 +468,8 @@ QPushButton:hover#quit_button
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>16</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -501,7 +501,7 @@ QPushButton:hover#quit_button
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>9</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -514,7 +514,7 @@ QPushButton:hover#quit_button
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 9pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -540,7 +540,7 @@ QPushButton:hover#quit_button
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>9</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -553,7 +553,7 @@ QPushButton:hover#quit_button
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 9pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -572,8 +572,6 @@ QPushButton:hover#quit_button
   <tabstop>txtConfirmarSenhaFuncionario</tabstop>
   <tabstop>btnCadastrarFuncionario</tabstop>
  </tabstops>
- <resources>
-  <include location="usefulResources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

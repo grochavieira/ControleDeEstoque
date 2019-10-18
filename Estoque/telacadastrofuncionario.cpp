@@ -9,6 +9,10 @@ telaCadastroFuncionario::telaCadastroFuncionario(QWidget *parent, LDDE<Funcionar
     ui(new Ui::telaCadastroFuncionario)
 {
     ui->setupUi(this);
+    /* Pega os dados dos funcionarios que foram passados por parâmetros
+     * através da lddeFuncionariosCopia para ser utilizada
+     * pela lddeFuncionarios na realizacão de cadastros
+     */
     lddeFuncionarios = lddeFuncionariosCopia;
 }
 
@@ -19,7 +23,9 @@ telaCadastroFuncionario::~telaCadastroFuncionario()
 
 void telaCadastroFuncionario::on_btnCadastrarFuncionario_clicked()
 {
+    // Contador para a quantidade de erros feitos pelo funcionario ao se cadastrar
     int verificaErros = 0;
+    // Pega os dados que foram digitados pelo funcionario
     QString nomeFuncionario = ui->txtNomeFuncionario->text();
     QString emailFuncionario = ui->txtEmailFuncionario->text();
     QString telefoneFuncionario = ui->txtTelefoneFuncionario->text();
@@ -27,18 +33,26 @@ void telaCadastroFuncionario::on_btnCadastrarFuncionario_clicked()
     QString senhaFuncionario = ui->txtSenhaFuncionario->text();
     QString confirmarSenhaFuncionario = ui->txtConfirmarSenhaFuncionario->text();
 
+    /* A seguir são realizados as comparações para verificar se
+     * os dados digitados pelo funcionário estão corretos para
+     * ele ser cadastrado, caso contrário, é mostrado uma mensagem
+     * de texto indicando o que esta errado.
+     */
     if(nomeFuncionario == ""){
         verificaErros++;
         ui->lblNomeFuncionarioErro->setText("Favor preencher campo!");
     }
+
     if(emailFuncionario == ""){
         verificaErros++;
         ui->lblEmailFuncionarioErro->setText("Favor preencher campo!");
     }
+
     if(telefoneFuncionario.size() < 14){
         verificaErros++;
         ui->lblTelefoneFuncionarioErro->setText("Campo preenchido incorretamente!");
     }
+
     if(usuarioFuncionario == ""){
         verificaErros++;
         ui->lblUsuarioFuncionarioErro->setText("Favor preencher campo!");
@@ -47,22 +61,25 @@ void telaCadastroFuncionario::on_btnCadastrarFuncionario_clicked()
         verificaErros++;
         ui->lblUsuarioFuncionarioErro->setText("Esse usuário já existe!");
     }
-    if(senhaFuncionario == ""){
+
+    if(senhaFuncionario < 8){
         verificaErros++;
-        ui->lblSenhaFuncionarioErro->setText("Favor preencher campo!");
-    }
-    else if(senhaFuncionario < 8){
-        verificaErros++;
-        ui->lblSenhaFuncionarioErro->setText("Campo preenchido incorretamente!");
+        ui->lblSenhaFuncionarioErro->setText("Campo incorreto, min. 8 caracteres!");
     }
     else if(senhaFuncionario != confirmarSenhaFuncionario){
         verificaErros++;
         ui->lblConfirmarSenhaFuncionarioErro->setText("As senhas não são iguais!");
     }
 
+    // Se tudo estiver correto, o funcionário sera cadastrado
     if(verificaErros == 0){
         funcionario = new Funcionario(lddeFuncionarios->getQtdCadastrados()+1, nomeFuncionario, emailFuncionario, usuarioFuncionario, senhaFuncionario, telefoneFuncionario);
+        /* Manda os dados do funcionario para a lddeFuncionarios, para que
+         * ela seja utilizada quando voltar para o login, e não
+         * precise pegar do banco novamente
+         */
         lddeFuncionarios->Insere(funcionario);
+        // Guarda os dados no banco de dados (tabela do funcionario)
         QSqlQuery query;
         query.prepare("insert into tb_funcionarios(nome_funcionario, email_funcionario, usuario_funcionario, senha_funcionario, telefone_funcionario) values""('" + nomeFuncionario + "','" + emailFuncionario + "','" + usuarioFuncionario + "','" + senhaFuncionario + "','" + telefoneFuncionario + "')");
         if(query.exec()){
@@ -77,7 +94,9 @@ void telaCadastroFuncionario::on_btnCadastrarFuncionario_clicked()
         QMessageBox::warning(this, "ERRO", "Não foi possível cadastrar funcionario!");
     }
 }
-
+/* As funções a seguir apenas servem para apagar as mensagens de erro
+ * quando o funcionario começar a digitar nas caixas de texto
+ */
 void telaCadastroFuncionario::on_txtNomeFuncionario_editingFinished()
 {
     ui->lblNomeFuncionarioErro->setText("");

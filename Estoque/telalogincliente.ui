@@ -65,7 +65,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="usefulResources.qrc">:/src/login/log_loginF.png</pixmap>
+     <pixmap>:/src/login/log_loginF.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -82,8 +82,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>14</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -105,13 +105,14 @@
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>14</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit{
 	background-color:transparent;
+	border: &quot;transparent&quot;;
 	color:white;
 
 }</string>
@@ -170,9 +171,9 @@ QPushButton:hover#quit_button
    <widget class="QPushButton" name="btnAreaCadastroCliente">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>40</x>
       <y>440</y>
-      <width>161</width>
+      <width>241</width>
       <height>21</height>
      </rect>
     </property>
@@ -200,8 +201,6 @@ QPushButton::hover{
    </widget>
   </widget>
  </widget>
- <resources>
-  <include location="usefulResources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
