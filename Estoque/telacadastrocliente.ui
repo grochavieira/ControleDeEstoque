@@ -70,7 +70,7 @@
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>8</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -83,7 +83,7 @@
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 8pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -102,8 +102,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>14</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -138,7 +138,7 @@
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>8</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -151,7 +151,7 @@
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 8pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -170,9 +170,14 @@
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>13</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: &quot;transparent&quot;;
+border: &quot;tranparent&quot;;
+color: &quot;white&quot;;</string>
     </property>
     <property name="minimum">
      <number>1</number>
@@ -192,8 +197,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>14</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -212,7 +217,7 @@
      <rect>
       <x>320</x>
       <y>430</y>
-      <width>150</width>
+      <width>171</width>
       <height>16</height>
      </rect>
     </property>
@@ -225,7 +230,7 @@
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>8</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -238,7 +243,7 @@
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 8pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -251,7 +256,7 @@
      <rect>
       <x>320</x>
       <y>388</y>
-      <width>150</width>
+      <width>171</width>
       <height>16</height>
      </rect>
     </property>
@@ -264,7 +269,7 @@
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>8</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -277,7 +282,7 @@
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 8pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -290,7 +295,7 @@
      <rect>
       <x>320</x>
       <y>260</y>
-      <width>150</width>
+      <width>181</width>
       <height>16</height>
      </rect>
     </property>
@@ -303,7 +308,7 @@
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>8</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -316,7 +321,7 @@
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 8pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -348,7 +353,7 @@
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>8</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -361,7 +366,7 @@
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 8pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -380,8 +385,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>14</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -413,7 +418,7 @@
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>8</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -426,7 +431,7 @@
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 8pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -445,8 +450,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>14</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -471,8 +476,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>14</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -500,8 +505,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>14</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -542,7 +547,7 @@
     <property name="font">
      <font>
       <family>Caviar Dreams</family>
-      <pointsize>10</pointsize>
+      <pointsize>8</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -555,7 +560,7 @@
      <string notr="true">QLabel{
 	color: &quot;white&quot;;
 	background-color: &quot;transparent&quot; ;
-	font: 10pt &quot;Caviar Dreams&quot;;
+	font: 8pt &quot;Caviar Dreams&quot;;
 }
 </string>
     </property>
@@ -574,8 +579,8 @@
     </property>
     <property name="font">
      <font>
-      <family>Caviar Dreams</family>
-      <pointsize>9</pointsize>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -662,11 +667,28 @@ QPushButton:hover#quit_button
       <height>500</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <family>Caviar Dreams</family>
+      <pointsize>8</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string>QLabel{
+	color: &quot;white&quot;;
+	background-color: &quot;transparent&quot; ;
+	font: 8pt &quot;Caviar Dreams&quot;;
+}
+</string>
+    </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="usefulResources.qrc">:/src/cad/now_CadClie.png</pixmap>
+     <pixmap>:/src/cad/now_CadClie.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -711,8 +733,6 @@ QPushButton:hover#quit_button
    <zorder>lblCepClienteErro</zorder>
   </widget>
  </widget>
- <resources>
-  <include location="usefulResources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

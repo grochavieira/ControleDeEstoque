@@ -38,6 +38,10 @@ private slots:
 
     void on_buttonConfirma_clicked();
 
+    void on_spnQuantidade_editingFinished();
+
+    void on_twCompraCliente_itemSelectionChanged();
+
 private:
     Ui::TelaPedidosCliente *ui;
 };

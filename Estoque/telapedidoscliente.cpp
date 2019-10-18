@@ -5,24 +5,23 @@ static Produto produto;
 static Compras compras;
 static LDDE<Produto> lddeProdutos;
 static LDDE<Compras> lddeCompras;
-static Conexao conexao;
 
-static int id_client;
-static QString nome_Client;
-static QString telefone;
-static QString cep;
-static int num_endereco;
+static int idCliente;
+static QString nomeCliente;
+static QString telefoneCliente;
+static QString cepCliente;
+static int numEnderecoCliente;
 
-TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int IdCliente, QString nomeClient, QString tel, QString cep_rua, int numero_end) :
+TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int idClienteCopia, QString nomeClienteCopia, QString telefoneClienteCopia, QString cepClienteCopia, int numEnderecoClienteCopia) :
     QDialog(parent),
     ui(new Ui::TelaPedidosCliente)
 {
     ui->setupUi(this);
-    id_client = IdCliente;
-    nome_Client = nomeClient;
-    telefone = tel;
-    cep = cep_rua;
-    num_endereco = numero_end;
+    idCliente = idClienteCopia;
+    nomeCliente = nomeClienteCopia;
+    telefoneCliente = telefoneClienteCopia;
+    cepCliente = cepClienteCopia;
+    numEnderecoCliente = numEnderecoClienteCopia;
 
     QSqlQuery query;
     query.prepare("select * from tb_produtos");
@@ -39,31 +38,29 @@ TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int IdCliente, QString n
     ui->twCompraCliente->setColumnCount(3);
 
     ui->twCompraCliente->verticalHeader()->setVisible(false);
+    ui->twCompraCliente->horizontalHeader()->setFixedHeight(30);
     ui->twCompraCliente->setColumnWidth(0, 180);
     ui->twCompraCliente->setColumnWidth(1, 100);
     ui->twCompraCliente->setColumnWidth(2, 119);
-
     QStringList cabecalhos = {"Nome", "Quantidade", "Preço Unitario"};
     ui->twCompraCliente->setHorizontalHeaderLabels(cabecalhos);
     ui->twCompraCliente->setSelectionBehavior(QAbstractItemView::SelectRows);
-
     ui->twCompraCliente->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->twCompraCliente->setStyleSheet("QTableView{selection-background-color:blue}");
+    ui->twCompraCliente->setStyleSheet("QTableView{selection-background-color:#FF6633}");
+
 
     ui->twPedidosCliente->setColumnCount(4);
-
     ui->twPedidosCliente->verticalHeader()->setVisible(false);
+    ui->twPedidosCliente->horizontalHeader()->setFixedHeight(30);
     ui->twPedidosCliente->setColumnWidth(0, 208);
     ui->twPedidosCliente->setColumnWidth(1, 100);
     ui->twPedidosCliente->setColumnWidth(2, 120);
     ui->twPedidosCliente->setColumnWidth(3, 120);
-
     QStringList cabecalhos2 = {"Nome", "Quantidade", "Preço unitario", "Preço Total"};
     ui->twPedidosCliente->setHorizontalHeaderLabels(cabecalhos2);
     ui->twPedidosCliente->setSelectionBehavior(QAbstractItemView::SelectRows);
-
     ui->twPedidosCliente->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->twPedidosCliente->setStyleSheet("QTableView{selection-background-color:blue}");
+    ui->twPedidosCliente->setStyleSheet("QTableView{selection-background-color:#FF6633}");
 }
 
 TelaPedidosCliente::~TelaPedidosCliente()
@@ -86,7 +83,7 @@ void TelaPedidosCliente::on_tabWidget_tabBarClicked(int index)
             ui->twCompraCliente->insertRow(i);
             ui->twCompraCliente->setItem(i, 0, new QTableWidgetItem(produto.getNome()));
             ui->twCompraCliente->setItem(i, 1, new QTableWidgetItem(QString::number(produto.getQuantidade())));
-            ui->twCompraCliente->setItem(i, 2, new QTableWidgetItem("R$ " + QString::number(produto.getPreco()) + ",00"));
+            ui->twCompraCliente->setItem(i, 2, new QTableWidgetItem("R$ " + QString::number(produto.getPreco())));
             i++;
             produto = lddeProdutos[i];
         }
@@ -99,8 +96,8 @@ void TelaPedidosCliente::on_tabWidget_tabBarClicked(int index)
             ui->twPedidosCliente->insertRow(i);
             ui->twPedidosCliente->setItem(i, 0, new QTableWidgetItem(compras.getNome()));
             ui->twPedidosCliente->setItem(i, 1, new QTableWidgetItem(QString::number(compras.getQntProduto())));
-            ui->twPedidosCliente->setItem(i, 2, new QTableWidgetItem("R$ " + QString::number(compras.getPreco()) + ",00"));
-            ui->twPedidosCliente->setItem(i, 3, new QTableWidgetItem("R$ " + QString::number(compras.getPreco()*compras.getQntProduto()) + ",00"));
+            ui->twPedidosCliente->setItem(i, 2, new QTableWidgetItem("R$ " + QString::number(compras.getPreco())));
+            ui->twPedidosCliente->setItem(i, 3, new QTableWidgetItem("R$ " + QString::number(compras.getPreco()*compras.getQntProduto())));
             i++;
             compras = lddeCompras[i];
         }
@@ -112,20 +109,17 @@ void TelaPedidosCliente::on_buttonAdiciona_clicked()
     int linha = ui->twCompraCliente->currentRow();
     if(linha != -1)
     {
-        int qntProduto = ui->spnQuantidade->value();
+        int qtdProduto = ui->spnQuantidade->value();
         produto = lddeProdutos.Busca(ui->twCompraCliente->item(linha, 0)->text());
 
-        if(qntProduto == 0){
-            QMessageBox::warning(this,"ERRO","Quantidade 0 não permetido!");
-        }
-        else if(qntProduto > produto.getQuantidade()){
-            QMessageBox::warning(this,"ERRO","Não temos a quantidade desejada no estoque!");
+        if(qtdProduto == 0){
+            QMessageBox::warning(this,"ERRO","Quantidade 0 não permitido!");
         }
         else if(produto.getId() == -1){
             QMessageBox::warning(this,"ERRO","Erro ao escolher produto!");
         }
         else{
-            compras = new Compras(produto.getId(), qntProduto, produto.getNome(), produto.getPreco());
+            compras = new Compras(produto.getId(), qtdProduto, produto.getNome(), produto.getPreco());
             lddeCompras.Insere(compras);
             QMessageBox::information(this,"","Produto adicionado a compras!");
         }
@@ -208,19 +202,20 @@ void TelaPedidosCliente::on_pushButton_clicked()
 void TelaPedidosCliente::on_buttonConfirma_clicked() // Clica e Salva no Banco
 {
     if(lddeCompras.getQtdCadastrados() == 0)
-       QMessageBox::information(this, "ERRO", "Não ha pedidos a serem enviados");
+       QMessageBox::information(this, "ERRO", "Não Existe Pedidos a Serem Enviados");
+
     else{
         while(lddeCompras.getQtdCadastrados() != 0){// Remove todos produtos das Compras e envia para fila de pedidos.
             compras = lddeCompras[0];
             QSqlQuery query;
-            query.prepare("insert into tb_pedidos (id_cliente, cep, numero_end, telefone, id_produto, quantidade_produto) values""('" + QString::number(id_client) + "','" + cep + "','" + QString::number(num_endereco) + "','" + telefone + "','" + QString::number(compras.getId()) + "','" + QString::number(compras.getQntProduto()) + "')");
+            query.prepare("insert into tb_pedidos (id_cliente, cep_cliente, num_endereco_cliente, telefone_cliente, id_produto, quantidade_produto) values""('" + QString::number(idCliente) + "','" + cepCliente + "','" + QString::number(numEnderecoCliente) + "','" + telefoneCliente + "','" + QString::number(compras.getId()) + "','" + QString::number(compras.getQntProduto()) + "')");
             if(query.exec()){
-                qDebug() << "Pedidos enviados";
-                QMessageBox::information(this, "OK", "Pedidos Enviados com sucesso!");
+                qDebug() << "Pedidos Enviados";
+                QMessageBox::information(this, "OK", "Pedidos Enviados com Sucesso!");
             }
             else{
                 qDebug() << "Erro ao enviar pedido: " << compras.getNome();
-                QMessageBox::warning(this,"ERRO","ERRO ao cadastrar pedido!");
+                QMessageBox::warning(this,"ERRO","ERRO ao Adicionar Pedido!");
             }
 
             lddeCompras.Remove(compras.getId());
@@ -233,10 +228,26 @@ void TelaPedidosCliente::on_buttonConfirma_clicked() // Clica e Salva no Banco
                 ui->twPedidosCliente->setItem(i, 0, new QTableWidgetItem(compras.getNome()));
                 ui->twPedidosCliente->setItem(i, 1, new QTableWidgetItem(QString::number(compras.getQntProduto())));
                 ui->twPedidosCliente->setItem(i, 2, new QTableWidgetItem("R$ " + QString::number(compras.getPreco())));
-                ui->twPedidosCliente->setItem(i, 3, new QTableWidgetItem("R$ " + QString::number(compras.getPreco()*compras.getQntProduto()) + ",00"));
+                ui->twPedidosCliente->setItem(i, 3, new QTableWidgetItem("R$ " + QString::number(compras.getPreco()*compras.getQntProduto())));
                 i++;
                 compras = lddeCompras[i];
             }
         }
+    }
+}
+
+void TelaPedidosCliente::on_spnQuantidade_editingFinished()
+{
+    int linha = ui->twCompraCliente->currentRow();
+    if(linha != -1){
+        ui->spnQuantidade->setMaximum((ui->twCompraCliente->item(linha,1)->text()).toInt());
+    }
+}
+
+void TelaPedidosCliente::on_twCompraCliente_itemSelectionChanged()
+{
+    int linha = ui->twCompraCliente->currentRow();
+    if(linha != -1){
+        ui->spnQuantidade->setMaximum((ui->twCompraCliente->item(linha,1)->text()).toInt());
     }
 }

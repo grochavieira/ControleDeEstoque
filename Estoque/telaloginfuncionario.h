@@ -25,6 +25,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_btnHome_clicked();
+
 private:
     Ui::telaLoginFuncionario *ui;
 };
