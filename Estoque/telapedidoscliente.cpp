@@ -121,11 +121,37 @@ void TelaPedidosCliente::on_buttonAdiciona_clicked()
         else{
             compras = new Compras(produto.getId(), qtdProduto, produto.getNome(), produto.getPreco());
             lddeCompras.Insere(compras);
+
+            //Altera a quantidade do produto atual do banco de dados
+            int quantidadeNova = produto.getQuantidade() - compras.getQntProduto();
+            QSqlQuery query2;
+            query2.prepare("update tb_produtos set quantidade="+QString::number(quantidadeNova)+" where id=" + QString::number(compras.getId()));
+            if(query2.exec()){
+                produto = lddeProdutos.Busca(compras.getNome());
+                produto.Atualiza(quantidadeNova);
+                lddeProdutos.Atualiza(produto, compras.getId());
+            }
+            else{
+                QMessageBox::warning(this,"ERRO","Erro ao atualizar produtos!");
+            }
+
             QMessageBox::information(this,"","Produto adicionado a compras!");
         }
     }
     else{
         QMessageBox::warning(this,"ERRO","Selecione um produto para comprar!");
+    }
+
+    ui->twCompraCliente->setRowCount(0);
+    int i = 0;
+    produto = lddeProdutos[i];
+    while(produto.getId() != -1){
+        ui->twCompraCliente->insertRow(i);
+        ui->twCompraCliente->setItem(i, 0, new QTableWidgetItem(produto.getNome()));
+        ui->twCompraCliente->setItem(i, 1, new QTableWidgetItem(QString::number(produto.getQuantidade())));
+        ui->twCompraCliente->setItem(i, 2, new QTableWidgetItem("R$ " + QString::number(produto.getPreco())));
+        i++;
+        produto = lddeProdutos[i];
     }
 
     ui->twCompraCliente->selectRow(0);
@@ -172,8 +198,23 @@ void TelaPedidosCliente::on_pushButton_clicked()
         compras = lddeCompras.Busca(id);
         if(compras.getId() != -1){
             ui->twPedidosCliente->removeRow(linha);
-            QMessageBox::information(this,"","Produto removido!");
             lddeCompras.Remove(compras.getId());
+            produto = lddeProdutos.Busca(compras.getId());
+
+            //Altera a quantidade do produto atual do banco de dados
+            int quantidadeNova = produto.getQuantidade() + compras.getQntProduto();
+            QSqlQuery query3;
+            query3.prepare("update tb_produtos set quantidade="+QString::number(quantidadeNova)+" where id=" + QString::number(compras.getId()));
+            if(query3.exec()){
+                produto = lddeProdutos.Busca(compras.getNome());
+                produto.Atualiza(quantidadeNova);
+                lddeProdutos.Atualiza(produto, compras.getId());
+            }
+            else{
+                QMessageBox::warning(this,"ERRO","Erro ao atualizar produtos!");
+            }
+
+            QMessageBox::information(this,"","Produto removido!");
         }
         else{
             QMessageBox::warning(this,"ERRO","Erro ao remover produto!");
@@ -218,21 +259,9 @@ void TelaPedidosCliente::on_buttonConfirma_clicked() // Clica e Salva no Banco
                 QMessageBox::warning(this,"ERRO","ERRO ao Adicionar Pedido!");
             }
 
-            lddeCompras.Remove(compras.getId());
-
-            ui->twPedidosCliente->setRowCount(0);
-            int i = 0;
-            compras = lddeCompras[i];
-            while(compras.getId() != -1){//Monta a tabela dos pedidos atuais do cliente
-                ui->twPedidosCliente->insertRow(i);
-                ui->twPedidosCliente->setItem(i, 0, new QTableWidgetItem(compras.getNome()));
-                ui->twPedidosCliente->setItem(i, 1, new QTableWidgetItem(QString::number(compras.getQntProduto())));
-                ui->twPedidosCliente->setItem(i, 2, new QTableWidgetItem("R$ " + QString::number(compras.getPreco())));
-                ui->twPedidosCliente->setItem(i, 3, new QTableWidgetItem("R$ " + QString::number(compras.getPreco()*compras.getQntProduto())));
-                i++;
-                compras = lddeCompras[i];
-            }
+            lddeCompras.Remove(compras.getId()); // Remove da lista de compras
         }
+        ui->twPedidosCliente->setRowCount(0);
     }
 }
 

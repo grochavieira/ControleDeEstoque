@@ -61,6 +61,15 @@ public:
         return *this;
     }
 
+    bool Atualiza(F novo, int id){
+        No<F>* atual = BuscaNo(id);
+        if(!atual)
+            return false;
+
+        atual->objeto = novo;
+        return true;
+    }
+
     bool Insere (F copiaObjeto){
         No<F>* novo = new No<F>;
         novo->id = copiaObjeto.getId();
@@ -92,6 +101,19 @@ public:
 
         n++;
         return true;
+    }
+
+    No<F>* BuscaNo(int id){
+        No<F>* atual = primeiro;
+        while(atual){
+            if(atual->objeto.getId() == id)
+            {
+                return atual;
+            }
+            atual = atual->prox;
+        }
+
+        return nullptr;
     }
 
     F Busca (int id){
@@ -201,7 +223,7 @@ public:
             atual->objeto.Imprime();
             atual = atual->prox;
         }
-        cout << endl;
+        qDebug() << endl;
     }
 
     int getQtdCadastrados(){

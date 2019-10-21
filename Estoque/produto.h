@@ -74,6 +74,10 @@ public:
         return prioridade;
     }
 
+    void Atualiza(int qntNova){
+        this->quantidade = qntNova;
+    }
+
     void Imprime(){
         qDebug() << "ID: " << id;
         qDebug() << "Produto: " << nome;
