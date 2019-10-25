@@ -41,7 +41,7 @@
     </font>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tabProd">
     <attribute name="title">
@@ -252,7 +252,7 @@ QPushButton::hover{
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>:/src/bgAfter/a_Gerencia 1.png</pixmap>
+      <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Gerencia 1.png</pixmap>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
@@ -281,8 +281,6 @@ QPushButton::hover{
     <zorder>buttonPesquisar</zorder>
     <zorder>label</zorder>
     <zorder>txtPesquisar</zorder>
-    <zorder>spnQuantidade</zorder>
-    <zorder>label_5</zorder>
     <zorder>spnQuantidade</zorder>
     <zorder>label_5</zorder>
    </widget>
@@ -399,7 +397,7 @@ QPushButton::hover{
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>:/src/bgAfter/a_Pedidos.png</pixmap>
+      <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Pedidos.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -424,12 +422,14 @@ QPushButton::hover{
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>:/src/bgAfter/a_Gerencia 1.png</pixmap>
+    <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Gerencia 1.png</pixmap>
    </property>
   </widget>
   <zorder>label_2</zorder>
   <zorder>tabWidget</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="usefulResources.qrc"/>
+ </resources>
  <connections/>
 </ui>

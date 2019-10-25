@@ -7,6 +7,7 @@
 #include "pedidos.h"
 #include "compras.h"
 #include "ldde.h"
+#include "fila.h"
 #include "conexao.h"
 #include <QMessageBox>
 #include <QString>

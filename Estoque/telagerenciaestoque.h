@@ -3,6 +3,7 @@
 
 #include "ldde.h"
 #include "les.h"
+#include "fila.h"
 #include "conexao.h"
 #include "pilha.h"
 #include <QMainWindow>

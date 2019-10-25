@@ -1,10 +1,12 @@
 #include "telagerenciaestoque.h"
 #include "ui_telagerenciaestoque.h"
-
-static LDDE<Produto> lddeProdutos;
-static Produto produto;
+static LDDE<Produto> lddeProdutos; //fila<class F>
+static Produto produto;            //pedidos
 static Conexao conexao;
 static PILHA<Produto> pilha;
+
+static Fila<Produto> fila; //fila<class F>
+
 
 TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     QDialog(parent),
@@ -15,6 +17,8 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     /* Busca todos os dados dos produtos existentes no banco de dados (tabela de produtos)
      * e armazena eles dentro de um objeto do tipo LDDE<Produto>
      */
+
+    //importante para usar em pedidos   --------------------
     QSqlQuery query;
     query.prepare("select * from tb_produtos");
     if(query.exec()){
@@ -26,7 +30,7 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     else{
         qDebug() << "Banco de dados falhou!";
     }
-
+    //importante para usar em pedidos   --------------------
 
 
     // Configurações iniciais da tabela de produtos (cabeçalho, tamanho, num. de colunas, etc.)
@@ -289,6 +293,7 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
             pilha.Empilha(produto);
         }
     }
+    //tab 3 pra automaticamente mostrar tudo
 }
 
 void TelaGerenciaEstoque::on_twListaDeCompras_cellActivated(int row, int column)

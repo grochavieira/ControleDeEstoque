@@ -3,24 +3,33 @@
 
 #endif // FILA_H
 #include <iostream>
+#include "cliente.h"
+#include "produto.h"
+#include "pedidos.h"
+#include "funcionario.h"
+#include <chrono>
+#include <iostream>
+#include <QtSql>
 //MRoadster
 using namespace std;
+#include <iostream>
+
 
 
 //classe Objetos
 class Objetos{
   private:
-    string contato;
-    string nome;
+    QString contato;
+    QString nome;
     int qt;
     double preco;
-    string pedido;
+    QString pedido;
     int ID;
   public:
-    string getContato(){
+    QString getContato(){
       return contato;
     }
-    string getNome(){
+    QString getNome(){
       return nome;
     }
 
@@ -32,7 +41,7 @@ class Objetos{
       return preco;
     }
 
-    string getPedido(){
+    QString getPedido(){
       return pedido;
     }
     int getID(){
@@ -43,10 +52,10 @@ class Objetos{
 
 //define as variaveis
 
-    void setContato(string contato){
+    void setContato(QString contato){
       this->contato = contato;
     }
-    void setNome(string nome){
+    void setNome(QString nome){
       this->nome = nome;
     }
 
@@ -58,7 +67,7 @@ class Objetos{
      this->preco = preco;
     }
 
-    void setPedido(string pedido){
+    void setPedido(QString pedido){
      this->pedido = pedido;
     }
     void setID(int id){
@@ -82,11 +91,14 @@ template <class F>
 class Fila {//  classe fila
   private: // define um Nó pra frente e trás
     No<F> * atras, * frente;
+    F sentinela;
+    int n;
   public:
 //lembrete: fila dinamica (usar frente e trás)
     Fila() { //construtor
       atras = NULL; //frente e tras é null
       frente = NULL;
+      n = Tamanho();
     }
     friend class Objetos;
     //pode acessar os objetos
@@ -121,6 +133,20 @@ class Fila {//  classe fila
     else
       cout << "Fila Vazia..";
   }
+//pega tamanho fila
+
+  int Tamanho() {
+      No<F> * temp = frente;
+      int count=0;
+      while (temp != NULL) {
+        count++;
+        temp = temp -> prox;
+      }
+      //cout<<count<<endl;
+      return count;
+    }
+ //fim do pega tamanho
+
 
   void Imprimir() {
       No<F> * temp = frente;
@@ -129,6 +155,28 @@ class Fila {//  classe fila
         temp = temp -> prox;
       }
     } //imprime todos
+
+//operator
+
+
+  const F& operator[](int index){
+          if(index < 0 || index >= n)
+              return sentinela;
+
+          int i = 0;
+          No<F>* atual = frente;
+          while(atual){
+              if(i == index)              {
+                  return atual->dados;
+              }
+              atual = atual->prox;
+              i++;
+          }
+
+      }
+
+//--fim operator
+
 
 
     ~Fila() {
@@ -146,11 +194,10 @@ class Fila {//  classe fila
 /*
 int main() {
   //funciona com ids
-  Objetos a;
-  Objetos b;
+  Objetos a,b,c,d;
   Fila<Objetos> mini_fila;
 
-  a.setID(124632);
+  a.setID(1001);
   a.setPedido("2 john cena");
   a.setNome("WASHINGTON");
   a.setContato("EMAIL");
@@ -158,20 +205,41 @@ int main() {
   a.setQt(10);
 
 
-  b.setID(777772);
+  b.setID(1002);
   b.setPedido("4 girafas");
   b.setNome("MIRANHA");
   b.setContato("EMAIL1");
   b.setPreco(2.12);
   b.setQt(10);
 
+  c.setID(1003);
+  c.setPedido("4 girafas");
+  c.setNome("MIRANHA");
+  c.setContato("EMAIL1");
+  c.setPreco(2.12);
+  c.setQt(10);
 
-  mini_fila.Insere(a); //
+  d.setID(1004);
+  d.setPedido("4 girafas");
+  d.setNome("MIRANHA");
+  d.setContato("EMAIL1");
+  d.setPreco(2.12);
+  d.setQt(10);
+
+  mini_fila.Insere(a);
+  cout<<mini_fila.Tamanho()<<endl; //1
   mini_fila.Insere(b);
+  cout<<mini_fila.Tamanho()<<endl;  //2
+  mini_fila.Insere(c);
+  cout<<mini_fila.Tamanho()<<endl; //3
+  mini_fila.Insere(d);
   mini_fila.Imprimir();
   mini_fila.Deleta();
   mini_fila.Imprimir();
 
+  cout<<mini_fila.Tamanho()<<endl;
+
   return 0;
 }
 */
+

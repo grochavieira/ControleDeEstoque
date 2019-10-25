@@ -4,7 +4,10 @@
 static Produto produto;
 static Compras compras;
 static LDDE<Produto> lddeProdutos;
+static Fila<Produto> filaProdutos;
 static LDDE<Compras> lddeCompras;
+static Fila<Compras> filaCompras;
+
 
 static int idCliente;
 static QString nomeCliente;
@@ -29,6 +32,8 @@ TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int idClienteCopia, QStr
         while(query.next()){
             produto = new Produto(query.value(0).toInt(), query.value(1).toString(), ((query.value(2).toString()).replace(",",".")).toDouble(), query.value(3).toInt(), query.value(4).toInt(), query.value(5).toInt());
             lddeProdutos.Insere(produto);
+            filaProdutos.Insere(produto);
+
         }
     }
     else{
@@ -102,6 +107,26 @@ void TelaPedidosCliente::on_tabWidget_tabBarClicked(int index)
             compras = lddeCompras[i];
         }
     }
+
+//---inserindo a fila
+    if(index == 2){
+        ui->twPedidosCliente->setRowCount(0);
+        int i = 0;
+        compras = filaCompras[i];
+        while(compras.getId() != -1){
+            ui->twPedidosCliente->insertRow(i);
+            ui->twPedidosCliente->setItem(i, 0, new QTableWidgetItem(compras.getNome()));
+            ui->twPedidosCliente->setItem(i, 1, new QTableWidgetItem(QString::number(compras.getQntProduto())));
+            ui->twPedidosCliente->setItem(i, 2, new QTableWidgetItem("R$ " + QString::number(compras.getPreco())));
+            ui->twPedidosCliente->setItem(i, 3, new QTableWidgetItem("R$ " + QString::number(compras.getPreco()*compras.getQntProduto())));
+            i++;
+            compras = lddeCompras[i];
+        }
+    }
+
+
+//--fila
+
 }
 
 void TelaPedidosCliente::on_buttonAdiciona_clicked()
