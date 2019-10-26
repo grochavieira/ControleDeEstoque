@@ -57,7 +57,7 @@
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="tabCadast">
     <property name="font">
@@ -613,7 +613,7 @@ background: &quot;transparent&quot;;
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>:/src/bgAfter/a_Pedidos.png</pixmap>
+      <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Pedidos.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -926,7 +926,7 @@ QPushButton::hover{
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>:/src/bgAfter/a_Pedidos 2.png</pixmap>
+      <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Pedidos 2.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -947,9 +947,9 @@ QPushButton::hover{
     <widget class="QTableWidget" name="twListaDeCompras">
      <property name="geometry">
       <rect>
-       <x>80</x>
-       <y>10</y>
-       <width>621</width>
+       <x>10</x>
+       <y>20</y>
+       <width>751</width>
        <height>401</height>
       </rect>
      </property>
@@ -976,11 +976,82 @@ QPushButton::hover{
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap>:/src/bgAfter/a_Gerencia 1.png</pixmap>
+      <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Gerencia 1.png</pixmap>
      </property>
     </widget>
     <zorder>label_9</zorder>
     <zorder>twListaDeCompras</zorder>
+   </widget>
+   <widget class="QWidget" name="pedidos">
+    <attribute name="title">
+     <string>Pedidos</string>
+    </attribute>
+    <widget class="QLabel" name="label_11">
+     <property name="geometry">
+      <rect>
+       <x>-10</x>
+       <y>0</y>
+       <width>781</width>
+       <height>491</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Gerencia.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="pedidos_2">
+     <property name="geometry">
+      <rect>
+       <x>580</x>
+       <y>300</y>
+       <width>161</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QHeaderView { font-size: 12pt; }</string>
+     </property>
+    </widget>
+    <widget class="QTreeWidget" name="treeWidget">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>451</width>
+       <height>291</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string notr="true">1</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>370</y>
+       <width>161</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>clicka na minha pika 8====D</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QWidget" name="layoutWidget">
@@ -1007,7 +1078,7 @@ QPushButton::hover{
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>:/src/bgAfter/a_Gerencia.png</pixmap>
+    <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Gerencia.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -1032,6 +1103,8 @@ QPushButton::hover{
   <tabstop>tabGerenciadorDeEstoque</tabstop>
   <tabstop>twListaDeCompras</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="usefulResources.qrc"/>
+ </resources>
  <connections/>
 </ui>

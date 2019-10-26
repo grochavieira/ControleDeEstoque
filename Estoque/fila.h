@@ -1,8 +1,6 @@
 #ifndef FILA_H
 #define FILA_H
 
-#endif // FILA_H
-#include <iostream>
 #include "cliente.h"
 #include "produto.h"
 #include "pedidos.h"
@@ -16,81 +14,23 @@ using namespace std;
 
 
 
-//classe Objetos
-class Objetos{
-  private:
-    QString contato;
-    QString nome;
-    int qt;
-    double preco;
-    QString pedido;
-    int ID;
-  public:
-    QString getContato(){
-      return contato;
-    }
-    QString getNome(){
-      return nome;
-    }
 
-    int getQt(){
-      return qt;
-    }
-
-    double getPreco(){
-      return preco;
-    }
-
-    QString getPedido(){
-      return pedido;
-    }
-    int getID(){
-      return ID;
-    }
-
-//setters
-
-//define as variaveis
-
-    void setContato(QString contato){
-      this->contato = contato;
-    }
-    void setNome(QString nome){
-      this->nome = nome;
-    }
-
-    void setQt(int qt){
-      this->qt = qt;
-    }
-
-    void setPreco(double preco){
-     this->preco = preco;
-    }
-
-    void setPedido(QString pedido){
-     this->pedido = pedido;
-    }
-    void setID(int id){
-     this->ID = id;
-    }
-
-
-}; // termina classe objetos
 
 template <class F>
-class No {
-  public:
+class No1 {
+private:
     int dados;
-  No<F> * prox;
-
-
+    No1<F> * prox;
+public:
+template <class>
+friend class Fila;
 };
 
 
 template <class F>
 class Fila {//  classe fila
   private: // define um Nó pra frente e trás
-    No<F> * atras, * frente;
+    No1<F> * atras, * frente;
     F sentinela;
     int n;
   public:
@@ -104,10 +44,10 @@ class Fila {//  classe fila
     //pode acessar os objetos
 
   void Insere(F valor) { //insere
-    No<F> * temp;
-    temp = new No<F>;
+    No1<F> * temp;
+    temp = new No1<F>;
     //cout<<"valor :";
-    temp->dados = valor.getID(); //guarda a classe no temp->dados
+    temp->dados = valor.getId(); //guarda a classe no temp->dados
     temp->prox = NULL; //o ultimo obj da classe acrescentada não tem prox
     if (atras == NULL) {//se caso eh o primeiro da fila
       atras = temp; //atras eh o proprio dado
@@ -120,7 +60,7 @@ class Fila {//  classe fila
 
   void Deleta() {
     if (frente != NULL) {
-      No<F> * temp = frente;
+      No1<F> * temp = frente;
       cout << frente -> dados << " deletado \n";
       frente = frente -> prox;
       delete temp;
@@ -136,7 +76,7 @@ class Fila {//  classe fila
 //pega tamanho fila
 
   int Tamanho() {
-      No<F> * temp = frente;
+      No1<F> * temp = frente;
       int count=0;
       while (temp != NULL) {
         count++;
@@ -149,7 +89,7 @@ class Fila {//  classe fila
 
 
   void Imprimir() {
-      No<F> * temp = frente;
+      No1<F> * temp = frente;
       while (temp != NULL) {
         cout << temp -> dados << endl;
         temp = temp -> prox;
@@ -164,10 +104,10 @@ class Fila {//  classe fila
               return sentinela;
 
           int i = 0;
-          No<F>* atual = frente;
+          No1<F>* atual = frente;
           while(atual){
-              if(i == index)              {
-                  return atual->dados;
+              if(i == index){
+                  //return atual->dados;
               }
               atual = atual->prox;
               i++;
@@ -181,16 +121,16 @@ class Fila {//  classe fila
 
     ~Fila() {
       while (frente != NULL) {
-        No<F> * temp = frente;
+        No1<F> * temp = frente;
         frente = frente -> prox;
         delete temp;
       } //destrutor que começa do começo da fila
 
 
     }
-      friend class No<F>; //pode acessar o nó
+      friend class No1<F>; //pode acessar o nó
 };// termina classe fila
-
+#endif //
 /*
 int main() {
   //funciona com ids

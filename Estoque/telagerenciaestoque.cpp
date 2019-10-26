@@ -1,6 +1,7 @@
 #include "telagerenciaestoque.h"
 #include "ui_telagerenciaestoque.h"
 static LDDE<Produto> lddeProdutos; //fila<class F>
+static Fila<Produto> filaProdutos;
 static Produto produto;            //pedidos
 static Conexao conexao;
 static PILHA<Produto> pilha;
@@ -10,9 +11,10 @@ static Fila<Produto> fila; //fila<class F>
 
 TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::TelaGerenciaEstoque)
-{
+    ui(new Ui::TelaGerenciaEstoque){
+
     ui->setupUi(this);
+
 
     /* Busca todos os dados dos produtos existentes no banco de dados (tabela de produtos)
      * e armazena eles dentro de um objeto do tipo LDDE<Produto>
@@ -31,6 +33,8 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
         qDebug() << "Banco de dados falhou!";
     }
     //importante para usar em pedidos   --------------------
+
+
 
 
     // Configurações iniciais da tabela de produtos (cabeçalho, tamanho, num. de colunas, etc.)
@@ -63,12 +67,56 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     ui->twListaDeCompras->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->twListaDeCompras->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->twListaDeCompras->setStyleSheet("QTableView{selection-background-color:#FF6633}");
+
+    //definir para treeWidget
+    ui->treeWidget->setColumnCount(5);
+    ui->treeWidget->setColumnWidth(0, 80);
+    ui->treeWidget->setColumnWidth(1, 200);
+    ui->treeWidget->setColumnWidth(2, 119);
+    ui->treeWidget->setColumnWidth(3, 119);
+    ui->treeWidget->setColumnWidth(4, 100);
+    QStringList cabecalhosLista1000 = {"ID", "Nome", "Quantidade", "Qtd. Máxima", "Prioridade"};
+    //ui->treeWidget->setHorizontalHeaderLabels(cabecalhosLista1000);
+    ui->treeWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->treeWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->treeWidget->setStyleSheet("QTableView{selection-background-color:#FF6633}");
+
+    ui->treeWidget->setColumnCount(2);
+    AddRoot("hello","world");
+
+
 }
 
-TelaGerenciaEstoque::~TelaGerenciaEstoque()
-{
+TelaGerenciaEstoque::~TelaGerenciaEstoque(){
     delete ui;
 }
+
+/*
+void AddRoot(QString name,QString Description);
+void AddChild(QTreeWidgetItem *Parent ,QString name,QString Description);
+*/
+
+void TelaGerenciaEstoque::AddRoot(QString name,QString Description){
+
+    QTreeWidgetItem * itm = new QTreeWidgetItem(ui->treeWidget);
+    itm->setText(0,name);
+    itm->setText(1,Description);
+    //ui->treeWidget->addTopLevelItem(itm);
+    for (int i=0;i<10;i++) { //for loop pra analisar todos os pedidos e colocar em sub arvores
+        AddChild(itm,QString::number(i),QString::number(i*3));
+    }
+
+}
+
+
+void TelaGerenciaEstoque::AddChild(QTreeWidgetItem *parent ,QString name,QString Description){
+    QTreeWidgetItem * itm = new QTreeWidgetItem();
+    itm->setText(0,name);
+    itm->setText(1,Description);
+    parent->addChild(itm);
+}
+
+
 
 void TelaGerenciaEstoque::on_btnCadastrarProduto_clicked()
 {
@@ -294,9 +342,24 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
         }
     }
     //tab 3 pra automaticamente mostrar tudo
+    // index igual a 3, equivale a tab ---------------> PEDIDOS <--------------
+    if(index == 3){// Se essa tab for clicada, ela lista os pedidos em fila.
+
+
+        ui->pedidos_2->setRowCount(0);
+
+
+        ui->pedidos_2->insertRow(0);
+        ui->pedidos_2->setItem(0, 0, new QTableWidgetItem(QString::number(27)  ) );
+        ui->pedidos_2->setItem(0, 1, new QTableWidgetItem( QString::number(12) ));
+
+
+       }
+}
+void TelaGerenciaEstoque::on_twListaDeCompras_cellActivated(int row, int column){
+
 }
 
-void TelaGerenciaEstoque::on_twListaDeCompras_cellActivated(int row, int column)
-{
+void TelaGerenciaEstoque::on_pushButton_clicked(){
 
 }

@@ -11,6 +11,13 @@
 #include <QFileInfo>
 #include <QMessageBox>
 #include <QString>
+#include <QDialog>
+#include <QtCore>
+#include <QtGui>
+#include <QTreeWidgetItem>
+
+
+
 
 namespace Ui {
 class TelaGerenciaEstoque;
@@ -48,6 +55,12 @@ private slots:
     void on_tabGerenciadorDeEstoque_tabBarClicked(int index);
 
     void on_twListaDeCompras_cellActivated(int row, int column);
+
+    void AddRoot(QString name,QString Description);
+
+    void AddChild(QTreeWidgetItem *parent ,QString name,QString Description);
+
+    void on_pushButton_clicked();
 
 private:
     Ui::TelaGerenciaEstoque *ui;
