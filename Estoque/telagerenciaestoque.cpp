@@ -39,7 +39,7 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     query12.prepare("select * from tb_pedidos");
     if(query12.exec()){
         while(query12.next()){
-            pedidos12 = new Pedidos(query12.value(0).toInt() ,query12.value(1).toInt() ,query12.value(2).toString() ,query12.value(3).toInt() ,query12.value(0).toString() ,query12.value(0).toString() ,query12.value(0).toString() ,query12.value(0).toInt()  );
+            pedidos12 = new Pedidos(query12.value(0).toInt() ,query12.value(1).toInt() ,query12.value(2).toString() ,query12.value(3).toInt() ,query12.value(4).toString() ,query12.value(5).toString() ,query12.value(6).toString() ,query12.value(7).toInt()  );
             filaPedidos.Insere(pedidos12);
 
         }
@@ -99,7 +99,7 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     //para pedidos_2
 
     // Configurações iniciais da aba pedidos_2 (cabeçalho, tamanho, num. de colunas, etc..)
-    ui->pedidos_2->setColumnCount(6);
+    ui->pedidos_2->setColumnCount(8);
     ui->pedidos_2->verticalHeader()->setVisible(false);
     ui->pedidos_2->horizontalHeader()->setFixedHeight(30);
     ui->pedidos_2->setColumnWidth(0, 80);
@@ -111,7 +111,8 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     ui->pedidos_2->setColumnWidth(2, 80);
     ui->pedidos_2->setColumnWidth(3, 80);
     ui->pedidos_2->setColumnWidth(4, 80);
-    QStringList cabecalhosLista1 = {"ID PRODUTO","ID CLIENTE", "CEP", "ENDEREÇO", "TELEFONE", "QT PRODUTO"};
+    //(int idProduto, int qntProduto, QString nomeProduto, int idCliente, QString nomeCliente, QString telefone, QString cep, int numeroEndereco)
+    QStringList cabecalhosLista1 = {"ID PRODUTO","qntProduto","nomeProduto","ID CLIENTE", "nomeCliente", "telefone", "cep", "numeroEndereco"};
     ui->pedidos_2->setHorizontalHeaderLabels(cabecalhosLista1);
     ui->pedidos_2->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->pedidos_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -444,19 +445,21 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
         }
         else{
 
-            //pedidos12 = filaPedidos[0];
+            pedidos12 = filaPedidos[0];
             //produto = lddeProdutos[i];
 
             int i = 0;
             while(i < filaPedidos.Tamanho()){ // Cria a tabela com todos produtos em ordem de prioridade
-                pedidos = filaPedidos[i];
+                pedidos12 = filaPedidos[i];
                 ui->pedidos_2->insertRow(i);
-                ui->pedidos_2->setItem(i, 0, new QTableWidgetItem(QString::number( pedidos.getIdCliente()  )));
-                ui->pedidos_2->setItem(i, 1, new QTableWidgetItem(pedidos.getCep() ));
-                ui->pedidos_2->setItem(i, 2, new QTableWidgetItem(QString::number( pedidos.getNumeroEndereco() )));
-                ui->pedidos_2->setItem(i, 3, new QTableWidgetItem(( pedidos.getTelefone()  )));
-                ui->pedidos_2->setItem(i, 4, new QTableWidgetItem(QString::number( pedidos.getQntProduto()  )));
-                ui->pedidos_2->setItem(i, 5, new QTableWidgetItem(QString::number(pedidos.getId()  )));
+                ui->pedidos_2->setItem(i, 0, new QTableWidgetItem(QString::number(pedidos12.getId()  )));
+                ui->pedidos_2->setItem(i, 1, new QTableWidgetItem(QString::number(pedidos12.getQntProduto()  )));
+                ui->pedidos_2->setItem(i, 2, new QTableWidgetItem(pedidos12.getNomeProduto()  ));
+                ui->pedidos_2->setItem(i, 3, new QTableWidgetItem(QString::number(pedidos12.getIdCliente()  )));
+                ui->pedidos_2->setItem(i, 4, new QTableWidgetItem(pedidos12.getNomeCliente()  ));
+                ui->pedidos_2->setItem(i, 5, new QTableWidgetItem(pedidos12.getTelefone()  ));
+                ui->pedidos_2->setItem(i, 6, new QTableWidgetItem(pedidos12.getCep()  ));
+                ui->pedidos_2->setItem(i, 7, new QTableWidgetItem(QString::number(pedidos12.getNumeroEndereco()  )));
                 i++;
 
 
