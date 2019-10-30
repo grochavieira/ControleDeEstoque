@@ -8,6 +8,7 @@
 #include <chrono>
 #include <iostream>
 #include <QtSql>
+#include <QDebug>
 //MRoadster
 using namespace std;
 #include <iostream>
@@ -19,7 +20,7 @@ using namespace std;
 template <class F>
 class No1 {
 private:
-    int dados;
+    F dados;
     No1<F> * prox;
 public:
 template <class>
@@ -33,6 +34,20 @@ class Fila {//  classe fila
     No1<F> * atras, * frente;
     F sentinela;
     int n;
+
+    void copia(Fila& dest, const Fila& other){
+        while(dest.Deleta());
+        n = 0;
+        atras = NULL;
+        frente = NULL;
+        No1<F>* recente = other.primeiro;
+        while(recente){
+            Insere(recente->valor);
+            recente = recente->prox;
+        }
+    }
+
+
   public:
 //lembrete: fila dinamica (usar frente e trás)
     Fila() { //construtor
@@ -40,28 +55,33 @@ class Fila {//  classe fila
       frente = NULL;
       n = Tamanho();
     }
-    friend class Objetos;
+
+
+    //friend class Objetos;
     //pode acessar os objetos
 
-  void Insere(F valor) { //insere
-    No1<F> * temp;
-    temp = new No1<F>;
-    //cout<<"valor :";
-    temp->dados = valor.getId(); //guarda a classe no temp->dados
-    temp->prox = NULL; //o ultimo obj da classe acrescentada não tem prox
-    if (atras == NULL) {//se caso eh o primeiro da fila
-      atras = temp; //atras eh o proprio dado
-      frente = temp;//frente eh o proprio dado
-    } else {//move para atras do ultimo inserido
-      atras -> prox = temp;
-      atras = temp; //o objeto fica atras de outro inserido anteriormente
+    void Insere(F valor) { //insere
+      No1<F> * temp;
+      temp = new No1<F>;
+      //cout<<"valor :";
+      temp->dados = valor; //guarda a classe no temp->dados
+      temp->prox = NULL; //o ultimo obj da classe acrescentada não tem prox
+      if (atras == NULL) {//se caso eh o primeiro da fila
+        atras = temp; //atras eh o proprio No
+        frente = temp;//frente eh o proprio No
+        cout<<"ok"<<endl;
+      } else {//move para atras do ultimo inserido
+        atras -> prox = temp;
+        atras = temp; //o objeto fica atras de outro inserido anteriormente
+        qDebug() <<"inseriu zzz"<<endl;
+      }
     }
-  }
 
-  void Deleta() {
+
+  bool Deleta() {
     if (frente != NULL) {
       No1<F> * temp = frente;
-      cout << frente -> dados << " deletado \n";
+      //cout << frente -> dados << " deletado \n";
       frente = frente -> prox;
       delete temp;
       //apaga o link entre o proximo e o atual,redefine o anterior para o proximo
@@ -69,9 +89,11 @@ class Fila {//  classe fila
       //se o primeiro eh null,entao eh o primeiro da fila
         atras = NULL;
         //deleta o unico membro
+      return true;
     }
     else
-      cout << "Fila Vazia..";
+      //cout << "Fila Vazia..";
+      return false;
   }
 //pega tamanho fila
 
@@ -99,22 +121,33 @@ class Fila {//  classe fila
 //operator
 
 
+  Fila (const Fila& outra) {
+      copia(*this,outra);
+  }
+
+  Fila& operator= (const Fila& other) {
+      copia(*this,other);
+      return *this;
+  }
+
   const F& operator[](int index){
-          if(index < 0 || index >= n)
-              return sentinela;
-
-          int i = 0;
-          No1<F>* atual = frente;
-          while(atual){
-              if(i == index){
-                  //return atual->dados;
-              }
-              atual = atual->prox;
-              i++;
-          }
-
+    int tam=Tamanho();
+    if(index>=tam || index<0){
+      //cout<<"problem\n";
+      return sentinela;
+    }
+    No1<F> * temp = frente;
+    int i=0;
+    while (temp != NULL) {
+      if(i==index){
+        //cout<<temp->dados.getID();
+        return temp->dados;
       }
-
+      i++;
+      temp = temp -> prox;
+    }
+    return sentinela;
+  }
 //--fim operator
 
 

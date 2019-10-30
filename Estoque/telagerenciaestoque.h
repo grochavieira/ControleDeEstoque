@@ -56,9 +56,9 @@ private slots:
 
     void on_twListaDeCompras_cellActivated(int row, int column);
 
-    void AddRoot(QString name,QString Description);
+    void AddRoot();
 
-    void AddChild(QTreeWidgetItem *parent ,QString name,QString Description);
+    void AddChild(QTreeWidgetItem *parent);
 
     void on_pushButton_clicked();
 

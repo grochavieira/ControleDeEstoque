@@ -3,6 +3,7 @@
 
 static Produto produto;
 static Compras compras;
+static Compras compras1;
 static LDDE<Produto> lddeProdutos;
 static Fila<Produto> filaProdutos;
 static LDDE<Compras> lddeCompras;
@@ -146,6 +147,7 @@ void TelaPedidosCliente::on_buttonAdiciona_clicked()
         else{
             compras = new Compras(produto.getId(), qtdProduto, produto.getNome(), produto.getPreco());
             lddeCompras.Insere(compras);
+            filaCompras.Insere(compras);
 
             //Altera a quantidade do produto atual do banco de dados
             int quantidadeNova = produto.getQuantidade() - compras.getQntProduto();
@@ -272,7 +274,10 @@ void TelaPedidosCliente::on_buttonConfirma_clicked() // Clica e Salva no Banco
 
     else{
         while(lddeCompras.getQtdCadastrados() != 0){// Remove todos produtos das Compras e envia para fila de pedidos.
-            compras = lddeCompras[0];
+            compras = lddeCompras[0]; // <- isso aí
+
+            compras1 = filaCompras[0];
+
             QSqlQuery query;
             query.prepare("insert into tb_pedidos (id_cliente, cep_cliente, num_endereco_cliente, telefone_cliente, id_produto, quantidade_produto) values""('" + QString::number(idCliente) + "','" + cepCliente + "','" + QString::number(numEnderecoCliente) + "','" + telefoneCliente + "','" + QString::number(compras.getId()) + "','" + QString::number(compras.getQntProduto()) + "')");
             if(query.exec()){
@@ -283,11 +288,11 @@ void TelaPedidosCliente::on_buttonConfirma_clicked() // Clica e Salva no Banco
                 qDebug() << "Erro ao enviar pedido: " << compras.getNome();
                 QMessageBox::warning(this,"ERRO","ERRO ao Adicionar Pedido!");
             }
-
+            //vou aproveitar a ldde pra colocar na fila tb
             lddeCompras.Remove(compras.getId()); // Remove da lista de compras
-        }
+        } //termina while
         ui->twPedidosCliente->setRowCount(0);
-    }
+    }//termina else
 }
 
 void TelaPedidosCliente::on_spnQuantidade_editingFinished()

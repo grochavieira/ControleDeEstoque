@@ -57,7 +57,7 @@
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tabCadast">
     <property name="font">
@@ -1008,10 +1008,10 @@ QPushButton::hover{
     <widget class="QTableWidget" name="pedidos_2">
      <property name="geometry">
       <rect>
-       <x>580</x>
-       <y>300</y>
-       <width>161</width>
-       <height>121</height>
+       <x>10</x>
+       <y>10</y>
+       <width>331</width>
+       <height>301</height>
       </rect>
      </property>
      <property name="font">
@@ -1027,10 +1027,10 @@ QPushButton::hover{
     <widget class="QTreeWidget" name="treeWidget">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>350</x>
        <y>10</y>
-       <width>451</width>
-       <height>291</height>
+       <width>411</width>
+       <height>301</height>
       </rect>
      </property>
      <column>
@@ -1042,14 +1042,14 @@ QPushButton::hover{
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>370</y>
+       <x>340</x>
+       <y>330</y>
        <width>161</width>
        <height>23</height>
       </rect>
      </property>
      <property name="text">
-      <string>clicka na minha pika 8====D</string>
+      <string>limpar pedidos</string>
      </property>
     </widget>
    </widget>

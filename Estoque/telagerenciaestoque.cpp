@@ -2,11 +2,12 @@
 #include "ui_telagerenciaestoque.h"
 static LDDE<Produto> lddeProdutos; //fila<class F>
 static Fila<Produto> filaProdutos;
-static Produto produto;            //pedidos
+static Produto produto;
+static Pedidos pedidos12;//pedidos
 static Conexao conexao;
 static PILHA<Produto> pilha;
-
 static Fila<Produto> fila; //fila<class F>
+static Fila<Pedidos> filaPedidos; //fila<class F>
 
 
 TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
@@ -27,13 +28,25 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
         while(query.next()){
             produto = new Produto(query.value(0).toInt(), query.value(1).toString(), ((query.value(2).toString()).replace(",",".")).toDouble(), query.value(3).toInt(), query.value(4).toInt(), query.value(5).toInt());
             lddeProdutos.Insere(produto);
+            //filaProdutos.Insere(produto);
         }
     }
     else{
         qDebug() << "Banco de dados falhou!";
     }
     //importante para usar em pedidos   --------------------
+    QSqlQuery query12;
+    query12.prepare("select * from tb_pedidos");
+    if(query12.exec()){
+        while(query12.next()){
+            pedidos12 = new Pedidos(query12.value(0).toInt() ,query12.value(1).toInt() ,query12.value(2).toString() ,query12.value(3).toInt() ,query12.value(0).toString() ,query12.value(0).toString() ,query12.value(0).toString() ,query12.value(0).toInt()  );
+            filaPedidos.Insere(pedidos12);
 
+        }
+    }
+    else{
+        qDebug() << "Banco de dados falhou!";
+    }
 
 
 
@@ -68,12 +81,49 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     ui->twListaDeCompras->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->twListaDeCompras->setStyleSheet("QTableView{selection-background-color:#FF6633}");
 
+    /*
+            ui->pedidos_2->insertRow(i);
+            ui->pedidos_2->setItem(i, 0, new QTableWidgetItem(QString::number( pedidos12.getId()  )));
+            ui->pedidos_2->setItem(i, 1, new QTableWidgetItem(( pedidos12.getCep()  )));
+            ui->pedidos_2->setItem(i, 2, new QTableWidgetItem(( pedidos12.getTelefone()  )));
+            ui->pedidos_2->setItem(i, 3, new QTableWidgetItem(QString::number( pedidos12.getIdCliente()  )));
+            ui->pedidos_2->setItem(i, 4, new QTableWidgetItem(QString::number( pedidos12.getQntProduto()  )));
+            ui->pedidos_2->setItem(i, 5, new QTableWidgetItem(( pedidos12.getNomeCliente()  )));
+            ui->pedidos_2->setItem(i, 6, new QTableWidgetItem(( pedidos12.getNomeProduto()  )));
+            ui->pedidos_2->setItem(i, 7, new QTableWidgetItem(QString::number( pedidos12.getNumeroEndereco() )));
+
+*/
+
+
+
+    //para pedidos_2
+
+    // Configurações iniciais da aba pedidos_2 (cabeçalho, tamanho, num. de colunas, etc..)
+    ui->pedidos_2->setColumnCount(6);
+    ui->pedidos_2->verticalHeader()->setVisible(false);
+    ui->pedidos_2->horizontalHeader()->setFixedHeight(30);
+    ui->pedidos_2->setColumnWidth(0, 80);
+    ui->pedidos_2->setColumnWidth(1, 80);
+    ui->pedidos_2->setColumnWidth(2, 80);
+    ui->pedidos_2->setColumnWidth(3, 80);
+    ui->pedidos_2->setColumnWidth(4, 80);
+    ui->pedidos_2->setColumnWidth(1, 80);
+    ui->pedidos_2->setColumnWidth(2, 80);
+    ui->pedidos_2->setColumnWidth(3, 80);
+    ui->pedidos_2->setColumnWidth(4, 80);
+    QStringList cabecalhosLista1 = {"ID PRODUTO","ID CLIENTE", "CEP", "ENDEREÇO", "TELEFONE", "QT PRODUTO"};
+    ui->pedidos_2->setHorizontalHeaderLabels(cabecalhosLista1);
+    ui->pedidos_2->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->pedidos_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->pedidos_2->setStyleSheet("QTableView{selection-background-color:#FF6633}");
+
+
     //definir para treeWidget
     ui->treeWidget->setColumnCount(5);
     ui->treeWidget->setColumnWidth(0, 80);
-    ui->treeWidget->setColumnWidth(1, 200);
-    ui->treeWidget->setColumnWidth(2, 119);
-    ui->treeWidget->setColumnWidth(3, 119);
+    ui->treeWidget->setColumnWidth(1, 100);
+    ui->treeWidget->setColumnWidth(2, 100);
+    ui->treeWidget->setColumnWidth(3, 100);
     ui->treeWidget->setColumnWidth(4, 100);
     QStringList cabecalhosLista1000 = {"ID", "Nome", "Quantidade", "Qtd. Máxima", "Prioridade"};
     //ui->treeWidget->setHorizontalHeaderLabels(cabecalhosLista1000);
@@ -81,8 +131,6 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     ui->treeWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->treeWidget->setStyleSheet("QTableView{selection-background-color:#FF6633}");
 
-    ui->treeWidget->setColumnCount(2);
-    AddRoot("hello","world");
 
 
 }
@@ -91,30 +139,58 @@ TelaGerenciaEstoque::~TelaGerenciaEstoque(){
     delete ui;
 }
 
-/*
-void AddRoot(QString name,QString Description);
-void AddChild(QTreeWidgetItem *Parent ,QString name,QString Description);
-*/
 
-void TelaGerenciaEstoque::AddRoot(QString name,QString Description){
+
+
+
+void TelaGerenciaEstoque::AddRoot(){
+
 
     QTreeWidgetItem * itm = new QTreeWidgetItem(ui->treeWidget);
-    itm->setText(0,name);
-    itm->setText(1,Description);
+    itm->setText(0,"Pedido");
+    itm->setText(1,"Nome");
+    itm->setText(2,"Telefone");
+    itm->setText(3,"ID");
+    itm->setText(4,"Description4");
     //ui->treeWidget->addTopLevelItem(itm);
+    /*
+    for (int i=0;i<filaProdutos.Tamanho();i++) { //for loop pra analisar todos os pedidos e colocar em sub arvores
+        AddChild(itm);
+    }
+    */
     for (int i=0;i<10;i++) { //for loop pra analisar todos os pedidos e colocar em sub arvores
-        AddChild(itm,QString::number(i),QString::number(i*3));
+        AddChild(itm);
     }
 
+
+
+
 }
 
 
-void TelaGerenciaEstoque::AddChild(QTreeWidgetItem *parent ,QString name,QString Description){
+void TelaGerenciaEstoque::AddChild(QTreeWidgetItem *parent){
     QTreeWidgetItem * itm = new QTreeWidgetItem();
-    itm->setText(0,name);
-    itm->setText(1,Description);
+    itm->setText(0,"name");
+    itm->setText(1,"Description1");
+    itm->setText(2,"Description2");
+    itm->setText(3,"Description3");
+    itm->setText(4,"Description4");
     parent->addChild(itm);
+
+    /*
+    produto.getId();
+    produto.getNome();
+    produto.getPreco();
+    produto.getQuantidade();
+    produto.getQuantidade();
+    */
 }
+
+
+
+
+
+
 
 
 
@@ -344,22 +420,75 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
     //tab 3 pra automaticamente mostrar tudo
     // index igual a 3, equivale a tab ---------------> PEDIDOS <--------------
     if(index == 3){// Se essa tab for clicada, ela lista os pedidos em fila.
+/*
+        ui->pedidos_2->insertRow(0);
+        ui->pedidos_2->setItem(0, 0, new QTableWidgetItem("MEMES"  ));
+        ui->pedidos_2->setItem(0, 1, new QTableWidgetItem("MEMES"  ));
+        ui->pedidos_2->setItem(0, 2, new QTableWidgetItem("MEMES"  ));
+        ui->pedidos_2->setItem(0, 3, new QTableWidgetItem("MEMES"  ));
+        ui->pedidos_2->setItem(0, 4, new QTableWidgetItem("MEMES"  ));
+        ui->pedidos_2->setItem(0, 5, new QTableWidgetItem("MEMES"  ));
+        ui->pedidos_2->setItem(0, 6, new QTableWidgetItem("MEMES"  ));
+        ui->pedidos_2->setItem(0, 7, new QTableWidgetItem("MEMES"  ));
+*/
+
+        Pedidos pedidos;
+
+
 
 
         ui->pedidos_2->setRowCount(0);
 
+        if(filaPedidos.Tamanho() == 0){
+            qDebug()<<"fila vazia!";
+        }
+        else{
 
-        ui->pedidos_2->insertRow(0);
-        ui->pedidos_2->setItem(0, 0, new QTableWidgetItem(QString::number(27)  ) );
-        ui->pedidos_2->setItem(0, 1, new QTableWidgetItem( QString::number(12) ));
+            //pedidos12 = filaPedidos[0];
+            //produto = lddeProdutos[i];
+
+            int i = 0;
+            while(i < filaPedidos.Tamanho()){ // Cria a tabela com todos produtos em ordem de prioridade
+                pedidos = filaPedidos[i];
+                ui->pedidos_2->insertRow(i);
+                ui->pedidos_2->setItem(i, 0, new QTableWidgetItem(QString::number( pedidos.getIdCliente()  )));
+                ui->pedidos_2->setItem(i, 1, new QTableWidgetItem(pedidos.getCep() ));
+                ui->pedidos_2->setItem(i, 2, new QTableWidgetItem(QString::number( pedidos.getNumeroEndereco() )));
+                ui->pedidos_2->setItem(i, 3, new QTableWidgetItem(( pedidos.getTelefone()  )));
+                ui->pedidos_2->setItem(i, 4, new QTableWidgetItem(QString::number( pedidos.getQntProduto()  )));
+                ui->pedidos_2->setItem(i, 5, new QTableWidgetItem(QString::number(pedidos.getId()  )));
+                i++;
 
 
-       }
+            }
+        }//fim else
+
+        /*
+{"ID","ID CLIENTE", "CEP", "ENDEREÇO", "TELEFONE", "QT PRODUTO","ID PRODUTO"};
+        */
+
+
+
+
+
+    }
+
+
 }
+
+
+
+
+
+
+
+
 void TelaGerenciaEstoque::on_twListaDeCompras_cellActivated(int row, int column){
 
 }
 
 void TelaGerenciaEstoque::on_pushButton_clicked(){
+    //AddRoot();
+    //limpar tudo
 
-}
+}//aki
