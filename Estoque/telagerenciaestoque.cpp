@@ -60,7 +60,7 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     //resgata o nome da tb_clientes   --------------------
     QSqlQuery query_tabela;
 
-    QString vetor[1000];//isso é temorario ok?so ate eu achar um jeito
+    QString vetor[1000];//isso é temporario ok?so ate eu achar um jeito
                         //de comparar o id do cliente ,retornar o nome
                         // colocar o nome na tb_pedidos
                         // e listar tudo isso
@@ -567,5 +567,33 @@ void TelaGerenciaEstoque::on_twListaDeCompras_cellActivated(int row, int column)
 void TelaGerenciaEstoque::on_pushButton_clicked(){
     //AddRoot();
     //limpar tudo
+
+    //int linha = ui->pedidos_2->currentRow();
+
+
+
+    //importante para usar em pedidos   --------------------
+    QSqlQuery query13;
+
+
+    int id_ = ui->pedidos_2->item(0,0)->text().toInt();
+
+    query13.prepare("Delete from tb_pedidos where id_= "+QString::number(id_) );
+    if(query13.exec()){
+        //while(query13.next()){
+            filaPedidos.Deleta();
+            ui->pedidos_2->removeRow(0);
+            qDebug()<<"deu certo";
+
+        //} da erro kkk
+    }
+    else{
+        qDebug() << "Banco de dados falhou!";
+    }
+
+
+
+
+
 
 }//aki
