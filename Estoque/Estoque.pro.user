@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.10.1, 2019-10-30T01:25:32. -->
+<!-- Written by QtCreator 4.10.1, 2019-10-30T11:29:02. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -317,7 +317,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/VictorTester/Documents/FEI/4SEM/ESTRUTURA_DE_DADOS/projetov8/ControleDeEstoque/build-Estoque-Desktop_Qt_5_13_1_MinGW_64_bit-Debug</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/VictorTester/Documents/FEI/4SEM/ESTRUTURA_DE_DADOS/projetov8/ControleDeEstoque/Estoque</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

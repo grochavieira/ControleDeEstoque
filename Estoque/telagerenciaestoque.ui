@@ -57,7 +57,7 @@
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="tabCadast">
     <property name="font">
@@ -1010,7 +1010,7 @@ QPushButton::hover{
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>331</width>
+       <width>711</width>
        <height>301</height>
       </rect>
      </property>
@@ -1027,9 +1027,9 @@ QPushButton::hover{
     <widget class="QTreeWidget" name="treeWidget">
      <property name="geometry">
       <rect>
-       <x>350</x>
+       <x>730</x>
        <y>10</y>
-       <width>411</width>
+       <width>31</width>
        <height>301</height>
       </rect>
      </property>

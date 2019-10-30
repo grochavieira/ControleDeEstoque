@@ -10,6 +10,8 @@ static Fila<Produto> fila; //fila<class F>
 static Fila<Pedidos> filaPedidos; //fila<class F>
 
 
+
+
 TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::TelaGerenciaEstoque){
@@ -39,7 +41,14 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     query12.prepare("select * from tb_pedidos");
     if(query12.exec()){
         while(query12.next()){
-            pedidos12 = new Pedidos(query12.value(0).toInt() ,query12.value(1).toInt() ,query12.value(2).toString() ,query12.value(3).toInt() ,query12.value(4).toString() ,query12.value(5).toString() ,query12.value(6).toString() ,query12.value(7).toInt()  );
+            pedidos12 = new Pedidos(query12.value(0).toInt() ,
+                                    query12.value(1).toInt() ,
+                                    query12.value(2).toString(),
+                                    query12.value(3).toInt() ,
+                                    query12.value(4).toString() ,
+                                    query12.value(5).toInt() ,
+                                    query12.value(6).toInt(),
+                                    query12.value(7).toString()  );
             filaPedidos.Insere(pedidos12);
 
         }
@@ -48,6 +57,28 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
         qDebug() << "Banco de dados falhou!";
     }
 
+    //resgata o nome da tb_clientes   --------------------
+    QSqlQuery query_tabela;
+
+    QString vetor[1000];//isso é temorario ok?so ate eu achar um jeito
+                        //de comparar o id do cliente ,retornar o nome
+                        // colocar o nome na tb_pedidos
+                        // e listar tudo isso
+    int i=0;
+    query_tabela.prepare("select nome_cliente from tb_clientes");
+    if(query_tabela.exec()){
+        while(query_tabela.next()){
+            vetor[i]=query12.value(0).toString();
+            i++;
+        }
+    }
+    else{
+        qDebug() << "Banco de dados falhou!";
+    }
+    for (i=0;i<10;i++) {
+        qDebug() << vetor[i];
+
+    }
 
 
     // Configurações iniciais da tabela de produtos (cabeçalho, tamanho, num. de colunas, etc.)
@@ -112,7 +143,29 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) :
     ui->pedidos_2->setColumnWidth(3, 80);
     ui->pedidos_2->setColumnWidth(4, 80);
     //(int idProduto, int qntProduto, QString nomeProduto, int idCliente, QString nomeCliente, QString telefone, QString cep, int numeroEndereco)
-    QStringList cabecalhosLista1 = {"ID PRODUTO","qntProduto","nomeProduto","ID CLIENTE", "nomeCliente", "telefone", "cep", "numeroEndereco"};
+    QStringList cabecalhosLista1 = {"ID GERAL",
+                                    "ID CLIENTE",
+                                    "CEP",
+                                    "ENDER.",
+                                    "FONE",
+                                    "ID PROD.",
+                                    "QT PROD.",
+                                    "NOME CL."};
+
+    /*
+
+    idgeral   int
+    id cliente int
+    cep        string
+
+    num endereço int
+    telefone     string
+    id produto   int
+
+    produto qt   int
+    nome_cliente string
+    */
+
     ui->pedidos_2->setHorizontalHeaderLabels(cabecalhosLista1);
     ui->pedidos_2->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->pedidos_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -141,6 +194,23 @@ TelaGerenciaEstoque::~TelaGerenciaEstoque(){
 }
 
 
+
+
+
+
+/*
+ * vamos ver se funfa
+ *
+ *     QString getNomeDoClienteParaUsarNoSQL(int index,int tamanhoDaDB){
+        for(int i=0;i<tamanhoDaDB;i++){
+           if (index==id)
+              return ;
+        }
+
+
+    }
+ *
+ */
 
 
 
@@ -452,15 +522,19 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
             while(i < filaPedidos.Tamanho()){ // Cria a tabela com todos produtos em ordem de prioridade
                 pedidos12 = filaPedidos[i];
                 ui->pedidos_2->insertRow(i);
-                ui->pedidos_2->setItem(i, 0, new QTableWidgetItem(QString::number(pedidos12.getId()  )));
-                ui->pedidos_2->setItem(i, 1, new QTableWidgetItem(QString::number(pedidos12.getQntProduto()  )));
-                ui->pedidos_2->setItem(i, 2, new QTableWidgetItem(pedidos12.getNomeProduto()  ));
-                ui->pedidos_2->setItem(i, 3, new QTableWidgetItem(QString::number(pedidos12.getIdCliente()  )));
-                ui->pedidos_2->setItem(i, 4, new QTableWidgetItem(pedidos12.getNomeCliente()  ));
-                ui->pedidos_2->setItem(i, 5, new QTableWidgetItem(pedidos12.getTelefone()  ));
-                ui->pedidos_2->setItem(i, 6, new QTableWidgetItem(pedidos12.getCep()  ));
-                ui->pedidos_2->setItem(i, 7, new QTableWidgetItem(QString::number(pedidos12.getNumeroEndereco()  )));
+                ui->pedidos_2->setItem(i, 0, new QTableWidgetItem(QString::number(pedidos12.getIdGeral()  )));//0
+                ui->pedidos_2->setItem(i, 1, new QTableWidgetItem(QString::number(pedidos12.getIdCliente()  )));//1
+                ui->pedidos_2->setItem(i, 2, new QTableWidgetItem(pedidos12.getCep()  ));//2
+
+                ui->pedidos_2->setItem(i, 3, new QTableWidgetItem(QString::number(pedidos12.getNumeroEndereco()  )));//3
+                ui->pedidos_2->setItem(i, 4, new QTableWidgetItem(pedidos12.getTelefone()  ));//4
+                ui->pedidos_2->setItem(i, 5, new QTableWidgetItem(QString::number(pedidos12.getIdProduto()  )));//5
+
+                ui->pedidos_2->setItem(i, 6, new QTableWidgetItem(QString::number(pedidos12.getQntProduto()  )));//6
+                ui->pedidos_2->setItem(i, 7, new QTableWidgetItem(pedidos12.getNomeCliente()  ));//7
+
                 i++;
+
 
 
             }

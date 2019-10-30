@@ -279,7 +279,7 @@ void TelaPedidosCliente::on_buttonConfirma_clicked() // Clica e Salva no Banco
             compras1 = filaCompras[0];
 
             QSqlQuery query;
-            query.prepare("insert into tb_pedidos (id_cliente, cep_cliente, num_endereco_cliente, telefone_cliente, id_produto, quantidade_produto) values""('" + QString::number(idCliente) + "','" + cepCliente + "','" + QString::number(numEnderecoCliente) + "','" + telefoneCliente + "','" + QString::number(compras.getId()) + "','" + QString::number(compras.getQntProduto()) + "')");
+            query.prepare("insert into tb_pedidos (id_cliente, cep_cliente, num_endereco_cliente, telefone_cliente, id_produto, quantidade_produto, nome_cliente) values""('" + QString::number(idCliente) + "','" + cepCliente + "','" + QString::number(numEnderecoCliente) + "','" + telefoneCliente + "','" + QString::number(compras.getId()) + "','" + QString::number(compras.getQntProduto()) +"','" + nomeCliente + "')");
             if(query.exec()){
                 qDebug() << "Pedidos Enviados";
                 QMessageBox::information(this, "OK", "Pedidos Enviados com Sucesso!");
