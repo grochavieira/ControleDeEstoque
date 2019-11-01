@@ -1,4 +1,4 @@
-QT       += core gui sql
+QT       += core gui sql qml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,6 +20,7 @@ SOURCES += \
     mainwindow.cpp \
     telacadastrocliente.cpp \
     telacadastrofuncionario.cpp \
+    telaestocaprodutos.cpp \
     telagerenciaestoque.cpp \
     telalogincliente.cpp \
     telaloginfuncionario.cpp \
@@ -38,6 +39,7 @@ HEADERS += \
     produto.h \
     telacadastrocliente.h \
     telacadastrofuncionario.h \
+    telaestocaprodutos.h \
     telagerenciaestoque.h \
     les.h \
     telalogincliente.h \
@@ -48,6 +50,7 @@ FORMS += \
     mainwindow.ui \
     telacadastrocliente.ui \
     telacadastrofuncionario.ui \
+    telaestocaprodutos.ui \
     telagerenciaestoque.ui \
     telalogincliente.ui \
     telaloginfuncionario.ui \
@@ -61,3 +64,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     myResources.qrc \
     usefulResources.qrc
+
+DISTFILES +=

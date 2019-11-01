@@ -11,7 +11,8 @@
 #include <QMessageBox>
 #include <QString>
 
-namespace Ui {
+namespace Ui
+{
 class TelaLoginCliente;
 }
 
@@ -27,6 +28,10 @@ private slots:
     void on_btnEntrarCliente_clicked();
 
     void on_btnAreaCadastroCliente_clicked();
+
+    void on_txtUsuarioCliente_editingFinished();
+
+    void on_txtSenhaCliente_editingFinished();
 
 private:
     Ui::TelaLoginCliente *ui;

@@ -1,10 +1,11 @@
 #ifndef COMPRAS_H
 #define COMPRAS_H
 
-#include<QString>
-#include<QDebug>
+#include <QString>
+#include <QDebug>
 
-class Compras{
+class Compras
+{
 private:
     int idProduto;
     int qntProduto;
@@ -12,43 +13,51 @@ private:
     double preco;
 
 public:
-    Compras(int idProduto, int qntProduto, QString nome, double preco){
+    Compras(int idProduto, int qntProduto, QString nome, double preco)
+    {
         this->idProduto = idProduto;
         this->qntProduto = qntProduto;
         this->nome = nome;
         this->preco = preco;
     }
 
-    Compras(Compras *compra){
+    Compras(Compras *compra)
+    {
         this->idProduto = compra->idProduto;
         this->qntProduto = compra->qntProduto;
         this->nome = compra->nome;
         this->preco = compra->preco;
     }
-    Compras(){
+    Compras()
+    {
         idProduto = -1;
         qntProduto = 0;
         nome = "";
         preco = 0.0;
     }
 
-    int getId(){
+    int getId()
+    {
         return idProduto;
     }
 
-    int getQntProduto(){
+    int getQntProduto()
+    {
         return qntProduto;
     }
 
-    QString getNome(){
+    QString getNome()
+    {
         return nome;
     }
 
-    double getPreco(){
+    double getPreco()
+    {
         return preco;
     }
 
-    void Imprime(){
+    void Imprime()
+    {
         qDebug() << "ID do Produto: " << idProduto;
         qDebug() << "Quantidade do produto: " << qntProduto;
     }

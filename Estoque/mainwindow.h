@@ -6,20 +6,16 @@
 #include "telalogincliente.h"
 #include <QMainWindow>
 #include <QFileInfo>
-#include <QSystemTrayIcon> //.h
-#include <QMenu> //added
+#include <QSystemTrayIcon>
+#include <QMenu>
 
-class QComboBox; //.h
-
-
-
-
-
-
-
+class QComboBox;
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui
+{
+class MainWindow;
+}
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -31,7 +27,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void iconActivated(QSystemTrayIcon::ActivationReason);//added
+    void iconActivated(QSystemTrayIcon::ActivationReason);
 
     void on_btnCadastrarProduto_clicked();
 
@@ -67,9 +63,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QSystemTrayIcon* trayIcon;
-    QMenu* trayIconMenu;
-    QMenu* createMenu();
-
+    QSystemTrayIcon *trayIcon;
+    QMenu *trayIconMenu;
+    QMenu *createMenu();
 };
 #endif // MAINWINDOW_H

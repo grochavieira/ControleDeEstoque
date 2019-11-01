@@ -3,28 +3,34 @@
 
 #include <QtSql>
 
-class Conexao{
+class Conexao
+{
 public:
     QSqlDatabase bancoDeDados;
 
-    Conexao(){
+    Conexao()
+    {
         bancoDeDados = QSqlDatabase::addDatabase("QSQLITE");
     }
 
-    void fechar(){
+    void fechar()
+    {
         bancoDeDados.close();
     }
 
-    bool abrir(){
+    bool abrir()
+    {
         QString local = qApp->applicationDirPath();
-        QString banco = local+"/db/ControleDeEstoque.db";
+        QString banco = local + "/db/ControleDeEstoque.db";
         qDebug() << banco;
         bancoDeDados.setDatabaseName(banco);
-        if(!bancoDeDados.open()){
+        if (!bancoDeDados.open())
+        {
             qDebug() << "Não foi possível abrir o banco de dados!";
             return false;
         }
-        else{
+        else
+        {
             qDebug() << "Banco de Dados foi aberto com sucesso!";
             return true;
         }

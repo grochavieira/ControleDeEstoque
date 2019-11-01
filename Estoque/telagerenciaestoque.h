@@ -6,6 +6,7 @@
 #include "fila.h"
 #include "conexao.h"
 #include "pilha.h"
+#include "telaestocaprodutos.h"
 #include <QMainWindow>
 #include <QtSql>
 #include <QFileInfo>
@@ -16,10 +17,8 @@
 #include <QtGui>
 #include <QTreeWidgetItem>
 
-
-
-
-namespace Ui {
+namespace Ui
+{
 class TelaGerenciaEstoque;
 }
 
@@ -61,6 +60,12 @@ private slots:
     void AddChild(QTreeWidgetItem *parent);
 
     void on_pushButton_clicked();
+
+    void on_btnEntregarPedido_clicked();
+
+    void on_btnEnviarPedido_clicked();
+
+    void on_btnReporEstoque_clicked();
 
 private:
     Ui::TelaGerenciaEstoque *ui;

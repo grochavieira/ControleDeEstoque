@@ -1,12 +1,10 @@
 #include "telacadastrofuncionario.h"
 #include "ui_telacadastrofuncionario.h"
 
-
-static LDDE<Funcionario>* lddeFuncionarios;
+static LDDE<Funcionario> *lddeFuncionarios;
 static Funcionario funcionario;
-telaCadastroFuncionario::telaCadastroFuncionario(QWidget *parent, LDDE<Funcionario>* lddeFuncionariosCopia) :
-    QDialog(parent),
-    ui(new Ui::telaCadastroFuncionario)
+telaCadastroFuncionario::telaCadastroFuncionario(QWidget *parent, LDDE<Funcionario> *lddeFuncionariosCopia) : QDialog(parent),
+                                                                                                              ui(new Ui::telaCadastroFuncionario)
 {
     ui->setupUi(this);
     /* Pega os dados dos funcionarios que foram passados por parâmetros
@@ -38,42 +36,50 @@ void telaCadastroFuncionario::on_btnCadastrarFuncionario_clicked()
      * ele ser cadastrado, caso contrário, é mostrado uma mensagem
      * de texto indicando o que esta errado.
      */
-    if(nomeFuncionario == ""){
+    if (nomeFuncionario == "")
+    {
         verificaErros++;
         ui->lblNomeFuncionarioErro->setText("Favor preencher campo!");
     }
 
-    if(emailFuncionario == ""){
+    if (emailFuncionario == "")
+    {
         verificaErros++;
         ui->lblEmailFuncionarioErro->setText("Favor preencher campo!");
     }
 
-    if(telefoneFuncionario.size() < 14){
+    if (telefoneFuncionario.size() < 14)
+    {
         verificaErros++;
         ui->lblTelefoneFuncionarioErro->setText("Campo preenchido incorretamente!");
     }
 
-    if(usuarioFuncionario == ""){
+    if (usuarioFuncionario.length() < 8)
+    {
         verificaErros++;
-        ui->lblUsuarioFuncionarioErro->setText("Favor preencher campo!");
+        ui->lblUsuarioFuncionarioErro->setText("Campo incorreto, min. 8 caracteres!");
     }
-    else if(lddeFuncionarios->BuscaUsuario(usuarioFuncionario)){
+    else if (lddeFuncionarios->BuscaUsuario(usuarioFuncionario))
+    {
         verificaErros++;
         ui->lblUsuarioFuncionarioErro->setText("Esse usuário já existe!");
     }
 
-    if(senhaFuncionario < 8){
+    if (senhaFuncionario < 8)
+    {
         verificaErros++;
         ui->lblSenhaFuncionarioErro->setText("Campo incorreto, min. 8 caracteres!");
     }
-    else if(senhaFuncionario != confirmarSenhaFuncionario){
+    else if (senhaFuncionario != confirmarSenhaFuncionario)
+    {
         verificaErros++;
         ui->lblConfirmarSenhaFuncionarioErro->setText("As senhas não são iguais!");
     }
 
     // Se tudo estiver correto, o funcionário sera cadastrado
-    if(verificaErros == 0){
-        funcionario = new Funcionario(lddeFuncionarios->getQtdCadastrados()+1, nomeFuncionario, emailFuncionario, usuarioFuncionario, senhaFuncionario, telefoneFuncionario);
+    if (verificaErros == 0)
+    {
+        funcionario = new Funcionario(lddeFuncionarios->getQtdCadastrados() + 1, nomeFuncionario, emailFuncionario, usuarioFuncionario, senhaFuncionario, telefoneFuncionario);
         /* Manda os dados do funcionario para a lddeFuncionarios, para que
          * ela seja utilizada quando voltar para o login, e não
          * precise pegar do banco novamente
@@ -81,16 +87,21 @@ void telaCadastroFuncionario::on_btnCadastrarFuncionario_clicked()
         lddeFuncionarios->Insere(funcionario);
         // Guarda os dados no banco de dados (tabela do funcionario)
         QSqlQuery query;
-        query.prepare("insert into tb_funcionarios(nome_funcionario, email_funcionario, usuario_funcionario, senha_funcionario, telefone_funcionario) values""('" + nomeFuncionario + "','" + emailFuncionario + "','" + usuarioFuncionario + "','" + senhaFuncionario + "','" + telefoneFuncionario + "')");
-        if(query.exec()){
+        query.prepare("insert into tb_funcionarios(nome_funcionario, email_funcionario, usuario_funcionario, senha_funcionario, telefone_funcionario) values"
+                      "('" +
+                      nomeFuncionario + "','" + emailFuncionario + "','" + usuarioFuncionario + "','" + senhaFuncionario + "','" + telefoneFuncionario + "')");
+        if (query.exec())
+        {
             QMessageBox::information(this, "OK", "Funcionario cadastrado com sucesso!");
             close();
         }
-        else{
-            QMessageBox::warning(this,"ERRO","ERRO ao cadastrar funcionário!");
+        else
+        {
+            QMessageBox::warning(this, "ERRO", "ERRO ao cadastrar funcionário!");
         }
     }
-    else{
+    else
+    {
         QMessageBox::warning(this, "ERRO", "Não foi possível cadastrar funcionario!");
     }
 }

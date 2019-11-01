@@ -6,7 +6,8 @@
 #include "ldde.h"
 #include <QDialog>
 
-namespace Ui {
+namespace Ui
+{
 class telaLoginFuncionario;
 }
 
@@ -26,6 +27,10 @@ private slots:
     void on_pushButton_clicked();
 
     void on_btnHome_clicked();
+
+    void on_txtUsuarioFuncionario_editingFinished();
+
+    void on_txtSenhaFuncionario_editingFinished();
 
 private:
     Ui::telaLoginFuncionario *ui;

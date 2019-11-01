@@ -2,147 +2,168 @@
 //by Mr. Victor302 aka MasumotionRoadster
 using namespace std;
 
-
 //classe Objetos
-class Objetos{ 
-  private:
-    string contato;
-    string nome;
-    int qt;
-    double preco;
-    string pedido;
-    int ID;
-  public:
-    string getContato(){
-      return contato;
-    }
-    string getNome(){
-      return nome;
-    }
+class Objetos
+{
+private:
+  string contato;
+  string nome;
+  int qt;
+  double preco;
+  string pedido;
+  int ID;
 
-    int getQt(){
-      return qt;
-    }
+public:
+  string getContato()
+  {
+    return contato;
+  }
+  string getNome()
+  {
+    return nome;
+  }
 
-    double getPreco(){
-      return preco;
-    }
+  int getQt()
+  {
+    return qt;
+  }
 
-    string getPedido(){
-      return pedido;
-    }
-    int getID(){
-      return ID;
-    }
+  double getPreco()
+  {
+    return preco;
+  }
 
-//setters
+  string getPedido()
+  {
+    return pedido;
+  }
+  int getID()
+  {
+    return ID;
+  }
 
-//define as variaveis
+  //setters
 
-    void setContato(string contato){
-      this->contato = contato;
-    }
-    void setNome(string nome){
-      this->nome = nome;
-    }
+  //define as variaveis
 
-    void setQt(int qt){
-      this->qt = qt;
-    }
+  void setContato(string contato)
+  {
+    this->contato = contato;
+  }
+  void setNome(string nome)
+  {
+    this->nome = nome;
+  }
 
-    void setPreco(double preco){
-     this->preco = preco;
-    }
+  void setQt(int qt)
+  {
+    this->qt = qt;
+  }
 
-    void setPedido(string pedido){
-     this->pedido = pedido;
-    }
-    void setID(int id){
-     this->ID = id;
-    }
+  void setPreco(double preco)
+  {
+    this->preco = preco;
+  }
 
+  void setPedido(string pedido)
+  {
+    this->pedido = pedido;
+  }
+  void setID(int id)
+  {
+    this->ID = id;
+  }
 
-}; // termina classe objetos 
+}; // termina classe objetos
 
 template <class F>
-class No {
-  public:
-    int dados;
-  No<F> * prox;
-
-    
+class No
+{
+public:
+  int dados;
+  No<F> *prox;
 };
 
-
 template <class F>
-class Fila {//  classe fila 
-  private: // define um Nó pra frente e trás
-    No<F> * atras, * frente;
-  public:
-//lembrete: fila dinamica (usar frente e trás)
-    Fila() { //construtor
-      atras = NULL; //frente e tras é null
-      frente = NULL;
-    }
-    friend class Objetos; 
-    //pode acessar os objetos
+class Fila
+{        //  classe fila
+private: // define um Nó pra frente e trás
+  No<F> *atras, *frente;
 
-  void Insere(F valor) { //insere 
-    No<F> * temp;
+public:
+  //lembrete: fila dinamica (usar frente e trás)
+  Fila()
+  {               //construtor
+    atras = NULL; //frente e tras é null
+    frente = NULL;
+  }
+  friend class Objetos;
+  //pode acessar os objetos
+
+  void Insere(F valor)
+  { //insere
+    No<F> *temp;
     temp = new No<F>;
     //cout<<"valor :";
     temp->dados = valor.getID(); //guarda a classe no temp->dados
-    temp->prox = NULL; //o ultimo obj da classe acrescentada não tem prox
-    if (atras == NULL) {//se caso eh o primeiro da fila
-      atras = temp; //atras eh o proprio dado
-      frente = temp;//frente eh o proprio dado
-    } else {//move para atras do ultimo inserido
-      atras -> prox = temp;
+    temp->prox = NULL;           //o ultimo obj da classe acrescentada não tem prox
+    if (atras == NULL)
+    {                //se caso eh o primeiro da fila
+      atras = temp;  //atras eh o proprio dado
+      frente = temp; //frente eh o proprio dado
+    }
+    else
+    { //move para atras do ultimo inserido
+      atras->prox = temp;
       atras = temp; //o objeto fica atras de outro inserido anteriormente
     }
   }
 
-  void Deleta() {
-    if (frente != NULL) {
-      No<F> * temp = frente;
-      cout << frente -> dados << " deletado \n";
-      frente = frente -> prox;
+  void Deleta()
+  {
+    if (frente != NULL)
+    {
+      No<F> *temp = frente;
+      cout << frente->dados << " deletado \n";
+      frente = frente->prox;
       delete temp;
       //apaga o link entre o proximo e o atual,redefine o anterior para o proximo
       if (frente == NULL)
-      //se o primeiro eh null,entao eh o primeiro da fila
+        //se o primeiro eh null,entao eh o primeiro da fila
         atras = NULL;
-        //deleta o unico membro
-    } 
+      //deleta o unico membro
+    }
     else
       cout << "Fila Vazia..";
   }
 
-  void Imprimir() {
-      No<F> * temp = frente;
-      while (temp != NULL) {
-        cout << temp -> dados << endl;
-        temp = temp -> prox;
-      }
-    } //imprime todos
-   
-
-    ~Fila() {
-      while (frente != NULL) {
-        No<F> * temp = frente;
-        frente = frente -> prox;
-        delete temp;
-      } //destrutor que começa do começo da fila
-
-
+  void Imprimir()
+  {
+    No<F> *temp = frente;
+    while (temp != NULL)
+    {
+      cout << temp->dados << endl;
+      temp = temp->prox;
     }
-      friend class No<F>; //pode acessar o nó
-};// termina classe fila 
+  } //imprime todos
 
-int main() {
+  ~Fila()
+  {
+    while (frente != NULL)
+    {
+      No<F> *temp = frente;
+      frente = frente->prox;
+      delete temp;
+    } //destrutor que começa do começo da fila
+  }
+  friend class No<F>; //pode acessar o nó
+};                    // termina classe fila
+
+int main()
+{
   //funciona com ids
   Objetos a;
-  Objetos b;  
+  Objetos b;
   Fila<Objetos> mini_fila;
 
   a.setID(124632);
@@ -151,7 +172,6 @@ int main() {
   a.setContato("EMAIL");
   a.setPreco(2.12);
   a.setQt(10);
-  
 
   b.setID(777772);
   b.setPedido("4 girafas");
@@ -159,7 +179,6 @@ int main() {
   b.setContato("EMAIL1");
   b.setPreco(2.12);
   b.setQt(10);
-  
 
   mini_fila.Insere(a); //
   mini_fila.Insere(b);

@@ -65,7 +65,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>:/src/login/log_loginF.png</pixmap>
+     <pixmap resource="usefulResources.qrc">:/src/login/log_loginF.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -199,8 +199,60 @@ QPushButton::hover{
      <string>SEM CADASTRO? CLIQUE AQUI!</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lblErroUsuarioCliente">
+    <property name="geometry">
+     <rect>
+      <x>46</x>
+      <y>220</y>
+      <width>221</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;white&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblErroSenhaCliente">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>310</y>
+      <width>221</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;white&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="usefulResources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -225,7 +225,7 @@ QPushButton:hover#quit_button
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>:/src/login/log_loginC.png</pixmap>
+     <pixmap resource="usefulResources.qrc">:/src/login/log_loginC.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -236,7 +236,7 @@ QPushButton:hover#quit_button
      <rect>
       <x>100</x>
       <y>440</y>
-      <width>101</width>
+      <width>111</width>
       <height>31</height>
      </rect>
     </property>
@@ -269,14 +269,73 @@ QPushButton::hover{
      <string>Home</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lblErroUsuarioFuncionario">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>210</y>
+      <width>221</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;white&quot;;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblErroSenhaFuncionario">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>300</y>
+      <width>221</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;white&quot;;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
    <zorder>label_bg1</zorder>
    <zorder>txtUsuarioFuncionario</zorder>
    <zorder>txtSenhaFuncionario</zorder>
    <zorder>btnCadastrarNovoFuncionario</zorder>
    <zorder>btnEntrarFuncionario</zorder>
    <zorder>btnHome</zorder>
+   <zorder>lblErroUsuarioFuncionario</zorder>
+   <zorder>lblErroSenhaFuncionario</zorder>
   </widget>
  </widget>
- <resources/>
+ <tabstops>
+  <tabstop>txtUsuarioFuncionario</tabstop>
+  <tabstop>txtSenhaFuncionario</tabstop>
+  <tabstop>btnEntrarFuncionario</tabstop>
+  <tabstop>btnCadastrarNovoFuncionario</tabstop>
+  <tabstop>btnHome</tabstop>
+ </tabstops>
+ <resources>
+  <include location="usefulResources.qrc"/>
+ </resources>
  <connections/>
 </ui>

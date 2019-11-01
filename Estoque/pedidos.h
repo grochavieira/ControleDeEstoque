@@ -1,132 +1,139 @@
 #ifndef PEDIDOS_H
 #define PEDIDOS_H
 
-#include<QString>
-#include<QDebug>
+#include <QString>
+#include <QDebug>
 
-class Pedidos{
+class Pedidos
+{
 private:
-    int idGeral;
-    int idProduto;
-    int qntProduto;
-    QString nomeProduto;
-
+    int idPedido;
     int idCliente;
     QString nomeCliente;
-    QString telefone;
-    QString cep;
-    int numeroEndereco;
+    QString telefoneCliente;
+    QString cepCliente;
+    int numEnderecoCliente;
+    int idProduto;
+    QString nomeProduto;
+    int qtdProduto;
+    double precoTotalProduto;
+    bool pedidoEntregue;
 
 public:
-
-    /*
-
-    idgeral   int
-    id cliente int
-    cep        string
-
-    num endereço int
-    telefone     string
-    id produto   int
-
-    produto qt   int
-    nome_cliente string
-    */
-
-    Pedidos(int idGeral,
-            int idCliente,
-            QString cep,
-            int numeroEndereco,
-            QString telefone,
-            int idProduto,
-            int qntProduto,
-            QString nomeCliente){
-
-        this->idGeral = idGeral;
-        this->idProduto = idProduto;
-        this->qntProduto = qntProduto;
-        //this->nomeProduto = nomeProduto;
-
+    Pedidos(int idPedido, int idCliente, QString nomeCliente, QString cepCliente, int numEnderecoCliente,
+            QString telefoneCliente, int idProduto, QString nomeProduto, int qtdProduto,
+            double precoTotalProduto, bool pedidoEntregue)
+    {
+        this->idPedido = idPedido;
         this->idCliente = idCliente;
         this->nomeCliente = nomeCliente;
-        this->telefone = telefone;
-        this->cep = cep;
-        this->numeroEndereco = numeroEndereco;
+        this->telefoneCliente = telefoneCliente;
+        this->cepCliente = cepCliente;
+        this->numEnderecoCliente = numEnderecoCliente;
+        this->idProduto = idProduto;
+        this->nomeProduto = nomeProduto;
+        this->qtdProduto = qtdProduto;
+        this->precoTotalProduto = precoTotalProduto;
+        this->pedidoEntregue = pedidoEntregue;
     }
 
-    Pedidos(Pedidos *pedidos){
-        this->idGeral = pedidos->idGeral;
-        this->idProduto = pedidos->idProduto;
-        this->qntProduto = pedidos->qntProduto;
-        //this->nomeProduto = pedidos->nomeProduto;
-
+    Pedidos(Pedidos *pedidos)
+    {
+        this->idPedido = pedidos->idPedido;
         this->idCliente = pedidos->idCliente;
         this->nomeCliente = pedidos->nomeCliente;
-        this->telefone = pedidos->telefone;
-        this->cep = pedidos->cep;
-        this->numeroEndereco = pedidos->numeroEndereco;
+        this->telefoneCliente = pedidos->telefoneCliente;
+        this->cepCliente = pedidos->cepCliente;
+        this->numEnderecoCliente = pedidos->numEnderecoCliente;
+        this->idProduto = pedidos->idProduto;
+        this->nomeProduto = pedidos->nomeProduto;
+        this->qtdProduto = pedidos->qtdProduto;
+        this->precoTotalProduto = pedidos->precoTotalProduto;
+        this->pedidoEntregue = pedidos->pedidoEntregue;
     }
-    Pedidos(){
-        idProduto = -1;
-        qntProduto = 0;
-        //nomeProduto = "";
-        idGeral = -1;
-        idCliente = -1;
+
+    Pedidos()
+    {
+        idPedido = -1;
+        idCliente = 0;
         nomeCliente = "";
-        telefone = "";
-        cep = "";
-        numeroEndereco = 0;
-    }
-    int getId(){//pra n dar conflito
-        return idProduto;
-    }
-
-    int getIdGeral(){
-        return idGeral;
+        telefoneCliente = "";
+        cepCliente = "";
+        idProduto = 0;
+        nomeProduto = "";
+        qtdProduto = 0;
+        precoTotalProduto = 0;
+        numEnderecoCliente = 0;
+        pedidoEntregue = false;
     }
 
-    int getIdProduto(){
-        return idProduto;
+    int getId()
+    {
+        return idPedido;
     }
 
-    int getQntProduto(){
-        return qntProduto;
-    }
-/*
-    QString getNomeProduto(){
-        return nomeProduto;
-    }
-*/
-    int getIdCliente(){
+    int getIdCliente()
+    {
         return idCliente;
     }
 
-    QString getNomeCliente(){
+    QString getNomeCliente()
+    {
         return nomeCliente;
     }
 
-    QString getTelefone(){
-        return telefone;
+    QString getTelefoneCliente()
+    {
+        return telefoneCliente;
     }
 
-    QString getCep(){
-        return cep;
+    QString getCepCliente()
+    {
+        return cepCliente;
     }
 
-    int getNumeroEndereco(){
-        return numeroEndereco;
+    int getNumEnderecoCliente()
+    {
+        return numEnderecoCliente;
     }
 
-    void Imprime(){
-        qDebug() << "Id geral: " << idGeral;
-        qDebug() << "ID do Produto: " << idProduto;
-        qDebug() << "Quantidade do produto: " << qntProduto;
-        qDebug() << "Nome do Produto: " << nomeProduto;
+    int getIdProduto()
+    {
+        return idProduto;
+    }
+
+    QString getNomeProduto()
+    {
+        return nomeProduto;
+    }
+
+    int getQtdProduto()
+    {
+        return qtdProduto;
+    }
+
+    double getPrecoTotalProduto()
+    {
+        return precoTotalProduto;
+    }
+
+    bool getPedidoEntregue()
+    {
+        return pedidoEntregue;
+    }
+
+    void Imprime()
+    {
+        qDebug() << "Id Pedido: " << idPedido;
         qDebug() << "ID do Cliente: " << idCliente;
         qDebug() << "Nome do Cliente: " << nomeCliente;
-        qDebug() << "Telefone: " << telefone;
-        qDebug() << "CEP: " << cep;
-        qDebug() << "Num.: " << numeroEndereco;
+        qDebug() << "telefoneCliente: " << telefoneCliente;
+        qDebug() << "cepCliente: " << cepCliente;
+        qDebug() << "ID do Produto: " << idProduto;
+        qDebug() << "Nome do Produto: " << nomeProduto;
+        qDebug() << "Quantidade do produto: " << qtdProduto;
+        qDebug() << "Num. Endereço: " << numEnderecoCliente;
+        qDebug() << "Status Pedido: " << pedidoEntregue;
     }
 
     template <class F>

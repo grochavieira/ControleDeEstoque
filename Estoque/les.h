@@ -8,37 +8,42 @@
 
 using namespace std;
 
-
-template<class F>
-class LES{
+template <class F>
+class LES
+{
 private:
-    int tam; // Tamanho da les
-    int n; // Quantidade de objetos inseridos
+    int tam;   // Tamanho da les
+    int n;     // Quantidade de objetos inseridos
     F *objeto; // Objeto
 public:
-    LES(int tamanhoMax){ // Construtor
+    LES(int tamanhoMax)
+    { // Construtor
         this->tam = tamanhoMax;
         this->n = 0;
-        this->objeto = new F[tam+1];
+        this->objeto = new F[tam + 1];
     }
-    ~LES(){ // Destrutor
+    ~LES()
+    { // Destrutor
         delete[] objeto;
     }
 
-    void Imprime(){ // Imprime toda a les em ordem de prioridade
+    void Imprime()
+    { // Imprime toda a les em ordem de prioridade
         qDebug() << "Lista prioridades:";
         for (int i = 0; i < n; ++i)
             qDebug() << "Nome: " << objeto[i].getNome() << " -Id: " << objeto[i].getId();
         qDebug() << endl;
     }
 
-    bool Insere(F x){ // Inserir objeto
-        if(n == tam) // Se n estiver no maximo, lista cheia
+    bool Insere(F x)
+    {                 // Inserir objeto
+        if (n == tam) // Se n estiver no maximo, lista cheia
             return false;
 
-        if(n == 0) // Se a lista estiver vazia
+        if (n == 0)        // Se a lista estiver vazia
             objeto[0] = x; // Inseri no primeiro elemento
-        else { // Se nao
+        else
+        { // Se nao
             int i = 0;
             while (i < n && x.getPrioridade() < objeto[i].getPrioridade()) // i pega o idx onde sera inserido
                 i++;
@@ -52,23 +57,27 @@ public:
         return true;
     }
 
-    bool Remove(){
-        if(n == 0){ // Se n for 0, nao existe objeto na lista
+    bool Remove()
+    {
+        if (n == 0)
+        { // Se n for 0, nao existe objeto na lista
             return false;
         }
 
-        int i=0;
-        for (i = 0; i < n-1; ++i) // Realoca todos objetos
-            objeto[i] = objeto[i+1];
+        int i = 0;
+        for (i = 0; i < n - 1; ++i) // Realoca todos objetos
+            objeto[i] = objeto[i + 1];
         objeto[i] = nullptr; // Ultimo da lista removido (So para garantia)
-        n--; // Subtrai 1 da quantidade de itens da lista
+        n--;                 // Subtrai 1 da quantidade de itens da lista
 
         return true;
     }
 
-    const F& operator[](int idx){ // Quando utilizar [indice] retornara o indice desejado
+    const F &operator[](int idx)
+    {                // Quando utilizar [indice] retornara o indice desejado
         F sentinela; // para caso indice nao exista, retornara sentinela
-        if(idx >= n) {
+        if (idx >= n)
+        {
             qDebug() << "Indice nao existe!" << endl;
             return nullptr;
         }

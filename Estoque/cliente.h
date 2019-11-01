@@ -1,10 +1,11 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 
-#include<QString>
-#include<QDebug>
+#include <QString>
+#include <QDebug>
 
-class Cliente{
+class Cliente
+{
 private:
     int id;
     QString nome;
@@ -16,7 +17,8 @@ private:
     int numeroEndereco;
 
 public:
-    Cliente(int id, QString nome, QString email, QString usuario, QString senha, QString telefone, QString cep, int numeroEndereco){
+    Cliente(int id, QString nome, QString email, QString usuario, QString senha, QString telefone, QString cep, int numeroEndereco)
+    {
         this->id = id;
         this->nome = nome;
         this->email = email;
@@ -27,7 +29,8 @@ public:
         this->numeroEndereco = numeroEndereco;
     }
 
-    Cliente(Cliente *cliente){
+    Cliente(Cliente *cliente)
+    {
         this->id = cliente->id;
         this->nome = cliente->nome;
         this->email = cliente->email;
@@ -37,7 +40,8 @@ public:
         this->cep = cliente->cep;
         this->numeroEndereco = cliente->numeroEndereco;
     }
-    Cliente(){
+    Cliente()
+    {
         id = -1;
         nome = "";
         email = "";
@@ -48,37 +52,43 @@ public:
         numeroEndereco = 0;
     }
 
-
-
-    int getId(){
+    int getId()
+    {
         return id;
     }
 
-    QString getNome(){
+    QString getNome()
+    {
         return nome;
     }
 
-    QString getUsuario(){
+    QString getUsuario()
+    {
         return usuario;
     }
 
-    QString getSenha(){
+    QString getSenha()
+    {
         return senha;
     }
 
-    QString getCep(){
+    QString getCep()
+    {
         return cep;
     }
 
-    QString getTelefone(){
+    QString getTelefone()
+    {
         return telefone;
     }
 
-    int getNumeroEndereco(){
+    int getNumeroEndereco()
+    {
         return numeroEndereco;
     }
 
-    void Imprime(){
+    void Imprime()
+    {
         qDebug() << "ID: " << id;
         qDebug() << "Nome: " << nome;
         qDebug() << "Email: " << email;

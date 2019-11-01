@@ -5,8 +5,8 @@
 #include "ldde.h"
 #include <QDialog>
 
-
-namespace Ui {
+namespace Ui
+{
 class TelaCadastroCliente;
 }
 
@@ -15,7 +15,7 @@ class TelaCadastroCliente : public QDialog
     Q_OBJECT
 
 public:
-    explicit TelaCadastroCliente(QWidget *parent = nullptr, LDDE<Cliente>* lddeClientes = nullptr);
+    explicit TelaCadastroCliente(QWidget *parent = nullptr, LDDE<Cliente> *lddeClientes = nullptr);
     ~TelaCadastroCliente();
 
 private slots:

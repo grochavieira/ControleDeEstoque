@@ -57,7 +57,7 @@
      <rect>
       <x>320</x>
       <y>344</y>
-      <width>120</width>
+      <width>191</width>
       <height>16</height>
      </rect>
     </property>
@@ -688,7 +688,7 @@ QPushButton:hover#quit_button
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>:/src/cad/now_CadClie.png</pixmap>
+     <pixmap resource="usefulResources.qrc">:/src/cad/now_CadClie.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -733,6 +733,19 @@ QPushButton:hover#quit_button
    <zorder>lblCepClienteErro</zorder>
   </widget>
  </widget>
- <resources/>
+ <tabstops>
+  <tabstop>txtNomeCliente</tabstop>
+  <tabstop>txtEmailCliente</tabstop>
+  <tabstop>txtTelefoneCliente</tabstop>
+  <tabstop>txtCepCliente</tabstop>
+  <tabstop>spnNumEnderecoCliente</tabstop>
+  <tabstop>txtUsuarioCliente</tabstop>
+  <tabstop>txtSenhaCliente</tabstop>
+  <tabstop>txtConfirmarSenhaCliente</tabstop>
+  <tabstop>btnCadastrarCliente</tabstop>
+ </tabstops>
+ <resources>
+  <include location="usefulResources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -2,6 +2,7 @@
 #define TELAPEDIDOSCLIENTE_H
 
 #include <QDialog>
+#include <QCloseEvent>
 #include "produto.h"
 #include "cliente.h"
 #include "pedidos.h"
@@ -12,7 +13,8 @@
 #include <QMessageBox>
 #include <QString>
 
-namespace Ui {
+namespace Ui
+{
 class TelaPedidosCliente;
 }
 
@@ -23,6 +25,9 @@ class TelaPedidosCliente : public QDialog
 public:
     explicit TelaPedidosCliente(QWidget *parent = nullptr, int IdCliente = -1, QString nomeClient = "", QString telefone = "", QString cep = "", int numero_end = -1);
     ~TelaPedidosCliente();
+
+protected:
+    void closeEvent(QCloseEvent *event);
 
 private slots:
     void on_tabWidget_currentChanged(int index);
@@ -42,6 +47,12 @@ private slots:
     void on_spnQuantidade_editingFinished();
 
     void on_twCompraCliente_itemSelectionChanged();
+
+    void on_tabPedidosDoCliente_currentChanged(int index);
+
+    void on_btnConfirmarPedido_clicked();
+
+    void on_btnExcluirPedido_clicked();
 
 private:
     Ui::TelaPedidosCliente *ui;

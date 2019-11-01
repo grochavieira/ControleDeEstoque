@@ -57,7 +57,7 @@
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tabCadast">
     <property name="font">
@@ -129,6 +129,9 @@
        <bold>true</bold>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">color: &quot;white&quot;;</string>
+     </property>
      <property name="text">
       <string>Quantidade Máxima:</string>
      </property>
@@ -193,6 +196,9 @@
        <bold>true</bold>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">color: &quot;white&quot;;</string>
+     </property>
      <property name="text">
       <string>Quantidade:</string>
      </property>
@@ -223,6 +229,9 @@
        <bold>true</bold>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">color: &quot;white&quot;;</string>
+     </property>
      <property name="text">
       <string>Quantidade Mínima:</string>
      </property>
@@ -252,6 +261,9 @@
        <weight>75</weight>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: &quot;white&quot;;</string>
      </property>
      <property name="text">
       <string>Preço:</string>
@@ -316,6 +328,9 @@
        <weight>75</weight>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: &quot;white&quot;;</string>
      </property>
      <property name="text">
       <string>Nome:</string>
@@ -586,6 +601,9 @@ background: &quot;transparent&quot;;
        <weight>75</weight>
        <bold>true</bold>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: &quot;white&quot;;</string>
      </property>
      <property name="text">
       <string>ID:</string>
@@ -979,8 +997,48 @@ QPushButton::hover{
       <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Gerencia 1.png</pixmap>
      </property>
     </widget>
+    <widget class="QPushButton" name="btnReporEstoque">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>430</y>
+       <width>191</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Caviar Dreams</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color:rgba(0,0,0,60);
+	color:white;
+	border-style: solid;
+	border-width:3px;
+	border-color: white;
+	border-radius: 6px;
+
+}
+QPushButton::hover{
+	background-color:rgba(255,255,255,60);
+	color:black;
+	border-style: solid;
+	border-width:4px;
+	border-color: black;
+	border-radius: 6px;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>REPOR ESTOQUE</string>
+     </property>
+    </widget>
     <zorder>label_9</zorder>
     <zorder>twListaDeCompras</zorder>
+    <zorder>btnReporEstoque</zorder>
    </widget>
    <widget class="QWidget" name="pedidos">
     <attribute name="title">
@@ -1005,13 +1063,13 @@ QPushButton::hover{
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QTableWidget" name="pedidos_2">
+    <widget class="QTableWidget" name="twPedidos">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>10</y>
-       <width>711</width>
-       <height>301</height>
+       <y>20</y>
+       <width>741</width>
+       <height>411</height>
       </rect>
      </property>
      <property name="font">
@@ -1024,32 +1082,43 @@ QPushButton::hover{
       <string notr="true">QHeaderView { font-size: 12pt; }</string>
      </property>
     </widget>
-    <widget class="QTreeWidget" name="treeWidget">
+    <widget class="QPushButton" name="btnEnviarPedido">
      <property name="geometry">
       <rect>
-       <x>730</x>
-       <y>10</y>
-       <width>31</width>
-       <height>301</height>
+       <x>10</x>
+       <y>440</y>
+       <width>181</width>
+       <height>41</height>
       </rect>
      </property>
-     <column>
-      <property name="text">
-       <string notr="true">1</string>
-      </property>
-     </column>
-    </widget>
-    <widget class="QPushButton" name="pushButton">
-     <property name="geometry">
-      <rect>
-       <x>340</x>
-       <y>330</y>
-       <width>161</width>
-       <height>23</height>
-      </rect>
+     <property name="font">
+      <font>
+       <family>Caviar Dreams</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+	background-color:rgba(0,0,0,60);
+	color:white;
+	border-style: solid;
+	border-width:3px;
+	border-color: white;
+	border-radius: 6px;
+
+}
+QPushButton::hover{
+	background-color:rgba(255,255,255,60);
+	color:black;
+	border-style: solid;
+	border-width:4px;
+	border-color: black;
+	border-radius: 6px;
+
+}</string>
      </property>
      <property name="text">
-      <string>limpar pedidos</string>
+      <string>ENVIAR PEDIDO</string>
      </property>
     </widget>
    </widget>
@@ -1095,13 +1164,18 @@ QPushButton::hover{
   <tabstop>spnQuantidadeProduto</tabstop>
   <tabstop>spnQuantidadeMaxProduto</tabstop>
   <tabstop>spnQuantidadeMinProduto</tabstop>
+  <tabstop>btnCadastrarProduto</tabstop>
+  <tabstop>btnEncontrarId</tabstop>
   <tabstop>txtPesquisarProduto</tabstop>
   <tabstop>btnPesquisar</tabstop>
   <tabstop>btnListarTodosProdutos</tabstop>
-  <tabstop>btnExcluir</tabstop>
   <tabstop>twProdutos</tabstop>
-  <tabstop>tabGerenciadorDeEstoque</tabstop>
+  <tabstop>btnExcluir</tabstop>
   <tabstop>twListaDeCompras</tabstop>
+  <tabstop>btnReporEstoque</tabstop>
+  <tabstop>twPedidos</tabstop>
+  <tabstop>btnEnviarPedido</tabstop>
+  <tabstop>tabGerenciadorDeEstoque</tabstop>
  </tabstops>
  <resources>
   <include location="usefulResources.qrc"/>

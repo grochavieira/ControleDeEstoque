@@ -1,11 +1,10 @@
 #include "telacadastrocliente.h"
 #include "ui_telacadastrocliente.h"
 
-static LDDE<Cliente>* lddeClientes;
+static LDDE<Cliente> *lddeClientes;
 static Cliente cliente;
-TelaCadastroCliente::TelaCadastroCliente(QWidget *parent, LDDE<Cliente>* lddeClientesCopia) :
-    QDialog(parent),
-    ui(new Ui::TelaCadastroCliente)
+TelaCadastroCliente::TelaCadastroCliente(QWidget *parent, LDDE<Cliente> *lddeClientesCopia) : QDialog(parent),
+                                                                                              ui(new Ui::TelaCadastroCliente)
 {
     ui->setupUi(this);
     /* Pega os dados dos clientes que foram passados por parâmetros através da lddeClientesCopia
@@ -39,47 +38,56 @@ void TelaCadastroCliente::on_btnCadastrarCliente_clicked()
      * informando o erro do cliente.
      */
 
-    if(nomeCliente == ""){
+    if (nomeCliente == "")
+    {
         verificaErros++;
         ui->lblNomeClienteErro->setText("Favor preencher campo!");
     }
 
-    if(emailCliente == ""){
+    if (emailCliente == "")
+    {
         verificaErros++;
         ui->lblEmailClienteErro->setText("Favor preencher campo!");
     }
 
-    if(telefoneCliente.size() < 14){
+    if (telefoneCliente.size() < 14)
+    {
         verificaErros++;
         ui->lblTelefoneClienteErro->setText("Campo preenchido incorretamente!");
     }
 
-    if(cepCliente.size() < 9){
+    if (cepCliente.size() < 9)
+    {
         verificaErros++;
         ui->lblCepClienteErro->setText("Campo preenchido incorretamente!");
     }
 
-    if(usuarioCliente == ""){
+    if (usuarioCliente.length() < 8)
+    {
         verificaErros++;
-        ui->lblUsuarioClienteErro->setText("Favor preencher campo!");
+        ui->lblUsuarioClienteErro->setText("Campo incorreto, min. 8 caracteres!");
     }
-    else if(lddeClientes->BuscaUsuario(usuarioCliente)){
+    else if (lddeClientes->BuscaUsuario(usuarioCliente))
+    {
         verificaErros++;
         ui->lblUsuarioClienteErro->setText("Esse usuário já existe!");
     }
 
-    if(senhaCliente < 8){
+    if (senhaCliente < 8)
+    {
         verificaErros++;
         ui->lblSenhaClienteErro->setText("Campo incorreto, min. 8 caracteres!");
     }
-    else if(senhaCliente != confirmarSenhaCliente){
+    else if (senhaCliente != confirmarSenhaCliente)
+    {
         verificaErros++;
         ui->lblConfirmarSenhaClienteErro->setText("As senhas não são iguais!");
     }
 
     //Se não existir nenhum erro, o cliente será cadastrado
-    if(verificaErros == 0){
-        cliente = new Cliente(lddeClientes->getQtdCadastrados()+1, nomeCliente, emailCliente, usuarioCliente, senhaCliente, telefoneCliente, cepCliente, numEnderecoCliente);
+    if (verificaErros == 0)
+    {
+        cliente = new Cliente(lddeClientes->getQtdCadastrados() + 1, nomeCliente, emailCliente, usuarioCliente, senhaCliente, telefoneCliente, cepCliente, numEnderecoCliente);
         /* manda os dados do cliente para a ldde, pois será utilizado
          * quando voltar para a tela de login, e não será necessário
          * pega-los novamente do banco
@@ -87,19 +95,23 @@ void TelaCadastroCliente::on_btnCadastrarCliente_clicked()
         lddeClientes->Insere(cliente);
         //manda os dados do cliente para o banco de dados (tabela dos clientes)
         QSqlQuery query;
-        query.prepare("insert into tb_clientes(nome_cliente, email_cliente, usuario_cliente, senha_cliente, telefone_cliente, cep_cliente, num_endereco_cliente) values""('" + nomeCliente + "','" + emailCliente + "','" + usuarioCliente + "','" + senhaCliente + "','" + telefoneCliente + "','" + cepCliente + "','" + QString::number(numEnderecoCliente) + "')");
-        if(query.exec()){
+        query.prepare("insert into tb_clientes(nome_cliente, email_cliente, usuario_cliente, senha_cliente, telefone_cliente, cep_cliente, num_endereco_cliente) values"
+                      "('" +
+                      nomeCliente + "','" + emailCliente + "','" + usuarioCliente + "','" + senhaCliente + "','" + telefoneCliente + "','" + cepCliente + "','" + QString::number(numEnderecoCliente) + "')");
+        if (query.exec())
+        {
             QMessageBox::information(this, "OK", "Cliente cadastrado com sucesso!");
             close();
         }
-        else{
-            QMessageBox::warning(this,"ERRO","ERRO ao se cadastrar!");
+        else
+        {
+            QMessageBox::warning(this, "ERRO", "ERRO ao se cadastrar!");
         }
     }
-    else{
+    else
+    {
         QMessageBox::warning(this, "ERRO", "Não foi possível se cadastrar!");
     }
-
 }
 
 /* As funções abaixo servem apenas para limpar os textos
@@ -125,11 +137,6 @@ void TelaCadastroCliente::on_txtCepCliente_editingFinished()
     ui->lblCepClienteErro->setText("");
 }
 
-void TelaCadastroCliente::on_spnNumEnderecoCliente_editingFinished()
-{
-
-}
-
 void TelaCadastroCliente::on_txtUsuarioCliente_editingFinished()
 {
     ui->lblUsuarioClienteErro->setText("");
@@ -143,4 +150,8 @@ void TelaCadastroCliente::on_txtSenhaCliente_editingFinished()
 void TelaCadastroCliente::on_txtConfirmarSenhaCliente_editingFinished()
 {
     ui->lblConfirmarSenhaClienteErro->setText("");
+}
+
+void TelaCadastroCliente::on_spnNumEnderecoCliente_editingFinished()
+{
 }

@@ -9,5 +9,7 @@
         <file>src/pngbBTN/FuncBtnClicked.png</file>
         <file>src/pngbBTN/FuncBtnDisabled.png</file>
         <file>src/pngbBTN/FuncBtnHover.png</file>
+        <file>TelaEstocaProdutos.qml</file>
+        <file>TelaEstocaProdutosForm.ui.qml</file>
     </qresource>
 </RCC>
