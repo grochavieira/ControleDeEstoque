@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "conexao.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow), trayIcon(new QSystemTrayIcon(this))
@@ -75,7 +74,6 @@ void MainWindow::on_pushButton_clicked()
   TelaGerenciaEstoque TelaGerenciaEstoque;
   TelaGerenciaEstoque.exec();
   this->show();
-  //this->setVisible(true);
 }
 
 void MainWindow::on_pushButton_2_clicked()

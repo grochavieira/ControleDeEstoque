@@ -37,7 +37,6 @@ void TelaCadastroCliente::on_btnCadastrarCliente_clicked()
      * do lado do campo que foi digitado de forma errada,
      * informando o erro do cliente.
      */
-
     if (nomeCliente == "")
     {
         verificaErros++;
@@ -87,7 +86,9 @@ void TelaCadastroCliente::on_btnCadastrarCliente_clicked()
     //Se não existir nenhum erro, o cliente será cadastrado
     if (verificaErros == 0)
     {
-        cliente = new Cliente(lddeClientes->getQtdCadastrados() + 1, nomeCliente, emailCliente, usuarioCliente, senhaCliente, telefoneCliente, cepCliente, numEnderecoCliente);
+        cliente = new Cliente(lddeClientes->getQtdCadastrados() + 1, nomeCliente, emailCliente,
+                              usuarioCliente, senhaCliente, telefoneCliente, cepCliente,
+                              numEnderecoCliente);
         /* manda os dados do cliente para a ldde, pois será utilizado
          * quando voltar para a tela de login, e não será necessário
          * pega-los novamente do banco
@@ -95,9 +96,11 @@ void TelaCadastroCliente::on_btnCadastrarCliente_clicked()
         lddeClientes->Insere(cliente);
         //manda os dados do cliente para o banco de dados (tabela dos clientes)
         QSqlQuery query;
-        query.prepare("insert into tb_clientes(nome_cliente, email_cliente, usuario_cliente, senha_cliente, telefone_cliente, cep_cliente, num_endereco_cliente) values"
-                      "('" +
-                      nomeCliente + "','" + emailCliente + "','" + usuarioCliente + "','" + senhaCliente + "','" + telefoneCliente + "','" + cepCliente + "','" + QString::number(numEnderecoCliente) + "')");
+        query.prepare("insert into tb_clientes(nome_cliente, email_cliente, usuario_cliente,"
+                      " senha_cliente, telefone_cliente, cep_cliente, num_endereco_cliente) values"
+                      "('" + nomeCliente + "','" + emailCliente + "','" + usuarioCliente + "','" +
+                      senhaCliente + "','" + telefoneCliente + "','" + cepCliente + "','"
+                      + QString::number(numEnderecoCliente) + "')");
         if (query.exec())
         {
             QMessageBox::information(this, "OK", "Cliente cadastrado com sucesso!");
@@ -114,7 +117,7 @@ void TelaCadastroCliente::on_btnCadastrarCliente_clicked()
     }
 }
 
-/* As funções abaixo servem apenas para limpar os textos
+/* Os slots abaixo servem apenas para limpar os textos
  * de erro quando o cliente começar a digitar nos campos de texto
  */
 void TelaCadastroCliente::on_txtNomeCliente_editingFinished()

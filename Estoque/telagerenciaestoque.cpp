@@ -23,7 +23,9 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) : QDialog(parent),
     {
         while (query.next())
         {
-            produto = new Produto(query.value(0).toInt(), query.value(1).toString(), ((query.value(2).toString()).replace(",", ".")).toDouble(), query.value(3).toInt(), query.value(4).toInt(), query.value(5).toInt());
+            produto = new Produto(query.value(0).toInt(), query.value(1).toString(),
+                                  ((query.value(2).toString()).replace(",", ".")).toDouble(),
+                                  query.value(3).toInt(), query.value(4).toInt(), query.value(5).toInt());
             lddeProdutos.Insere(produto);
         }
     }
@@ -32,7 +34,7 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) : QDialog(parent),
         qDebug() << "Banco de dados falhou!";
     }
 
-    query.prepare("select * from tb_pedidos");
+    query.prepare("select * from tb_pedidos where pedido_entregue = 'false'");
     if (query.exec())
     {
         while (query.next())
@@ -47,31 +49,6 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) : QDialog(parent),
     else
     {
         qDebug() << "Banco de dados falhou!";
-    }
-
-    //resgata o nome da tb_clientes
-
-    QString vetor[1000]; //isso é temporario ok?so ate eu achar um jeito
-                         //de comparar o id do cliente ,retornar o nome
-                         // colocar o nome na tb_pedidos
-                         // e listar tudo isso
-    int i = 0;
-    query.prepare("select nome_cliente from tb_clientes");
-    if (query.exec())
-    {
-        while (query.next())
-        {
-            vetor[i] = query.value(0).toString();
-            i++;
-        }
-    }
-    else
-    {
-        qDebug() << "Banco de dados falhou!";
-    }
-    for (i = 0; i < 10; i++)
-    {
-        qDebug() << vetor[i];
     }
 
     // Configurações iniciais da tabela de produtos (cabeçalho, tamanho, num. de colunas, etc.)
@@ -129,6 +106,10 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) : QDialog(parent),
 
 TelaGerenciaEstoque::~TelaGerenciaEstoque()
 {
+    /* Deleta todos os dados da lddeProdutos e da filaPedidos, pois o qt não
+     * deleta sózinho essas estruturas quando essa tela é fechada, o que
+     * resulta em uma duplicação dos dados se entrar novamente nessa tela
+     */
     lddeProdutos.Reseta();
     filaPedidos.Reseta();
     delete ui;
@@ -138,6 +119,7 @@ void TelaGerenciaEstoque::on_btnCadastrarProduto_clicked()
 {
     // Contador da quantidade de erros no cadastro de produtos
     int verificador = 0;
+
     // Pega os dados digitados pelo funcionário
     int idProduto = ui->spnIdProduto->value();
     QString nomeProduto = ui->txtNomeProduto->text();
@@ -211,7 +193,7 @@ void TelaGerenciaEstoque::on_btnEncontrarId_clicked()
     ui->lblErroId->setText("");
 }
 
-/* Abaixo são apenas funções que apagam as mensagens de erro ao
+/* Abaixo são apenas slots que apagam as mensagens de erro ao
  * editar as caixas de texto, e também que impedem certos erros do
  * usuário, como ter uma quantidade inicial de produtos maior que
  * a quantidade máxima.
@@ -317,9 +299,9 @@ void TelaGerenciaEstoque::on_btnListarTodosProdutos_clicked()
 
 void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
 {
-    // index igual a 1, equivale a tab Excluir Produtos
+    // index igual a 1, equivale a aba Excluir Produtos
     if (index == 1)
-    { // Logo, se essa tab for clicada, ela lista todos os produtos
+    { // Logo, se essa aba for clicada, ela lista todos os produtos
         ui->twProdutos->setRowCount(0);
         int i = 0;
         produto = lddeProdutos[i];
@@ -337,16 +319,16 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
         }
     }
 
-    // index igual a 2, equivale a tab Lista de Compras
+    // index igual a 2, equivale a aba Lista de Compras
     if (index == 2)
-    { // Se essa tab for clicada, ela lista, em ordem de prioridade, os produtos que precisam ser estocados novamente
+    { // Se essa aba for clicada ela lista, em ordem de prioridade, os produtos que precisam ser estocados novamente
         ui->twListaDeCompras->setRowCount(0);
         LES<Produto> listaDeCompras(lddeProdutos.getQtdCadastrados()); // Cria lista de prioridade para guardar os produtos
         int i = 0;
         while (i < lddeProdutos.getQtdCadastrados())
         {                                   // Salva todos produtos na lista
             produto = lddeProdutos[i];      // variavel produto pega cada produto da ldde um de cada vez
-            listaDeCompras.Insere(produto); // Funcao para inserir
+            listaDeCompras.Insere(produto); // Insere os produtos na lista de compras
             i++;
         }
 
@@ -376,9 +358,8 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
 
     // index igual a 3, equivale a tab Pedidos
     if (index == 3)
-    { // Se essa tab for clicada, ela lista os pedidos em fila.
+    { // Se essa aba for clicada, ela lista os pedidos em fila.
         ui->twPedidos->setRowCount(0);
-
         if (filaPedidos.Tamanho() == 0)
         {
             qDebug() << "fila vazia!";
@@ -408,6 +389,7 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
                 }
                 i++;
             }
+            ui->twPedidos->selectRow(0);
         }
     }
 }
@@ -416,29 +398,36 @@ void TelaGerenciaEstoque::on_btnEnviarPedido_clicked()
 {
     // Pega o index da linha que foi selecionada
     int linha = ui->twPedidos->currentRow();
-    if (linha == 0) // Se o primeiro pedido foi selecionado
+    if(linha != -1)
     {
-        int id = ui->twPedidos->item(linha, 0)->text().toInt();
-
-        // Atualiza o status do pedido e retira o pedido da lista
-        QSqlQuery query;
-        query.prepare("update tb_pedidos set pedido_entregue= true where id=" + QString::number(id));
-        if (query.exec())
+        if (linha == 0) // Se o primeiro pedido foi selecionado
         {
-            ui->twPedidos->removeRow(linha);
-            QMessageBox::information(this, "OK", "Pedido enviado e entregue com sucesso!");
-            filaPedidos.Deleta();
+            int id = ui->twPedidos->item(linha, 0)->text().toInt();
+
+            // Atualiza o status do pedido e retira o pedido da lista
+            QSqlQuery query;
+            query.prepare("update tb_pedidos set pedido_entregue= true where id=" + QString::number(id));
+            if (query.exec())
+            {
+                ui->twPedidos->removeRow(linha);
+                QMessageBox::information(this, "OK", "Pedido enviado e entregue com sucesso!");
+                filaPedidos.Imprimir();
+                filaPedidos.Deleta();
+                filaPedidos.Imprimir();
+            }
+            else
+            {
+                QMessageBox::warning(this, "ERRO", "Não foi possível enviar o pedido!");
+            }
         }
         else
         {
-            QMessageBox::warning(this, "ERRO", "Não foi possível enviar o pedido!");
+            QMessageBox::warning(this, "ERRO", "Os pedidos devem ser entregues na ordem que foram realizados!");
         }
     }
-    else
-    {
-        QMessageBox::warning(this, "ERRO", "Os pedidos devem ser entregues na ordem que foram realizados!");
+    else{
+        QMessageBox::warning(this,"ERRO", "Não existem pedidos a serem realizados!");
     }
-
     ui->twPedidos->selectRow(0);
 }
 

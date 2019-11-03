@@ -4,6 +4,7 @@
 #include "ldde.h"
 #include "telaloginfuncionario.h"
 #include "telalogincliente.h"
+#include "conexao.h"
 #include <QMainWindow>
 #include <QFileInfo>
 #include <QSystemTrayIcon>

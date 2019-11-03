@@ -79,7 +79,9 @@ void telaCadastroFuncionario::on_btnCadastrarFuncionario_clicked()
     // Se tudo estiver correto, o funcionário sera cadastrado
     if (verificaErros == 0)
     {
-        funcionario = new Funcionario(lddeFuncionarios->getQtdCadastrados() + 1, nomeFuncionario, emailFuncionario, usuarioFuncionario, senhaFuncionario, telefoneFuncionario);
+        funcionario = new Funcionario(lddeFuncionarios->getQtdCadastrados() + 1, nomeFuncionario,
+                                      emailFuncionario, usuarioFuncionario, senhaFuncionario,
+                                      telefoneFuncionario);
         /* Manda os dados do funcionario para a lddeFuncionarios, para que
          * ela seja utilizada quando voltar para o login, e não
          * precise pegar do banco novamente
@@ -87,9 +89,10 @@ void telaCadastroFuncionario::on_btnCadastrarFuncionario_clicked()
         lddeFuncionarios->Insere(funcionario);
         // Guarda os dados no banco de dados (tabela do funcionario)
         QSqlQuery query;
-        query.prepare("insert into tb_funcionarios(nome_funcionario, email_funcionario, usuario_funcionario, senha_funcionario, telefone_funcionario) values"
-                      "('" +
-                      nomeFuncionario + "','" + emailFuncionario + "','" + usuarioFuncionario + "','" + senhaFuncionario + "','" + telefoneFuncionario + "')");
+        query.prepare("insert into tb_funcionarios(nome_funcionario, email_funcionario,"
+                      " usuario_funcionario, senha_funcionario, telefone_funcionario) values"
+                      "('" + nomeFuncionario + "','" + emailFuncionario + "','" + usuarioFuncionario
+                      + "','" + senhaFuncionario + "','" + telefoneFuncionario + "')");
         if (query.exec())
         {
             QMessageBox::information(this, "OK", "Funcionario cadastrado com sucesso!");
@@ -105,7 +108,7 @@ void telaCadastroFuncionario::on_btnCadastrarFuncionario_clicked()
         QMessageBox::warning(this, "ERRO", "Não foi possível cadastrar funcionario!");
     }
 }
-/* As funções a seguir apenas servem para apagar as mensagens de erro
+/* Os slots a seguir apenas servem para apagar as mensagens de erro
  * quando o funcionario começar a digitar nas caixas de texto
  */
 void telaCadastroFuncionario::on_txtNomeFuncionario_editingFinished()

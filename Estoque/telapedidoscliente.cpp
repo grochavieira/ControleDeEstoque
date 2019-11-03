@@ -226,14 +226,18 @@ void TelaPedidosCliente::on_buttonAdiciona_clicked()
 void TelaPedidosCliente::on_buttonListar_clicked()
 {
     ui->twCompraCliente->setRowCount(0);
-    int i = 0;
+    int i = 0, linha = 0;
     produto = lddeProdutos[i];
     while (produto.getId() != -1)
     {
-        ui->twCompraCliente->insertRow(i);
-        ui->twCompraCliente->setItem(i, 0, new QTableWidgetItem(produto.getNome()));
-        ui->twCompraCliente->setItem(i, 1, new QTableWidgetItem(QString::number(produto.getQuantidade())));
-        ui->twCompraCliente->setItem(i, 2, new QTableWidgetItem("R$ " + QString::number(produto.getPreco())));
+        if (!(produto.getQuantidade() == 0))
+        {
+            ui->twCompraCliente->insertRow(linha);
+            ui->twCompraCliente->setItem(linha, 0, new QTableWidgetItem(produto.getNome()));
+            ui->twCompraCliente->setItem(linha, 1, new QTableWidgetItem(QString::number(produto.getQuantidade())));
+            ui->twCompraCliente->setItem(linha, 2, new QTableWidgetItem("R$ " + QString::number(produto.getPreco())));
+            linha++;
+        }
         i++;
         produto = lddeProdutos[i];
     }
@@ -243,7 +247,7 @@ void TelaPedidosCliente::on_buttonPesquisar_clicked()
 {
     QString nome = ui->txtPesquisar->text();
     produto = lddeProdutos.Busca(nome);
-    if (produto.getId() == -1)
+    if (produto.getId() == -1 || produto.getQuantidade() == 0)
     {
         QMessageBox::information(this, "ERRO", "O Nome pesquisado não existe!");
     }
@@ -253,8 +257,8 @@ void TelaPedidosCliente::on_buttonPesquisar_clicked()
         ui->twCompraCliente->setRowCount(0);
         ui->twCompraCliente->insertRow(0);
         ui->twCompraCliente->setItem(0, 0, new QTableWidgetItem(produto.getNome()));
-        ui->twCompraCliente->setItem(0, 2, new QTableWidgetItem(QString::number(produto.getQuantidade())));
-        ui->twCompraCliente->setItem(0, 1, new QTableWidgetItem("R$ " + QString::number(produto.getPreco()) + ",00"));
+        ui->twCompraCliente->setItem(0, 1, new QTableWidgetItem(QString::number(produto.getQuantidade())));
+        ui->twCompraCliente->setItem(0, 2, new QTableWidgetItem("R$ " + QString::number(produto.getPreco())));
     }
 }
 
@@ -350,8 +354,8 @@ void TelaPedidosCliente::on_btnExcluirPedido_clicked()
     int linha = ui->twPedidosCliente->currentRow();
     if (linha != -1)
     {
-        QString id = ui->twPedidosCliente->item(linha, 0)->text();
-        compras = lddeCompras.Busca(id);
+        //QString id = ui->twPedidosCliente->item(linha, 0)->text();
+        compras = lddeCompras[linha];
         if (compras.getId() != -1)
         {
             ui->twPedidosCliente->removeRow(linha);
@@ -384,9 +388,6 @@ void TelaPedidosCliente::on_btnExcluirPedido_clicked()
     {
         QMessageBox::warning(this, "ERRO", "Selecione um produto para remover!");
     }
-
-    ui->twCompraCliente->selectRow(0);
-
     ui->twPedidosCliente->setRowCount(0);
     int i = 0;
     compras = lddeCompras[i];
@@ -400,6 +401,7 @@ void TelaPedidosCliente::on_btnExcluirPedido_clicked()
         i++;
         compras = lddeCompras[i];
     }
+    ui->twCompraCliente->selectRow(0);
 }
 
 void TelaPedidosCliente::on_btnConfirmarPedido_clicked()

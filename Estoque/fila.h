@@ -77,7 +77,6 @@ public:
     { //move para atras do ultimo inserido
       atras->prox = temp;
       atras = temp; //o objeto fica atras de outro inserido anteriormente
-      qDebug() << "inseriu zzz" << endl;
     }
   }
 
@@ -121,7 +120,7 @@ public:
     No1<F> *temp = frente;
     while (temp != NULL)
     {
-      cout << temp->dados << endl;
+      temp->dados.Imprime();
       temp = temp->prox;
     }
   } //imprime todos
