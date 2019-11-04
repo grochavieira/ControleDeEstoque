@@ -13,6 +13,7 @@ private:
     int n;   // Quantidade de produtos
     int tam; // Tamanho max da Pilha
     F *v;    // Vetor que guarda os produtos
+    F sentinela;
 public:
     PILHA()
     { // Inicializa tudo
@@ -20,15 +21,33 @@ public:
         tam = 20;
         v = new F[tam];
     }
-    bool Empilha(F x)
-    {                 // Guarda na pilha
-        if (n == tam) // Se n estiver no maximo, nao empilhara
+    PILHA &operator=(PILHA &outra)
+    {
+        n=0;
+        v = new F[tam];
+        for(int i=0; i<outra.Size(); i++)
+        {
+            this->Empilha(outra.v[i]);
+        }
+
+        return *this;
+    }
+    PILHA &operator[](int idx)
+    {
+        if(idx > n)
+            return -1;
+
+        return v[idx];
+    }
+    bool Empilha(F x) // Guarda na pilha
+    {
+        if (n == tam) // Se n estiver no maximo, nao empilha
             return false;
 
-        v[n] = x; // Salva na pilha idx n
-        n++;      // Incrementa 1 em n
+        v[n] = x;
+        n++;
 
-        return true; // Deu certo
+        return true;
     }
     F Desempilha(bool *ok = nullptr)
     { // Remove da pilha
@@ -36,10 +55,11 @@ public:
         { // Se n for 0, nao existe produto
             if (ok)
                 *ok = false; // avisa que esta vazia e o valor que retornara nao e confiavel
-            return v[n];     // Retorna um valor nao confiavel
+            return sentinela;     // Retorna um valor nao confiavel
         }
 
         F temp = v[n - 1]; // Salva ultimo inserido
+        //v[n - 1] = sentinela;
         n--;               // Remove ultimo inserido
 
         return temp; // Retorna valor salvo que foi removido
@@ -55,6 +75,25 @@ public:
     int Size()
     {
         return n;
+    }
+    PILHA Inverte() // Funcao para inverter pilha
+    {
+        PILHA<F> aux;
+        int tamanho = n;
+        for(int i=0; i<tamanho; i++){ // Salva pilha original em outra pilha
+            aux.Empilha(this->Desempilha());
+        }
+        for(int i=0; i<tamanho; i++){ // Retorna pilha original invertida
+            this->Empilha(aux.Desempilha());
+        }
+        return *this;
+    }
+    void Reseta()
+    {
+        bool ok;
+        do {
+            Desempilha(&ok);
+        }while(ok);
     }
     ~PILHA()
     { // Deleta vetor

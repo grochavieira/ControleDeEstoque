@@ -90,6 +90,11 @@ public:
         this->quantidade = qntNova;
     }
 
+    void AtualizaP()
+    {
+        this->prioridade = 0;
+    }
+
     void Imprime()
     {
         qDebug() << "ID: " << id;

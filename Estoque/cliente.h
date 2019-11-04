@@ -16,6 +16,53 @@ private:
     QString cep;
     int numeroEndereco;
 
+    QString calculaDobra(QString x){
+        int numeroDeCasas = x.size();
+        QString vetorDobra;
+
+        for(int i = 0; i < numeroDeCasas; i++){
+            vetorDobra[i] = x[i];
+        }
+
+        int tamanhoVetorDobra = (numeroDeCasas%2 == 0 ? numeroDeCasas/2 : numeroDeCasas/2 + 1);
+        int iteracoes = 0;
+        numeroDeCasas--;
+        int dobras=0;
+
+        while(iteracoes < 5)
+        {
+            int guardaSomaDasCasas=0;
+            for(int i = 0, j = numeroDeCasas; i < tamanhoVetorDobra; i++, j--){
+                QCharRef a = vetorDobra[i];
+                QCharRef b = vetorDobra[j];
+                vetorDobra[i] = a.digitValue()+b.digitValue();
+                guardaSomaDasCasas += vetorDobra[i].digitValue();
+            }
+
+            iteracoes++;
+            dobras += guardaSomaDasCasas;
+            if(tamanhoVetorDobra%2 == 0)
+            {
+                tamanhoVetorDobra = tamanhoVetorDobra/2;
+                if(tamanhoVetorDobra == 1)
+                {
+                    numeroDeCasas = tamanhoVetorDobra;
+                }
+                else
+                {
+                    numeroDeCasas = tamanhoVetorDobra + 1;
+                }
+            }
+            else
+            {
+                tamanhoVetorDobra = tamanhoVetorDobra/2 + 1;
+                numeroDeCasas = tamanhoVetorDobra;
+            }
+        }
+
+        return QString::number(dobras);
+    }
+
 public:
     Cliente(int id, QString nome, QString email, QString usuario, QString senha, QString telefone, QString cep, int numeroEndereco)
     {
@@ -23,7 +70,7 @@ public:
         this->nome = nome;
         this->email = email;
         this->usuario = usuario;
-        this->senha = senha;
+        this->senha = calculaDobra(senha);
         this->telefone = telefone;
         this->cep = cep;
         this->numeroEndereco = numeroEndereco;

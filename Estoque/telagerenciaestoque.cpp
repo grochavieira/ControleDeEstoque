@@ -4,6 +4,7 @@
 static LDDE<Produto> lddeProdutos;
 static PILHA<Produto> pilha;
 static Fila<Pedidos> filaPedidos;
+static LES<Produto> listaDePrioridade(1);
 static Produto produto;
 static Pedidos pedidos;
 
@@ -346,14 +347,7 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
             j++;
         }
 
-        /* Manda os produtos em ordem de prioridade para um objeto do tipo PILHA<Produto>
-         * para que ele seja usado para repor os itens de maior prioridade
-         */
-        for (int k = 0; k < lddeProdutos.getQtdCadastrados(); k++)
-        {
-            produto = listaDeCompras[k];
-            pilha.Empilha(produto);
-        }
+        listaDePrioridade = listaDeCompras;
     }
 
     // index igual a 3, equivale a tab Pedidos
@@ -433,7 +427,7 @@ void TelaGerenciaEstoque::on_btnEnviarPedido_clicked()
 
 void TelaGerenciaEstoque::on_btnReporEstoque_clicked()
 {
-    telaEstocaProdutos telaEstocaProdutos;
+    telaEstocaProdutos telaEstocaProdutos(this, &listaDePrioridade, &lddeProdutos);
     telaEstocaProdutos.setModal(true);
     telaEstocaProdutos.exec();
 }
