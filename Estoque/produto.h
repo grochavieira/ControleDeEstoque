@@ -25,7 +25,12 @@ public:
         this->quantidade = quantidade;
         this->quantidadeMin = quantidadeMin;
         this->quantidadeMax = quantidadeMax;
-        this->prioridade = 100 - ((quantidade * 100.0) / quantidadeMax);
+        if(quantidade <= quantidadeMin){
+            this->prioridade = 100;
+        }
+        else{
+            this->prioridade = 100 - ((quantidade * 100.0) / quantidadeMax);
+        }
     }
 
     Produto(Produto *produto)
@@ -36,7 +41,7 @@ public:
         this->quantidade = produto->quantidade;
         this->quantidadeMin = produto->quantidadeMin;
         this->quantidadeMax = produto->quantidadeMax;
-        this->prioridade = 100 - ((quantidade * 100.0) / quantidadeMax);
+        this->prioridade = produto->prioridade;
     }
 
     Produto()

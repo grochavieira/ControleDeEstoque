@@ -79,7 +79,7 @@ TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int idClienteCopia, QStr
     ui->twStatusPedidosCliente->setColumnWidth(0, 250);
     ui->twStatusPedidosCliente->setColumnWidth(1, 100);
     ui->twStatusPedidosCliente->setColumnWidth(2, 137);
-    ui->twStatusPedidosCliente->setColumnWidth(3, 250);
+    ui->twStatusPedidosCliente->setColumnWidth(3, 245);
     QStringList cabecalhoStatusPedido = {"Produto", "Quantidade", "Preço Total", "Status de Entrega"};
     ui->twStatusPedidosCliente->setHorizontalHeaderLabels(cabecalhoStatusPedido);
     ui->twStatusPedidosCliente->setSelectionBehavior(QAbstractItemView::SelectRows);

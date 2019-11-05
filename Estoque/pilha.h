@@ -90,7 +90,7 @@ public:
     }
     void Reseta()
     {
-        bool ok;
+        bool ok = true;
         do {
             Desempilha(&ok);
         }while(ok);

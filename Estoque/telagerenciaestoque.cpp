@@ -430,6 +430,32 @@ void TelaGerenciaEstoque::on_btnReporEstoque_clicked()
     telaEstocaProdutos telaEstocaProdutos(this, &listaDePrioridade, &lddeProdutos);
     telaEstocaProdutos.setModal(true);
     telaEstocaProdutos.exec();
+    ui->twListaDeCompras->setRowCount(0);
+
+    LES<Produto> listaDeCompras(lddeProdutos.getQtdCadastrados()); // Cria lista de prioridade para guardar os produtos
+    int i = 0;
+    while (i < lddeProdutos.getQtdCadastrados())
+    {                                   // Salva todos produtos na lista
+        produto = lddeProdutos[i];      // variavel produto pega cada produto da ldde um de cada vez
+        listaDeCompras.Insere(produto); // Insere os produtos na lista de compras
+        i++;
+    }
+
+    int j = 0;
+    while (j < i)
+    {                                // Cria a tabela com todos produtos em ordem de prioridade
+        produto = listaDeCompras[j]; // Variavel produto pega cada produto da lista
+        qDebug() << "Produto: " << produto.getNome();
+        ui->twListaDeCompras->insertRow(j);
+        ui->twListaDeCompras->setItem(j, 0, new QTableWidgetItem(QString::number(produto.getId())));
+        ui->twListaDeCompras->setItem(j, 1, new QTableWidgetItem(produto.getNome()));
+        ui->twListaDeCompras->setItem(j, 2, new QTableWidgetItem(QString::number(produto.getQuantidade())));
+        ui->twListaDeCompras->setItem(j, 3, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
+        ui->twListaDeCompras->setItem(j, 4, new QTableWidgetItem(QString::number(produto.getPrioridade()) + "%"));
+        j++;
+    }
+
+    listaDePrioridade = listaDeCompras;
 }
 
 void TelaGerenciaEstoque::on_btnEntregarPedido_clicked()
