@@ -1,7 +1,5 @@
 #include "telaloginfuncionario.h"
 #include "ui_telaloginfuncionario.h"
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
 
 static LDDE<Funcionario> lddeFuncionarios;
 static Funcionario funcionario;
@@ -82,9 +80,10 @@ void telaLoginFuncionario::on_btnEntrarFuncionario_clicked()
         ui->lblErroUsuarioFuncionario->setText("Usuário não existe!");
     }
 
-    //Verifica se esses dados existem
-    if (lddeFuncionarios.BuscaCadastro(usuarioFuncionario, senhaFuncionario))
+    // Verifica se o usuário e senha existem
+    if (existeUsuario && existeSenha)
     {
+        // Fecha a tela e manda o usuário para a tela de gerenciar estoque
         this->close();
         TelaGerenciaEstoque telaGerenciaEstoque;
         telaGerenciaEstoque.exec();
@@ -109,8 +108,6 @@ void telaLoginFuncionario::on_btnCadastrarNovoFuncionario_clicked()
 void telaLoginFuncionario::on_btnHome_clicked()
 {
     close();
-    MainWindow mainW;
-    mainW.setVisible(true);
 }
 
 void telaLoginFuncionario::on_txtUsuarioFuncionario_editingFinished()
@@ -126,4 +123,3 @@ void telaLoginFuncionario::on_txtSenhaFuncionario_editingFinished()
 void telaLoginFuncionario::on_pushButton_clicked()
 {
 }
-

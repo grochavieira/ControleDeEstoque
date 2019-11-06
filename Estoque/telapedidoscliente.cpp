@@ -23,14 +23,17 @@ TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int idClienteCopia, QStr
     // Define a aba padrão a ser mostrada ao entrar na tela de Gerenciar Estoque
     ui->tabPedidosDoCliente->setCurrentIndex(0);
 
+    // Pega os dados do cliente que logou no programa
     idCliente = idClienteCopia;
     nomeCliente = nomeClienteCopia;
     telefoneCliente = telefoneClienteCopia;
     cepCliente = cepClienteCopia;
     numEnderecoCliente = numEnderecoClienteCopia;
 
+    // Mostra o nome do cliente no canto superior direito
     ui->lblNomeCliente->setText(nomeCliente);
 
+    // Popula a lddeProdutos com o cadastro dos produtos existentes
     QSqlQuery query;
     query.prepare("select * from tb_produtos");
     if (query.exec())
@@ -46,8 +49,8 @@ TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int idClienteCopia, QStr
         qDebug() << "Banco de dados falhou!";
     }
 
+    // Inicializa a tabela de compras do cliente (num. de colunas, cabeçalhos, etc...)
     ui->twCompraCliente->setColumnCount(3);
-
     ui->twCompraCliente->verticalHeader()->setVisible(false);
     ui->twCompraCliente->horizontalHeader()->setFixedHeight(30);
     ui->twCompraCliente->setColumnWidth(0, 180);
@@ -59,6 +62,7 @@ TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int idClienteCopia, QStr
     ui->twCompraCliente->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->twCompraCliente->setStyleSheet("QTableView{selection-background-color:#FF6633}");
 
+    // Inicializa a tabela de pedidos do cliente (num. de colunas, cabeçalhos, etc...)
     ui->twPedidosCliente->setColumnCount(4);
     ui->twPedidosCliente->verticalHeader()->setVisible(false);
     ui->twPedidosCliente->horizontalHeader()->setFixedHeight(30);
@@ -72,6 +76,7 @@ TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int idClienteCopia, QStr
     ui->twPedidosCliente->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->twPedidosCliente->setStyleSheet("QTableView{selection-background-color:#FF6633}");
 
+    // Inicializa a tabela de status dos pedidos feitos pelo cliente (num. de colunas, cabeçalhos, etc...)
     ui->twStatusPedidosCliente->setColumnCount(4);
     ui->twStatusPedidosCliente->verticalHeader()->setVisible(false);
     ui->twStatusPedidosCliente->horizontalHeader()->setFixedHeight(30);
@@ -85,6 +90,7 @@ TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int idClienteCopia, QStr
     ui->twStatusPedidosCliente->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->twStatusPedidosCliente->setStyleSheet("QTableView{selection-background-color:#FF6633}");
 
+    // Inicializa a tabela de produtos que podem ser comprados pelo cliente
     ui->twCompraCliente->setRowCount(0);
     int i = 0, linha = 0;
     produto = lddeProdutos[i];
@@ -105,52 +111,62 @@ TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int idClienteCopia, QStr
 
 TelaPedidosCliente::~TelaPedidosCliente()
 {
+    // Apaga a lddeProdutos para não existir duplicação, pois o qt não deleta sózinho
     lddeProdutos.Reseta();
     delete ui;
 }
 
-void TelaPedidosCliente::closeEvent(QCloseEvent *event){
+// O evento de fechar impede que o cliente feche o programa se existir produtos na cesta de compras
+void TelaPedidosCliente::closeEvent(QCloseEvent *event)
+{
     int qtdPedidosCesta = lddeCompras.getQtdCadastrados();
-    if(qtdPedidosCesta > 0){
-    QMessageBox::StandardButton dialog;
-    dialog = QMessageBox::warning(this, "Confirmação de Saida",
-                                  "Sua cesta de compras será excluida, deseja prosseguir?",
-                                  QMessageBox::Ok | QMessageBox::Cancel);
-    if (dialog == QMessageBox::Ok) {
-        while(qtdPedidosCesta > 0){
-            compras = lddeCompras[0];
-            if (compras.getId() != -1)
+    // Verifica se existe produtos na cesta
+    if (qtdPedidosCesta > 0) // Se existir
+    {
+        // Mostra uma mensagem ao usuário
+        QMessageBox::StandardButton dialog;
+        dialog = QMessageBox::warning(this, "Confirmação de Saida",
+                                      "Sua cesta de compras será excluida, deseja prosseguir?",
+                                      QMessageBox::Ok | QMessageBox::Cancel);
+        if (dialog == QMessageBox::Ok) // Se ele quiser sair mesmo assim
+        {
+            // Repõe os produtos que estavam reservados
+            while (qtdPedidosCesta > 0)
             {
-                lddeCompras.Remove(compras.getId());
-                produto = lddeProdutos.Busca(compras.getId());
-
-                //Altera a quantidade do produto atual do banco de dados
-                int quantidadeNova = produto.getQuantidade() + compras.getQntProduto();
-                QSqlQuery query;
-                query.prepare("update tb_produtos set quantidade=" + QString::number(quantidadeNova) + " where id=" + QString::number(compras.getId()));
-                if (query.exec())
+                compras = lddeCompras[0];
+                if (compras.getId() != -1)
                 {
-                    produto = lddeProdutos.Busca(compras.getNome());
-                    produto.Atualiza(quantidadeNova);
-                    lddeProdutos.Atualiza(produto, compras.getId());
-                    qDebug("Os produtos foram estocados novamente!");
+                    lddeCompras.Remove(compras.getId());
+                    produto = lddeProdutos.Busca(compras.getId());
+
+                    //Altera a quantidade do produto atual do banco de dados
+                    int quantidadeNova = produto.getQuantidade() + compras.getQntProduto();
+                    QSqlQuery query;
+                    query.prepare("update tb_produtos set quantidade=" + QString::number(quantidadeNova) + " where id=" + QString::number(compras.getId()));
+                    if (query.exec())
+                    {
+                        produto = lddeProdutos.Busca(compras.getNome());
+                        produto.Atualiza(quantidadeNova);
+                        lddeProdutos.Atualiza(produto, compras.getId());
+                        qDebug("Os produtos foram estocados novamente!");
+                    }
+                    else
+                    {
+                        qDebug("Não foi possível estocar os produtos!");
+                    }
                 }
                 else
                 {
-                    qDebug("Não foi possível estocar os produtos!");
+                    qDebug("Esse pedido temporário não existe!");
                 }
+                qtdPedidosCesta--;
             }
-            else
-            {
-                qDebug("Esse pedido temporário não existe!");
-            }
-            qtdPedidosCesta--;
+            close();
         }
-        close();
-    } else {
-        event->ignore();
-    }
-
+        else // Se ele não quiser sair
+        {
+            event->ignore(); // Ignora o evento de fechamento
+        }
     }
 }
 
@@ -220,11 +236,13 @@ void TelaPedidosCliente::on_buttonAdiciona_clicked()
 
 void TelaPedidosCliente::on_buttonListar_clicked()
 {
+    // Lista todos os produtos disponíveis para o cliente
     ui->twCompraCliente->setRowCount(0);
     int i = 0, linha = 0;
     produto = lddeProdutos[i];
     while (produto.getId() != -1)
     {
+        // Mostra apenas aqueles que estão disponíveis
         if (!(produto.getQuantidade() == 0))
         {
             ui->twCompraCliente->insertRow(linha);
@@ -240,11 +258,18 @@ void TelaPedidosCliente::on_buttonListar_clicked()
 
 void TelaPedidosCliente::on_buttonPesquisar_clicked()
 {
+    // Pega o nome do produto a ser pesquisado
     QString nome = ui->txtPesquisar->text();
     produto = lddeProdutos.Busca(nome);
-    if (produto.getId() == -1 || produto.getQuantidade() == 0)
+
+    // Verifica se o produto existe e se existe quantidade disponível
+    if (produto.getId() == -1)
     {
-        QMessageBox::information(this, "ERRO", "O Nome pesquisado não existe!");
+        QMessageBox::information(this, "ERRO", "O Produto pesquisado não existe!");
+    }
+    else if (produto.getQuantidade() == 0)
+    {
+        QMessageBox::information(this, "ERRO", "O Produto pesquisado não está disponível no momento!");
     }
     else
     {
@@ -259,6 +284,7 @@ void TelaPedidosCliente::on_buttonPesquisar_clicked()
 
 void TelaPedidosCliente::on_spnQuantidade_editingFinished()
 {
+    // Define a quantidade máxima do produto a ser comprado ao terminar de editar o campo
     int linha = ui->twCompraCliente->currentRow();
     if (linha != -1)
     {
@@ -268,6 +294,7 @@ void TelaPedidosCliente::on_spnQuantidade_editingFinished()
 
 void TelaPedidosCliente::on_twCompraCliente_itemSelectionChanged()
 {
+    // Define a quantidade máxima do produto a ser comprado ao selecionar um produto
     int linha = ui->twCompraCliente->currentRow();
     if (linha != -1)
     {
@@ -277,8 +304,10 @@ void TelaPedidosCliente::on_twCompraCliente_itemSelectionChanged()
 
 void TelaPedidosCliente::on_tabPedidosDoCliente_currentChanged(int index)
 {
+    // index = 0 se refere a tabela de produtos que podem ser comprados
     if (index == 0)
     {
+        // Lista todos os produtos disponíveis ao clicar nessa aba
         ui->twCompraCliente->setRowCount(0);
         int i = 0, linha = 0;
         produto = lddeProdutos[i];
@@ -296,8 +325,10 @@ void TelaPedidosCliente::on_tabPedidosDoCliente_currentChanged(int index)
             produto = lddeProdutos[i];
         }
     }
+    // index = 1 se refere a cesta de compras do cliente
     if (index == 1)
     {
+        // Lista todos os produtos que o cliente deseja comprar
         ui->twPedidosCliente->setRowCount(0);
         int i = 0;
         compras = lddeCompras[i];
@@ -313,10 +344,11 @@ void TelaPedidosCliente::on_tabPedidosDoCliente_currentChanged(int index)
         }
     }
 
+    // index = 2 se refere a lista de status de pedidos que o cliente fez
     if (index == 2)
     {
+        // Lista todos os pedidos feitos pelo cliente e o seu status
         ui->twStatusPedidosCliente->setRowCount(0);
-
         QSqlQuery query;
         query.prepare("select * from tb_pedidos where id_cliente=" + QString::number(idCliente) + "");
         if (query.exec())
@@ -327,7 +359,7 @@ void TelaPedidosCliente::on_tabPedidosDoCliente_currentChanged(int index)
                 pedido = new Pedidos(query.value(0).toInt(), query.value(1).toInt(), query.value(2).toString(),
                                      query.value(3).toString(), query.value(4).toInt(), query.value(5).toString(),
                                      query.value(6).toInt(), query.value(7).toString(), query.value(8).toInt(),
-                                     ((query.value(9).toString()).replace(",",".")).toDouble(), query.value(10).toBool());
+                                     ((query.value(9).toString()).replace(",", ".")).toDouble(), query.value(10).toBool());
                 lddePedidos.Insere(pedido);
                 ui->twStatusPedidosCliente->insertRow(i);
                 ui->twStatusPedidosCliente->setItem(i, 0, new QTableWidgetItem(pedido.getNomeProduto()));
@@ -346,10 +378,10 @@ void TelaPedidosCliente::on_tabPedidosDoCliente_currentChanged(int index)
 
 void TelaPedidosCliente::on_btnExcluirPedido_clicked()
 {
+    // Pega a linha atual selecionada pelo cliente
     int linha = ui->twPedidosCliente->currentRow();
     if (linha != -1)
     {
-        //QString id = ui->twPedidosCliente->item(linha, 0)->text();
         compras = lddeCompras[linha];
         if (compras.getId() != -1)
         {
@@ -383,6 +415,8 @@ void TelaPedidosCliente::on_btnExcluirPedido_clicked()
     {
         QMessageBox::warning(this, "ERRO", "Selecione um produto para remover!");
     }
+
+    // Popula novamente a tabela de pedidos
     ui->twPedidosCliente->setRowCount(0);
     int i = 0;
     compras = lddeCompras[i];
@@ -401,17 +435,20 @@ void TelaPedidosCliente::on_btnExcluirPedido_clicked()
 
 void TelaPedidosCliente::on_btnConfirmarPedido_clicked()
 {
+    // Verifica se existe produtos na cesta de compras
     if (lddeCompras.getQtdCadastrados() == 0)
         QMessageBox::information(this, "ERRO", "Não Existe Pedidos a Serem Enviados");
 
     else
     {
+        // Se ainda existir produtos na cesta, efetivamente realiza os pedidos
         int qtdPedidos = lddeCompras.getQtdCadastrados();
         bool pedidoEnviado = false;
         while (qtdPedidos != 0)
         { // Remove todos produtos das Compras e envia para fila de pedidos.
             compras = lddeCompras[0];
 
+            // Manda os pedidos para a tabela de pedidos
             QSqlQuery query;
             query.prepare("insert into tb_pedidos (id_cliente, nome_cliente, cep_cliente, num_endereco_cliente, telefone_cliente, id_produto, nome_produto, quantidade_produto, preco_total_produto, pedido_entregue) values"
                           "('" +
@@ -456,4 +493,3 @@ void TelaPedidosCliente::on_tabWidget_currentChanged(int index)
 void TelaPedidosCliente::on_tabWidget_tabBarClicked(int index)
 {
 }
-

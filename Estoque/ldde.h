@@ -79,7 +79,7 @@ public:
         No<F> *novo = new No<F>;
         novo->id = copiaObjeto.getId();
         novo->objeto = new F(&copiaObjeto);
-        novo->objeto.Imprime();
+        //novo->objeto.Imprime(); // debug
         novo->anterior = NULL;
         novo->prox = NULL;
 
@@ -278,11 +278,9 @@ public:
     void Imprime()
     {
         No<F> *atual = primeiro;
-        cout << "Chamou aqui" << endl;
         while (atual)
         {
-            atual->objeto.Imprime();
-            cout << "Entrou aqui po " << endl;
+            //atual->objeto.Imprime(); // debug
             atual = atual->prox;
         }
         qDebug() << endl;

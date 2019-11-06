@@ -260,32 +260,6 @@ QPushButton:hover#quit_button
       <string>Bem Vindo(a) ao Fox Stock</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>230</y>
-       <width>81</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Gerencia estoque</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>330</y>
-       <width>81</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Pedidos</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_3">
      <property name="geometry">
       <rect>
@@ -324,8 +298,6 @@ QPushButton:hover#quit_button
     <zorder>label</zorder>
     <zorder>btnAreaDeEstoque</zorder>
     <zorder>btnAreaDoCliente</zorder>
-    <zorder>pushButton</zorder>
-    <zorder>pushButton_2</zorder>
     <zorder>label_4</zorder>
     <zorder>label_2</zorder>
     <zorder>label_3</zorder>
@@ -346,8 +318,6 @@ QPushButton:hover#quit_button
  <tabstops>
   <tabstop>btnAreaDoCliente</tabstop>
   <tabstop>btnAreaDeEstoque</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_2</tabstop>
  </tabstops>
  <resources>
   <include location="usefulResources.qrc"/>

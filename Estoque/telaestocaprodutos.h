@@ -10,7 +10,8 @@
 #include <QMessageBox>
 #include <QtSql>
 
-namespace Ui {
+namespace Ui
+{
 class telaEstocaProdutos;
 }
 

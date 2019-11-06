@@ -27,11 +27,12 @@ public:
         delete[] objeto;
     }
 
-    LES &operator=(const LES &outra){
+    LES &operator=(const LES &outra)
+    {
         n = 0;
         tam = outra.tam;
-        objeto = new F[tam+1];
-        for(int i=0; i<tam; i++)
+        objeto = new F[tam + 1];
+        for (int i = 0; i < tam; i++)
             this->Insere(outra.objeto[i]);
 
         return *this;
@@ -39,7 +40,7 @@ public:
 
     void Imprime()
     { // Imprime toda a les em ordem de prioridade
-        qDebug() << "Lista prioridades:";
+        qDebug() << "Lista de Prioridades:";
         for (int i = 0; i < n; ++i)
             qDebug() << "Nome: " << objeto[i].getNome() << " -Id: " << objeto[i].getId();
         qDebug() << endl;
@@ -78,18 +79,19 @@ public:
         for (i = 0; i < n - 1; ++i) // Realoca todos objetos
             objeto[i] = objeto[i + 1];
         //objeto[i] = temp;
-        n--;                 // Subtrai 1 da quantidade de itens da lista
+        n--; // Subtrai 1 da quantidade de itens da lista
 
         return true;
     }
 
-    F Busca(int id){
-        if(id == -1)
+    F Busca(int id)
+    {
+        if (id == -1)
             return nullptr;
 
-        for(int i=0; i<n; i++) // Acha o id desejado e retorna
+        for (int i = 0; i < n; i++) // Acha o id desejado e retorna
         {
-            if(objeto[i].getId() == id)
+            if (objeto[i].getId() == id)
             {
                 return objeto[i];
             }
@@ -103,17 +105,18 @@ public:
         if (id == -1)
             return false;
 
-        int i=0;
-        for(i=0; i<n-1 && objeto[i].getId() != id; i++); // Acha o id desejado
+        int i = 0;
+        for (i = 0; i < n - 1 && objeto[i].getId() != id; i++)
+            ; // Acha o id desejado
 
-        if(objeto[i].getId() != id) // Se o id não existe
+        if (objeto[i].getId() != id) // Se o id não existe
             return false;
 
         for (int j = i; j < n; ++j) // Realoca todos objetos
         {
             objeto[j] = objeto[j + 1];
         }
-        n--;                 // Subtrai 1 da quantidade de itens da lista
+        n--; // Subtrai 1 da quantidade de itens da lista
 
         return true;
     }
@@ -130,13 +133,15 @@ public:
         return objeto[idx]; // Retorna objeto do indice desejado
     }
 
-    int Size(){
+    int Size()
+    {
         return n;
     }
 
     void Reseta()
     {
-        while(Remove());
+        while (Remove())
+            ;
     }
 };
 

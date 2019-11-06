@@ -162,13 +162,15 @@ public:
   }
   //--fim operator
 
-  void Reseta(){
-      while(Deleta());
+  void Reseta()
+  {
+    while (Deleta())
+      ;
   }
 
   ~Fila()
   {
-      Reseta();//destrutor que começa do começo da fila
+    Reseta(); //destrutor que começa do começo da fila
   }
   friend class No1<F>; //pode acessar o nó
 };

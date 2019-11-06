@@ -446,20 +446,31 @@ QPushButton::hover{
    </property>
   </widget>
   <widget class="QLabel" name="lblCaminhao">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>670</x>
-     <y>80</y>
-     <width>421</width>
-     <height>301</height>
+     <x>660</x>
+     <y>70</y>
+     <width>551</width>
+     <height>391</height>
     </rect>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background: &quot;teal&quot;;
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/truck.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QLabel" name="lblCaixa15">

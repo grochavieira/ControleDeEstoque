@@ -14,6 +14,7 @@ private:
     int tam; // Tamanho max da Pilha
     F *v;    // Vetor que guarda os produtos
     F sentinela;
+
 public:
     PILHA()
     { // Inicializa tudo
@@ -23,9 +24,9 @@ public:
     }
     PILHA &operator=(PILHA &outra)
     {
-        n=0;
+        n = 0;
         v = new F[tam];
-        for(int i=0; i<outra.Size(); i++)
+        for (int i = 0; i < outra.Size(); i++)
         {
             this->Empilha(outra.v[i]);
         }
@@ -34,14 +35,14 @@ public:
     }
     PILHA &operator[](int idx)
     {
-        if(idx > n)
+        if (idx > n)
             return -1;
 
         return v[idx];
     }
     bool Empilha(F x) // Guarda na pilha
     {
-        if (n == tam) // Se n estiver no maximo, nao empilha
+        if (n == tam) // Se n estiver no maximo, não empilha
             return false;
 
         v[n] = x;
@@ -54,13 +55,13 @@ public:
         if (n == 0)
         { // Se n for 0, nao existe produto
             if (ok)
-                *ok = false; // avisa que esta vazia e o valor que retornara nao e confiavel
-            return sentinela;     // Retorna um valor nao confiavel
+                *ok = false;  // avisa que esta vazia e o valor que retornara nao e confiavel
+            return sentinela; // Retorna um valor nao confiavel
         }
 
         F temp = v[n - 1]; // Salva ultimo inserido
         //v[n - 1] = sentinela;
-        n--;               // Remove ultimo inserido
+        n--; // Remove ultimo inserido
 
         return temp; // Retorna valor salvo que foi removido
     }
@@ -76,24 +77,14 @@ public:
     {
         return n;
     }
-    PILHA Inverte() // Funcao para inverter pilha
-    {
-        PILHA<F> aux;
-        int tamanho = n;
-        for(int i=0; i<tamanho; i++){ // Salva pilha original em outra pilha
-            aux.Empilha(this->Desempilha());
-        }
-        for(int i=0; i<tamanho; i++){ // Retorna pilha original invertida
-            this->Empilha(aux.Desempilha());
-        }
-        return *this;
-    }
+
     void Reseta()
     {
         bool ok = true;
-        do {
+        do
+        {
             Desempilha(&ok);
-        }while(ok);
+        } while (ok);
     }
     ~PILHA()
     { // Deleta vetor

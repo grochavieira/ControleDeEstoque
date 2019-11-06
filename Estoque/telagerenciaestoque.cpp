@@ -35,15 +35,18 @@ TelaGerenciaEstoque::TelaGerenciaEstoque(QWidget *parent) : QDialog(parent),
         qDebug() << "Banco de dados falhou!";
     }
 
+    /* Pega os pedidos da tabela de pedidos que ainda não foram entregues
+     * e passam eles para uma fila de pedidos.
+     */
     query.prepare("select * from tb_pedidos where pedido_entregue = 'false'");
     if (query.exec())
     {
         while (query.next())
         {
             pedidos = new Pedidos(query.value(0).toInt(), query.value(1).toInt(), query.value(2).toString(),
-                                 query.value(3).toString(), query.value(4).toInt(), query.value(5).toString(),
-                                 query.value(6).toInt(), query.value(7).toString(), query.value(8).toInt(),
-                                 ((query.value(9).toString()).replace(",",".")).toDouble(), query.value(10).toBool());
+                                  query.value(3).toString(), query.value(4).toInt(), query.value(5).toString(),
+                                  query.value(6).toInt(), query.value(7).toString(), query.value(8).toInt(),
+                                  ((query.value(9).toString()).replace(",", ".")).toDouble(), query.value(10).toBool());
             filaPedidos.Insere(pedidos);
         }
     }
@@ -180,7 +183,8 @@ void TelaGerenciaEstoque::on_btnCadastrarProduto_clicked()
         ui->spnQuantidadeMaxProduto->setMinimum(1);
         ui->spnQuantidadeMaxProduto->setValue(1);
     }
-    else{
+    else
+    {
         qDebug() << "Erro ao cadastrar produto";
         QMessageBox::warning(this, "ERRO", "ERRO ao cadastrar produto!");
     }
@@ -201,7 +205,7 @@ void TelaGerenciaEstoque::on_btnEncontrarId_clicked()
 /* Abaixo são apenas slots que apagam as mensagens de erro ao
  * editar as caixas de texto, e também que impedem certos erros do
  * usuário, como ter uma quantidade inicial de produtos maior que
- * a quantidade máxima.
+ * a quantidade máxima, na hora de cadastrar os produtos.
  */
 void TelaGerenciaEstoque::on_spnQuantidadeProduto_editingFinished()
 {
@@ -328,11 +332,11 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
     if (index == 2)
     { // Se essa aba for clicada ela lista, em ordem de prioridade, os produtos que precisam ser estocados novamente
         ui->twListaDeCompras->setRowCount(0);
-        LES<Produto> listaDeCompras(lddeProdutos.getQtdCadastrados()); // Cria lista de prioridade para guardar os produtos
+        LES<Produto> listaDeCompras(lddeProdutos.getQtdCadastrados()); // Cria uma lista de prioridade para guardar os produtos
         int i = 0;
         while (i < lddeProdutos.getQtdCadastrados())
         {                                   // Salva todos produtos na lista
-            produto = lddeProdutos[i];      // variavel produto pega cada produto da ldde um de cada vez
+            produto = lddeProdutos[i];      // Variavel produto pega cada produto da ldde um de cada vez
             listaDeCompras.Insere(produto); // Insere os produtos na lista de compras
             i++;
         }
@@ -350,8 +354,7 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
             ui->twListaDeCompras->setItem(j, 4, new QTableWidgetItem(QString::number(produto.getPrioridade()) + "%"));
             j++;
         }
-
-        listaDePrioridade = listaDeCompras;
+        listaDePrioridade = listaDeCompras; // Será usada para repor os produtos
     }
 
     // index igual a 3, equivale a tab Pedidos
@@ -365,12 +368,11 @@ void TelaGerenciaEstoque::on_tabGerenciadorDeEstoque_tabBarClicked(int index)
         else
         {
             pedidos = filaPedidos[0];
-
             int i = 0, linha = 0;
             while (i < filaPedidos.Tamanho())
             { // Cria a tabela com todos os produtos em ordem de prioridade de pedidos
                 pedidos = filaPedidos[i];
-                if(!(pedidos.getPedidoEntregue()))
+                if (!(pedidos.getPedidoEntregue()))
                 {
                     ui->twPedidos->insertRow(linha);
                     ui->twPedidos->setItem(linha, 0, new QTableWidgetItem(QString::number(pedidos.getId())));
@@ -396,7 +398,7 @@ void TelaGerenciaEstoque::on_btnEnviarPedido_clicked()
 {
     // Pega o index da linha que foi selecionada
     int linha = ui->twPedidos->currentRow();
-    if(linha != -1)
+    if (linha != -1)
     {
         if (linha == 0) // Se o primeiro pedido foi selecionado
         {
@@ -423,27 +425,32 @@ void TelaGerenciaEstoque::on_btnEnviarPedido_clicked()
             QMessageBox::warning(this, "ERRO", "Os pedidos devem ser entregues na ordem que foram realizados!");
         }
     }
-    else{
-        QMessageBox::warning(this,"ERRO", "Não existem pedidos a serem realizados!");
+    else
+    {
+        QMessageBox::warning(this, "ERRO", "Não existem pedidos a serem realizados!");
     }
     ui->twPedidos->selectRow(0);
 }
 
 void TelaGerenciaEstoque::on_btnReporEstoque_clicked()
 {
+    // Verifica se existe algum produto que precisa de reposição
     int id = ui->twListaDeCompras->item(0, 0)->text().toInt();
-    if(listaDePrioridade.Busca(id).getPrioridade() > 0.0)
+    if (listaDePrioridade.Busca(id).getPrioridade() > 0.0) // Se existir
     {
+        // Chama a tela de estocar produtos
         telaEstocaProdutos telaEstocaProdutos(this, &listaDePrioridade, &lddeProdutos);
         telaEstocaProdutos.setModal(true);
         telaEstocaProdutos.exec();
+
+        // Reseta a tabela de lista de compras
         ui->twListaDeCompras->setRowCount(0);
 
         LES<Produto> listaDeCompras(lddeProdutos.getQtdCadastrados()); // Cria lista de prioridade para guardar os produtos
         int i = 0;
         while (i < lddeProdutos.getQtdCadastrados())
         {                                   // Salva todos produtos na lista
-            produto = lddeProdutos[i];      // variavel produto pega cada produto da ldde um de cada vez
+            produto = lddeProdutos[i];      // Variavel produto pega cada produto da ldde um de cada vez
             listaDeCompras.Insere(produto); // Insere os produtos na lista de compras
             i++;
         }
@@ -464,8 +471,9 @@ void TelaGerenciaEstoque::on_btnReporEstoque_clicked()
 
         listaDePrioridade = listaDeCompras;
     }
-    else{
-        QMessageBox::information(this,"OK","Não existe produtos a serem enviados para reposição!");
+    else
+    {
+        QMessageBox::information(this, "OK", "Não existe produtos a serem enviados para reposição!");
     }
 }
 

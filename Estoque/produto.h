@@ -25,10 +25,12 @@ public:
         this->quantidade = quantidade;
         this->quantidadeMin = quantidadeMin;
         this->quantidadeMax = quantidadeMax;
-        if(quantidade <= quantidadeMin){
+        if (quantidade <= quantidadeMin)
+        {
             this->prioridade = 100;
         }
-        else{
+        else
+        {
             this->prioridade = 100 - ((quantidade * 100.0) / quantidadeMax);
         }
     }

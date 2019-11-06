@@ -4,7 +4,8 @@
 #include <QString>
 #include <QDebug>
 
-class Funcionario{
+class Funcionario
+{
 private:
     int id;
     QString nome;
@@ -14,7 +15,8 @@ private:
     QString telefone;
 
 public:
-    Funcionario(int id, QString nome, QString email, QString usuario, QString senha, QString telefone){
+    Funcionario(int id, QString nome, QString email, QString usuario, QString senha, QString telefone)
+    {
         this->id = id;
         this->nome = nome;
         this->email = email;
@@ -23,7 +25,8 @@ public:
         this->telefone = telefone;
     }
 
-    Funcionario(Funcionario *funcionario){
+    Funcionario(Funcionario *funcionario)
+    {
         this->id = funcionario->id;
         this->nome = funcionario->nome;
         this->email = funcionario->email;
@@ -31,7 +34,8 @@ public:
         this->senha = funcionario->senha;
         this->telefone = funcionario->telefone;
     }
-    Funcionario(){
+    Funcionario()
+    {
         id = -1;
         nome = "";
         email = "";
@@ -40,23 +44,28 @@ public:
         telefone = "";
     }
 
-    int getId(){
+    int getId()
+    {
         return id;
     }
 
-    QString getNome(){
+    QString getNome()
+    {
         return nome;
     }
 
-    QString getUsuario(){
+    QString getUsuario()
+    {
         return usuario;
     }
 
-    QString getSenha(){
+    QString getSenha()
+    {
         return senha;
     }
 
-    void Imprime(){
+    void Imprime()
+    {
         qDebug() << "ID: " << id;
         qDebug() << "Nome: " << nome;
         qDebug() << "Email: " << email;

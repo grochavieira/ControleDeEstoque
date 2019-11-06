@@ -22,7 +22,7 @@ public:
     {
         QString local = qApp->applicationDirPath();
         QString banco = local + "/db/ControleDeEstoque.db";
-        qDebug() << banco;
+        //qDebug() << banco;
         bancoDeDados.setDatabaseName(banco);
         if (!bancoDeDados.open())
         {

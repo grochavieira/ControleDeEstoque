@@ -10,7 +10,8 @@
 #include <QMessageBox>
 #include <QCloseEvent>
 
-namespace Ui {
+namespace Ui
+{
 class TelaRepoeProdutos;
 }
 
@@ -19,7 +20,7 @@ class TelaRepoeProdutos : public QDialog
     Q_OBJECT
 
 public:
-    explicit TelaRepoeProdutos(QWidget *parent = nullptr, PILHA<Produto>* pilha = nullptr, LDDE<Produto>* ldde = nullptr);
+    explicit TelaRepoeProdutos(QWidget *parent = nullptr, PILHA<Produto> *pilha = nullptr, LDDE<Produto> *ldde = nullptr);
     ~TelaRepoeProdutos();
 
 protected:

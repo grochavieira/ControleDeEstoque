@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
   connect(trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::iconActivated);
 
   ui->setupUi(this);
-  //Cria um objeto Conexao para abrir o banco de dados e utilizar nas seguintes telas
+  //Cria um objeto Conexao para abrir o banco de dados e utilizar na parte de estoque e cliente
   Conexao conexao;
   conexao.abrir();
 }
@@ -70,18 +70,10 @@ void MainWindow::on_btnAreaDoCliente_clicked()
 
 void MainWindow::on_pushButton_clicked()
 {
-  this->close();
-  TelaGerenciaEstoque TelaGerenciaEstoque;
-  TelaGerenciaEstoque.exec();
-  this->show();
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-  this->setVisible(false);
-  TelaPedidosCliente TelaPedidos;
-  TelaPedidos.exec();
-  this->setVisible(true);
 }
 
 void MainWindow::on_iconDisplay_clicked()

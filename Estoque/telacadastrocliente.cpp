@@ -98,9 +98,9 @@ void TelaCadastroCliente::on_btnCadastrarCliente_clicked()
         QSqlQuery query;
         query.prepare("insert into tb_clientes(nome_cliente, email_cliente, usuario_cliente,"
                       " senha_cliente, telefone_cliente, cep_cliente, num_endereco_cliente) values"
-                      "('" + nomeCliente + "','" + emailCliente + "','" + usuarioCliente + "','" +
-                      senhaCliente + "','" + telefoneCliente + "','" + cepCliente + "','"
-                      + QString::number(numEnderecoCliente) + "')");
+                      "('" +
+                      nomeCliente + "','" + emailCliente + "','" + usuarioCliente + "','" +
+                      senhaCliente + "','" + telefoneCliente + "','" + cepCliente + "','" + QString::number(numEnderecoCliente) + "')");
         if (query.exec())
         {
             QMessageBox::information(this, "OK", "Cliente cadastrado com sucesso!");

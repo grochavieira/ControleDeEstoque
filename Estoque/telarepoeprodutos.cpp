@@ -2,75 +2,84 @@
 #include "ui_telarepoeprodutos.h"
 
 static PILHA<Produto> pilhaProdutos;
-static LDDE<Produto>* lddeProdutos;
+static LDDE<Produto> *lddeProdutos;
 static Produto produto;
-static QLabel* labelProduto[20][2];
+static QLabel *labelPacotes[20][2];
 static int qtdPacotes = 0;
 static int qtdDescarregados = 0;
 static int qtdProdutosCaminhao = 0;
-TelaRepoeProdutos::TelaRepoeProdutos(QWidget *parent, PILHA<Produto>* pilhaCopia, LDDE<Produto>* lddeCopia) :
-    QDialog(parent),
-    ui(new Ui::TelaRepoeProdutos)
+
+TelaRepoeProdutos::TelaRepoeProdutos(QWidget *parent, PILHA<Produto> *pilhaCopia, LDDE<Produto> *lddeCopia) : QDialog(parent),
+                                                                                                              ui(new Ui::TelaRepoeProdutos)
 {
     ui->setupUi(this);
-    lddeProdutos = lddeCopia;
-    qtdProdutosCaminhao = pilhaCopia->Size();
-    qtdPacotes = pilhaCopia->Size() - 1;
 
+    lddeProdutos = lddeCopia;                 // Pega o endereço da lddeProdutos principal, usada no gerenciamento do estoque
+    qtdProdutosCaminhao = pilhaCopia->Size(); // Quantidade total de produtos do caminhão
+    qtdPacotes = pilhaCopia->Size() - 1;      // Quantidade de pacotes que serão descarregados
+
+    /* Processo de troca de produtos entre a pilha da tela anterior para
+     * poder ser utilizada nessa tela
+     */
     int qtdAux = pilhaCopia->Size();
     PILHA<Produto> pilhaAuxiliar;
-    for(int i = 0; i < qtdAux; i++){
+    for (int i = 0; i < qtdAux; i++)
+    {
         pilhaAuxiliar.Empilha(pilhaCopia->Desempilha());
     }
 
-    for(int i = 0; i < qtdAux; i++){
+    for (int i = 0; i < qtdAux; i++)
+    {
         pilhaProdutos.Empilha(pilhaAuxiliar.Desempilha());
     }
 
-    labelProduto[0][0] = ui->lblCaixa1;
-    labelProduto[0][1] = ui->lblProduto1;
-    labelProduto[1][0] = ui->lblCaixa2;
-    labelProduto[1][1] = ui->lblProduto2;
-    labelProduto[2][0] = ui->lblCaixa3;
-    labelProduto[2][1] = ui->lblProduto3;
-    labelProduto[3][0] = ui->lblCaixa4;
-    labelProduto[3][1] = ui->lblProduto4;
-    labelProduto[4][0] = ui->lblCaixa5;
-    labelProduto[4][1] = ui->lblProduto5;
-    labelProduto[5][0] = ui->lblCaixa6;
-    labelProduto[5][1] = ui->lblProduto6;
-    labelProduto[6][0] = ui->lblCaixa7;
-    labelProduto[6][1] = ui->lblProduto7;
-    labelProduto[7][0] = ui->lblCaixa8;
-    labelProduto[7][1] = ui->lblProduto8;
-    labelProduto[8][0] = ui->lblCaixa9;
-    labelProduto[8][1] = ui->lblProduto9;
-    labelProduto[9][0] = ui->lblCaixa10;
-    labelProduto[9][1] = ui->lblProduto10;
-    labelProduto[10][0] = ui->lblCaixa11;
-    labelProduto[10][1] = ui->lblProduto11;
-    labelProduto[11][0] = ui->lblCaixa12;
-    labelProduto[11][1] = ui->lblProduto12;
-    labelProduto[12][0] = ui->lblCaixa13;
-    labelProduto[12][1] = ui->lblProduto13;
-    labelProduto[13][0] = ui->lblCaixa14;
-    labelProduto[13][1] = ui->lblProduto14;
-    labelProduto[14][0] = ui->lblCaixa15;
-    labelProduto[14][1] = ui->lblProduto15;
-    labelProduto[15][0] = ui->lblCaixa16;
-    labelProduto[15][1] = ui->lblProduto16;
-    labelProduto[16][0] = ui->lblCaixa17;
-    labelProduto[16][1] = ui->lblProduto17;
-    labelProduto[17][0] = ui->lblCaixa18;
-    labelProduto[17][1] = ui->lblProduto18;
-    labelProduto[18][0] = ui->lblCaixa19;
-    labelProduto[18][1] = ui->lblProduto19;
-    labelProduto[19][0] = ui->lblCaixa20;
-    labelProduto[19][1] = ui->lblProduto20;
+    // Inicialização da matriz das caixas e labels dos produtos
+    labelPacotes[0][0] = ui->lblCaixa1;
+    labelPacotes[0][1] = ui->lblProduto1;
+    labelPacotes[1][0] = ui->lblCaixa2;
+    labelPacotes[1][1] = ui->lblProduto2;
+    labelPacotes[2][0] = ui->lblCaixa3;
+    labelPacotes[2][1] = ui->lblProduto3;
+    labelPacotes[3][0] = ui->lblCaixa4;
+    labelPacotes[3][1] = ui->lblProduto4;
+    labelPacotes[4][0] = ui->lblCaixa5;
+    labelPacotes[4][1] = ui->lblProduto5;
+    labelPacotes[5][0] = ui->lblCaixa6;
+    labelPacotes[5][1] = ui->lblProduto6;
+    labelPacotes[6][0] = ui->lblCaixa7;
+    labelPacotes[6][1] = ui->lblProduto7;
+    labelPacotes[7][0] = ui->lblCaixa8;
+    labelPacotes[7][1] = ui->lblProduto8;
+    labelPacotes[8][0] = ui->lblCaixa9;
+    labelPacotes[8][1] = ui->lblProduto9;
+    labelPacotes[9][0] = ui->lblCaixa10;
+    labelPacotes[9][1] = ui->lblProduto10;
+    labelPacotes[10][0] = ui->lblCaixa11;
+    labelPacotes[10][1] = ui->lblProduto11;
+    labelPacotes[11][0] = ui->lblCaixa12;
+    labelPacotes[11][1] = ui->lblProduto12;
+    labelPacotes[12][0] = ui->lblCaixa13;
+    labelPacotes[12][1] = ui->lblProduto13;
+    labelPacotes[13][0] = ui->lblCaixa14;
+    labelPacotes[13][1] = ui->lblProduto14;
+    labelPacotes[14][0] = ui->lblCaixa15;
+    labelPacotes[14][1] = ui->lblProduto15;
+    labelPacotes[15][0] = ui->lblCaixa16;
+    labelPacotes[15][1] = ui->lblProduto16;
+    labelPacotes[16][0] = ui->lblCaixa17;
+    labelPacotes[16][1] = ui->lblProduto17;
+    labelPacotes[17][0] = ui->lblCaixa18;
+    labelPacotes[17][1] = ui->lblProduto18;
+    labelPacotes[18][0] = ui->lblCaixa19;
+    labelPacotes[18][1] = ui->lblProduto19;
+    labelPacotes[19][0] = ui->lblCaixa20;
+    labelPacotes[19][1] = ui->lblProduto20;
 
-    for(int i = 0; i < 20; i++){
-        labelProduto[i][0]->setVisible(false);
-        labelProduto[i][1]->setVisible(false);
+    // Deixa todos os pacotes invisíveis inicialmente
+    for (int i = 0; i < 20; i++)
+    {
+        labelPacotes[i][0]->setVisible(false);
+        labelPacotes[i][1]->setVisible(false);
     }
 
     // Configurações iniciais da tabela de produtos do caminhão (cabeçalho, tamanho, num. de colunas, etc..)
@@ -103,9 +112,12 @@ TelaRepoeProdutos::TelaRepoeProdutos(QWidget *parent, PILHA<Produto>* pilhaCopia
     ui->twProdutosDescarregados->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->twProdutosDescarregados->setStyleSheet("QTableView{selection-background-color:#FF6633}");
 
+    // Inicializa a tabela de produtos que tem dentro do caminhão, assim como os pacotes dele
     PILHA<Produto> pilhaAux;
     pilhaAux = pilhaProdutos;
-    for(int j=0; j<pilhaProdutos.Size(); j++){
+    for (int j = 0; j < pilhaProdutos.Size(); j++)
+    {
+        // Popula a tabela
         produto = pilhaAux.Desempilha();
         ui->twProdutosCaminhao->insertRow(j);
         ui->twProdutosCaminhao->setItem(j, 0, new QTableWidgetItem(QString::number(produto.getId())));
@@ -113,12 +125,14 @@ TelaRepoeProdutos::TelaRepoeProdutos(QWidget *parent, PILHA<Produto>* pilhaCopia
         ui->twProdutosCaminhao->setItem(j, 2, new QTableWidgetItem(QString::number(produto.getQuantidade())));
         ui->twProdutosCaminhao->setItem(j, 3, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
         ui->twProdutosCaminhao->setItem(j, 4, new QTableWidgetItem(QString::number(produto.getPrioridade()) + "%"));
-        labelProduto[qtdPacotes][0]->setVisible(true);
-        labelProduto[qtdPacotes][1]->setVisible(true);
-        labelProduto[qtdPacotes][1]->setText(produto.getNome());
+
+        // Popula o caminhão com os pacotes
+        labelPacotes[qtdPacotes][0]->setVisible(true);
+        labelPacotes[qtdPacotes][1]->setVisible(true);
+        labelPacotes[qtdPacotes][1]->setText(produto.getNome());
         qtdPacotes--;
     }
-    qtdPacotes = pilhaProdutos.Size() - 1;
+    qtdPacotes = pilhaProdutos.Size() - 1; // Quantidade de pacotes a serem descarregados
 }
 
 TelaRepoeProdutos::~TelaRepoeProdutos()
@@ -127,15 +141,21 @@ TelaRepoeProdutos::~TelaRepoeProdutos()
     delete ui;
 }
 
-void TelaRepoeProdutos::closeEvent(QCloseEvent *event){
-    if(qtdProdutosCaminhao != qtdDescarregados){
+// Evento de fechamento que impede que o usuário saia antes de descarregar todos os produtos
+void TelaRepoeProdutos::closeEvent(QCloseEvent *event)
+{
+    if (qtdProdutosCaminhao != qtdDescarregados)
+    {
         QMessageBox::StandardButton dialog;
         dialog = QMessageBox::warning(this, "Saída Negada",
                                       "Você só pode sair depois que descarregar o caminhão!",
                                       QMessageBox::Ok);
-        if (dialog == QMessageBox::Ok) {
+        if (dialog == QMessageBox::Ok)
+        {
             event->ignore();
-        } else {
+        }
+        else
+        {
             event->ignore();
         }
     }
@@ -143,26 +163,38 @@ void TelaRepoeProdutos::closeEvent(QCloseEvent *event){
 
 void TelaRepoeProdutos::on_btnEnviarEstoque_clicked()
 {
+    // Pega a linha atual
     int linha = ui->twProdutosCaminhao->currentRow();
-    if(linha != 0)
+
+    // Verifica se não é a primeira linha
+    if (linha != 0)
     {
         QMessageBox::warning(this, "ERRO", "Descarregue o primeiro item para descarregar os outros!");
     }
-    else{
+    else
+    { // Se for a primeira linha
+        // Descarrega o pacote do caminhão e manda ele para o estoque
         produto = pilhaProdutos.Desempilha();
+
+        // Atualiza o estoque com o produto que foi descarregado
         QSqlQuery query;
         query.prepare("update tb_produtos set quantidade=" + QString::number(produto.getQuantidadeMax()) + ", prioridade=" + QString::number(0) + " where id=" + QString::number(produto.getId()));
         if (query.exec())
         {
-            produto.Atualiza(produto.getQuantidadeMax()); // Atualiza Quantidade
-            produto.AtualizaP(); // Atualiza Prioridade
+            // Altera a quantidade do produto para atualizar a lddeProdutos quando voltar a tela principal
+            produto.Atualiza(produto.getQuantidadeMax());       // Atualiza Quantidade
+            produto.AtualizaP();                                // Atualiza Prioridade
             (*lddeProdutos).Atualiza(produto, produto.getId()); // Salva na lddeProdutos
-            labelProduto[qtdPacotes][0]->setVisible(false);
-            labelProduto[qtdPacotes][1]->setVisible(false);
+
+            // Retira o pacote selecionado do caminhão
+            labelPacotes[qtdPacotes][0]->setVisible(false);
+            labelPacotes[qtdPacotes][1]->setVisible(false);
             qtdPacotes--;
 
+            // Remove o produto do caminhão
             ui->twProdutosCaminhao->removeRow(0);
 
+            // E passa ele para o estoque
             ui->twProdutosDescarregados->insertRow(qtdDescarregados);
             ui->twProdutosDescarregados->setItem(qtdDescarregados, 0, new QTableWidgetItem(QString::number(produto.getId())));
             ui->twProdutosDescarregados->setItem(qtdDescarregados, 1, new QTableWidgetItem(produto.getNome()));
@@ -170,54 +202,62 @@ void TelaRepoeProdutos::on_btnEnviarEstoque_clicked()
             ui->twProdutosDescarregados->setItem(qtdDescarregados, 3, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
             ui->twProdutosDescarregados->setItem(qtdDescarregados, 4, new QTableWidgetItem(QString::number(produto.getPrioridade()) + "%"));
             qtdDescarregados++;
-            if(qtdDescarregados != qtdProdutosCaminhao){
-                QMessageBox::information(this,"OK","Produto descarregado com sucesso!");
-            }
-            else{
-                QMessageBox::information(this,"OK","Caminhão descarregado com sucesso!");
-            }
+
+            QMessageBox::information(this, "OK", "Produto descarregado com sucesso!");
         }
         else
         {
             QMessageBox::warning(this, "ERRO", "Erro ao descarregar produto " + produto.getNome());
         }
     }
+    // Por padrão, seleciona a primeira linha da tabela do caminhão para o próximo descarregamento
     ui->twProdutosCaminhao->selectRow(0);
 }
 
 void TelaRepoeProdutos::on_btnConcluirDescarga_clicked()
 {
-    if(qtdProdutosCaminhao == qtdDescarregados){
-        QMessageBox::information(this,"OK","Descarregamento concluído!");
+    // Verifica se todos os produtos foram descarregados e volta para a tela principal se verdadeiro
+    if (qtdProdutosCaminhao == qtdDescarregados)
+    {
+        QMessageBox::information(this, "OK", "Descarregamento concluído!");
         close();
     }
-    else{
-        QMessageBox::warning(this,"ERRO","O caminhão ainda não foi descarregado!");
+    else
+    {
+        QMessageBox::warning(this, "ERRO", "O caminhão ainda não foi descarregado!");
     }
 }
 
 void TelaRepoeProdutos::on_btnEnviarTudoEstoque_clicked()
 {
+    // Verifica se existe produtos a serem descarregados
     int qtdLinhas = ui->twProdutosCaminhao->rowCount();
-    if(qtdLinhas != 0)
+    if (qtdLinhas != 0) // Se ainda existir
     {
+        // Envia todos os produtos para o estoque
         bool caminhaoDescarregado = false;
-        while(pilhaProdutos.Size() != 0)
+        while (pilhaProdutos.Size() != 0)
         {
             produto = pilhaProdutos.Desempilha();
+
+            // Atualiza a tabela de produtos com os produtos descarregados
             QSqlQuery query;
             query.prepare("update tb_produtos set quantidade=" + QString::number(produto.getQuantidadeMax()) + ", prioridade=" + QString::number(0) + " where id=" + QString::number(produto.getId()));
             if (query.exec())
             {
-                produto.Atualiza(produto.getQuantidadeMax()); // Atualiza Quantidade
-                produto.AtualizaP(); // Atualiza Prioridade
+                produto.Atualiza(produto.getQuantidadeMax());       // Atualiza Quantidade
+                produto.AtualizaP();                                // Atualiza Prioridade
                 (*lddeProdutos).Atualiza(produto, produto.getId()); // Salva na lddeProdutos
-                labelProduto[qtdPacotes][0]->setVisible(false);
-                labelProduto[qtdPacotes][1]->setVisible(false);
+
+                // Retira o pacote do caminhão
+                labelPacotes[qtdPacotes][0]->setVisible(false);
+                labelPacotes[qtdPacotes][1]->setVisible(false);
                 qtdPacotes--;
 
+                // Retira o produto da tabela de produtos do caminhão
                 ui->twProdutosCaminhao->removeRow(0);
 
+                // Passa o produto para a tabela de estoque
                 ui->twProdutosDescarregados->insertRow(qtdDescarregados);
                 ui->twProdutosDescarregados->setItem(qtdDescarregados, 0, new QTableWidgetItem(QString::number(produto.getId())));
                 ui->twProdutosDescarregados->setItem(qtdDescarregados, 1, new QTableWidgetItem(produto.getNome()));
@@ -225,6 +265,7 @@ void TelaRepoeProdutos::on_btnEnviarTudoEstoque_clicked()
                 ui->twProdutosDescarregados->setItem(qtdDescarregados, 3, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
                 ui->twProdutosDescarregados->setItem(qtdDescarregados, 4, new QTableWidgetItem(QString::number(produto.getPrioridade()) + "%"));
                 qtdDescarregados++;
+
                 caminhaoDescarregado = true;
             }
             else
@@ -232,13 +273,13 @@ void TelaRepoeProdutos::on_btnEnviarTudoEstoque_clicked()
                 caminhaoDescarregado = false;
             }
         }
-        if(caminhaoDescarregado)
-            QMessageBox::information(this,"OK","Caminhão descarregado com sucesso!");
+        if (caminhaoDescarregado)
+            QMessageBox::information(this, "OK", "Caminhão descarregado com sucesso!");
         else
-            QMessageBox::warning(this,"ERRO","Não foi possível descarregar o caminhão");
+            QMessageBox::warning(this, "ERRO", "Não foi possível descarregar o caminhão");
     }
-    else{
+    else
+    {
         QMessageBox::warning(this, "ERRO", "Não existe produtos a serem descarregados!");
     }
-
 }

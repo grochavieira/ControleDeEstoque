@@ -16,6 +16,8 @@
 #include <QtCore>
 #include <QtGui>
 #include <QTreeWidgetItem>
+#include <QSplashScreen>
+#include <QTimer>
 
 namespace Ui
 {

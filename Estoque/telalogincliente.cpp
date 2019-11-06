@@ -81,7 +81,7 @@ void TelaLoginCliente::on_btnEntrarCliente_clicked()
     }
 
     //Verifica se os campos existem na tabela dos clientes
-    if (lddeClientes.BuscaCadastro(usuarioCliente, senhaCliente))
+    if (existeUsuario && existeSenha)
     {
         //se existir, pega todos dados desse cliente
         cliente = lddeClientes.BuscaDadosUsuario(usuarioCliente, senhaCliente);
