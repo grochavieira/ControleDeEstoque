@@ -39,7 +39,6 @@ TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int idClienteCopia, QStr
         {
             produto = new Produto(query.value(0).toInt(), query.value(1).toString(), ((query.value(2).toString()).replace(",", ".")).toDouble(), query.value(3).toInt(), query.value(4).toInt(), query.value(5).toInt());
             lddeProdutos.Insere(produto);
-            //filaProdutos.Insere(produto);
         }
     }
     else
@@ -79,7 +78,7 @@ TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int idClienteCopia, QStr
     ui->twStatusPedidosCliente->setColumnWidth(0, 250);
     ui->twStatusPedidosCliente->setColumnWidth(1, 100);
     ui->twStatusPedidosCliente->setColumnWidth(2, 137);
-    ui->twStatusPedidosCliente->setColumnWidth(3, 245);
+    ui->twStatusPedidosCliente->setColumnWidth(3, 235);
     QStringList cabecalhoStatusPedido = {"Produto", "Quantidade", "Preço Total", "Status de Entrega"};
     ui->twStatusPedidosCliente->setHorizontalHeaderLabels(cabecalhoStatusPedido);
     ui->twStatusPedidosCliente->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -107,8 +106,6 @@ TelaPedidosCliente::TelaPedidosCliente(QWidget *parent, int idClienteCopia, QStr
 TelaPedidosCliente::~TelaPedidosCliente()
 {
     lddeProdutos.Reseta();
-    //lddeCompras.Reseta();
-    //lddePedidos.Reseta();
     delete ui;
 }
 
@@ -219,8 +216,6 @@ void TelaPedidosCliente::on_buttonAdiciona_clicked()
         i++;
         produto = lddeProdutos[i];
     }
-
-    ui->twCompraCliente->selectRow(0);
 }
 
 void TelaPedidosCliente::on_buttonListar_clicked()

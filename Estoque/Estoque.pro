@@ -1,4 +1,4 @@
-QT       += core gui sql qml
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,7 +24,8 @@ SOURCES += \
     telagerenciaestoque.cpp \
     telalogincliente.cpp \
     telaloginfuncionario.cpp \
-    telapedidoscliente.cpp
+    telapedidoscliente.cpp \
+    telarepoeprodutos.cpp
 
 HEADERS += \
     cliente.h \
@@ -44,7 +45,8 @@ HEADERS += \
     les.h \
     telalogincliente.h \
     telaloginfuncionario.h \
-    telapedidoscliente.h
+    telapedidoscliente.h \
+    telarepoeprodutos.h
 
 FORMS += \
     mainwindow.ui \
@@ -54,7 +56,8 @@ FORMS += \
     telagerenciaestoque.ui \
     telalogincliente.ui \
     telaloginfuncionario.ui \
-    telapedidoscliente.ui
+    telapedidoscliente.ui \
+    telarepoeprodutos.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -62,7 +65,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    myResources.qrc \
     usefulResources.qrc
 
 DISTFILES +=

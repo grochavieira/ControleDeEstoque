@@ -95,7 +95,7 @@ telaEstocaProdutos::telaEstocaProdutos(QWidget *parent, LES<Produto>* listaDePri
         }
     }
 
-    // Configurações iniciais da pilha de compras (cabeçalho, tamanho, num. de colunas, etc..)
+    // Configurações iniciais da tabela de produtos do caminhão (cabeçalho, tamanho, num. de colunas, etc..)
     ui->twPilhaEstoque->setColumnCount(5);
     ui->twPilhaEstoque->verticalHeader()->setVisible(false);
     ui->twPilhaEstoque->horizontalHeader()->setFixedHeight(30);
@@ -122,65 +122,71 @@ telaEstocaProdutos::~telaEstocaProdutos()
 
 void telaEstocaProdutos::on_buttonEnviaProduto_clicked()
 {
-    if(pilha.Size() >= 20){
-        QMessageBox::warning(this, "ERRO", "O maximo de 20 produtos foi atingido!");
-    }
-    else{
-        // Pega o index da linha que foi selecionada
-        int linha = ui->twListaPrioridade->currentRow();
-        if (linha != -1) // Se essa linha existe
-        {
-            /* Seus dados são pegados para serem excluidos na lddeProdutos, no banco de dados
+    int linha = ui->twListaPrioridade->currentRow();
+    if(linha == 0)
+    {
+        if(pilha.Size() >= 20){
+            QMessageBox::warning(this, "ERRO", "O maximo de 20 produtos foi atingido!");
+        }
+        else{
+            // Pega o index da linha que foi selecionada
+            int linha = ui->twListaPrioridade->currentRow();
+            if (linha != -1) // Se essa linha existe
+            {
+                /* Seus dados são pegados para serem excluidos na lddeProdutos, no banco de dados
              * e na tabela de produtos
              */
-            int id = ui->twListaPrioridade->item(linha, 0)->text().toInt();
-            produto = listaDeCompras.Busca(id);
-            pilha.Empilha(produto);
-            labelProduto[qtdProdutosReposicao][0]->setVisible(true);
-            labelProduto[qtdProdutosReposicao][1]->setVisible(true);
-            labelProduto[qtdProdutosReposicao][1]->setText(produto.getNome());
-            qtdProdutosReposicao++;
-            listaDeCompras.Remove(id);
-            QMessageBox::information(this, "ACCEPT", "Pedido de reabastecimento do produto enviado!");
+                int id = ui->twListaPrioridade->item(linha, 0)->text().toInt();
+                produto = listaDeCompras.Busca(id);
+                pilha.Empilha(produto);
+                labelProduto[qtdProdutosReposicao][0]->setVisible(true);
+                labelProduto[qtdProdutosReposicao][1]->setVisible(true);
+                labelProduto[qtdProdutosReposicao][1]->setText(produto.getNome());
+                qtdProdutosReposicao++;
+                listaDeCompras.Remove(id);
+                QMessageBox::information(this, "ACCEPT", "Pedido de reabastecimento do produto enviado!");
 
-            linha = 0;
-            ui->twListaPrioridade->setRowCount(0); // Reseta a lista de produtos
-            for(int j=0; j<listaDeCompras.Size(); j++){ // Monta Tabela
-                produto = listaDeCompras[j];
-                if(produto.getPrioridade() > 0.0)
-                {
-                    ui->twListaPrioridade->insertRow(linha);
-                    ui->twListaPrioridade->setItem(linha, 0, new QTableWidgetItem(QString::number(produto.getId())));
-                    ui->twListaPrioridade->setItem(linha, 1, new QTableWidgetItem(produto.getNome()));
-                    ui->twListaPrioridade->setItem(linha, 2, new QTableWidgetItem(QString::number(produto.getQuantidade())));
-                    ui->twListaPrioridade->setItem(linha, 3, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
-                    ui->twListaPrioridade->setItem(linha, 4, new QTableWidgetItem(QString::number(produto.getPrioridade()) + "%"));
-                    linha++;
+                linha = 0;
+                ui->twListaPrioridade->setRowCount(0); // Reseta a lista de produtos
+                for(int j=0; j<listaDeCompras.Size(); j++){ // Monta Tabela
+                    produto = listaDeCompras[j];
+                    if(produto.getPrioridade() > 0.0)
+                    {
+                        ui->twListaPrioridade->insertRow(linha);
+                        ui->twListaPrioridade->setItem(linha, 0, new QTableWidgetItem(QString::number(produto.getId())));
+                        ui->twListaPrioridade->setItem(linha, 1, new QTableWidgetItem(produto.getNome()));
+                        ui->twListaPrioridade->setItem(linha, 2, new QTableWidgetItem(QString::number(produto.getQuantidade())));
+                        ui->twListaPrioridade->setItem(linha, 3, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
+                        ui->twListaPrioridade->setItem(linha, 4, new QTableWidgetItem(QString::number(produto.getPrioridade()) + "%"));
+                        linha++;
+                    }
+                }
+                ui->twListaPrioridade->selectRow(0);
+
+                PILHA<Produto> pilhaAux;
+                pilhaAux = pilha; // Pilha auxiliar para montar a tabela da pilha
+                ui->twPilhaEstoque->setRowCount(0); // Reseta a pilha de produtos
+                for(int j=0; j<pilha.Size(); j++){ // Monta Pilha Para Renovar Estoque
+                    produto = pilhaAux.Desempilha();
+                    qDebug() << "Pilha: " << produto.getNome();
+                    ui->twPilhaEstoque->insertRow(j);
+                    ui->twPilhaEstoque->setItem(j, 0, new QTableWidgetItem(QString::number(produto.getId())));
+                    ui->twPilhaEstoque->setItem(j, 1, new QTableWidgetItem(produto.getNome()));
+                    ui->twPilhaEstoque->setItem(j, 2, new QTableWidgetItem(QString::number(produto.getQuantidade())));
+                    ui->twPilhaEstoque->setItem(j, 3, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
+                    ui->twPilhaEstoque->setItem(j, 4, new QTableWidgetItem(QString::number(produto.getPrioridade()) + "%"));
                 }
             }
-            ui->twListaPrioridade->selectRow(0);
-
-            PILHA<Produto> pilhaAux;
-            pilhaAux = pilha; // Pilha auxiliar para montar a tabela da pilha
-            ui->twPilhaEstoque->setRowCount(0); // Reseta a pilha de produtos
-            for(int j=0; j<pilha.Size(); j++){ // Monta Pilha Para Renovar Estoque
-                produto = pilhaAux.Desempilha();
-                qDebug() << "Pilha: " << produto.getNome();
-                ui->twPilhaEstoque->insertRow(j);
-                ui->twPilhaEstoque->setItem(j, 0, new QTableWidgetItem(QString::number(produto.getId())));
-                ui->twPilhaEstoque->setItem(j, 1, new QTableWidgetItem(produto.getNome()));
-                ui->twPilhaEstoque->setItem(j, 2, new QTableWidgetItem(QString::number(produto.getQuantidade())));
-                ui->twPilhaEstoque->setItem(j, 3, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
-                ui->twPilhaEstoque->setItem(j, 4, new QTableWidgetItem(QString::number(produto.getPrioridade()) + "%"));
+            else
+            {
+                QMessageBox::warning(this, "ERRO", "Nenhum produto foi selecionado!");
             }
         }
-        else
-        {
-            QMessageBox::warning(this, "ERRO", "Selecione o produto que deseja reabastecer!");
-        }
-
-
     }
+    else{
+        QMessageBox::warning(this,"ERRO","Escolha primeiro os itens de maior prioridade!");
+    }
+    ui->twListaPrioridade->selectRow(0);
 }
 
 void telaEstocaProdutos::on_buttonEnviaTudo_clicked()
@@ -237,80 +243,20 @@ void telaEstocaProdutos::on_buttonEnviaTudo_clicked()
             ui->twPilhaEstoque->setItem(j, 3, new QTableWidgetItem(QString::number(produto.getQuantidadeMax())));
             ui->twPilhaEstoque->setItem(j, 4, new QTableWidgetItem(QString::number(produto.getPrioridade()) + "%"));
         }
+        QMessageBox::information(this,"OK","Produtos enviados para reposição com sucesso!");
     }
 }
 
 void telaEstocaProdutos::on_buttonEnviaCaminhao_clicked()
 {
+
     if(pilha.Size() == 0)
     {
-        QMessageBox::warning(this, "ERRO", "Selecione Alguns Produtos Para Pedir a Reposição de Estoque!");
+        QMessageBox::warning(this, "ERRO", "Nenhum produto foi selecionado para reposição!");
     }
     else{
-        PILHA<Produto> pilhaAux;
-        pilhaAux = pilha;
-        pilha.Inverte();
-        while(pilhaAux.Size() != 0)
-        {
-            produto = pilhaAux.Desempilha();
-            QSqlQuery query;
-            query.prepare("update tb_produtos set quantidade=" + QString::number(produto.getQuantidadeMax()) + ", prioridade=" + QString::number(0) + " where id=" + QString::number(produto.getId()));
-            if (query.exec())
-            {
-                produto.Atualiza(produto.getQuantidadeMax()); // Atualiza Quantidade
-                produto.AtualizaP(); // Atualiza Prioridade
-                (*lddeProdutosOrigem).Atualiza(produto, produto.getId()); // Salva na lddeProdutos
-            }
-            else
-            {
-                QMessageBox::warning(this, "ERRO", "Erro ao atualizar o produto " + produto.getNome());
-            }
-        }
-        /*
-        produto = pilha.Desempilha();
-        ui->produto_1->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_2->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_3->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_4->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_5->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_6->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_7->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_8->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_9->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_10->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_11->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_12->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_13->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_14->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_15->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_16->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_17->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_18->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_19->setText(produto.getNome());
-        produto = pilha.Desempilha();
-        ui->produto_20->setText(produto.getNome());
-            */
         close();
-        //Ativar giff e fechar esta aba!
+        TelaRepoeProdutos telaRepoeProdutos(this, &pilha, lddeProdutosOrigem);
+        telaRepoeProdutos.exec();
     }
-
-
 }

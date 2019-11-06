@@ -1,96 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>telaEstocaProdutos</class>
- <widget class="QDialog" name="telaEstocaProdutos">
+ <class>TelaRepoeProdutos</class>
+ <widget class="QDialog" name="TelaRepoeProdutos">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1228</width>
-    <height>527</height>
+    <width>1201</width>
+    <height>511</height>
    </rect>
-  </property>
-  <property name="font">
-   <font>
-    <family>MS Shell Dlg 2</family>
-   </font>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="lblCaixa19">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>160</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa5">
-   <property name="geometry">
-    <rect>
-     <x>770</x>
-     <y>300</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto8">
-   <property name="geometry">
-    <rect>
-     <x>770</x>
-     <y>130</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonEnviaTudo">
+  <widget class="QPushButton" name="btnEnviarTudoEstoque">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>470</y>
+     <y>460</y>
      <width>311</width>
      <height>41</height>
     </rect>
@@ -122,38 +49,150 @@ QPushButton::hover{
 }</string>
    </property>
    <property name="text">
-    <string>ENVIAR TUDO PARA REPOSIÇÃO</string>
+    <string>ENVIAR TUDO PARA O ESTOQUE</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblProduto13">
+  <widget class="QPushButton" name="btnEnviarEstoque">
    <property name="geometry">
     <rect>
-     <x>930</x>
-     <y>340</y>
-     <width>61</width>
+     <x>10</x>
+     <y>410</y>
+     <width>311</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Caviar Dreams</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background-color:rgba(0,0,0,60);
+	color:white;
+	border-style: solid;
+	border-width:3px;
+	border-color: white;
+	border-radius: 6px;
+
+}
+QPushButton::hover{
+	background-color:rgba(255,255,255,60);
+	color:black;
+	border-style: solid;
+	border-width:4px;
+	border-color: black;
+	border-radius: 6px;
+
+}</string>
+   </property>
+   <property name="text">
+    <string>ENVIAR PARA O ESTOQUE</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>0</y>
+     <width>221</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
+     <pointsize>12</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
    <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
+    <string>PRODUTOS DO CAMINHÃO</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblCaixa7">
+  <widget class="QTableWidget" name="twProdutosCaminhao">
    <property name="geometry">
     <rect>
-     <x>770</x>
-     <y>160</y>
+     <x>10</x>
+     <y>20</y>
+     <width>311</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QHeaderView { font-size: 12pt; }</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnConcluirDescarga">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>410</y>
+     <width>311</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Caviar Dreams</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background-color:rgba(0,0,0,60);
+	color:white;
+	border-style: solid;
+	border-width:3px;
+	border-color: white;
+	border-radius: 6px;
+
+}
+QPushButton::hover{
+	background-color:rgba(255,255,255,60);
+	color:black;
+	border-style: solid;
+	border-width:4px;
+	border-color: black;
+	border-radius: 6px;
+
+}</string>
+   </property>
+   <property name="text">
+    <string>CONCLUIR DESCARGA DE PRODUTOS</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>-210</x>
+     <y>-10</y>
+     <width>1461</width>
+     <height>571</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Pedidos.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa6">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>200</y>
      <width>61</width>
      <height>71</height>
     </rect>
@@ -171,56 +210,33 @@ QPushButton::hover{
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_9">
+  <widget class="QLabel" name="lblCaixa1">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>10</y>
-     <width>251</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>12</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>PRODUTOS DO CAMINHÃO</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto3">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>200</y>
+     <x>390</x>
+     <y>270</y>
      <width>61</width>
-     <height>21</height>
+     <height>71</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
    </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="lblProduto7">
+  <widget class="QLabel" name="lblProduto20">
    <property name="geometry">
     <rect>
-     <x>770</x>
-     <y>200</y>
+     <x>710</x>
+     <y>100</y>
      <width>61</width>
      <height>21</height>
     </rect>
@@ -243,790 +259,8 @@ QPushButton::hover{
   <widget class="QLabel" name="lblProduto16">
    <property name="geometry">
     <rect>
-     <x>930</x>
-     <y>130</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto20">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>130</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonEnviaProduto">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>420</y>
-     <width>311</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Caviar Dreams</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-	background-color:rgba(0,0,0,60);
-	color:white;
-	border-style: solid;
-	border-width:3px;
-	border-color: white;
-	border-radius: 6px;
-
-}
-QPushButton::hover{
-	background-color:rgba(255,255,255,60);
-	color:black;
-	border-style: solid;
-	border-width:4px;
-	border-color: black;
-	border-radius: 6px;
-
-}</string>
-   </property>
-   <property name="text">
-    <string>ENVIAR PARA O CAMINHÃO</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto14">
-   <property name="geometry">
-    <rect>
-     <x>930</x>
-     <y>270</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto4">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>130</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto6">
-   <property name="geometry">
-    <rect>
-     <x>770</x>
-     <y>270</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa16">
-   <property name="geometry">
-    <rect>
-     <x>930</x>
-     <y>90</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto12">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>130</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaminhao">
-   <property name="geometry">
-    <rect>
-     <x>670</x>
-     <y>80</y>
-     <width>421</width>
-     <height>301</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background: &quot;teal&quot;;
-</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa15">
-   <property name="geometry">
-    <rect>
-     <x>930</x>
-     <y>160</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>10</y>
-     <width>191</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>12</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>LISTA DE PRIORIDADE</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa4">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>90</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto2">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>270</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa9">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>300</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto18">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>270</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa18">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>230</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QTableWidget" name="twPilhaEstoque">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>30</y>
-     <width>311</width>
-     <height>381</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QHeaderView { font-size: 12pt; }</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto9">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>340</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_8">
-   <property name="geometry">
-    <rect>
-     <x>-200</x>
-     <y>-60</y>
-     <width>1431</width>
-     <height>641</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/bgAfter/a_Pedidos 2.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto1">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>340</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa11">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>160</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa20">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>90</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa12">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>90</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa3">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>160</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto10">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>270</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto11">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>200</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa2">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>230</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa13">
-   <property name="geometry">
-    <rect>
-     <x>930</x>
-     <y>300</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto15">
-   <property name="geometry">
-    <rect>
-     <x>930</x>
-     <y>200</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa1">
-   <property name="geometry">
-    <rect>
-     <x>690</x>
-     <y>300</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa17">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>300</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto19">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>200</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblCaixa10">
-   <property name="geometry">
-    <rect>
-     <x>850</x>
-     <y>230</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto5">
-   <property name="geometry">
-    <rect>
-     <x>770</x>
-     <y>340</y>
-     <width>61</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>MS Shell Dlg 2</family>
-     <pointsize>6</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lblProduto17">
-   <property name="geometry">
-    <rect>
-     <x>1010</x>
-     <y>340</y>
+     <x>630</x>
+     <y>100</y>
      <width>61</width>
      <height>21</height>
     </rect>
@@ -1049,8 +283,8 @@ QPushButton::hover{
   <widget class="QLabel" name="lblCaixa8">
    <property name="geometry">
     <rect>
-     <x>770</x>
-     <y>90</y>
+     <x>470</x>
+     <y>60</y>
      <width>61</width>
      <height>71</height>
     </rect>
@@ -1068,11 +302,11 @@ QPushButton::hover{
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="lblCaixa6">
+  <widget class="QLabel" name="lblCaixa19">
    <property name="geometry">
     <rect>
-     <x>770</x>
-     <y>230</y>
+     <x>710</x>
+     <y>130</y>
      <width>61</width>
      <height>71</height>
     </rect>
@@ -1090,11 +324,812 @@ QPushButton::hover{
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QTableWidget" name="twListaPrioridade">
+  <widget class="QLabel" name="lblCaixa5">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>30</y>
+     <x>470</x>
+     <y>270</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto13">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>310</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto6">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>240</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa9">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>270</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto12">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>100</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto15">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>170</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa11">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>130</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa13">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>270</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto10">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>240</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa20">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>60</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto5">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>310</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto2">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>240</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto1">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>310</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto7">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>170</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa15">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>130</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa18">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>200</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaminhao">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>50</y>
+     <width>421</width>
+     <height>301</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: &quot;teal&quot;;
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa4">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>60</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa17">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>270</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto3">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>170</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa14">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>200</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto11">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>170</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto8">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>100</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto14">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>240</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa16">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>60</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto19">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>170</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto17">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>310</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa3">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>130</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa12">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>60</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa7">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>130</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa10">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>200</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto4">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>100</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto9">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>310</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblCaixa2">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>200</y>
+     <width>61</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblProduto18">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>240</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>6</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="twProdutosDescarregados">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>20</y>
      <width>311</width>
      <height>381</height>
     </rect>
@@ -1108,116 +1143,76 @@ QPushButton::hover{
     <string notr="true">QHeaderView { font-size: 12pt; }</string>
    </property>
   </widget>
-  <widget class="QLabel" name="lblCaixa14">
+  <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>930</x>
-     <y>230</y>
-     <width>61</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="usefulResources.qrc">:/src/telaEstocar/caixa.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="buttonEnviaCaminhao">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>420</y>
-     <width>311</width>
-     <height>41</height>
+     <x>910</x>
+     <y>0</y>
+     <width>251</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Caviar Dreams</family>
+     <family>MS Shell Dlg 2</family>
      <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-	background-color:rgba(0,0,0,60);
-	color:white;
-	border-style: solid;
-	border-width:3px;
-	border-color: white;
-	border-radius: 6px;
-
-}
-QPushButton::hover{
-	background-color:rgba(255,255,255,60);
-	color:black;
-	border-style: solid;
-	border-width:4px;
-	border-color: black;
-	border-radius: 6px;
-
-}</string>
-   </property>
    <property name="text">
-    <string>ENVIAR PEDIDOS PARA REPOSIÇÃO</string>
+    <string>PRODUTOS DESCARREGADOS</string>
    </property>
   </widget>
-  <zorder>label_8</zorder>
+  <zorder>label_3</zorder>
   <zorder>lblCaminhao</zorder>
-  <zorder>lblCaixa19</zorder>
-  <zorder>lblCaixa5</zorder>
-  <zorder>buttonEnviaTudo</zorder>
-  <zorder>lblCaixa7</zorder>
-  <zorder>label_9</zorder>
-  <zorder>buttonEnviaProduto</zorder>
-  <zorder>lblCaixa16</zorder>
-  <zorder>lblCaixa15</zorder>
-  <zorder>label_7</zorder>
-  <zorder>lblCaixa4</zorder>
-  <zorder>lblCaixa9</zorder>
-  <zorder>lblCaixa18</zorder>
-  <zorder>twPilhaEstoque</zorder>
-  <zorder>lblCaixa11</zorder>
   <zorder>lblCaixa20</zorder>
-  <zorder>lblCaixa12</zorder>
-  <zorder>lblCaixa3</zorder>
-  <zorder>lblCaixa2</zorder>
-  <zorder>lblCaixa13</zorder>
-  <zorder>lblCaixa1</zorder>
-  <zorder>lblCaixa17</zorder>
-  <zorder>lblCaixa10</zorder>
-  <zorder>lblCaixa8</zorder>
   <zorder>lblCaixa6</zorder>
-  <zorder>twListaPrioridade</zorder>
+  <zorder>lblCaixa3</zorder>
+  <zorder>lblCaixa18</zorder>
+  <zorder>lblCaixa15</zorder>
+  <zorder>lblCaixa1</zorder>
+  <zorder>lblCaixa5</zorder>
+  <zorder>lblCaixa9</zorder>
+  <zorder>lblCaixa19</zorder>
+  <zorder>lblCaixa17</zorder>
   <zorder>lblCaixa14</zorder>
-  <zorder>buttonEnviaCaminhao</zorder>
-  <zorder>lblProduto4</zorder>
-  <zorder>lblProduto1</zorder>
-  <zorder>lblProduto6</zorder>
-  <zorder>lblProduto3</zorder>
-  <zorder>lblProduto17</zorder>
-  <zorder>lblProduto14</zorder>
+  <zorder>lblCaixa16</zorder>
+  <zorder>lblCaixa12</zorder>
+  <zorder>lblCaixa10</zorder>
+  <zorder>lblCaixa13</zorder>
+  <zorder>lblCaixa8</zorder>
+  <zorder>lblCaixa4</zorder>
+  <zorder>lblCaixa2</zorder>
+  <zorder>lblCaixa11</zorder>
+  <zorder>lblCaixa7</zorder>
+  <zorder>btnEnviarTudoEstoque</zorder>
+  <zorder>btnEnviarEstoque</zorder>
+  <zorder>label_7</zorder>
+  <zorder>twProdutosCaminhao</zorder>
+  <zorder>btnConcluirDescarga</zorder>
   <zorder>lblProduto20</zorder>
-  <zorder>lblProduto5</zorder>
-  <zorder>lblProduto7</zorder>
-  <zorder>lblProduto19</zorder>
-  <zorder>lblProduto18</zorder>
-  <zorder>lblProduto11</zorder>
-  <zorder>lblProduto10</zorder>
-  <zorder>lblProduto13</zorder>
   <zorder>lblProduto16</zorder>
+  <zorder>lblProduto13</zorder>
+  <zorder>lblProduto6</zorder>
   <zorder>lblProduto12</zorder>
   <zorder>lblProduto15</zorder>
-  <zorder>lblProduto9</zorder>
+  <zorder>lblProduto10</zorder>
+  <zorder>lblProduto5</zorder>
   <zorder>lblProduto2</zorder>
+  <zorder>lblProduto1</zorder>
+  <zorder>lblProduto7</zorder>
+  <zorder>lblProduto3</zorder>
+  <zorder>lblProduto11</zorder>
   <zorder>lblProduto8</zorder>
+  <zorder>lblProduto14</zorder>
+  <zorder>lblProduto19</zorder>
+  <zorder>lblProduto17</zorder>
+  <zorder>lblProduto4</zorder>
+  <zorder>lblProduto9</zorder>
+  <zorder>lblProduto18</zorder>
+  <zorder>twProdutosDescarregados</zorder>
+  <zorder>label_8</zorder>
  </widget>
  <resources>
   <include location="usefulResources.qrc"/>

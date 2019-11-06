@@ -57,7 +57,7 @@
     <enum>QTabWidget::Rounded</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tabCadast">
     <property name="font">
@@ -80,7 +80,7 @@
       <rect>
        <x>410</x>
        <y>97</y>
-       <width>61</width>
+       <width>71</width>
        <height>23</height>
       </rect>
      </property>
@@ -381,7 +381,7 @@
       <rect>
        <x>410</x>
        <y>157</y>
-       <width>60</width>
+       <width>101</width>
        <height>23</height>
       </rect>
      </property>
@@ -393,7 +393,7 @@
      </property>
      <property name="maximumSize">
       <size>
-       <width>60</width>
+       <width>120</width>
        <height>16777215</height>
       </size>
      </property>
@@ -404,7 +404,7 @@
       </font>
      </property>
      <property name="maximum">
-      <double>9999.989999999999782</double>
+      <double>999999.989999999990687</double>
      </property>
     </widget>
     <widget class="QLineEdit" name="txtNomeProduto">

@@ -5,6 +5,7 @@
 #include "les.h"
 #include "produto.h"
 #include "ldde.h"
+#include "telarepoeprodutos.h"
 #include <QDialog>
 #include <QMessageBox>
 #include <QtSql>

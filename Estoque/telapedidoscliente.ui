@@ -41,7 +41,7 @@
     </font>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tabProd">
     <attribute name="title">
@@ -470,9 +470,32 @@ QPushButton::hover{
   <widget class="QLabel" name="lblNomeCliente">
    <property name="geometry">
     <rect>
-     <x>440</x>
+     <x>510</x>
      <y>10</y>
-     <width>341</width>
+     <width>261</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: &quot;black&quot;;
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblNomeCliente_2">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>10</y>
+     <width>81</width>
      <height>21</height>
     </rect>
    </property>
@@ -487,12 +510,13 @@ QPushButton::hover{
 </string>
    </property>
    <property name="text">
-    <string/>
+    <string>Usuário: </string>
    </property>
   </widget>
   <zorder>label_2</zorder>
   <zorder>tabPedidosDoCliente</zorder>
   <zorder>lblNomeCliente</zorder>
+  <zorder>lblNomeCliente_2</zorder>
  </widget>
  <tabstops>
   <tabstop>txtPesquisar</tabstop>
