@@ -172,10 +172,28 @@ E assim, o produto é excluído do banco de dados e, consequentemente, da listag
 
 ### Aba Cesta de Compras
 
-  Nessa aba é mostrado todos os itens que foram escolhidos para serem comprados, e então efetuar a confirmação da compra por meio do botão <b> Confirmar Pedido de Compras</b>, mas caso o cliente se arrependa, ele pode excluir os produtos que não deseja comprar ao selecionar um produto e pressionar o botão <b>Excluir Pedido</b>, para que então sejam "repostos" na aba produtos.
-
+  Nessa aba é mostrado todos os itens que foram escolhidos para serem comprados: 
+  
 <p  align="center">
   <img alt="imagem" width="60%" height="60%"  src="inventory_images/cliente_cesta1.png">
+</p>
+
+E então efetuar a confirmação da compra por meio do botão <b> Confirmar Pedido de Compras</b>, que efetivamente subtrai do banco a quantidade de cada produto que foi pedido, para que os itens sejam reservados e prontos para realizar a entrega:
+
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/cliente_cesta_confirmar.png">
+</p>
+
+Mas caso o cliente se arrependa, ele pode excluir os produtos que não deseja comprar ao selecionar um produto e pressionar o botão <b>Excluir Pedido</b>:
+
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/cliente_cesta_excluir.png">
+</p>
+
+Para que então sejam "repostos" na aba produtos.
+
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/cliente_cesta_excluir2.png">
 </p>
 
 ### Aba Status dos Pedidos
@@ -185,3 +203,18 @@ E assim, o produto é excluído do banco de dados e, consequentemente, da listag
 <p  align="center">
   <img alt="imagem" width="60%" height="60%"  src="inventory_images/tela_entrega1.png">
 </p>
+
+### Processo de Entrega
+
+  Para que a entrega seja efetivamente realizada, um funcionário precisa aprová-la na aba <b>Pedidos</b> na <b>Tela de Gerenciar Estoque</b> para que o pedido seja enviado através do botão <b>Enviar Pedido</b>.
+  
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/tela_pedidos.png">
+</p>
+
+  E assim entregar o pedido ao cliente, mudando o status do seu pedido para entregado:
+
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/tela_pedido_entregue.png">
+</p>
+
