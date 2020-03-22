@@ -7,7 +7,7 @@
 
 # Controle e Gerenciamento de Estoque
  
-  Esse software foi desenvolvido com o intuito de gerenciar o estoque de produtos de uma empresa genérica, e, além disso, para simular a compra e venda de produtos foi criada uma seção para os clientes utilizarem, para que exista essa dinâmica entre a empresa e o cliente, e para que os produtos do estoque possam ser modificados em uma situação mais realista.
+  Esse software foi desenvolvido com o intuito de gerenciar o estoque de produtos de uma empresa genérica, e, além disso, para simular a compra e venda de produtos foi criada uma seção para os clientes utilizarem, para que exista essa dinâmica entre a empresa e o cliente, e para que os produtos do estoque possam ser modificados em uma situação mais realista. Para o desenvolvimento desta aplicação foi utilizada a linguagem C++, juntamente com o Qt Creator para o desenvolvimento da interface gráfica, aplicando os conceitos aprendidos na disciplina de estrutura de dados, na qual utilizamos as seguintes estruturas: LDDE, LES, PILHA e FILA.
 
 ## Tela Inicial
 
