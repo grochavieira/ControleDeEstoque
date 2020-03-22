@@ -24,3 +24,30 @@
 <p align="center">
   <img width="50%" height="50%"  src="inventory_images/login_funcionario.png">
 </p>
+
+## Tela de Cadastro de Funcionário
+
+  Aqui é onde o funcionário realizará seu cadastro para fazer login no sistema, no entanto, é necessário que ele realize o preenchimento de cada campo de forma correta, sem deixar campos em branco, ou insuficientes, como podemos ver nas imagens a seguir:
+
+<p  align="center">
+  <img alt="imagem" width="50%" height="50%"  src="inventory_images/cadastro_funcionario_verificação1.png">
+  <img alt="imagem" width="50%" height="50%"  src="inventory_images/cadastro_funcionario_verificação2.png">
+</p>
+
+  Na primeira imagem, se o funcionário pressionar o botão de cadastrar, aparecerá todos os erros relacionado aos campos que ele precisa preencher. Já na segunda imagem, após preencher os campos, existem dois casos especiais relacionados ao login e a senha, no caso do login, não pode existir mais de um login com o mesmo nome, enquanto que no caso da senha, ela precisa ter pelo menos 8 characteres e, obviamente, ambos os campos da senha e confirmar senha devem ser iguais.
+
+### Processo de Login
+
+  Quando o funcionário já está cadastro e for realizar o login no sistema, essa tela também é responsável por verificar duas variaveis, primeiro o nome de usuário, que como podemos ver na imagem abaixo, apresenta um erro caso o funcionário digite um nome de login que não foi cadastrado:
+
+<p align="center">
+  <img alt="imagem" width="50%" height="50%"  src="inventory_images/login_func_usuario.png">
+</p>
+
+  E caso o usuário exista, porém a senha está errada, ele apresenta uma mensagem de erro:
+
+<p  align="center">
+  <img alt="imagem" width="50%" height="50%"  src="inventory_images/login_func_senha.png">
+</p>
+
+## Tela de Gerenciamento de Estoque
