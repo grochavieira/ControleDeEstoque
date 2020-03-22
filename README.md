@@ -120,6 +120,33 @@ E assim, o produto é excluído do banco de dados e, consequentemente, da listag
 
   Essa lista então é enviada com os itens que precisam ser repostos ao pressionar o botão <b>Repor Estoque</b>, para que então sejá realizado o processo de reposição dos itens (que será detalhado na seção sobre o processo de compra e reposição).
 
+#### Processo de Reposição de Itens
+
+  Ao pressionar o botão <b>Repor Estoque</b>, o funcionário será levado para a tela de reposição, como a mostrada abaixo, onde ela serve para simular uma situação em que eles enviam um caminhão, junto com uma lista de compras, para carregar os produtos no caminhão, e então na volta poder descarregá-lo na empresa e repôr os produtos em falta.
+    
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/tela_repor1.png">
+</p>
+
+Na qual ele precisa enviar para o caminhão os itens de acordo com a prioridade deles através do botão <b>Enviar para o caminhão</b>, mas ele também pode enviar todos de uma vez por meio do botão <b>Enviar tudo para reposição</b> e, por fim, enviar os pedidos para poder repô-los ao pressionar o botão <b>Enviar pedidos para reposição</b>.
+
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/tela_repor2.png">
+</p>
+
+Após a confirmação, aparecerá outra tela que simula o descarregamento do caminhão, que também é realizado em ordem de prioridade:
+
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/tela_descarregar1.png">
+</p>
+
+E assim você pode descarregar os itens do caminhão para o setor de estoque, através do botão <b>Enviar para o estoque</b>, no caso de apenas 1 item, ou então com o botão <b>Enviar tudo para o estoque</b> para enviar todos os produtos, no entanto, só é possível concluír esse processo com o botão <b>Concluir descarga de produtos</b> se todos os items do caminhão forem descarregados.
+
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/tela_descarregar2.png">
+</p>
+
+
 ### Aba Pedidos
 
   Aqui é realizado uma listagem em ordem de prioridade de todos pedidos feitos pelos clientes, na qual a ordem de prioridade é relacionada a ordem que os pedidos foram realizados.
@@ -204,7 +231,7 @@ Para que então sejam "repostos" na aba produtos.
   <img alt="imagem" width="60%" height="60%"  src="inventory_images/tela_entrega1.png">
 </p>
 
-### Processo de Entrega
+#### Processo de Entrega
 
   Para que a entrega seja efetivamente realizada, um funcionário precisa aprová-la na aba <b>Pedidos</b> na <b>Tela de Gerenciar Estoque</b> para que o pedido seja enviado através do botão <b>Enviar Pedido</b>.
   
