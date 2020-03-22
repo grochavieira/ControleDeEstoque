@@ -133,9 +133,55 @@ E assim, o produto é excluído do banco de dados e, consequentemente, da listag
   Essa tela é utilizada para o cliente realizar seu login e acessar a interface que simula as compras de produtos da empresa, na qual existe a opção dele realizar um cadastro, caso ele não tenha, ao pressionar o texto <b>Sem cadastro? Clique Aqui!</b>, ou então acessar o sistema após preencher corretamente os campos com seus dados e pressionar o botão <b>Entra</b>.
 
 <p  align="center">
-  <img alt="imagem" width="60%" height="60%"  src="inventory_images/cadastro_cliente.png">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/login_cliente.png">
 </p>
 
 ## Tela de Cadastro do Cliente
 
+  É aqui onde o cliente podera se cadastrar para poder logar no sistema. Existe algumas diferenças em relação aos dados exigidos em comparação com a tela de cadastro de funcionários, mas como o processo de verificação é o mesmo, não existe a necessidade de apresentá-lo aqui.
+  
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/cadastro_cliente.png">
+</p>
+
 ### Processo de Login do Cliente
+  
+  Como o processo de login do cliente é o mesmo que do funcionário, não existe a necessidade de mostrá-lo aqui.
+  
+## Tela de Gerenciamento de Compras do Cliente
+
+  Essa tela foi criada com o intuito de simular o processo de compra de um cliente, para que então o gerenciamento de estoque possa ser realizado de uma forma mais realistíca. Essa tela foi dividida em 3 abas: Produtos, Cesta de Compras e Status dos Pedidos, cada qual com sua funcionalidade.
+  
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/cliente_tela_inicial.png">
+</p>
+
+### Aba Produtos
+
+  Assim como na aba remover produtos da tela de gerenciamento de estoque, é possível pesquisar um produto pelo nome, assim como listar todos os produtos. Além disso, é nessa aba que o cliente selecionará os itens que ele deseja adicionar a sua lista de compras, na qual ele só precisa selecionar o produto, digitar a quantidade desejada, que automaticamente limita para a quantidade atual do estoque, e assim manda-los para a sua cesta de compras ao pressionar o botão <b>Adicionar produto a cesta de compras</b>.
+
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/cliente_tela_inicial_adicionar.png">
+</p>
+
+  E dessa forma a quantidade adiciona a cesta é subtraída da lista atual:
+
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/cliente_tela_inicial_adicionar2.png">
+</p>
+
+### Aba Cesta de Compras
+
+  Nessa aba é mostrado todos os itens que foram escolhidos para serem comprados, e então efetuar a confirmação da compra por meio do botão <b> Confirmar Pedido de Compras</b>, mas caso o cliente se arrependa, ele pode excluir os produtos que não deseja comprar ao selecionar um produto e pressionar o botão <b>Excluir Pedido</b>, para que então sejam "repostos" na aba produtos.
+
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/cliente_cesta1.png">
+</p>
+
+### Aba Status dos Pedidos
+
+  Nessa aba é mostrado todos os pedidos realizados pelo cliente e o status de cada um deles, que somente será modificado após a confirmação do funcionário na tela de gerenciamento de estoque.
+  
+<p  align="center">
+  <img alt="imagem" width="60%" height="60%"  src="inventory_images/tela_entrega1.png">
+</p>
